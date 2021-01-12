@@ -10,4 +10,5 @@ new materials, and make them accessible to students, teaching assistants, and ot
 ### [Table of Contents](https://jckantor.github.io/cbe30338-2021/toc.html)
 
 ### [Chapter 1.0 Course Organization](https://jckantor.github.io/cbe30338-2021/01.00-Course-Organization.html)
+- [1.1 Schedule](https://jckantor.github.io/cbe30338-2021/01.01-Schedule.html)
 

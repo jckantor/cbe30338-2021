@@ -7,4 +7,7 @@ taught during the Spring 2021 semester. This repository includes existing materi
 (notably [CBE 30338](http://jckantor.github.io/CBE30338/) and [CBE 32338](https://jckantor.github.io/CBE32338/)), add
 new materials, and make them accessible to students, teaching assistants, and other interested parties.
 
+### [Table of Contents](https://jckantor.github.io/cbe30338-2021/toc.html)
+
+### [Chapter 1.0 Course Organization](https://jckantor.github.io/cbe30338-2021/01.00-Course-Organization.html)
 

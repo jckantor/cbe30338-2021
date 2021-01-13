@@ -8,7 +8,45 @@ taught during the Spring 2021 semester. This repository includes existing materi
 new materials, and make them accessible to students, teaching assistants, and other interested parties.
 
 ### [Table of Contents](https://jckantor.github.io/cbe30338-2021/toc.html)
+### [Data Index](https://jckantor.github.io/cbe30338-2021/data_index.html)
+### [Figure Index](https://jckantor.github.io/cbe30338-2021/figure_index.html)
+### [Python Module Index](https://jckantor.github.io/cbe30338-2021/python_index.html)
 
 ### [0.0 Course Organization](https://jckantor.github.io/cbe30338-2021/00.00-Course-Organization.html)
 - [0.1 Schedule](https://jckantor.github.io/cbe30338-2021/00.01-Schedule.html)
+
+### [Chapter 1.0 Introduction to the Temperature Control Laboratory](https://jckantor.github.io/cbe30338-2021/01.00-Introduction-to-the-Temperature-Control-Laboratory.html)
+- [1.1 The Temperature Control Laboratory](https://jckantor.github.io/cbe30338-2021/01.01-TCLab.html)
+- [1.2 The TCLab Python Package](https://jckantor.github.io/cbe30338-2021/01.02-The-TCLab-Python-Package.html)
+- [1.11 TCLab Lab 1: Coding a relay controller](https://jckantor.github.io/cbe30338-2021/01.11-TCLab-Lab-1-Coding-a-relay-controller.html)
+
+### [Chapter 2.0 Model Identification](https://jckantor.github.io/cbe30338-2021/02.00-Model-Identification.html)
+- [2.1 Step Testing](https://jckantor.github.io/cbe30338-2021/02.01-Step-Testing.html)
+- [2.2 Fitting Step Test Data to Empirical Models](https://jckantor.github.io/cbe30338-2021/02.02-Fitting-Step-Test-Data-to-Empirical-Models.html)
+- [2.3 First Order Model for a Single Heater](https://jckantor.github.io/cbe30338-2021/02.03-First-Order-Model-for-a-Single-Heater.html)
+- [2.4 Two-Input, Two-Output Model](https://jckantor.github.io/cbe30338-2021/02.04-Two-Input-Two-Output-Model.html)
+- [2.5 Two State Model for a Single Heater](https://jckantor.github.io/cbe30338-2021/02.05-Two-State-Model-for-a-Single-Heater.html)
+- [2.6 Four State Model](https://jckantor.github.io/cbe30338-2021/02.06-Four-State-Model.html)
+- [2.10 TCLab Lab 2: Model Identification](https://jckantor.github.io/cbe30338-2021/02.10-TCLab-Lab-2-Model-Indentification-Solutions.html)
+- [2.10 TCLab Lab 2: Model Identification](https://jckantor.github.io/cbe30338-2021/02.10-TCLab-Lab-2-Model-Indentification.html)
+- [2.11 Model Identification: Fitting models to data](https://jckantor.github.io/cbe30338-2021/02.11-TCLab-Lab-2-Fitting.html)
+
+### [Chapter 3.0 State Estimation](https://jckantor.github.io/cbe30338-2021/03.00-State-Estimation.html)
+- [3.1 Open and Closed Loop Estimation](https://jckantor.github.io/cbe30338-2021/03.01-Open-and-Closed-Loop-Estimation.html)
+
+### [Chapter 4.0 Feedback Control](https://jckantor.github.io/cbe30338-2021/04.00-Feedback-Control.html)
+- [4.1 Relay Control](https://jckantor.github.io/cbe30338-2021/04.01-Relay-Control.html)
+- [4.3 PID Control](https://jckantor.github.io/cbe30338-2021/04.03-PID_Control.html)
+- [4.10 Lab Assignment: PID Control](https://jckantor.github.io/cbe30338-2021/04.10-Lab-Assignment-PID-Control.html)
+- [4.11 Lab Assignment 4: PI Control](https://jckantor.github.io/cbe30338-2021/04.11-Lab-Assignment-PI-Control.html)
+
+### [Chapter 5.0 Predictive Control and Real Time Optimization](https://jckantor.github.io/cbe30338-2021/05.00-Predictive-Control-and-Real-Time-Optimization.html)
+- [5.1 Simulation, Control, and Estimation using Pyomo](https://jckantor.github.io/cbe30338-2021/05.01-Optimization-Control-and-Estimation-using-Pyomo.html)
+- [5.2 Simulation, Control, and Estimation using Pyomo](https://jckantor.github.io/cbe30338-2021/05.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html)
+
+### [Appendix A. A.0 Additional Python](https://jckantor.github.io/cbe30338-2021/A.00-Additional-Python.html)
+- [A.1 Coding Controllers with Python Generators](https://jckantor.github.io/cbe30338-2021/A.01-Coding-Controllers-with-Python-Generators.html)
+- [A.2 Modular Simulation using Python Generators](https://jckantor.github.io/cbe30338-2021/A.02-Modular-Approach-to-Simulation-using-Python-Generators.html)
+- [A.3 A Modular Approach to Simulation using Python Generators](https://jckantor.github.io/cbe30338-2021/A.03-Modular-Simulation-using-Python-Generators.html)
+- [A.4 Animation in Jupyter Notebooks](https://jckantor.github.io/cbe30338-2021/A.04-Animation-in-Jupyter-Notebooks.html)
 

@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/00.00-Course-Organization.html">0.0 Course Organization</a> | <a href="toc.html">Contents</a> | <a href="https://jckantor.github.io/cbe30338-2021/01.00-Introduction-to-the-Temperature-Control-Laboratory.html">1.0 Introduction to the Temperature Control Laboratory</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/../cbe30338-2021/docs/00.01-Schedule.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/00.01-Schedule.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/02.05-Two-State-Model-for-a-Single-Heater.html">2.5 Two State Model for a Single Heater</a> | <a href="toc.html">Contents</a> | <a href="https://jckantor.github.io/cbe30338-2021/02.10-TCLab-Lab-2-Model-Indentification-Solutions.html">2.10 TCLab Lab 2: Model Identification</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/../cbe30338-2021/docs/02.06-Four-State-Model.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/02.06-Four-State-Model.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,7 +14285,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="0.1-Schedule">0.1 Schedule<a class="anchor-link" href="#0.1-Schedule">&#182;</a></h1>
+<h1 id="2.6-Four-State-Model">2.6 Four State Model<a class="anchor-link" href="#2.6-Four-State-Model">&#182;</a></h1>
 </div>
 </div>
 
@@ -14294,20 +14294,13 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.1-Getting-Started">0.1.1 Getting Started<a class="anchor-link" href="#0.1.1-Getting-Started">&#182;</a></h2><p><strong>CBE 30338/32338 Chemical Process Control</strong> will be conducted as a fully on-line course for the 2021 Spring semeter. For this to be effective, each student, instuctor, and teaching assistant will need access to the required technology and keep their systems and software in good working order for the duration of the semester.</p>
-<p><strong>Please let the instructors know immediately if you don't have access to a laptop, or you don't have adequate internet connectivity. The University has resources available to assist with these situations.</strong></p>
-<p>Please use the period before the start of the semester to prepare your systems and technology. Pay attention to the following the following details:</p>
-<ul>
-<li><p>We will be making extensive use of Zoom for office hours, on-classes, and laboratory sessions. Please verify that you can access Zoom by joining the test meeting <strong>with video</strong> at <a href="https://zoom.us/test">https://zoom.us/test</a>.</p>
-</li>
-<li><p>Please confirm that you have a working installation of the latest Anaconda distribution of Python. If in doubt, reinstall a fresh download available from <a href="https://www.anaconda.com/">Anaconda.com</a>.</p>
-</li>
-<li><p>A major component of the course is hands-on use of real hardware to implement working control systems. For this purpose wyou will need to purchase an individual copy of the <strong>Temperature Control Labortory</strong> available through <a href="https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY">Amazon</a>, the Notre Dame Bookstore, and <a href="https://apmonitor.com/pdc/index.php/Main/PurchaseLabKit">apmonitor.com</a>. Please allow time for ordering, shipping, and for you to install and test the device using your laptop.</p>
-</li>
-<li><p>The Temperature Control Lab requires a USB type A port on your laptop. If you laptop is newer model with only USB-C ports, you will need to purchase a USB-C to USB-A adaptor (<a href="https://www.amazon.com/Apple-USB-C-to-USB-Adapter/dp/B00VU2OID2/">such as this device for an Apple Mac</a>) or USB-C docking station (<a href="https://www.amazon.com/LENTION-Multi-Port-Compatible-2020-2016-Chromebook/dp/B07FNH5Y84/">such as this</a> from LENTION).</p>
-</li>
-</ul>
-
+<h2 id="2.6.1-Multivariable-Heater/Sensor-System">2.6.1 Multivariable Heater/Sensor System<a class="anchor-link" href="#2.6.1-Multivariable-Heater/Sensor-System">&#182;</a></h2><p>Model equations</p>
+\begin{align}
+C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{H,2}-T_{H,1}) + U_c(T_{S,1} - T_{H,1}) + P_1u_1\\
+C^S_p\frac{dT_{S,1}}{dt} &amp; = U_c(T_{H,1} - T_{S,1})  \\
+C^H_p\frac{dT_{H,2}}{dt} &amp; = U_a(T_{amb} - T_{H,2}) + U_b(T_{H,1}-T_{H,2}) + U_c(T_{S,2} - T_{H,2}) + P_2u_2\\
+C^S_p\frac{dT_{S,2}}{dt} &amp; = U_c(T_{H,2} - T_{S,2}) 
+\end{align}
 </div>
 </div>
 
@@ -14316,7 +14309,12 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.2-Introduction-to-the-Course-and-Process-Control">0.1.2 Introduction to the Course and Process Control<a class="anchor-link" href="#0.1.2-Introduction-to-the-Course-and-Process-Control">&#182;</a></h2>
+<h2 id="2.6.2-Deviation-variables">2.6.2 Deviation variables<a class="anchor-link" href="#2.6.2-Deviation-variables">&#182;</a></h2>\begin{align}
+\frac{dT_{H,1}'}{dt} &amp; = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,1}' + \frac{U_b}{C^H_p}T_{H,2}' + \frac{U_c}{C^H_p}T_{S,1}' + \frac{P_1}{C^H_p}u_1\\
+\frac{dT_{S,1}'}{dt} &amp; = \frac{U_c}{C^S_p}(T_{H,1}' - T_{S,1}')  \\
+\frac{dT_{H,2}'}{dt} &amp; = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,2}' + \frac{U_b}{C^H_p}T_{H,1}' + \frac{U_c}{C^H_p}T_{S,2}' + \frac{P_2}{C^H_p}u_2\\
+\frac{dT_{S,2}'}{dt} &amp; = \frac{U_c}{C^S_p}(T_{H,2}' - T_{S,2}') 
+\end{align}
 </div>
 </div>
 
@@ -14325,774 +14323,215 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.2.1-Week-1">0.1.2.1 Week 1<a class="anchor-link" href="#0.1.2.1-Week-1">&#182;</a></h3><p>Class meetings begin on week 1. Each of the sessions scheduled below will be done as a Zoom meeting. To protect privacy, the specific Zoom meeting links are available through the course management system. Attendance will be monitored for each session with required attendance.</p>
-<table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">2/3(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/4(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/5(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
+<h2 id="2.6.3-State-space">2.6.3 State space<a class="anchor-link" href="#2.6.3-State-space">&#182;</a></h2>\begin{align}
+\left[\begin{array}{c}\frac{dT_{H,1}'}{dt} \\ \frac{dT_{S,1}'}{dt} \\ \frac{dT_{H,2}'}{dt} \\ \frac{dT_{S,2}'}{dt}\end{array}\right]
+&amp; = 
+\left[\begin{array}{cccc}
+-(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_c}{C^H_p} &amp; \frac{U_b}{C^H_p} &amp; 0 \\
+\frac{U_c}{C^S_p} &amp; -\frac{U_c}{C^S_p} &amp; 0 &amp; 0 \\
+\frac{U_b}{C^H_p} &amp; 0 &amp; -(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_c}{C^H_p} \\
+0 &amp; 0 &amp; \frac{U_c}{C^H_p} &amp; -\frac{U_c}{C^H_p}
+\end{array}\right]
+\left[\begin{array}{c}T_{H,1}' \\ T_{S,1}' \\ T_{H,2}' \\ T_{S,2}'\end{array}\right]
++
+\left[\begin{array}{cc}\frac{P_1}{C_p} &amp; 0 \\ 0 &amp; 0 \\ 0 &amp; \frac{P_2}{C_p} \\ 0 &amp; 0 \end{array}\right]
+\left[\begin{array}{c}u_1 \\ u_2\end{array}\right]
+\end{align}
 </div>
 </div>
 
 
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Step_Test_Data.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span>
+<span class="n">T1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">T2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># known parameter values</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">u1</span> <span class="o">=</span> <span class="mf">0.5</span>   <span class="c1"># steady state value of u1 (fraction of total power)</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">u2</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">T_ambient</span> <span class="o">=</span> <span class="mf">21.5</span>
+
+<span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">,</span> <span class="n">Uc</span><span class="p">,</span> <span class="n">Cp_H</span><span class="p">,</span> <span class="n">Cp_S</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+        <span class="n">T_H1</span><span class="p">,</span> <span class="n">T_S1</span><span class="p">,</span> <span class="n">T_H2</span><span class="p">,</span> <span class="n">T_S2</span> <span class="o">=</span> <span class="n">T</span>
+        <span class="n">dT_H1</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">Uc</span><span class="p">)</span><span class="o">*</span><span class="n">T_H1</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T_H2</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_S1</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">P1</span><span class="o">*</span><span class="n">u1</span><span class="o">/</span><span class="n">Cp_H</span>
+        <span class="n">dT_S1</span> <span class="o">=</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_H1</span><span class="o">/</span><span class="n">Cp_S</span> <span class="o">-</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_S1</span><span class="o">/</span><span class="n">Cp_S</span>
+        <span class="n">dT_H2</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">Uc</span><span class="p">)</span><span class="o">*</span><span class="n">T_H2</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T_H1</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_S2</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">P2</span><span class="o">*</span><span class="n">u2</span><span class="o">/</span><span class="n">Cp_H</span>
+        <span class="n">dT_S2</span> <span class="o">=</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_H2</span><span class="o">/</span><span class="n">Cp_S</span> <span class="o">-</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_S2</span><span class="o">/</span><span class="n">Cp_S</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">dT_H1</span><span class="p">,</span> <span class="n">dT_S1</span><span class="p">,</span> <span class="n">dT_H2</span><span class="p">,</span> <span class="n">dT_S2</span><span class="p">]</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">T_ambient</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">T_ambient</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time / seconds&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature / °C&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">T1</span><span class="o">+</span><span class="n">T_ambient</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">T2</span><span class="o">+</span><span class="n">T_ambient</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span>
+
+<span class="c1"># parameter values and units</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">4</span>                 <span class="c1"># watts</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="mi">2</span>                 <span class="c1"># watts</span>
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.044</span>             <span class="c1"># watts/deg C</span>
+<span class="n">Ub</span> <span class="o">=</span> <span class="mf">0.018</span>             <span class="c1"># watts/deg C</span>
+<span class="n">Cp</span> <span class="o">=</span> <span class="mi">7</span>                 <span class="c1"># joules/deg C</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">interact</span><span class="p">(</span><span class="n">compare</span><span class="p">,</span> <span class="n">Ua</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.06</span><span class="p">,</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">Ub</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.06</span><span class="p">,</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">Uc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.06</span><span class="p">,</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">Cp_H</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">Cp_S</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">.</span><span class="mi">01</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
 
     
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.3-Modeling-and-Parameter-Estimation">0.1.3 Modeling and Parameter Estimation<a class="anchor-link" href="#0.1.3-Modeling-and-Parameter-Estimation">&#182;</a></h2>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+
+
+
+<div id="3e9c61ca-2b7d-4d31-b2fa-29527a45ff12" class="jupyter-widgets jp-OutputArea-output ">
+<script type="text/javascript">
+var element = document.getElementById('3e9c61ca-2b7d-4d31-b2fa-29527a45ff12');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "c4c99cc9b3d34e748ff83fe13f148efc", "version_major": 2, "version_minor": 0}
+</script>
 </div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.043</span>
+<span class="n">Ub</span> <span class="o">=</span> <span class="mf">0.022</span>
+<span class="n">Uc</span> <span class="o">=</span> <span class="mf">0.036</span>
+<span class="n">Cp_H</span> <span class="o">=</span> <span class="mf">6.38</span>
+<span class="n">Cp_S</span> <span class="o">=</span> <span class="mf">0.98</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span><span class="o">+</span><span class="n">Ub</span><span class="o">+</span><span class="n">Uc</span><span class="p">)</span><span class="o">/</span><span class="n">Cp_H</span><span class="p">,</span> <span class="n">Uc</span><span class="o">/</span><span class="n">Cp_H</span><span class="p">,</span> <span class="n">Ub</span><span class="o">/</span><span class="n">Cp_H</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+     <span class="p">[</span><span class="n">Uc</span><span class="o">/</span><span class="n">Cp_S</span><span class="p">,</span> <span class="o">-</span><span class="n">Uc</span><span class="o">/</span><span class="n">Cp_S</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+     <span class="p">[</span><span class="n">Ub</span><span class="o">/</span><span class="n">Cp_H</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="n">Ua</span><span class="o">+</span><span class="n">Ub</span><span class="o">+</span><span class="n">Uc</span><span class="p">)</span><span class="o">/</span><span class="n">Cp_H</span><span class="p">,</span> <span class="n">Uc</span><span class="o">/</span><span class="n">Cp_H</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Uc</span><span class="o">/</span><span class="n">Cp_H</span><span class="p">,</span> <span class="o">-</span><span class="n">Uc</span><span class="o">/</span><span class="n">Cp_H</span><span class="p">]</span>
+    <span class="p">]</span>
+
+<span class="n">evals</span><span class="p">,</span> <span class="n">evecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="mi">1</span><span class="o">/</span><span class="n">evals</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
 
     
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.3.1-Week-2">0.1.3.1 Week 2<a class="anchor-link" href="#0.1.3.1-Week-2">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">2/8(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">2/9(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/11(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/12(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>array([ -22.64294396,  -52.59946787, -124.34799519, -354.43970971])</pre>
+</div>
 
 </div>
+
+</div>
+
+</div>
+
 </div>
 
 
 
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.3.2-Week-3">0.1.3.2 Week 3<a class="anchor-link" href="#0.1.3.2-Week-3">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">2/15(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">2/16(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/18(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/19(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">,</span> <span class="n">Uc</span><span class="p">,</span> <span class="n">Cp_H</span><span class="p">,</span> <span class="n">Cp_S</span><span class="p">):</span>
 
+    <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+        <span class="n">T_H1</span><span class="p">,</span> <span class="n">T_S1</span><span class="p">,</span> <span class="n">T_H2</span><span class="p">,</span> <span class="n">T_S2</span> <span class="o">=</span> <span class="n">T</span>
+        <span class="n">dT_H1</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">Uc</span><span class="p">)</span><span class="o">*</span><span class="n">T_H1</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T_H2</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_S1</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">P1</span><span class="o">*</span><span class="n">u1</span><span class="o">/</span><span class="n">Cp_H</span>
+        <span class="n">dT_S1</span> <span class="o">=</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_H1</span><span class="o">/</span><span class="n">Cp_S</span> <span class="o">-</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_S1</span><span class="o">/</span><span class="n">Cp_S</span>
+        <span class="n">dT_H2</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">Uc</span><span class="p">)</span><span class="o">*</span><span class="n">T_H2</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T_H1</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_S2</span><span class="o">/</span><span class="n">Cp_H</span> <span class="o">+</span> <span class="n">P2</span><span class="o">*</span><span class="n">u2</span><span class="o">/</span><span class="n">Cp_H</span>
+        <span class="n">dT_S2</span> <span class="o">=</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_H2</span><span class="o">/</span><span class="n">Cp_S</span> <span class="o">-</span> <span class="n">Uc</span><span class="o">*</span><span class="n">T_S2</span><span class="o">/</span><span class="n">Cp_S</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">dT_H1</span><span class="p">,</span> <span class="n">dT_S1</span><span class="p">,</span> <span class="n">dT_H2</span><span class="p">,</span> <span class="n">dT_S2</span><span class="p">]</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">T_ambient</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">T_ambient</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">T_ambient</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">T_ambient</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time / seconds&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature / °C&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">T1</span><span class="o">+</span><span class="n">T_ambient</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">T2</span><span class="o">+</span><span class="n">T_ambient</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Ua</span><span class="p">,</span><span class="n">Ub</span><span class="p">,</span><span class="n">Uc</span><span class="p">,</span><span class="n">Cp_H</span><span class="p">,</span><span class="n">Cp_S</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
 </div>
 </div>
 
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.4-Feedback-Control">0.1.4 Feedback Control<a class="anchor-link" href="#0.1.4-Feedback-Control">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.4.1-Week-4">0.1.4.1 Week 4<a class="anchor-link" href="#0.1.4.1-Week-4">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">2/22(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">2/23(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/25(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/26(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.4.2-Week-5">0.1.4.2 Week 5<a class="anchor-link" href="#0.1.4.2-Week-5">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/1(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/2(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/4(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/5(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.4.3-Week-6">0.1.4.3 Week 6<a class="anchor-link" href="#0.1.4.3-Week-6">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/8(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/9(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/11(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/12(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.5-Steady-State-Optimization">0.1.5 Steady-State Optimization<a class="anchor-link" href="#0.1.5-Steady-State-Optimization">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.5.1-Week-7">0.1.5.1 Week 7<a class="anchor-link" href="#0.1.5.1-Week-7">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/15(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/16(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/18(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/19(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.5.2-Week-8">0.1.5.2 Week 8<a class="anchor-link" href="#0.1.5.2-Week-8">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/22(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/23(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/25(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/26(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.6-Predictive-Control">0.1.6 Predictive Control<a class="anchor-link" href="#0.1.6-Predictive-Control">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.6.1-Week-9">0.1.6.1 Week 9<a class="anchor-link" href="#0.1.6.1-Week-9">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/29(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/30(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/1(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/2(F)</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"><strong>Good Friday</strong></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.6.2-Week-10">0.1.6.2 Week 10<a class="anchor-link" href="#0.1.6.2-Week-10">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/5(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">4/6(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/8(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/9(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.7-Process-Analytics">0.1.7 Process Analytics<a class="anchor-link" href="#0.1.7-Process-Analytics">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.7.1-Week-11">0.1.7.1 Week 11<a class="anchor-link" href="#0.1.7.1-Week-11">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/12(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">4/13(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/15(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/16(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.7.2-Week-12">0.1.7.2 Week 12<a class="anchor-link" href="#0.1.7.2-Week-12">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/19(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">4/20(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/22(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/23(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.8-Final-Project">0.1.8 Final Project<a class="anchor-link" href="#0.1.8-Final-Project">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.8.1-Week-13">0.1.8.1 Week 13<a class="anchor-link" href="#0.1.8.1-Week-13">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/26(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">--</td>
-<td style="text-align:left">---</td>
-<td style="text-align:left">Office hours by appointment</td>
-</tr>
-<tr>
-<td style="text-align:left">4/27(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/29(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/30(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.8.2-Week-14">0.1.8.2 Week 14<a class="anchor-link" href="#0.1.8.2-Week-14">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">5/3(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">--</td>
-<td style="text-align:left">---</td>
-<td style="text-align:left">Office hours by appointment</td>
-</tr>
-<tr>
-<td style="text-align:left">5/4(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">5/6(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">5/7(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.8.3-Finals-Week">0.1.8.3 Finals Week<a class="anchor-link" href="#0.1.8.3-Finals-Week">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">5/11(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">--</td>
-<td style="text-align:left">---</td>
-<td style="text-align:left">Office hours by appointment</td>
-</tr>
-<tr>
-<td style="text-align:left">5/11(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">5/14(F)</td>
-<td style="text-align:left">10:30am - 12:30pm</td>
-<td style="text-align:left">Scheduled Final Exam</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
 </div>
 
 
@@ -15119,7 +14558,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/00.00-Course-Organization.html">0.0 Course Organization</a> | <a href="toc.html">Contents</a> | <a href="https://jckantor.github.io/cbe30338-2021/01.00-Introduction-to-the-Temperature-Control-Laboratory.html">1.0 Introduction to the Temperature Control Laboratory</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/../cbe30338-2021/docs/00.01-Schedule.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/00.01-Schedule.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/02.05-Two-State-Model-for-a-Single-Heater.html">2.5 Two State Model for a Single Heater</a> | <a href="toc.html">Contents</a> | <a href="https://jckantor.github.io/cbe30338-2021/02.10-TCLab-Lab-2-Model-Indentification-Solutions.html">2.10 TCLab Lab 2: Model Identification</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/../cbe30338-2021/docs/02.06-Four-State-Model.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/02.06-Four-State-Model.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

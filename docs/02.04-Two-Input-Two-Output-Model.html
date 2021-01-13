@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/00.00-Course-Organization.html">0.0 Course Organization</a> | <a href="toc.html">Contents</a> | <a href="https://jckantor.github.io/cbe30338-2021/01.00-Introduction-to-the-Temperature-Control-Laboratory.html">1.0 Introduction to the Temperature Control Laboratory</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/../cbe30338-2021/docs/00.01-Schedule.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/00.01-Schedule.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/02.03-First-Order-Model-for-a-Single-Heater.html">2.3 First Order Model for a Single Heater</a> | <a href="toc.html">Contents</a> | <a href="https://jckantor.github.io/cbe30338-2021/02.05-Two-State-Model-for-a-Single-Heater.html">2.5 Two State Model for a Single Heater</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/../cbe30338-2021/docs/02.04-Two-Input-Two-Output-Model.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/02.04-Two-Input-Two-Output-Model.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,7 +14285,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="0.1-Schedule">0.1 Schedule<a class="anchor-link" href="#0.1-Schedule">&#182;</a></h1>
+<h1 id="2.4-Two-Input,-Two-Output-Model">2.4 Two-Input, Two-Output Model<a class="anchor-link" href="#2.4-Two-Input,-Two-Output-Model">&#182;</a></h1>
 </div>
 </div>
 
@@ -14294,20 +14294,11 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.1-Getting-Started">0.1.1 Getting Started<a class="anchor-link" href="#0.1.1-Getting-Started">&#182;</a></h2><p><strong>CBE 30338/32338 Chemical Process Control</strong> will be conducted as a fully on-line course for the 2021 Spring semeter. For this to be effective, each student, instuctor, and teaching assistant will need access to the required technology and keep their systems and software in good working order for the duration of the semester.</p>
-<p><strong>Please let the instructors know immediately if you don't have access to a laptop, or you don't have adequate internet connectivity. The University has resources available to assist with these situations.</strong></p>
-<p>Please use the period before the start of the semester to prepare your systems and technology. Pay attention to the following the following details:</p>
-<ul>
-<li><p>We will be making extensive use of Zoom for office hours, on-classes, and laboratory sessions. Please verify that you can access Zoom by joining the test meeting <strong>with video</strong> at <a href="https://zoom.us/test">https://zoom.us/test</a>.</p>
-</li>
-<li><p>Please confirm that you have a working installation of the latest Anaconda distribution of Python. If in doubt, reinstall a fresh download available from <a href="https://www.anaconda.com/">Anaconda.com</a>.</p>
-</li>
-<li><p>A major component of the course is hands-on use of real hardware to implement working control systems. For this purpose wyou will need to purchase an individual copy of the <strong>Temperature Control Labortory</strong> available through <a href="https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY">Amazon</a>, the Notre Dame Bookstore, and <a href="https://apmonitor.com/pdc/index.php/Main/PurchaseLabKit">apmonitor.com</a>. Please allow time for ordering, shipping, and for you to install and test the device using your laptop.</p>
-</li>
-<li><p>The Temperature Control Lab requires a USB type A port on your laptop. If you laptop is newer model with only USB-C ports, you will need to purchase a USB-C to USB-A adaptor (<a href="https://www.amazon.com/Apple-USB-C-to-USB-Adapter/dp/B00VU2OID2/">such as this device for an Apple Mac</a>) or USB-C docking station (<a href="https://www.amazon.com/LENTION-Multi-Port-Compatible-2020-2016-Chromebook/dp/B07FNH5Y84/">such as this</a> from LENTION).</p>
-</li>
-</ul>
-
+<h2 id="2.4.1-Interacting-Heaters">2.4.1 Interacting Heaters<a class="anchor-link" href="#2.4.1-Interacting-Heaters">&#182;</a></h2><p>Our next model considers the interaction between the two heaters. From the step response it is obvious that the heaters interact, and we need to understand how that affects the dynamic performance.  Will we see qualitative differences in the step response once we've included the second heater?</p>
+\begin{align}
+C_p\frac{dT_1}{dt} &amp; = U_a(T_{amb} - T_1) + U_b(T_2 - T_1) + P_1u_1\\
+C_p\frac{dT_2}{dt} &amp; = U_a(T_{amb} - T_2) + U_b(T_1 - T_2) + P_2u_2
+\end{align}
 </div>
 </div>
 
@@ -14316,7 +14307,11 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.2-Introduction-to-the-Course-and-Process-Control">0.1.2 Introduction to the Course and Process Control<a class="anchor-link" href="#0.1.2-Introduction-to-the-Course-and-Process-Control">&#182;</a></h2>
+<p>As a first step we isolate the bare derivatives on the left-hand side of the equations. This is good practice in situations where you expect to be doing numerical simulation.</p>
+\begin{align}
+\frac{dT_1}{dt} &amp; = \frac{U_a}{C_p}(T_{amb} - T_1) + \frac{U_b}{C_p}(T_2 - T_1) + \frac{P_1}{C_p}u_1\\
+\frac{dT_2}{dt} &amp; = \frac{U_a}{C_p}(T_{amb} - T_2) + \frac{U_b}{C_p}(T_1 - T_2) + \frac{P_2}{C_p}u_2
+\end{align}
 </div>
 </div>
 
@@ -14325,41 +14320,11 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.2.1-Week-1">0.1.2.1 Week 1<a class="anchor-link" href="#0.1.2.1-Week-1">&#182;</a></h3><p>Class meetings begin on week 1. Each of the sessions scheduled below will be done as a Zoom meeting. To protect privacy, the specific Zoom meeting links are available through the course management system. Attendance will be monitored for each session with required attendance.</p>
-<table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">2/3(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/4(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/5(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
+<h2 id="2.4.2-Deviation-Variables">2.4.2 Deviation Variables<a class="anchor-link" href="#2.4.2-Deviation-Variables">&#182;</a></h2><p>As before, the equations appear somewhat simpler if we introduce deviation variables from a nominal state. In this case we'll use the ambient temperature as the reference, so the deviation variable will express deviation from ambient.</p>
+\begin{align}
+T_1' &amp; = T_1 - T_{amb} \\
+T_2' &amp; = T_2 - T_{amb}
+\end{align}
 </div>
 </div>
 
@@ -14368,7 +14333,11 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.3-Modeling-and-Parameter-Estimation">0.1.3 Modeling and Parameter Estimation<a class="anchor-link" href="#0.1.3-Modeling-and-Parameter-Estimation">&#182;</a></h2>
+<p>Then gathering terms</p>
+\begin{align}
+\frac{dT_1'}{dt} &amp; = -\frac{U_a+U_b}{C_p}T_1' + \frac{U_b}{C_p}T_2' + \frac{P_1}{C_p}u_1\\
+\frac{dT_2'}{dt} &amp; = -\frac{U_a+U_b}{C_p}T_2' + \frac{U_b}{C_p}T_1' + \frac{P_2}{C_p}u_2
+\end{align}
 </div>
 </div>
 
@@ -14377,46 +14346,14 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.3.1-Week-2">0.1.3.1 Week 2<a class="anchor-link" href="#0.1.3.1-Week-2">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">2/8(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">2/9(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/11(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/12(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
+<p>An alternative way to express these equations is in matrix/vector form.  We won't use this today, but later will make extensive use of this 'state-space' model of a linear system.</p>
+\begin{align}
+\left[\begin{array}{c}\frac{dT_1'}{dt} \\ \frac{dT_2'}{dt}\end{array}\right] &amp; = 
+\left[\begin{array}{cc}-\frac{U_a+U_b}{C_p} &amp; \frac{U_b}{C_p} \\ \frac{U_b}{C_p} &amp; -\frac{U_a+U_b}{C_p} \end{array}\right]
+\left[\begin{array}{c}T_1' \\ T_2'\end{array}\right] +
+\left[\begin{array}{cc}\frac{P_1}{C_p} &amp; 0 \\ 0 &amp; \frac{P_2}{C_p} \end{array}\right]
+\left[\begin{array}{c}u_1 \\ u_2\end{array}\right]
+\end{align}
 </div>
 </div>
 
@@ -14425,46 +14362,20 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.3.2-Week-3">0.1.3.2 Week 3<a class="anchor-link" href="#0.1.3.2-Week-3">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">2/15(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">2/16(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/18(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/19(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
+<h2 id="2.4.3-Steady-State">2.4.3 Steady State<a class="anchor-link" href="#2.4.3-Steady-State">&#182;</a></h2><p>The steady state is found by setting the derivatives to zero. We'll use a bar over the dependent variables to designate steady state values.</p>
+\begin{align}
+0 &amp; = -(U_a+U_b)\bar{T}_{1}' + U_b\bar{T}_{2}' + P_1\bar{u}_{1}\\
+0 &amp; = -(U_a+U_b)\bar{T}_{2}' + U_b\bar{T}_{1}' + P_2\bar{u}_{1}
+\end{align}<p>Our challenge is to solve the following 2x2 system of linear equations for the steady state temperatures.</p>
+\begin{align} 
+\left[\begin{array}{cc}(U_a+U_b) &amp; -U_b \\ -U_b &amp; (U_a+U_b) \end{array}\right]
+\left[\begin{array}{c}\bar{T}_1' \\ \bar{T}_2'\end{array}\right] &amp; = 
+\left[\begin{array}{c} P_1\bar{u}_1 \\ P_2\bar{u}_2\end{array}\right]
+\end{align}<p>The solution to these equations is a bit of work, but you should be able to verify</p>
+\begin{align}
+\bar{T}_1' &amp; = \frac{(U_a+U_b)}{U_a(U_a+2U_b)}P_1\bar{u}_1 + \frac{U_b}{U_a(U_a+2U_b)}P_2\bar{u}_2 \\
+\bar{T}_2' &amp; = \frac{U_b}{U_a(U_a+2U_b)}P_1\bar{u}_1 + \frac{(U_a+U_b)}{U_a(U_a+2U_b)}P_2\bar{u}_2
+\end{align}
 </div>
 </div>
 
@@ -14473,8 +14384,313 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.4-Feedback-Control">0.1.4 Feedback Control<a class="anchor-link" href="#0.1.4-Feedback-Control">&#182;</a></h2>
+<h2 id="2.4.4-Estimating-$U_a$-and-$U_b$">2.4.4 Estimating $U_a$ and $U_b$<a class="anchor-link" href="#2.4.4-Estimating-$U_a$-and-$U_b$">&#182;</a></h2><p>Experimental step response data gives us the information needed to estimate parameters $U_a$ and $U_b$. Rearranging the steady state equations, we find a pair of linear equations for $U_a$ and $U_b$.</p>
+\begin{align}
+\bar{T}_{1}'U_a  + (\bar{T}_{1}'-\bar{T}_{2}')U_b &amp; = P_1\bar{u}_{1}\\
+\bar{T}_{2}'U_a + (\bar{T}_{2}'-\bar{T}_{1}')U_b &amp; = P_2\bar{u}_{1}
+\end{align}<p>There is an analytical solution to these equations</p>
+\begin{align}
+U_a &amp; = \frac{P_1\bar{u}_1 + P_2\bar{u}_2}{\bar{T}_1' + \bar{T}_2'}\\
+U_b &amp; = \frac{\bar{T}_2'P_1\bar{u}_1 - \bar{T}_1'P_2\bar{u}_2}{(\bar{T}_1' - \bar{T}_2')(\bar{T}_1' + \bar{T}_2')}
+\end{align}<p>The step response data gives us information about steady-state that can be used to estimate values for $U_a$ and $U_b$. First we plot the step response data (see Part 1 if this cell cannot find the data set.)</p>
+
 </div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Step_Test_Data.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span>
+<span class="n">T1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">T2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time / seconds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;temperture 1 / °C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 
@@ -14482,246 +14698,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.4.1-Week-4">0.1.4.1 Week 4<a class="anchor-link" href="#0.1.4.1-Week-4">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">2/22(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">2/23(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/25(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/26(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.4.2-Week-5">0.1.4.2 Week 5<a class="anchor-link" href="#0.1.4.2-Week-5">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/1(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/2(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/4(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/5(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.4.3-Week-6">0.1.4.3 Week 6<a class="anchor-link" href="#0.1.4.3-Week-6">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/8(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/9(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/11(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/12(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.5-Steady-State-Optimization">0.1.5 Steady-State Optimization<a class="anchor-link" href="#0.1.5-Steady-State-Optimization">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.5.1-Week-7">0.1.5.1 Week 7<a class="anchor-link" href="#0.1.5.1-Week-7">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/15(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/16(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/18(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/19(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.5.2-Week-8">0.1.5.2 Week 8<a class="anchor-link" href="#0.1.5.2-Week-8">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/22(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/23(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/25(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/26(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
+<p><strong>Exercise:</strong> Roughly speaking, the has an increase of 35 degrees and T2 and increase of 10 degrees due to a setting u1 to 50% of the maximum power of 4 watts.  Use that information and the above equations to estimate values for $U_a$ and $U_b$.</p>
 
 </div>
 </div>
@@ -14731,8 +14708,308 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.6-Predictive-Control">0.1.6 Predictive Control<a class="anchor-link" href="#0.1.6-Predictive-Control">&#182;</a></h2>
+<h2 id="2.4.5-Simulation-with-odeint">2.4.5 Simulation with odeint<a class="anchor-link" href="#2.4.5-Simulation-with-odeint">&#182;</a></h2>
 </div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                  <span class="c1"># basic package for numerical calculations</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>     <span class="c1"># plotting package</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+
+<span class="c1"># parameter values and units</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">4</span>                 <span class="c1"># watts</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="mi">2</span>                 <span class="c1"># watts</span>
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.044</span>             <span class="c1"># watts/deg C</span>
+<span class="n">Ub</span> <span class="o">=</span> <span class="mf">0.018</span>             <span class="c1"># watts/deg C</span>
+<span class="n">Cp</span> <span class="o">=</span> <span class="mi">6</span>                 <span class="c1"># joules/deg C</span>
+<span class="n">u1</span> <span class="o">=</span> <span class="mf">0.5</span>               <span class="c1"># steady state value of u1 (fraction of total power)</span>
+<span class="n">u2</span> <span class="o">=</span> <span class="mf">0.0</span>               <span class="c1"># steady state value of u2 (fraction of total power)</span>
+<span class="n">T_ambient</span> <span class="o">=</span> <span class="mi">21</span>         <span class="c1"># ambient temperature of the surroundings</span>
+
+<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">T1</span><span class="p">,</span> <span class="n">T2</span> <span class="o">=</span> <span class="n">T</span>
+    <span class="n">dT1</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">*</span><span class="n">T1</span><span class="o">/</span><span class="n">Cp</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T2</span><span class="o">/</span><span class="n">Cp</span> <span class="o">+</span> <span class="n">P1</span><span class="o">*</span><span class="n">u1</span><span class="o">/</span><span class="n">Cp</span>
+    <span class="n">dT2</span> <span class="o">=</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T1</span><span class="o">/</span><span class="n">Cp</span> <span class="o">-</span> <span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">*</span><span class="n">T2</span><span class="o">/</span><span class="n">Cp</span> <span class="o">+</span> <span class="n">P2</span><span class="o">*</span><span class="n">u2</span><span class="o">/</span><span class="n">Cp</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dT1</span><span class="p">,</span> <span class="n">dT2</span><span class="p">]</span>
+
+<span class="c1"># compute the transient solution</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">800</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span> <span class="o">+</span> <span class="n">T_ambient</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time / seconds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature / °C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYIAAAEKCAYAAAAfGVI8AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMS4wLCBo
+dHRwOi8vbWF0cGxvdGxpYi5vcmcvpW3flQAAIABJREFUeJzt3Xl8VPW9//HXZyYrWQhLiGEHQQRB
+kQTFrRK3KnqrvVWv2lq7ib29rW3totZfd72tt962tvXWaq1Vq1KrFS1tbakSF0CEsMkiyBJ2AiQh
++zYzn98f5wQChmQmycyZzHyej8d5nHO+c+acN5NwPpmzfI+oKsYYY5KXz+sAxhhjvGWFwBhjkpwV
+AmOMSXJWCIwxJslZITDGmCRnhcAYY5KcFQJjjElyVgiMMSbJWSEwxpgkl+J1gHAMHTpUx44d26P3
+NjQ0kJWV1beB+oDliozliozliky85oLeZSsrKzukqvndLqiqcT8UFRVpTy1atKjH740myxUZyxUZ
+yxWZeM2l2rtswAoNYx9rh4aMMSbJWSEwxpgkZ4XAGGOSnBUCY4xJclYIjDEmyVkhMMaYJGeFwBhj
+kly/uKHMGGN6S1UJhJRgyB0HlUAoRDCkVDaF2FXVeOS1kCqBoDt23xNSdxxSgtqxDYIh53r89nZV
+jryuCkF1pkMhJaQ404o7f7RN3WntMD+8LRT1z8YKgTGmzwRDSnNb0BkCIZrbgrS0hWgJBGkJhFh7
+MEDL+v20BEK0HhmCR+eD7hAI0RYM0RbQI21t7W1BdcdHpwMhJeDOB0IhAm57MKS0uTvyYKib57O/
+vig2H1IEROCrM9Kjvh0rBMYkoUAwRENLkPrWAPXNAepb3KE5QENrgMaWAA2tQZpag+68M25uC9LY
+GqSpzXmtfbq5NUhzIEhbsJudLUBZWZcvp6X4SPf7SE3xkeb3kZoipPrdab+PVL8zn5WeQopPSHHb
+Unw+UvxCavvY7yPFJ/jdNr9PSPULPt/R+RS/4PcJWzZvZvLkU53XxVmX3wd+d+wTZzm/OO/3++S4
+No60tbf7xHmfz532i4A79vsEEbfdJwjOOoSj7xMBEaG0tLRvfuhdsEJgTD/VEghyuLGN6sZWqhva
+qGlqpaapjZqmNtZubmVh9bvUNLVR1xygttkZ17njxtZgWNvwCWSlp5CVlsKAND+ZaX4yU/1kp6eQ
+n53OgDQ/GanOkJnmJyPFT0aqz21zxukpPtLd8Ya1a5h1VrHTluInLcXn7PjdcYq7g4y10qbtzC4e
+FfPtxouoFgIRKQfqgCAQUNViEfkecCtw0F3sW6r6t2jmMKY/CIaUyoYWDtS2cKi+hcr6ViobnPGh
+DtPOjr+Vhi525j6BvIr9DMxMJTcjhZyMVE7KzSA3I5Ucdz47I4Wc9BRnR5/uJycj5chOPyvd2fGn
+p/j6dMfcusvP1BED+2x9pm/E4htBiaoeOq7tZ6r6QAy2bUxcaGwNsK+mmX2Hm9lX0+RM1zRzoLaZ
+irpmDtS2UNnQ2ulx7LQUH0Oz0hiSnc7grDQmDMtm0IA0Bg1IZVBW2pHpgQNSGZiZSt6ANJYveZOS
+khIP/qWmP7JDQ8b0gabWIDuqGthd1cTu6kZ2VTvj3dVN7K5uoqap7QPvGZKVRkFuBsNy05lSmMuw
+HGd6WE46Q7OdYUh2GtnpKRH/Ve7F4RXTf0W7ECjwTxFR4Deq+ojb/kUR+SSwAviaqlZHOYcxvdYa
+CLGjsoGtB+vZfqiR8kMNrN7axJ1L/kVFbcsxy2ak+hg1aAAjB2Vy5ug8hudlMnxgJicNzGD4wEyG
+5aaTker36F9izLHE6bI6SisXGa6qe0VkGLAQ+BKwCTiEUyR+CBSq6mc6ee9cYC5AQUFB0bx583qU
+ob6+nuzs7B7+C6LHckUmlrkCIWVfg7KnLsSehhB7653hQKPS8aKY3DQYmq4U5qRSkCUMG+BjWKYw
+NNNHTpq3f5XbzzEy8ZoLepetpKSkTFWLu1suqoXgmA05J4nrO54bEJGxwAJVndrVe4uLi3XFihU9
+2m5paSmzZ8/u0XujyXJFJlq5ahrbWL+vho376tiwt5aN+2rZcqCe1qBzE4/fJ4wZMoAJ+dlMLMhm
+4rAcTs7PZszQAeRmpCbd59VblityvckmImEVgqgdGhKRLMCnqnXu9GXAD0SkUFX3uYt9FFgXrQzG
+dNTcFmTDvlrW7DrsDLtr2H6o4cjr+TnpTC7M5UOn5DO5MIdTT8pl7NABpKfYIRyT2KJ5jqAAeNH9
+epwCPKOqr4jIUyIyHefQUDlwWxQzmCR2qL6FFeVVLNtexYryajbuqyXgXpVzUm4GZ4wayLVFI5k2
+YiCTC3PJz4n+HZzGxKOoFQJV3Qac0Un7zdHapkluFbXNLNl6iHe2V/HO9iq2HnT+2s9I9XHmqEHc
+duF4zhiZxxmj8ijIzfA4rTHxwy4fNf1Wc1uQZdureHPzQd58/xCbKuoAyMlIYebYwVxXPIqzxg1m
+6vCBpKVYR7vGnIgVAtOv7KpqZOGGChZtOsCy7VW0BkKk+X3MHDeIj844lfMnDGVyYS5+n11Hb0y4
+rBCYuKaqbNxXx/wtrfzPmjfZsK8WgAnDsrl51hgumDiUs8cNITPNTuga01NWCEzcUVU27Ktl/qo9
+/H3dfnZXNyFA8dhs7pkzmUunFDB2aJbXMY1JGFYITNzYXd3IS6v3Mn/VHt4/UE+qXzh/wlC+WDKB
+zOqtXP3hc72OaExCskJgPNXQEuDlNXt5ceUe3imvAqB4zCDuvWYqV04rZFBWGgClpdu8jGlMQrNC
+YDyxaX8df3h7By+u2kN9S4CT87P4+mWncPX0EYwaPMDreMYkFSsEJmZaAkFeWbefP7y9g+Xl1aSl
++LhyWiGfmDWaGaMHWY+ZxnjECoGJuprGNp5cWs7vl5RT2dDKmCED+NacU7m2aBSD3UM/xhjvWCEw
+UbO/ppnH3trGM8t20tAapGRSPp8+bxznTxiKz67zNyZuWCEwfW7bwXp+8/o2/rxqNyGFfzu9kNsu
+PJnJhbleRzPGdMIKgekzu6oa+dnCzby4eg9pfh83zBzNrReMZ/QQO/lrTDyzQmB6raqhlYcWbeGp
+pTsQgbkXjOdzF4y33jyN6SesEJgea2wN8Pjich4u3UpDa4DrikbxlUsnUjgw0+toxpgIWCEwEVNV
+ni/bzU/+sYkDdS1cMrmAb14+iVMKcryOZozpASsEJiLvV9Rxz/x1vLO9ijNH5/HQx2cwc+xgr2MZ
+Y3rBCoEJS3NbkF++9j6PvLGNAWkp/Pjfp3F98Si7DNSYBGCFwHTr9c0H+fb8deysauTfZ4zgnjmT
+GZJtJ4KNSRRWCMwJ1TS18Z2X1vHS6r2Mz8/imVvP5tyTh3odyxjTx6JaCESkHKgDgkBAVYtFZDDw
+R2AszsPrr1fV6mjmMJFbtq2SO55bQ0VtM1+5ZCL/Oftk0lPs4S/GJKJYPMi1RFWnq2qxO38X8Kqq
+TgRededNnAiElAf+sYkbH32bVL/wwn+ey1cuOcWKgDEJzItDQ1cDs93pJ4BS4E4Pcpjj7Khs4L+X
+NbOtZgvXF4/ku/92GlnpdvTQmEQX7f/lCvxTRBT4jao+AhSo6j4AVd0nIsOinMGE4YWy3XznpXVo
+KMRDN83gytMLvY5kjIkRUdXorVxkuKrudXf2C4EvAS+ral6HZapVdVAn750LzAUoKCgomjdvXo8y
+1NfXk52d3aP3RlO85AqElGffa+XVnQEmDfLxiQlBRg3xPtfx4uXzOp7liozlilxvspWUlJR1OCx/
+YqoakwH4HvB1YBNQ6LYVApu6e29RUZH21KJFi3r83miKh1zVDS164yNLdcydC/TeBes1EAzFRa7O
+WK7IWK7IxGsu1d5lA1ZoGPvnqJ0sFpEsEclpnwYuA9YBLwO3uIvdArwUrQzmxN6vqOPqhxazorya
+B647g3uunILfbg4zJilF8xxBAfCi+/jBFOAZVX1FRJYDz4nIZ4GdwHVRzGA68dp7Fdz+7GoyUv08
+O3cWRWM+cGTOGJNEolYIVHUbcEYn7ZXAxdHarjkxVeWRN7bx41feY0phLo9+spjhedZTqDHJzq4N
+TBKhkPKDBRv4/ZJyrpxWyE+uO50BafbjN8ZYIUgKwZBy1wtr+VPZbj57/jj+35WTcQ/ZGWOMFYJE
+1xYM8dU/rmbB2n3cfvFEvnrJRCsCxphjWCFIYM1tQb74zEr+tfEAd19xKrddeLLXkYwxccgKQYJq
+aAkw96kVLN5SyQ+vPo2bzxnrdSRjTJyyQpCAapvb+PTjy1m107lH4NqikV5HMsbEMSsECaa5Lchn
+f7+cNbsO86ubZjBnmvUZZIzpmhWCBBIIhvjiM6tYsaOaX954phUBY0xYYvE8AhMDqsr/m7+Of22s
+4LtXTeGq04d7HckY009YIUgQ//vPzcxbvosvlkzgU+eN8zqOMaYfsUKQAH6/eDu/WrSFG2aO4muX
+neJ1HGNMP2OFoJ/7y5q9fH/BBi6dUsC910y1m8WMMRGzQtCPLd5yiDueW83MMYP55Y1nkuK3H6cx
+JnK25+indlU18oWnVzJuaBaP3lJMRqo9XN4Y0zNWCPqh5rYgn/9DGarKo58sZmBmqteRjDH9mN1H
+0M+0Xya6fm8tv/tUMWOGZHkdyRjTz9k3gn7mmXd28nzZbm6/eCIXnVrgdRxjTAKwQtCPrNpZzfde
+Xs+Fp+Tz5Ysneh3HGJMgTlgIRORHInJbJ+1fFZH7ohvLHK+yvoUvPL2SgtwMHrxhuj1o3hjTZ7r6
+RnA18Ggn7b9wXwuLiPhFZJWILHDnfy8i20VktTtMjyxy8gkEQ3zp2VVUNrTy8CeKyBuQ5nUkY0wC
+6epkcUhVQ8c3qmpQIrtr6cvARiC3Q9s3VPX5CNaR1P534WaWbK3kf649nakjBnodxxiTYLr6RtAs
+Ih94pJXb1hzOykVkJHAl8NuexTPLtlXy8OtbuWHmKK4vHuV1HGNMAuqqEHwX+JuIfEJEJrvDzcBf
+3dfC8XPgm8Dx3yzuE5G1IvIzEUmPPHZyaGgJ8I3n1zJq0AC+fdUUr+MYYxKUqOqJXxQ5A2dHPtVt
+Wgf8RFVXd7tikauAOar6BRGZDXxdVa8SkUJgP5AGPAJsVdUfdPL+ucBcgIKCgqJ58+ZF9A9rV19f
+T3Z2do/eG03h5HpqQwuv7Qxw11kZTBocmzuH+/Pn5QXLFRnLFbneZCspKSlT1eJuF1TVqAzAj4Dd
+QDnOjr8R+MNxy8wGFnS3rqKiIu2pRYsW9fi90dRdrsXvH9Qxdy7Q77+8PjaBXP318/KK5YqM5Ypc
+b7IBKzSM/XVXl48OE5EfusNJkVYiVb1bVUeq6ljgBuA1Vf2E+40A94TzNTjfMkwHdc1tfOP5tYwb
+msU3PjzJ6zjGmATX1VVDfwC+Aag7fUkfbfNpEckHBFgNfL6P1psw/vtv77Gvpok/ff5cMtOsMzlj
+THR1VQhagGE4hSDQm42oailQ6k5f1Jt1Jbo3Nh/k2Xd2ctuHxlM0ZpDXcYwxSaCrq4ZuAk4BJuMc
+2jFRVtPUxp0vrOXk/Cy+eqk9acwYExsn/EagqnXAQzHMkvTuXbCBitpm/vyF8+z5AsaYmLFO5+LE
+0q2V/KlsN5+/8GSmj8rzOo4xJolYIYgDwZDy/b+sZ0ReJrdbr6LGmBjr6vLRmbEMkszmLd/Je/vr
++NacyXZIyBgTc119I7jN7TX0D243E/kxS5VEahrbeOAfmzhr3GDmTIv4dg1jjOm1rk4Wfw5ARKYC
+VwDPikgG8BrwCvC2dtI7qYnMg6++z+GmNr77b1OIrFNXY4zpG92eI1DVdar6E1W9BPgwsAK42R2b
+XthyoJ4nl5Zzw8zRnDbcupc2xngjoofXq2oD8LI7mF66968byEzz8/XL7J4BY4x37Kohj6w5GKB0
+00G+fPFEhmRbT9zGGO9YIfBAayDEsxtbGZ+fxSfPGet1HGNMkgurEIjISBEpcafTRSQrurES25NL
+y9nfqHz7qimkpVgtNsZ4q9u9kIh8BuecQPvjJscAL0UzVCI7VN/Cg/96n9Pz/ZRMGuZ1HGOMCesb
+we3ALKAWQFU34/RKanrgN69vpaE1wA2T0ryOYowxQHiFoFlVW9tnRMSP8ywBE6FD9S089fYOrpk+
+guHZdkjIGBMfwtkbLRaRbwIZ7nmCPwILohsrMT365jZaAyG+eNEEr6MYY8wR4RSCbwJ1wHvAl4FX
+gXuiGSoRVTW08tTSHXzkjOGMz4/Ph2QbY5JTlzeUuYeBfqeqtwC/jk2kxPTom9toagvatwFjTNzp
+8huBqgaBQhFJjVGehFTd0MqTS8q56vThTBiW43UcY4w5RjhdTGwD3hSRl4CG9kZV/UU4G3C/VawA
+9qjqVSIyDpgHDAZWAjd3PBmdiB57azuNbUFut28Dxpg4FM45goPAQmAAkN9hCNeXgY0d5u8Hfqaq
+E4Fq4LMRrKvfOdzYyu+XlDNnWiETC+zbgDEm/nT7jUBVv93TlYvISOBK4D7gDnH6Wb4IuMld5Ang
+eyTw+YffvbWd+pYAX7JvA8aYONVtIRCRhYAe366ql4Wx/p/jXHXU/qfwEOCwqgbc+d3AiPCi9j81
+jW08vricK6aexKkn5XodxxhjOiWqH9jHH7uAyNkdZjOAjwEtqvqNbt53FTBHVb8gIrOBrwOfBpaq
+6gR3mVHA31R1WifvnwvMBSgoKCiaN29e2P+ojurr68nO9uZyzflbWpm/pY0fnJvB6NxjH0HpZa6u
+WK7IWK7IWK7I9SZbSUlJmaoWd7ugqkY8AK+HscyPcP7iLwf2A43A08AhIMVd5hzgH92tq6ioSHtq
+0aJFPX5vb9Q0teq0776itz6xvNPXvcrVHcsVGcsVGcsVud5kA1ZoGPv0cDqdy+0w5InIxUBhGAXm
+blUdqapjgRuA11T148Ai4Fp3sVtI0A7snlq6g9rmALdfPNHrKMYY06VwLh9dj3OOQIAAsB24tRfb
+vBOYJyL3AquAx3qxrrjUFgzx1NIdXDBxKFNH2CMojTHxLZxCMF5V2zo2iEikj7gsBUrd6W3AWZG8
+v79ZuKGC/bXN3HvNVK+jGGNMt8K5j2BZJ23v9HWQRPLEknJGDsqk5FTrrdsYE/9O+Je9iAzDOReQ
+KSLTONr1dC7OzWWmExv31bJsexXfmnMqfp/11m2MiX9dHeK5EvgMMBL4vw7tdUCPbzJLdE8u3UF6
+io/ri0d5HcUYY8JywkKgqo8Dj4vI9ar6XAwz9Vs1jW3MX7WHa6aPIG+APYHMGNM/hNPFxHMi8mHg
+NJwbytrb/zuawfqjP5XtoqktyCfPHeN1FGOMCVs4XUz8H5AHfAh4HOfO4rejnKvfCYWUp97ewcyx
+gzhtuF0yaozpP8K5auh8Vb0JqFSnA7qzcc4bmA5e33yQHZWNfPKcsV5HMcaYiIT18Pr2sYic5M6P
+jVqifuqJpeUMy0nn8qkneR3FGGMiEk4h+JuI5AEPAKtx+g56Ppqh+pvthxoo3XSQj589hlR/OB+p
+McbEj+6eWewD/q6qh4E/icgCIFNVq2KSrp94aukOUv3CjWfbJaPGmP6nu2cWh4AHO8w3WRE4VkNL
+gD+V7eKKqYUMy8no/g3GGBNnwjmOsVBEro56kn5q/uo91DUHuMUuGTXG9FPhdB73RWCgiLQATThd
+TaiqDo5qsn7imWU7OW14LjNGD/I6ijHG9Eg43wiGAqlANs5D64cS2cPrE9bmijrW763l2qKROI9j
+NsaY/qfbQqCqQeA64E53uhCYHu1g/cGLq/bg9wn/dsZwr6MYY0yPhfOEsl8BJcDNblMj8HA0Q/UH
+oZDy0qo9fGjiUIZmp3sdxxhjeiycQ0PnquptuDeWuVcNJX2Pasu2V7G3pplrzhzhdRRjjOmVcApB
+m3s/gQKIyBAgFNVU/cD8VXvISvNz2RS7k9gY07+FUwgeAl4A8kXk+8BbwP1RTRXnmtuC/O3dfVw+
+tZDMNL/XcYwxplfC6Yb6SREpAy5xm65T1XXRjRXfXt14gLqWAB+1w0LGmAQQbsc4fqANaA33PSKS
+ISLviMgaEVnvfptARH4vIttFZLU79LsrkF5ctYeC3HTOOXmI11GMMabXwrlq6B7gWWA4TvfTz4jI
+3WGsuwW4SFXPwLnc9HIRmeW+9g1Vne4Oq3uY3RNVDa2UbjrA1dNH2DOJjTEJIZw7iz8BFKlqI4CI
+3AeUAT/q6k2qqkC9O5vqDtrzqPHhr2v3Eggp10y3w0LGmMQgzv66iwVEXgGuV9Vadz4XeFZVr+x2
+5SJ+nKIxAXhIVe8Ukd8D5+B8Y3gVuEtVWzp571xgLkBBQUHRvHnzIvl3HVFfX092dnaP3tuZe99u
+ojmg/PC8zF7dTdzXufqK5YqM5YqM5Ypcb7KVlJSUqWpxtwuqapcD8GdgF/Bb4FFgB/A08FPgp929
+311HHrAImIpzZ7IA6cATwHe6e39RUZH21KJFi3r83uNtP1ivY+5coL8u3dLrdfVlrr5kuSJjuSJj
+uSLXm2zACg1jHx3OoaG/ukO7iJ9XrKqHRaQUuFxVH3CbW0TkceDrka7PK/NX70EEPmJdShhjEkg4
+l48+1pMVi0g+0OYWgUycy0/vF5FCVd0nznGVa4B+cSmqqjJ/1R5mjRvC8LxMr+MYY0yf6bYQiMjl
+wA+BMe7y4XZDXQg84Z4n8AHPqeoCEXnNLRKC8+jLz/fmHxArq3YdpryykS+UTPA6ijHG9KlwDg39
+CrgeeJcIupZQ1bXAmZ20XxR2ujgyf9Ue0lN89nB6Y0zCCacQ7AZWq/PYyqQUCIZYsHYfl0wuIDcj
+1es4xhjTp8IpBN8E/uKe7D1ymaeq/iJaoeJN2Y5qqhpamTOt0OsoxhjT58IpBN/H6V4ijyTtdXTh
+hgrS/D4unGQPZjPGJJ5wCsEwVS2KepI4paos3FjBrJOHkJ0ezsdljDH9SzgdyL0qIv3yBG9f2HKg
+nh2VjVw6pcDrKMYYExXhFIJbgX+JSL2IVIlItYhURTtYvFi4sQKASyYP8ziJMcZERzjHOoZGPUUc
+W7ihgmkjBlI40G4iM8Ykpm6/EahqELgOuNOdLsTpVjrhHahrZvWuw3ZYyBiT0MJ5HsGvgBLgZrep
+EXg4mqHixWsbD6AKl0y2QmCMSVzhHBo6V1VniMgqAFWtEpG0KOeKC//aWMGIvEwmF+Z4HcUYY6Im
+nJPFbSLiw32ojIgMIQnuJ2hsDfDm+4e4dEpBr547YIwx8e6EhUBE2r8tPAS8AOS7zx1+C7g/Btk8
+9db7h2gJhOz8gDEm4XV1aOgdYIaqPikiZTjdSAtwnar2i66je2PhhgpyMlI4a1x3nawaY0z/1lUh
+OHI8RFXXA+ujHyc+BEPKa+8doGTSMFL94Rw9M8aY/qurQpAvInec6EVV/WkU8sSFVTurqWxotcNC
+xpik0FUh8APZdPhmkCwWbqwg1S/WyZwxsRYKQbDVHdo+OB1qc6c7zgeOtocCR8ehNggFj2tz59sH
+DUEowMRdO6DuRff1IGjw2OU11KHdHase1xZyp0NHpzXU4b0h5z3Hv3bMoMeNQww67W5gdlQ/9q4K
+wT5V/UFUtx6nFm6oYNb4IfbsAZO8VJ0dbWuDM7Q1ukNTh3GHIdAEbc3OONDitrVAoPmY8Yzqg7Ax
+3Z1v38m3uNMtzk43Fnyp4EtxBz/5wRDUZHRo84H4j7zuTLe3ufPic6dTO2nzfXBa/CBydNzxNdx5
+xG2TI681t0X/D9KwzhEkk60H69l2sIFPnTvW6yjGREbV2cE21zCgYTfsWg4tNdBS18lQCy31R3f0
+rXUdpt1Bg5Fn8KdBSiakZkBKujOdkgYpGZCSQVtqDuQVOm3+9A7jdOe9/jS37fgh1R3SnJ24P+XY
+aZ/7+pH5lKM7++PnfR8877ektJTZs2f3/mcQBU2lpVHfRleF4OKobz0O/WuD08ncxXY3sfGKKrTW
+Q2MVNFZCU5U7XeVMN1VD02Fn3Hz46HxzjXM4BDgLYPkJ1p+aBenZkJ4DaVmQlgPZJznT6dnO62kD
+IHWA09ZxnJrZyTjzyI6+s51sR+/G8Q43mZ2wEKhqr3oYFZEM4A0g3d3O86r6XREZB8wDBgMrgZtV
+tbU32+pLCzdUcNrwXEbkWSdzpg+pOjvs+gpnqHPHDQegoRIaDrrDIWccbDnBigQyciFzkDNk5MHA
+UZCZBxkDIT0XMgayYdsepsw4x53PhTR3x5+e4x6CMOaoaD5ppQW4SFXrRSQVeEtE/g7cAfxMVeeJ
+yMPAZ4FfRzFH2CrrWyjbWc3tF030OorpT4IBqNsLNbuhdq8z1O2D2j1Qu8+Zrtt/5K/1Y6RkQFY+
+ZA2F7GEwbIozPWCIM84c7EwPcMcZA8PakR9oKGXKxNl9/281CSlqhUBVFah3Z1PdQYGLgJvc9ieA
+7xEnhWDJ1kpUoeRUe/aA6SAYgNrdUF3uDjugZhcc3sWsA1vg9SrnCo+O0rIhpxByC2HMeZBzEmQX
+QE6BM84+ydnxp+c4JwaN8ZA4++sorVzED5QBE3C6qvgJ8LaqTnBfHwX8XVWndvLeucBcgIKCgqJ5
+8+b1KEN9fT3Z2dlhLfv4uhbe2R/goYsH4Ivyf85IcsVSsuaSUICM5goym/YxoHEPmU17yWzaR2ZT
+BRnNB5AO3WuFxE9L+lBa0vOpSxlEMLuQlvR8mjPyaUkfQkv6UIIpA6KWNRzJ+nPsqXjNBb3LVlJS
+Uqaqxd0tF9WH8LrPL5guInnAi8DkzhY7wXsfAR4BKC4u1p6eYCqN4OTUd95ZxPmnDOGikm4/t16L
+JFcsJXyulno4tBkOboKDG53xofedv/Q7XiWTOQgGj4cR58OgsccMvtzhZPr8ZAKrE/3z6mOWK3Kx
+yBaTp7Gr6mERKQVmAXkikqKqAWAksDcWGbqzq6qRnVWNfPq8sV5HMX0hGICqrbD/XahYBxXr4cB7
+ULPz6DL+NBgyAU6aBqd91JkeMgGGnOwckzcmSUStEIhIPtDmFoFMnE7r7gcWAdfiXDl0C/BStDJE
+YunWSgDOm5DUT+bsnwItzs5+7yrYu9qZPrDRuaYenOvH8yfB6LMh/5OQf6ozDBrnXGNuTJKL5v+C
+QuAJ9zyBD3hOVReIyAZgnohjX7KCAAASNUlEQVTcC6wCHotihrAt3nqIodnpTBwWn8cJjSsUdHby
+e1a4O/5VULHh6BU5mYOdv/Bnfg4KpsJJU2HoJOcmJWNMp6J51dBa4MxO2rfh3u8SL1SVJVsrOffk
+IfYQmnjTVA27VzB2+3Ow82ewu8y5Cxaca+iHnwnnfskZDz8TBo60q3CMiZB9Lwa2HKjnYF0L500Y
+4nUUU38QdiyG8rec4eBGAMbgc/66P+M/YNTZMLLYObRjO31jes0KAbB4yyEAzj3Zzg/EXGMVbH8d
+tr/pFICD7zntqQNg9CyY+jEYdRZvbWvkgkuu8DarMQnKCgGweGslowZnMmqwt9d+J4VgG+xeDltf
+c4Y9KwF1bsAaPQtO/w8YewEMn+50Itb+tp2lnkU2JtElfSEIhpS3t1Vy5bRCr6Mkrrr9sPkV2PxP
+2P6Gc4xffDByJsy+C8aXwIgZx+z4jTGxk/SFYN2eGuqaA5xrl432HVXYvxY2vQKb/+5c2QMwcDRM
+uxYmXOz81Z+Z521OYwxghYDFW53zA+eMtxPFvRIKwq5lsH4+vLfA6XANcU7qXvRtmHSF06Gandw1
+Ju4kfSFYsqWSSQU55Oekex2l/wkGYOcS2PASbPyL061ySgZMuARKvgUTPwzZ9rhPY+JdUheClkCQ
+5eVV3HT2aK+j9B+qsOsdePc556//xkPOU6hOuQymXO3s/NPtpjxj+pOkLgQrdxymJRCyy0bDceh9
+WPucUwCqy52//CddAVOugYmXOk+wMsb0S0ldCJZsPYRP4Ozx1sFYpxqr4N0/wZp5sHelc6XPuAvh
+wjvh1KucJ18ZY/q9JC8ElZw+Mo/cDLts8QgNwbbXYeWTznH/YIvTd89l9zk3d+XaZbbGJJqkLQT1
+LQHW7DrM3A+N9zpKfKjdC6uf5uxlj8LrFc4jEYtugTNvhsLTvU5njImipC0E72yvJBDS5O52WhXK
+34R3HoX3/goapDlvGplz7oPJV0FqptcJjTExkLSFYPGWStJSfBSNGeR1lNhrqXOO+y//rdO3T+Yg
+OOe/oPjTrFm7k9mnz/Y6oTEmhpK2ECzZWknR6EFkpPq9jhI7lVth2W9g9TNONw+F0+Hq/4Op/97h
+r/+dXa7CGJN4krIQVNa3sHFfLV+/7BSvo0SfKux8G5b+yjn84091Hst41lwYUWR3+hpjkrMQvL2t
+CoBzEvn+gWAA3vsLLPkl7ClzDv9c8DWnAOQUeJ3OGBNHkrIQlO2oJj3Fx7QRA72O0vfammDVH2DJ
+L+DwThg8HuY8ANNvspu+jDGdSspCsGpXNaePHEhais/rKH2nuRZWPAZLH4KGgzDyLPjwf8OkOeBL
+ovMgxpiIRa0QiMgo4EngJCAEPKKqD4rI94BbgYPuot9S1b9FK8fxWgJB1u+p5VPnjY3VJqOroRKW
+PQzv/Aaaa+Dki5xDQGPOs+P/xpiwRPMbQQD4mqquFJEcoExEFrqv/UxVH4jitk9o/d5aWoMhZozu
+533h1x+EJQ/C8segrdHp8uGCrzkPeDHGmAhErRCo6j5gnztdJyIbgRHR2l64Vu6oBuDM0f30/oGO
+BSDQDFOvhQvugGGTvU5mjOmnRFWjvxGRscAbwFTgDuBTQC2wAudbQ3Un75kLzAUoKCgomjdvXo+2
+XV9fT3b20W6R/291M1sPh/jf2d4+n/j4XN1Jba1h1K75jNjzV3yhNioKPsSOMdfRNGCkp7lixXJF
+xnJFJl5zQe+ylZSUlKlqcbcLqmpUByAbKAP+3Z0vAPyAD7gP+F136ygqKtKeWrRo0THz5/7oVf3C
+02U9Xl9fOT7XCTVUqi78ruq9harfHaj6/GdVD2zyPleMWa7IWK7IxGsu1d5lA1ZoGPvpqF41JCKp
+wAvA06r6Z7fwVHR4/VFgQTQzdFRR28yew0185vxxsdpkz7XUwdsPO5eBttQ5d/9eeCfkT/I6mTEm
+wUTzqiEBHgM2qupPO7QXqnP+AOCjwLpoZTjeqp3t5wfi+ERxW7NzGeibP3We/jXpSrjoHig4zetk
+xpgEFc1vBOcBNwPvishqt+1bwI0iMh1QoBy4LYoZjrFy52HS/D5OGx6HD1QJtsHqp+H1/3Ee/D5+
+tvPQ95HdH94zxpjeiOZVQ28BnV3IHrN7Bo63amc1p43IJT0ljm6wCoVgw3x47V6o2gojZ8I1v4bx
+F3qdzBiTJJLmzuLWQIi1u2v4xKwxXkdxqMKWV+HV78O+NZA/GW541nkOsN0IZoyJoaQpBO/tr6Ul
+EIqP8wO7yzhjzbfh9Xdh4Gi45mE4/XrrCsIY44mkKQTtN5LN8PJGsoOb4LUfwsa/kJU6EC6/H4o/
+DSnp3mUyxiS9pCkEq3YdpiA3ncKBGbHf+OFdUPpjWPMMpGbB7LtZFjidC2bNiX0WY4w5TtIUgpU7
+q5kxehASy+PvDYecy0CXP+rMn/2fTncQWUMJlpbGLocxxnQhKQrBwboWdlU1cXOsThQ3HYa3f+10
+Cd3W4DwL4MK7IG9UbLZvjDERSIpCsHrXYSAG5wda6pwuoZf80ukSevJH4KL/Z3cDG2PiWlIUgpU7
+q0nxCVOj9USy1kbn8M/iB6GxEk65AkruhsIzorM9Y4zpQ0lRCFbtrOa04blkpPbx5Zkt9bDyCXjr
+59BwAE6+GErugZFFfbsdY4yJooQvBMGQsmZXDf8xsw+PzzdUOk8EW/YbaD4MYy+A65+EMef03TaM
+MSZGEr4Q7K4P0dQW7JsbyQ7vdE4Alz0BgSbnqWDnfQVGzez9uo0xxiMJXwi2Hg4BvThRrAo7l8KK
+x2H9n5220/8Dzr0dhp3aRymNMcY7SVEIhmanMXJQZmRvbKiENc865wAObYa0HJh5K5zzX3YZqDEm
+oSR8IdhyOMiZY4eEdyNZsA3K34SVT8F7CyDY6vQG+pFfOQ+GScuKfmBjjImxhC4E1Q2tVDRq1+cH
+qsudXkC3vArb34DWOsjIg+LPwIxboGBKzPIaY4wXEroQHLmRbNRAqKuAur1Q6w6HNsPW16Byi7Pw
+wNEw7VqYcDFMuBRSPeiTyBhjPJDQhSBt8QMsTn+B4U8fhlDg2BdTMmHs+TDzczDhEhgywZ4DYIxJ
+SgldCFLzhrP9wBRGzCyC3BGQOxxyCp3prHzw+byOaIwxnkvoQnDWx75Cael0mD3b6yjGGBO3ovYn
+sYiMEpFFIrJRRNaLyJfd9sEislBE3nfHHj4pxhhjTDSPjQSAr6nqZGAW8F8iMgW4C3hVVScCr7rz
+xhhjPBK1QqCq+1R1pTtdB2wERgBXA0+4iz0BXBOtDMYYY7oXk7OlIjIWOBNYBhSo6j5wigUwLBYZ
+jDHGdE5UNbobEMkGXgfuU9U/i8hhVc3r8Hq1qn7gPIGIzAXmAhQUFBTNmzevR9uvr68nOzu7Z+Gj
+yHJFxnJFxnJFJl5zQe+ylZSUlKlqcbcLqmrUBiAV+AdwR4e2TUChO10IbOpuPUVFRdpTixYt6vF7
+o8lyRcZyRcZyRSZec6n2LhuwQsPYV0fzqiEBHgM2qupPO7z0MnCLO30L8FK0MhhjjOleNO8jOA+4
+GXhXRFa7bd8Cfgw8JyKfBXYC10UxgzHGmG5E/RxBXxCRg8COHr59KHCoD+P0FcsVGcsVGcsVmXjN
+Bb3LNkZV87tbqF8Ugt4QkRUazsmSGLNckbFckbFckYnXXBCbbNbZjjHGJDkrBMYYk+SSoRA84nWA
+E7BckbFckbFckYnXXBCDbAl/jsAYY0zXkuEbgTHGmC4kdCEQkctFZJOIbBGRmPZyKiK/E5EDIrKu
+Q1unXXCL4xduzrUiMiOKuSLqHjxW2UQkQ0TeEZE1bq7vu+3jRGSZm+uPIpLmtqe781vc18dGI5e7
+Lb+IrBKRBfGSyd1euYi8KyKrRWSF2xYPv2N5IvK8iLzn/p6d43UuEZnkfk7tQ62IfMXrXO62vur+
+zq8TkWfd/wux/R0L5/bj/jgAfmArMB5IA9YAU2K4/Q8BM4B1Hdr+B7jLnb4LuN+dngP8HRCcLruX
+RTFXITDDnc4BNgNTvM7mrj/bnU7F6aBwFvAccIPb/jDwn+70F4CH3ekbgD9G8TO7A3gGWODOe57J
+3UY5MPS4tnj4HXsC+Jw7nQbkxUOuDvn8wH5gjNe5cHpk3g5kdvjd+lSsf8ei+oF7OQDnAP/oMH83
+cHeMM4zl2ELQaT9LwG+AGztbLgYZXwIujadswABgJXA2zo00Kcf/THH6sDrHnU5xl5MoZBmJ89yM
+i4AF7o7B00wdspXzwULg6c8RyHV3bBJPuY7LchmwOB5y4RSCXcBg93dmAfDhWP+OJfKhofYPuN1u
+t81LJ+qC25OsEl734DHL5h6CWQ0cABbifKM7rKqBTrZ9JJf7eg0wJAqxfg58Ewi580PiIFM7Bf4p
+ImXi9NYL3v8cxwMHgcfdw2m/FZGsOMjV0Q3As+60p7lUdQ/wAE53O/twfmfKiPHvWCIXAumkLV4v
+kYp5VnG6B38B+Iqq1na1aCdtUcmmqkFVnY7zV/hZwOQuth31XCJyFXBAVcs6NnuZ6TjnqeoM4Aqc
+JwB+qItlY5UtBeeQ6K9V9Uygga6fQhjTz8w91v4R4E/dLdpJW5/ncs9JXA2MA4YDWTg/zxNtOyq5
+ErkQ7AZGdZgfCez1KEu7ChEpBHDHB9z2mGYVkVScIvC0qv45nrIBqOphoBTn2GyeiLR3jthx20dy
+ua8PBKr6OMp5wEdEpByYh3N46OceZzpCVfe64wPAizjF0+uf425gt6ouc+efxykMXudqdwWwUlUr
+3Hmvc10CbFfVg6raBvwZOJcY/44lciFYDkx0z76n4XwdfNnjTCfqgvtl4JPulQqzgJr2r6t9TSTi
+7sFjkk1E8kUkz53OxPkPshFYBFx7glztea8FXlP3wGlfUdW7VXWkqo7F+f15TVU/7mWmdiKSJSI5
+7dM4x73X4fHPUVX3A7tEZJLbdDGwwetcHdzI0cNC7dv3MtdOYJaIDHD/b7Z/XrH9HYvmSRmvB5wz
+/5txjjXfE+NtP4tzzK8Np4p/FudY3qvA++54sLusAA+5Od8FiqOY63ycr5JrgdXuMMfrbMDpwCo3
+1zrgO277eOAdYAvO1/l0tz3Dnd/ivj4+yj/P2Ry9asjzTG6GNe6wvv332+ufo7ut6cAK92c5HxgU
+J7kGAJXAwA5t8ZDr+8B77u/9U0B6rH/H7M5iY4xJcol8aMgYY0wYrBAYY0ySs0JgjDFJzgqBMcYk
+OSsExhiT5FK6X8SY+CAi7Zf6AZwEBHG6MwBoVNVzo7TdMpz+XVqjsf6eEpF6Vc32Oofp/6wQmH5D
+VStxrlFHRL4H1KvqA9Hcptsf0554KwLG9CU7NGQSgojUu+PZIvK6iDwnIptF5Mci8nFxnnXwroic
+7C6XLyIviMhydzjvBKu+Anilk+39WEQ2uH3VP9DVOkUkW0Qed7e/VkQ+5rbf6LatE5H7O/5bROQ+
+cZ7N8LaIFLjt40RkqbvuH3ZYvlBE3hCnn/11InJB33yqJllYITCJ6Azgy8A04GbgFFU9C/gt8CV3
+mQeBn6nqTOBj7muduZzjCoGIDAY+CpymqqcD93azzm/jdFEwzV3+NREZDtyP03/RdGCmiFzjLp8F
+vK2qZwBvALd2WP+v3fXv7xDpJpxuiqe7//bVYXxGxhxhh4ZMIlqubr8wIrIV+Kfb/i5Q4k5fAkxx
+uncBIFdEclS1rr3B7aNqpKpuO279tUAz8FsR+StOH/InXKfbfkN7o6pWuz2FlqrqQXdbT+M8zGg+
+0NphnWU4z4sApxO8j7nTT+EUEnD61fqd25ngfFW1QmAiYoXAJKKWDtOhDvMhjv7O+3BOADd1sZ4L
+gLeOb1TVgIichdNB2A3AF3H+su90nW5nYsf35dJZd8Lt2vRo3y9Bjv1/+oE+YVT1DbewXAk8JSI/
+UdUnu1i/McewQ0MmWf0TZwcOgIhM72SZy3EeV3gMcZ7lMFBV/wZ8BfcEdhfrPL59EM7DgC4UkaEi
+4sfpFfP1bjIv5ug3i493WN8YnOcmPIrTs2zUnq9rEpMVApOsbgeK3ZO3G4DPd7LMbDrfOecAC0Rk
+rfv6V7tZ573AIPdE7hqgxD10dTdOd8NrcPrIf4mufRnnATTLcfqh75hztYiswjl09GA36zHmGNb7
+qDGdEJGRwKOq2tnTooxJKFYIjDEmydmhIWOMSXJWCIwxJslZITDGmCRnhcAYY5KcFQJjjElyVgiM
+MSbJWSEwxpgk9/8B9PYcT6vG9+gAAAAASUVORK5CYII=
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 
@@ -14740,359 +15017,115 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.6.1-Week-9">0.1.6.1 Week 9<a class="anchor-link" href="#0.1.6.1-Week-9">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/29(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/30(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/1(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/2(F)</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"><strong>Good Friday</strong></td>
-</tr>
-</tbody>
-</table>
-
+<h2 id="2.4.6-Fitting-the-Model-to-Measured-Step-Response-Data">2.4.6 Fitting the Model to Measured Step Response Data<a class="anchor-link" href="#2.4.6-Fitting-the-Model-to-Measured-Step-Response-Data">&#182;</a></h2>
 </div>
 </div>
 
 
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Step_Test_Data.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span>
+<span class="n">T1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">T2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># known parameter values</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">u1</span> <span class="o">=</span> <span class="mf">0.5</span>   <span class="c1"># steady state value of u1 (fraction of total power)</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">u2</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">T_ambient</span> <span class="o">=</span> <span class="mi">21</span>
+
+<span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">,</span> <span class="n">Cp</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+        <span class="n">T1</span><span class="p">,</span> <span class="n">T2</span> <span class="o">=</span> <span class="n">T</span>
+        <span class="n">dT1</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">*</span><span class="n">T1</span><span class="o">/</span><span class="n">Cp</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T2</span><span class="o">/</span><span class="n">Cp</span> <span class="o">+</span> <span class="n">P1</span><span class="o">*</span><span class="n">u1</span><span class="o">/</span><span class="n">Cp</span>
+        <span class="n">dT2</span> <span class="o">=</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T1</span><span class="o">/</span><span class="n">Cp</span> <span class="o">-</span> <span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">*</span><span class="n">T2</span><span class="o">/</span><span class="n">Cp</span> <span class="o">+</span> <span class="n">P2</span><span class="o">*</span><span class="n">u2</span><span class="o">/</span><span class="n">Cp</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">dT1</span><span class="p">,</span> <span class="n">dT2</span><span class="p">]</span>
+
+    <span class="n">T</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">)</span>
+
+    <span class="c1"># plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T</span> <span class="o">+</span> <span class="n">T_ambient</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time / seconds&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature / °C&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="s1">&#39;Ua = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Ua</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="s1">&#39;Ub = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Ub</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="s1">&#39;Cp = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Cp</span><span class="p">))</span>
+
+<span class="c1"># parameter values and units</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">4</span>                 <span class="c1"># watts</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="mi">2</span>                 <span class="c1"># watts</span>
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.044</span>             <span class="c1"># watts/deg C</span>
+<span class="n">Ub</span> <span class="o">=</span> <span class="mf">0.018</span>             <span class="c1"># watts/deg C</span>
+<span class="n">Cp</span> <span class="o">=</span> <span class="mi">7</span>                 <span class="c1"># joules/deg C</span>
+
+<span class="n">interact</span><span class="p">(</span><span class="n">compare</span><span class="p">,</span> <span class="n">Ua</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.06</span><span class="p">,</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">Ub</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.06</span><span class="p">,</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">Cp</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.002</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
 
     
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.6.2-Week-10">0.1.6.2 Week 10<a class="anchor-link" href="#0.1.6.2-Week-10">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/5(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">4/6(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/8(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/9(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
-</div>
+
+
+
+
+
+
+<div id="74645325-de69-465c-8a87-2d6a29619291" class="jupyter-widgets jp-OutputArea-output ">
+<script type="text/javascript">
+var element = document.getElementById('74645325-de69-465c-8a87-2d6a29619291');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "dcdd10cdbb834532ba0216d18536017f", "version_major": 2, "version_minor": 0}
+</script>
 </div>
 
+</div>
 
+<div class="jp-OutputArea-child">
 
     
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.7-Process-Analytics">0.1.7 Process Analytics<a class="anchor-link" href="#0.1.7-Process-Analytics">&#182;</a></h2>
-</div>
-</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 
 
 
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.7.1-Week-11">0.1.7.1 Week 11<a class="anchor-link" href="#0.1.7.1-Week-11">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/12(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">4/13(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/15(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/16(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
 
-</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&lt;function __main__.compare&gt;</pre>
 </div>
 
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.7.2-Week-12">0.1.7.2 Week 12<a class="anchor-link" href="#0.1.7.2-Week-12">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/19(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">4/20(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/22(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/23(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
 </div>
 
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="0.1.8-Final-Project">0.1.8 Final Project<a class="anchor-link" href="#0.1.8-Final-Project">&#182;</a></h2>
-</div>
 </div>
 
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.8.1-Week-13">0.1.8.1 Week 13<a class="anchor-link" href="#0.1.8.1-Week-13">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/26(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">--</td>
-<td style="text-align:left">---</td>
-<td style="text-align:left">Office hours by appointment</td>
-</tr>
-<tr>
-<td style="text-align:left">4/27(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/29(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/30(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
 </div>
 
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.8.2-Week-14">0.1.8.2 Week 14<a class="anchor-link" href="#0.1.8.2-Week-14">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">5/3(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">--</td>
-<td style="text-align:left">---</td>
-<td style="text-align:left">Office hours by appointment</td>
-</tr>
-<tr>
-<td style="text-align:left">5/4(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">5/6(Th)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">5/7(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="0.1.8.3-Finals-Week">0.1.8.3 Finals Week<a class="anchor-link" href="#0.1.8.3-Finals-Week">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:center">Attendance Req'd?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">5/11(M)</td>
-<td style="text-align:left">1:30-4pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">--</td>
-<td style="text-align:left">---</td>
-<td style="text-align:left">Office hours by appointment</td>
-</tr>
-<tr>
-<td style="text-align:left">5/11(T)</td>
-<td style="text-align:left">11-12:15pm</td>
-<td style="text-align:left">Class Meeting</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">5/14(F)</td>
-<td style="text-align:left">10:30am - 12:30pm</td>
-<td style="text-align:left">Scheduled Final Exam</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
 </div>
 
 
@@ -15119,7 +15152,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/00.00-Course-Organization.html">0.0 Course Organization</a> | <a href="toc.html">Contents</a> | <a href="https://jckantor.github.io/cbe30338-2021/01.00-Introduction-to-the-Temperature-Control-Laboratory.html">1.0 Introduction to the Temperature Control Laboratory</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/../cbe30338-2021/docs/00.01-Schedule.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/00.01-Schedule.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/02.03-First-Order-Model-for-a-Single-Heater.html">2.3 First Order Model for a Single Heater</a> | <a href="toc.html">Contents</a> | <a href="https://jckantor.github.io/cbe30338-2021/02.05-Two-State-Model-for-a-Single-Heater.html">2.5 Two State Model for a Single Heater</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/../cbe30338-2021/docs/02.04-Two-Input-Two-Output-Model.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/02.04-Two-Input-Two-Output-Model.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

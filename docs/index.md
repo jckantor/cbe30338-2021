@@ -84,6 +84,19 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [9.2 State-Task Networks](https://jckantor.github.io/cbe30338-2021/09.02-State--Task-Networks.html)
 - [9.3 Machine Bottleneck](https://jckantor.github.io/cbe30338-2021/09.03-Machine-Bottleneck.html)
 
+### [Chapter 11.0 Case Study: Thermal Cycling for PCR](https://jckantor.github.io/cbe30338-2021/11.00-PCR_Overview.html)
+
+### [Chapter 12.0 Operation of the Temperature Control Laboratory](https://jckantor.github.io/cbe30338-2021/12.00-Testing-your-TCLab.html)
+
+### [Chapter 13.0 User Interfaces for TCLab](https://jckantor.github.io/cbe30338-2021/13.00-User-Interface.html)
+
+### [Chapter 14.0 Model Identification](https://jckantor.github.io/cbe30338-2021/14.00-Model-Identification.html)
+
+### [Chapter 15.0 Steady-State Model Identification](https://jckantor.github.io/cbe30338-2021/15.00-Steady-State-Model-Identification.html)
+- [16.1 TCLab PCR Prototype Version 0](https://jckantor.github.io/cbe30338-2021/16.01-TCLab-Threaded-Interface.html)
+- [16.2 TCLab PCR Prototype Version 1](https://jckantor.github.io/cbe30338-2021/16.02-TCLab-Threaded-Interface-Version-1.html)
+- [16.3 PCR Thermal Cycler UI Development](https://jckantor.github.io/cbe30338-2021/16.03-TCLab PCR UI Development.html)
+
 ### [Chapter 21.0 Introduction to the Temperature Control Laboratory](https://jckantor.github.io/cbe30338-2021/21.00-Introduction-to-the-Temperature-Control-Laboratory.html)
 - [21.1 The Temperature Control Laboratory](https://jckantor.github.io/cbe30338-2021/21.01-TCLab.html)
 - [21.2 The TCLab Python Package](https://jckantor.github.io/cbe30338-2021/21.02-The-TCLab-Python-Package.html)

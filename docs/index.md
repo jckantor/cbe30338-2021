@@ -16,6 +16,9 @@ new materials, and make them accessible to students, teaching assistants, and ot
 ### [0.0 Course Organization](https://jckantor.github.io/cbe30338-2021/00.00-Course-Organization.html)
 - [0.1 Schedule](https://jckantor.github.io/cbe30338-2021/00.01-Schedule.html)
 
+### [Chapter 1.0 Introduction to Process Control](https://jckantor.github.io/cbe30338-2021/01.00-Introduction-to-Process-Control.html)
+- [1.1 What is Process Control?](https://jckantor.github.io/cbe30338-2021/01.01-What-is-Process-Control.html)
+
 ### [Chapter 2.0 Process Modeling](https://jckantor.github.io/cbe30338-2021/02.00-Process-Modeling.html)
 - [2.1 Process Variables](https://jckantor.github.io/cbe30338-2021/02.01-Process-Variables.html)
 - [2.2 Gravity Drained Tank](https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html)
@@ -36,6 +39,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [3.7 Interacting Tanks](https://jckantor.github.io/cbe30338-2021/03.07-Interacting-Tanks.html)
 - [3.8 Manometer Models and Dynamics](https://jckantor.github.io/cbe30338-2021/03.08-Manometer-Models-and-Dynamics.html)
 - [3.9 Modeling and Control of a Campus Outbreak of Coronavirus COVID-19](https://jckantor.github.io/cbe30338-2021/03.09-COVID-19.html)
+- [3.10 Modeling the Coronavirus COVID-19 Outbreak](https://jckantor.github.io/cbe30338-2021/03.10-COVID-19.html)
 
 ### [Chapter 4.0 PID Control](https://jckantor.github.io/cbe30338-2021/04.00-PID_Control.html)
 - [4.1 Implementing PID Controllers with Python Yield Statement](https://jckantor.github.io/cbe30338-2021/04.01-Implementing_PID_Control_with_Python_Yield_Statement.html)

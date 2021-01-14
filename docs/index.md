@@ -123,8 +123,9 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [24.11 Lab Assignment 4: PI Control](https://jckantor.github.io/cbe30338-2021/24.11-Lab-Assignment-PI-Control.html)
 
 ### [Chapter 25.0 Predictive Control and Real Time Optimization](https://jckantor.github.io/cbe30338-2021/25.00-Predictive-Control-and-Real-Time-Optimization.html)
-- [25.1 Simulation, Control, and Estimation using Pyomo](https://jckantor.github.io/cbe30338-2021/25.01-Optimization-Control-and-Estimation-using-Pyomo.html)
-- [25.2 Simulation, Control, and Estimation using Pyomo](https://jckantor.github.io/cbe30338-2021/25.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html)
+- [None](https://jckantor.github.io/cbe30338-2021/25.01-Feedforward-Implementation.html)
+- [25.2 Simulation, Control, and Estimation using Pyomo](https://jckantor.github.io/cbe30338-2021/25.02-Optimization-Control-and-Estimation-using-Pyomo.html)
+- [25.3 Simulation, Control, and Estimation using Pyomo](https://jckantor.github.io/cbe30338-2021/25.03-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html)
 
 ### [Appendix A. A.0 Additional Python](https://jckantor.github.io/cbe30338-2021/A.00-Additional-Python.html)
 - [A.1 Getting Started with Python and Jupyter Notebooks](https://jckantor.github.io/cbe30338-2021/A.01-Getting-Started-with-Python-and-Jupyter-Notebooks.html)

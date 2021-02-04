@@ -16,6 +16,9 @@ new materials, and make them accessible to students, teaching assistants, and ot
 ### [Chapter 1.0 Introduction](https://jckantor.github.io/cbe30338-2021/01.00-Introduction.html)
 - [1.1 Schedule and Course Organization](https://jckantor.github.io/cbe30338-2021/01.01-Schedule.html)
 - [1.2 What is Process Control?](https://jckantor.github.io/cbe30338-2021/01.02-What-is-Process-Control.html)
+- [1.3 The Temperature Control Laboratory](https://jckantor.github.io/cbe30338-2021/01.03-TCLab.html)
+- [1.4 The TCLab Python Package](https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html)
+- [1.5 Assignment 1](https://jckantor.github.io/cbe30338-2021/01.05-Assignment-1.html)
 
 ### [Chapter 2.0 Process Modeling](https://jckantor.github.io/cbe30338-2021/02.00-Process-Modeling.html)
 - [2.1 Gravity Drained Tank](https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html)
@@ -99,8 +102,6 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [16.3 PCR Thermal Cycler UI Development](https://jckantor.github.io/cbe30338-2021/16.03-TCLab PCR UI Development.html)
 
 ### [Chapter 21.0 Introduction to the Temperature Control Laboratory](https://jckantor.github.io/cbe30338-2021/21.00-Introduction-to-the-Temperature-Control-Laboratory.html)
-- [21.1 The Temperature Control Laboratory](https://jckantor.github.io/cbe30338-2021/21.01-TCLab.html)
-- [21.2 The TCLab Python Package](https://jckantor.github.io/cbe30338-2021/21.02-The-TCLab-Python-Package.html)
 - [21.11 TCLab Lab 1: Coding a relay controller](https://jckantor.github.io/cbe30338-2021/21.11-TCLab-Lab-1-Coding-a-relay-controller.html)
 
 ### [Chapter 22.0 Model Identification](https://jckantor.github.io/cbe30338-2021/22.00-Model-Identification.html)

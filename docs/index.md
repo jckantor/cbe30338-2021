@@ -13,21 +13,19 @@ new materials, and make them accessible to students, teaching assistants, and ot
 ### [Python Module Index](https://jckantor.github.io/cbe30338-2021/python_index.html)
 ### [Tag Index](https://jckantor.github.io/cbe30338-2021/tag_index.html)
 
-### [0.0 Course Organization](https://jckantor.github.io/cbe30338-2021/00.00-Course-Organization.html)
-- [0.1 Schedule](https://jckantor.github.io/cbe30338-2021/00.01-Schedule.html)
-
 ### [Chapter 1.0 Introduction](https://jckantor.github.io/cbe30338-2021/01.00-Introduction.html)
-- [1.1 What is Process Control?](https://jckantor.github.io/cbe30338-2021/01.01-What-is-Process-Control.html)
+- [1.1 Schedule and Course Organization](https://jckantor.github.io/cbe30338-2021/01.01-Schedule.html)
+- [1.2 What is Process Control?](https://jckantor.github.io/cbe30338-2021/01.02-What-is-Process-Control.html)
 
 ### [Chapter 2.0 Process Modeling](https://jckantor.github.io/cbe30338-2021/02.00-Process-Modeling.html)
-- [2.1 Process Variables](https://jckantor.github.io/cbe30338-2021/02.01-Process-Variables.html)
-- [2.2 Gravity Drained Tank](https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html)
+- [2.1 Gravity Drained Tank](https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html)
+- [2.2 Hare and Lynx Population Dynamics](https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html)
 - [2.3 Blending Tank Simulation](https://jckantor.github.io/cbe30338-2021/02.03-Blending-Tank-Simulation.html)
+- [2.3 Fed-Batch Bioreactor](https://jckantor.github.io/cbe30338-2021/02.03-Fed-Batch-Bioreactor.html)
 - [2.4 Continuous Product Blending](https://jckantor.github.io/cbe30338-2021/02.04-Continuous-Product-Blending.html)
-- [2.5 Hare and Lynx Population Dynamics](https://jckantor.github.io/cbe30338-2021/02.05-Hare-and-Lynx-Population-Dynamics.html)
 - [2.6 Exothermic Continuous Stirred Tank Reactor](https://jckantor.github.io/cbe30338-2021/02.06-Exothermic-CSTR.html)
-- [2.7 Fed-Batch Bioreactor](https://jckantor.github.io/cbe30338-2021/02.07-Fed-Batch-Bioreactor.html)
 - [2.8 Model Library](https://jckantor.github.io/cbe30338-2021/02.08-Model-Library.html)
+- [2.10 Process Variables](https://jckantor.github.io/cbe30338-2021/02.10-Process-Variables.html)
 
 ### [Chapter 3.0 Linearization](https://jckantor.github.io/cbe30338-2021/03.00-Linearization.html)
 - [3.1 Step Response of a Gravity Drained Tank](https://jckantor.github.io/cbe30338-2021/03.01-Step-Response-of-a-Gravity-Drained-Tank.html)

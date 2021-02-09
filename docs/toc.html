@@ -14415,74 +14415,69 @@ a.anchor-link {
 </ul>
 </li>
 </ul>
-<h2 id="Chapter-2.0-Process-Modeling"><a href="https://jckantor.github.io/cbe30338-2021/02.00-Process-Modeling.html">Chapter 2.0 Process Modeling</a><a class="anchor-link" href="#Chapter-2.0-Process-Modeling">&#182;</a></h2><h3 id="2.1-Gravity-Drained-Tank"><a href="https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html">2.1 Gravity Drained Tank</a><a class="anchor-link" href="#2.1-Gravity-Drained-Tank">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html#2.1.1-Summary">2.1.1 Summary</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html#2.1.2-Torricelli&#39;s-law">2.1.2 Torricelli's law</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html#2.1.3-Mass-Balance-for-Tank-with-Constant-Cross-Sectional-Area">2.1.3 Mass Balance for Tank with Constant Cross-Sectional Area</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html#2.1.4-Step-by-Step-Approach-to-Nonlinear-Simulation">2.1.4 Step-by-Step Approach to Nonlinear Simulation</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html#2.1.4.1-Step-1.-Initialize-Jupyter-and-Python">2.1.4.1 Step 1. Initialize Jupyter and Python</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html#2.1.4.2-Step-2.-Define-parameters">2.1.4.2 Step 2. Define parameters</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html#2.1.4.3-Step-3.-Write-Functions-for-the-RHS-of-the-Differential-Equations">2.1.4.3 Step 3. Write Functions for the RHS of the Differential Equations</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html#2.1.4.4-Step-4.-Choose-an-Initial-Condition,-a-Time-Grid,-and-Integrate-the-Differential-Equation">2.1.4.4 Step 4. Choose an Initial Condition, a Time Grid, and Integrate the Differential Equation</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html#2.1.4.5-Step-5.-Visualize-and-Analyze-Results">2.1.4.5 Step 5. Visualize and Analyze Results</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html#2.1.4.6-Step-6.-Adjust-and-Repeat-as-Needed">2.1.4.6 Step 6. Adjust and Repeat as Needed</a></li>
+<h2 id="Chapter-2.0-Process-Modeling"><a href="https://jckantor.github.io/cbe30338-2021/02.00-Process-Modeling.html">Chapter 2.0 Process Modeling</a><a class="anchor-link" href="#Chapter-2.0-Process-Modeling">&#182;</a></h2><h3 id="2.1-One-Compartment-Pharmacokinetics"><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html">2.1 One Compartment Pharmacokinetics</a><a class="anchor-link" href="#2.1-One-Compartment-Pharmacokinetics">&#182;</a></h3><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.1-Learning-Goals">2.1.1 Learning Goals</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.2-Pharamacokinetics">2.1.2 Pharamacokinetics</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.2.1-One-Compartment-Model">2.1.2.1 One-Compartment Model</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.2.2-Antimicrobials">2.1.2.2 Antimicrobials</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.2.3-What-questions-can-we-ask-and-answer-with-this-model?">2.1.2.3 What questions can we ask and answer with this model?</a></li>
 </ul>
 </li>
-</ul>
-<h3 id="2.2-Hare-and-Lynx-Population-Dynamics"><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html">2.2 Hare and Lynx Population Dynamics</a><a class="anchor-link" href="#2.2-Hare-and-Lynx-Population-Dynamics">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.1-Summary">2.2.1 Summary</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.2-Introduction">2.2.2 Introduction</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.3-Historical-Data">2.2.3 Historical Data</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.4-Population-Dynamics">2.2.4 Population Dynamics</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.4.1-Model-Equations">2.2.4.1 Model Equations</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.4.2-Parameter-Values">2.2.4.2 Parameter Values</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3-Simulation">2.1.3 Simulation</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3.1-Simulation-from-a-Known-Initial-Condition">2.1.3.1 Simulation from a Known Initial Condition</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3.1.1-Problem-Statement">2.1.3.1.1 Problem Statement</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3.1.2-Step-1.-Import-libraries">2.1.3.1.2 Step 1. Import libraries</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3.1.3-Step-2.-Enter-Parameter-Values">2.1.3.1.3 Step 2. Enter Parameter Values</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3.1.4-Step-3.-Write-the-differential-equation-in-standard-form">2.1.3.1.4 Step 3. Write the differential equation in standard form</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3.1.5-Step-4.-Solution-and-Visualization">2.1.3.1.5 Step 4. Solution and Visualization</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3.1.6-Step-5.-Analysis-of-the-Results">2.1.3.1.6 Step 5. Analysis of the Results</a></li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.5-Simulation-using-the-scipy.odeint(">2.2.5 Simulation using the scipy.odeint()</a>)<ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.5.1-Step-1.-Initialization">2.2.5.1 Step 1. Initialization</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.5.2-Step-2.-Establish-Parameter-Values">2.2.5.2 Step 2. Establish Parameter Values</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.5.3-Step-3.-Write-function-for-the-RHS-of-the-Differential-Equations">2.2.5.3 Step 3. Write function for the RHS of the Differential Equations</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.5.4-Step-4.-Choose-Time-Grid,-Initial-Conditions,-and-Integrate">2.2.5.4 Step 4. Choose Time Grid, Initial Conditions, and Integrate</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.5.5-Step-5.-Visualize-and-Analyze-the-Solution">2.2.5.5 Step 5. Visualize and Analyze the Solution</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.5.5.1-Phase-Plane">2.2.5.5.1 Phase Plane</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3.2-Example-2:-Improving-Simulation-using-Time-Dependent-Input">2.1.3.2 Example 2: Improving Simulation using Time-Dependent Input</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3.2.1-Analysis-of-the-Results">2.1.3.2.1 Analysis of the Results</a></li>
+</ul>
+</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3.3-Example-2:-Periodic-Dosng">2.1.3.3 Example 2: Periodic Dosng</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.3.3.1-Solution">2.1.3.3.1 Solution</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.6-Nullclines">2.2.6 Nullclines</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.7-Interactive-Simulation">2.2.7 Interactive Simulation</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.7.1-Visualization-Function">2.2.7.1 Visualization Function</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.7.2-Simulation-Function">2.2.7.2 Simulation Function</a></li>
-</ul>
-</li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.8-Stability-of-a-Steady-State">2.2.8 Stability of a Steady State</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.8.1-1.-Unstable-Focus">2.2.8.1 1. Unstable Focus</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.8.2-2.-Stable-Focus">2.2.8.2 2. Stable Focus</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.8.3-3.-Stable-and-Unstable-Nodes">2.2.8.3 3. Stable and Unstable Nodes</a></li>
-</ul>
-</li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.9-Summary">2.2.9 Summary</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html#2.2.10-Suggested-Exercise">2.2.10 Suggested Exercise</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html#2.1.4-Analysis">2.1.4 Analysis</a></li>
 <li>Markdown Figures<ul>
-<li><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Canadian_lynx_by_Keith_Williams.jpg/256px-Canadian_lynx_by_Keith_Williams.jpg">Canadian lynx by Keith Williams</a></li>
-<li><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Snowshoe_Hare%2C_Shirleys_Bay.jpg/256px-Snowshoe_Hare%2C_Shirleys_Bay.jpg">Snowshoe Hare, Shirleys Bay</a></li>
-<li><a href="https://upload.wikimedia.org/wikipedia/commons/1/16/Figure_45_06_01.jpg">https://commons.wikimedia.org/wiki/File:Figure_45_06_01.jpg</a></li>
+<li><a href="./figures/PK-one-compartment.png">./figures/PK-one-compartment.png</a></li>
+<li><a href="./figures/Pharmaockinetics1.png">./figures/Pharmaockinetics1.png</a></li>
+<li><a href="figures/nihms-475924-f0001.jpg">figures/nihms-475924-f0001.jpg</a></li>
+<li><a href="./figures/Pharmaockinetics2.png">./figures/Pharmaockinetics2.png</a></li>
+<li><a href="./figures/nihms-475924-f0001.jpg">./figures/nihms-475924-f0001.jpg</a></li>
 </ul>
 </li>
 <li>Markdown Links<ul>
-<li><a href="https://en.wikipedia.org/wiki/Snowshoe_hare">Snowshoe hare</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Canada_lynx">Canadian lynx</a></li>
-<li><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></li>
-<li><a href="https://commons.wikimedia.org/wiki/File:Canadian_lynx_by_Keith_Williams.jpg">via Wikimedia Commons</a></li>
-<li><a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
-<li><a href="https://commons.wikimedia.org/wiki/File:Snowshoe_Hare,_Shirleys_Bay.jpg">via Wikimedia Commons</a></li>
-<li><a href="http://www.pnas.org/content/94/10/5147.full">Stenseth, 1997</a></li>
-<li><a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a></li>
-<li><a href="https://commons.wikimedia.org/wiki/File:Figure_45_06_01.jpg">via Wikimedia Commons</a></li>
-<li><a href="http://www.int-res.com/articles/feature/c034p083.pdf">Zhang, 2007</a></li>
-<li><a href="http://people.whitman.edu/~hundledr/courses/M250F03/M250.html">D. R. Hundley at Whitman College</a></li>
-<li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0108243">here</a></li>
-<li><a href="http://science.sciencemag.org/content/320/5876/658">here</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4378521/">antimicrobrial resistance</a></li>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html"><code>solve_ivp</code></a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3675903/">Levison, Matthew E., and Julie H. Levison. “Pharmacokinetics and Pharmacodynamics of Antibacterial Agents.” Infectious disease clinics of North America 23.4 (2009): 791–vii. PMC. Web. 8 May 2017.</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3675903/">Levison, Matthew E., and Julie H. Levison. “Pharmacokinetics and Pharmacodynamics of Antibacterial Agents.” Infectious disease clinics of North America 23.4 (2009): 791–vii. PMC. Web. 8 May 2017.</a></li>
+</ul>
+</li>
+<li>Figure files used<ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/figures/Pharmaockinetics2.png">figures/Pharmaockinetics2.png</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/figures/nihms-475924-f0001.jpg">figures/nihms-475924-f0001.jpg</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/figures/Pharmaockinetics1.png">figures/Pharmaockinetics1.png</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/figures/PK-one-compartment.png">figures/PK-one-compartment.png</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="2.2-Gravity-Drained-Tank"><a href="https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html">2.2 Gravity Drained Tank</a><a class="anchor-link" href="#2.2-Gravity-Drained-Tank">&#182;</a></h3><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html#2.2.1-Summary">2.2.1 Summary</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html#2.2.2-Torricelli&#39;s-law">2.2.2 Torricelli's law</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html#2.2.3-Mass-Balance-for-Tank-with-Constant-Cross-Sectional-Area">2.2.3 Mass Balance for Tank with Constant Cross-Sectional Area</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html#2.2.4-Step-by-Step-Approach-to-Nonlinear-Simulation">2.2.4 Step-by-Step Approach to Nonlinear Simulation</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html#2.2.4.1-Step-1.-Initialize-Jupyter-and-Python">2.2.4.1 Step 1. Initialize Jupyter and Python</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html#2.2.4.2-Step-2.-Define-parameters">2.2.4.2 Step 2. Define parameters</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html#2.2.4.3-Step-3.-Write-Functions-for-the-RHS-of-the-Differential-Equations">2.2.4.3 Step 3. Write Functions for the RHS of the Differential Equations</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html#2.2.4.4-Step-4.-Choose-an-Initial-Condition,-a-Time-Grid,-and-Integrate-the-Differential-Equation">2.2.4.4 Step 4. Choose an Initial Condition, a Time Grid, and Integrate the Differential Equation</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html#2.2.4.5-Step-5.-Visualize-and-Analyze-Results">2.2.4.5 Step 5. Visualize and Analyze Results</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html#2.2.4.6-Step-6.-Adjust-and-Repeat-as-Needed">2.2.4.6 Step 6. Adjust and Repeat as Needed</a></li>
 </ul>
 </li>
 </ul>
@@ -14585,7 +14580,64 @@ a.anchor-link {
 </ul>
 </li>
 </ul>
-<h2 id="Chapter-3.0-Linearization"><a href="https://jckantor.github.io/cbe30338-2021/03.00-Linearization.html">Chapter 3.0 Linearization</a><a class="anchor-link" href="#Chapter-3.0-Linearization">&#182;</a></h2><h3 id="3.1-Step-Response-of-a-Gravity-Drained-Tank"><a href="https://jckantor.github.io/cbe30338-2021/03.01-Step-Response-of-a-Gravity-Drained-Tank.html">3.1 Step Response of a Gravity Drained Tank</a><a class="anchor-link" href="#3.1-Step-Response-of-a-Gravity-Drained-Tank">&#182;</a></h3><ul>
+<h2 id="Chapter-3.0-Linearization"><a href="https://jckantor.github.io/cbe30338-2021/03.00-Linearization.html">Chapter 3.0 Linearization</a><a class="anchor-link" href="#Chapter-3.0-Linearization">&#182;</a></h2><h3 id="3.1-Hare-and-Lynx-Population-Dynamics"><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html">3.1 Hare and Lynx Population Dynamics</a><a class="anchor-link" href="#3.1-Hare-and-Lynx-Population-Dynamics">&#182;</a></h3><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.1-Summary">3.1.1 Summary</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.2-Introduction">3.1.2 Introduction</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.3-Historical-Data">3.1.3 Historical Data</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.4-Population-Dynamics">3.1.4 Population Dynamics</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.4.1-Model-Equations">3.1.4.1 Model Equations</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.4.2-Parameter-Values">3.1.4.2 Parameter Values</a></li>
+</ul>
+</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.5-Simulation-using-the-scipy.odeint(">3.1.5 Simulation using the scipy.odeint()</a>)<ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.5.1-Step-1.-Initialization">3.1.5.1 Step 1. Initialization</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.5.2-Step-2.-Establish-Parameter-Values">3.1.5.2 Step 2. Establish Parameter Values</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.5.3-Step-3.-Write-function-for-the-RHS-of-the-Differential-Equations">3.1.5.3 Step 3. Write function for the RHS of the Differential Equations</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.5.4-Step-4.-Choose-Time-Grid,-Initial-Conditions,-and-Integrate">3.1.5.4 Step 4. Choose Time Grid, Initial Conditions, and Integrate</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.5.5-Step-5.-Visualize-and-Analyze-the-Solution">3.1.5.5 Step 5. Visualize and Analyze the Solution</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.5.5.1-Phase-Plane">3.1.5.5.1 Phase Plane</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.6-Nullclines">3.1.6 Nullclines</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.7-Interactive-Simulation">3.1.7 Interactive Simulation</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.7.1-Visualization-Function">3.1.7.1 Visualization Function</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.7.2-Simulation-Function">3.1.7.2 Simulation Function</a></li>
+</ul>
+</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.8-Stability-of-a-Steady-State">3.1.8 Stability of a Steady State</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.8.1-1.-Unstable-Focus">3.1.8.1 1. Unstable Focus</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.8.2-2.-Stable-Focus">3.1.8.2 2. Stable Focus</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.8.3-3.-Stable-and-Unstable-Nodes">3.1.8.3 3. Stable and Unstable Nodes</a></li>
+</ul>
+</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.9-Summary">3.1.9 Summary</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html#3.1.10-Suggested-Exercise">3.1.10 Suggested Exercise</a></li>
+<li>Markdown Figures<ul>
+<li><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Canadian_lynx_by_Keith_Williams.jpg/256px-Canadian_lynx_by_Keith_Williams.jpg">Canadian lynx by Keith Williams</a></li>
+<li><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Snowshoe_Hare%2C_Shirleys_Bay.jpg/256px-Snowshoe_Hare%2C_Shirleys_Bay.jpg">Snowshoe Hare, Shirleys Bay</a></li>
+<li><a href="https://upload.wikimedia.org/wikipedia/commons/1/16/Figure_45_06_01.jpg">https://commons.wikimedia.org/wiki/File:Figure_45_06_01.jpg</a></li>
+</ul>
+</li>
+<li>Markdown Links<ul>
+<li><a href="https://en.wikipedia.org/wiki/Snowshoe_hare">Snowshoe hare</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Canada_lynx">Canadian lynx</a></li>
+<li><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Canadian_lynx_by_Keith_Williams.jpg">via Wikimedia Commons</a></li>
+<li><a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Snowshoe_Hare,_Shirleys_Bay.jpg">via Wikimedia Commons</a></li>
+<li><a href="http://www.pnas.org/content/94/10/5147.full">Stenseth, 1997</a></li>
+<li><a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a></li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Figure_45_06_01.jpg">via Wikimedia Commons</a></li>
+<li><a href="http://www.int-res.com/articles/feature/c034p083.pdf">Zhang, 2007</a></li>
+<li><a href="http://people.whitman.edu/~hundledr/courses/M250F03/M250.html">D. R. Hundley at Whitman College</a></li>
+<li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0108243">here</a></li>
+<li><a href="http://science.sciencemag.org/content/320/5876/658">here</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="3.1-Step-Response-of-a-Gravity-Drained-Tank"><a href="https://jckantor.github.io/cbe30338-2021/03.01-Step-Response-of-a-Gravity-Drained-Tank.html">3.1 Step Response of a Gravity Drained Tank</a><a class="anchor-link" href="#3.1-Step-Response-of-a-Gravity-Drained-Tank">&#182;</a></h3><ul>
 <li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Step-Response-of-a-Gravity-Drained-Tank.html#3.1.1-Summary">3.1.1 Summary</a></li>
 <li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Step-Response-of-a-Gravity-Drained-Tank.html#3.1.2-Mass-Balance-for-Tank-with-Constant-Cross-Sectional-Area">3.1.2 Mass Balance for Tank with Constant Cross-Sectional Area</a></li>
 <li><a href="https://jckantor.github.io/cbe30338-2021/03.01-Step-Response-of-a-Gravity-Drained-Tank.html#3.1.3-Nonlinear-Step-Response">3.1.3 Nonlinear Step Response</a></li>
@@ -14658,45 +14710,6 @@ a.anchor-link {
 <li><a href="https://jckantor.github.io/cbe30338-2021/03.04-Fitting-First-Order-plus-Time-Delay-to-Step-Response.html#3.4.4.4-Step-3.-Create-a-function-to-measure-the-error-between-an-FOPTD-model-and-the-experimental-data.">3.4.4.4 Step 3. Create a function to measure the error between an FOPTD model and the experimental data.</a></li>
 <li><a href="https://jckantor.github.io/cbe30338-2021/03.04-Fitting-First-Order-plus-Time-Delay-to-Step-Response.html#3.4.4.5-Step-4.-Use-scipy.optimize.minimize(">3.4.4.5 Step 4. Use scipy.optimize.minimize() to find the best fitting FOPTD model.</a>-to-find-the-best-fitting-FOPTD-model.)</li>
 <li><a href="https://jckantor.github.io/cbe30338-2021/03.04-Fitting-First-Order-plus-Time-Delay-to-Step-Response.html#3.4.4.6-Step-5.-Rescale-FOPTD-output-and-compare-to-experimental-data.">3.4.4.6 Step 5. Rescale FOPTD output and compare to experimental data.</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="3.5-One-Compartment-Pharmacokinetics"><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html">3.5 One Compartment Pharmacokinetics</a><a class="anchor-link" href="#3.5-One-Compartment-Pharmacokinetics">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.1-Summary">3.5.1 Summary</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.2-Antibiotics">3.5.2 Antibiotics</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.3-Model-Description">3.5.3 Model Description</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.4-Problem-Statement-1">3.5.4 Problem Statement 1</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.5-Solution-Strategy-1:-Simulation-from-a-Known-Initial-Condition">3.5.5 Solution Strategy 1: Simulation from a Known Initial Condition</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.5.1-Step-1.-Initialization">3.5.5.1 Step 1. Initialization</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.5.2-Step-2.-Enter-Parameter-Values">3.5.5.2 Step 2. Enter Parameter Values</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.5.3-Step-3.-A-Function-the-RHS-of-the-Differential-equation">3.5.5.3 Step 3. A Function the RHS of the Differential equation</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.5.4-Step-4.-Solution-and-Visualization">3.5.5.4 Step 4. Solution and Visualization</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.5.5-Step-5.-Analysis-of-the-Results">3.5.5.5 Step 5. Analysis of the Results</a></li>
-</ul>
-</li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.6-Solution-Strategy-2:-Time-Dependent-Input">3.5.6 Solution Strategy 2: Time-Dependent Input</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.6.1-Analysis-of-the-Results">3.5.6.1 Analysis of the Results</a></li>
-</ul>
-</li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.7-Problem-Statement-2">3.5.7 Problem Statement 2</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html#3.5.8-Solution-Strategy-3:-Periodic-Dosing">3.5.8 Solution Strategy 3: Periodic Dosing</a></li>
-<li>Markdown Figures<ul>
-<li><a href="./figures/Pharmaockinetics1.png">./figures/Pharmaockinetics1.png</a></li>
-<li><a href="figures/nihms-475924-f0001.jpg">figures/nihms-475924-f0001.jpg</a></li>
-<li><a href="./figures/Pharmaockinetics2.png">./figures/Pharmaockinetics2.png</a></li>
-<li><a href="./figures/nihms-475924-f0001.jpg">./figures/nihms-475924-f0001.jpg</a></li>
-</ul>
-</li>
-<li>Markdown Links<ul>
-<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4378521/">antibiotic resistance</a></li>
-<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3675903/">Levison, Matthew E., and Julie H. Levison. “Pharmacokinetics and Pharmacodynamics of Antibacterial Agents.” Infectious disease clinics of North America 23.4 (2009): 791–vii. PMC. Web. 8 May 2017.</a></li>
-<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3675903/">Levison, Matthew E., and Julie H. Levison. “Pharmacokinetics and Pharmacodynamics of Antibacterial Agents.” Infectious disease clinics of North America 23.4 (2009): 791–vii. PMC. Web. 8 May 2017.</a></li>
-</ul>
-</li>
-<li>Figure files used<ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/figures/Pharmaockinetics2.png">figures/Pharmaockinetics2.png</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/figures/nihms-475924-f0001.jpg">figures/nihms-475924-f0001.jpg</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/figures/Pharmaockinetics1.png">figures/Pharmaockinetics1.png</a></li>
 </ul>
 </li>
 </ul>

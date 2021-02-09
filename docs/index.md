@@ -21,8 +21,8 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [1.5 Assignment 1](https://jckantor.github.io/cbe30338-2021/01.05-Assignment-1.html)
 
 ### [Chapter 2.0 Process Modeling](https://jckantor.github.io/cbe30338-2021/02.00-Process-Modeling.html)
-- [2.1 Gravity Drained Tank](https://jckantor.github.io/cbe30338-2021/02.01-Gravity-Drained-Tank.html)
-- [2.2 Hare and Lynx Population Dynamics](https://jckantor.github.io/cbe30338-2021/02.02-Hare-and-Lynx-Population-Dynamics.html)
+- [2.1 One Compartment Pharmacokinetics](https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html)
+- [2.2 Gravity Drained Tank](https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html)
 - [2.3 Blending Tank Simulation](https://jckantor.github.io/cbe30338-2021/02.03-Blending-Tank-Simulation.html)
 - [2.3 Fed-Batch Bioreactor](https://jckantor.github.io/cbe30338-2021/02.03-Fed-Batch-Bioreactor.html)
 - [2.4 Continuous Product Blending](https://jckantor.github.io/cbe30338-2021/02.04-Continuous-Product-Blending.html)
@@ -31,11 +31,11 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [2.10 Process Variables](https://jckantor.github.io/cbe30338-2021/02.10-Process-Variables.html)
 
 ### [Chapter 3.0 Linearization](https://jckantor.github.io/cbe30338-2021/03.00-Linearization.html)
+- [3.1 Hare and Lynx Population Dynamics](https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html)
 - [3.1 Step Response of a Gravity Drained Tank](https://jckantor.github.io/cbe30338-2021/03.01-Step-Response-of-a-Gravity-Drained-Tank.html)
 - [3.2 Linear Approximation of a Process Model](https://jckantor.github.io/cbe30338-2021/03.02-Linear-Approximation-of-a-Process-Model.html)
 - [3.3 Linear Approximation of a Multivariable Model](https://jckantor.github.io/cbe30338-2021/03.03-Linear-Approximation-of-a-Multivariable-Model.html)
 - [3.4 Fitting First Order plus Time Delay to Step Response](https://jckantor.github.io/cbe30338-2021/03.04-Fitting-First-Order-plus-Time-Delay-to-Step-Response.html)
-- [3.5 One Compartment Pharmacokinetics](https://jckantor.github.io/cbe30338-2021/03.05-One-Compartment-Pharmacokinetics.html)
 - [3.6 Second Order Models](https://jckantor.github.io/cbe30338-2021/03.06-Second-Order-Models.html)
 - [3.7 Interacting Tanks](https://jckantor.github.io/cbe30338-2021/03.07-Interacting-Tanks.html)
 - [3.8 Manometer Models and Dynamics](https://jckantor.github.io/cbe30338-2021/03.08-Manometer-Models-and-Dynamics.html)

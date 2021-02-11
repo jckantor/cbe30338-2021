@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/02.06-Exothermic-CSTR.html">2.6 Exothermic Continuous Stirred Tank Reactor</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/02.10-Process-Variables.html">2.10 Process Variables</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/02.08-Model-Library.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/02.08-Model-Library.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html">2.1 One Compartment Pharmacokinetics</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/02.05-Blending-Tank-Simulation.html">2.5 Blending Tank Simulation</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/02.04-Gravity-Drained-Tank.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,7 +14285,83 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="2.8-Model-Library">2.8 Model Library<a class="anchor-link" href="#2.8-Model-Library">&#182;</a></h1>
+<h1 id="2.4-Gravity-Drained-Tank">2.4 Gravity Drained Tank<a class="anchor-link" href="#2.4-Gravity-Drained-Tank">&#182;</a></h1>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="2.4.1-Summary">2.4.1 Summary<a class="anchor-link" href="#2.4.1-Summary">&#182;</a></h2><p>In the example we study the problem of constructing nonlinear process model for the liquid level in a gravity drained tank.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="2.4.2-Torricelli's-law">2.4.2 Torricelli's law<a class="anchor-link" href="#2.4.2-Torricelli's-law">&#182;</a></h2><p>Torricelli's law states the velocity of an incompressible liquid stream exiting a liquid tank at level $h$ below the surface is</p>
+$$v = \sqrt{2gh}$$<p></p>
+<p>This is the same velocity as an object dropped from a height $h$. The derivation is straightforward. From Bernoulli's principle,</p>
+$$\frac{v^2}{2} + gh + \frac{P}{\rho} = \text{constant}$$
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Applying this principle, compare a drop of water just below the surface of the water at distance $h$ above the exit, to a drop of water exiting the tank</p>
+$$gh + \frac{P_{atm}}{\rho} = \frac{v^2}{2} + \frac{P_{atm}}{\rho}$$$$\implies v^2 = 2gh$$$$\implies v = \sqrt{2gh}$$<p>Torricelli's law is an approximation that doesn't account for the effects of fluid viscosity, the specific flow geometry near the exit, or other flow non-idealities. Nevertheless it is a useful first approximation for flow from a tank.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="2.4.3-Mass-Balance-for-Tank-with-Constant-Cross-Sectional-Area">2.4.3 Mass Balance for Tank with Constant Cross-Sectional Area<a class="anchor-link" href="#2.4.3-Mass-Balance-for-Tank-with-Constant-Cross-Sectional-Area">&#182;</a></h2><p>For a tank with constant cross-sectional area, such as a cylindrical or rectangular tank, the liquid height is described by a differential equation</p>
+$$A\frac{dh}{dt} = q_{in}(t) - q_{out}(t)$$<p>where $q_{out}$ is a function of liquid height. Torricelli's law tells the outlet flow from the tank is proportional to square root of the liquid height</p>
+$$ q_{out}(h) = C_v\sqrt{h} $$
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Dividing by area we obtain a nonlinear ordinary differential equation</p>
+$$ \frac{dh}{dt} = - \frac{C_V}{A}\sqrt{h} + \frac{1}{A}q_{in}(t) $$<p>in our standard form where the LHS derivative appears with a constant coefficient of 1.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="2.4.4-Step-by-Step-Approach-to-Nonlinear-Simulation">2.4.4 Step-by-Step Approach to Nonlinear Simulation<a class="anchor-link" href="#2.4.4-Step-by-Step-Approach-to-Nonlinear-Simulation">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="2.4.4.1-Step-1.-Initialize-Jupyter-and-Python">2.4.4.1 Step 1. Initialize Jupyter and Python<a class="anchor-link" href="#2.4.4.1-Step-1.-Initialize-Jupyter-and-Python">&#182;</a></h3><p>The first step in any Python application is to initialize graphics display (if you will be creating graphic output), and import any needed libraries.</p>
+<p>The <code>%matplotlib inline</code> is a command telling the Jupyter notebook to display any graphics inside this notebook.</p>
+<p>We then import a standard graphics library (<code>matplotlib.pyplot</code>) that will be referred to with the prefix <code>plt</code>, a standard numerical library <code>numpy</code> that will be referred to with the prefix <code>np</code>, and the function <code>odeint</code> from the <code>scipy.integrate</code> library.</p>
+
 </div>
 </div>
 
@@ -14294,10 +14370,13 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
 </pre></div>
 
      </div>
@@ -14305,6 +14384,16 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 </div>
 </div>
 
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="2.4.4.2-Step-2.-Define-parameters">2.4.4.2 Step 2. Define parameters<a class="anchor-link" href="#2.4.4.2-Step-2.-Define-parameters">&#182;</a></h3><p>Provide values for all relevant parameters.  Use comments to describe the parameters and units.</p>
+
+</div>
 </div>
 
 
@@ -14312,40 +14401,11 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[185]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span><span class="p">,</span><span class="n">ode</span>
-
-<span class="k">class</span> <span class="nc">GravityTank</span><span class="p">():</span>
-    
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Cv</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Cv</span> <span class="o">=</span> <span class="n">Cv</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Qin</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_h</span> <span class="o">=</span> <span class="n">h</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">IC</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h</span>
-        
-    <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_h</span> <span class="o">=</span> <span class="n">h</span>
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Qin</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cv</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">)</span>
-    
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">Qin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Qin</span>
-    
-    <span class="nd">@Qin</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">Qin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">Qin</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_Qin</span> <span class="o">=</span> <span class="n">Qin</span>
-        
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">Qout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cv</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_h</span><span class="p">)</span>
-        
-        
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Cv</span>  <span class="o">=</span> <span class="mf">0.1</span>     <span class="c1"># Outlet valve constant [cubic meters/min/meter^1/2]</span>
+<span class="n">A</span>   <span class="o">=</span> <span class="mf">1.0</span>     <span class="c1"># Tank area [meter^2]</span>
 </pre></div>
 
      </div>
@@ -14357,30 +14417,88 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 
 
 
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="2.4.4.3-Step-3.-Write-Functions-for-the-RHS-of-the-Differential-Equations">2.4.4.3 Step 3. Write Functions for the RHS of the Differential Equations<a class="anchor-link" href="#2.4.4.3-Step-3.-Write-Functions-for-the-RHS-of-the-Differential-Equations">&#182;</a></h3>
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># inlet flow rate in cubic meters/min</span>
+<span class="k">def</span> <span class="nf">qin</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.15</span>
+
+<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">qin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">A</span> <span class="o">-</span> <span class="n">Cv</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">/</span><span class="n">A</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="2.4.4.4-Step-4.-Choose-an-Initial-Condition,-a-Time-Grid,-and-Integrate-the-Differential-Equation">2.4.4.4 Step 4. Choose an Initial Condition, a Time Grid, and Integrate the Differential Equation<a class="anchor-link" href="#2.4.4.4-Step-4.-Choose-an-Initial-Condition,-a-Time-Grid,-and-Integrate-the-Differential-Equation">&#182;</a></h3>
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span><span class="n">IC</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="2.4.4.5-Step-5.-Visualize-and-Analyze-Results">2.4.4.5 Step 5. Visualize and Analyze Results<a class="anchor-link" href="#2.4.4.5-Step-5.-Visualize-and-Analyze-Results">&#182;</a></h3>
+</div>
+</div>
+
+
+
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[186]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tank1</span> <span class="o">=</span> <span class="n">GravityTank</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">tank2</span> <span class="o">=</span> <span class="n">GravityTank</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
 
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">tank1</span><span class="o">.</span><span class="n">Qin</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
-    <span class="n">h1</span><span class="p">,</span><span class="n">h2</span> <span class="o">=</span> <span class="n">X</span>
-    <span class="n">tank2</span><span class="o">.</span><span class="n">Qin</span> <span class="o">=</span> <span class="n">tank1</span><span class="o">.</span><span class="n">Qout</span>
-    <span class="n">dh1</span> <span class="o">=</span> <span class="n">tank1</span><span class="o">.</span><span class="n">deriv</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">dh2</span> <span class="o">=</span> <span class="n">tank2</span><span class="o">.</span><span class="n">deriv</span><span class="p">(</span><span class="n">h2</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-    <span class="c1">#print(&quot;{0:9.6f}  {1:9.6f}  {2:9.6f}  {3:9.6f}  {4:9.6f}  {5:9.6f}   {6:9.6f}   {7:9.6f}  {8:9.6f}&quot;.format(h1,h2,tank1.Qin,tank1.Qout,tank2.Qin,tank2.Qout,dh1,dh2,t))</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">dh1</span><span class="p">,</span><span class="n">dh2</span><span class="p">]</span>
-
-
-<span class="n">sol</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">deriv</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">t</span><span class="p">)</span>
-<span class="n">h1</span><span class="p">,</span><span class="n">h2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">T</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">h2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;minutes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;meters&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gravity-Drained Tank&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Liquid Level&#39;</span><span class="p">]);</span>
 </pre></div>
 
      </div>
@@ -14396,188 +14514,211 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[186]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[&lt;matplotlib.lines.Line2D at 0x118d16da0&gt;]</pre>
-</div>
-
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 
 
 <div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -14592,384 +14733,12 @@ kClMREQkZAoTEREJ2f8HIjfwRRpFyfwAAAAASUVORK5CYII=
 
 
 
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[165]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tank1</span> <span class="o">=</span> <span class="n">GravityTank</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">tank2</span> <span class="o">=</span> <span class="n">GravityTank</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">tank3</span> <span class="o">=</span> <span class="n">GravityTank</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.9</span><span class="p">)</span>
-
-<span class="n">tank1</span><span class="o">.</span><span class="n">Qin</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">X</span><span class="p">):</span>
-    <span class="n">h1</span><span class="p">,</span><span class="n">h2</span><span class="p">,</span><span class="n">h3</span> <span class="o">=</span> <span class="n">X</span>
-    <span class="n">tank2</span><span class="o">.</span><span class="n">Qin</span> <span class="o">=</span> <span class="n">tank1</span><span class="o">.</span><span class="n">Qout</span>
-    <span class="n">tank3</span><span class="o">.</span><span class="n">Qin</span> <span class="o">=</span> <span class="n">tank2</span><span class="o">.</span><span class="n">Qout</span>
-    <span class="n">dh1</span> <span class="o">=</span> <span class="n">tank1</span><span class="o">.</span><span class="n">deriv</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">dh2</span> <span class="o">=</span> <span class="n">tank2</span><span class="o">.</span><span class="n">deriv</span><span class="p">(</span><span class="n">h2</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">dh3</span> <span class="o">=</span> <span class="n">tank3</span><span class="o">.</span><span class="n">deriv</span><span class="p">(</span><span class="n">h3</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">dh1</span><span class="p">,</span><span class="n">dh2</span><span class="p">,</span><span class="n">dh3</span><span class="p">]</span>
-
-
-<span class="n">de</span> <span class="o">=</span> <span class="n">ode</span><span class="p">(</span><span class="n">deriv</span><span class="p">)</span>
-<span class="n">de</span><span class="o">.</span><span class="n">set_initial_value</span><span class="p">(</span><span class="n">IC</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="n">ts</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">t_end</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">t_step</span> <span class="o">=</span> <span class="o">.</span><span class="mi">2</span>
-
-<span class="k">while</span> <span class="n">de</span><span class="o">.</span><span class="n">successful</span><span class="p">()</span> <span class="ow">and</span> <span class="n">de</span><span class="o">.</span><span class="n">t</span> <span class="o">&lt;</span> <span class="n">t_end</span><span class="p">:</span>
-    <span class="n">de</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">t</span> <span class="o">+</span> <span class="n">t_step</span><span class="p">)</span>
-    <span class="n">ts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">ys</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>/Users/jeff/anaconda/lib/python3.5/site-packages/scipy/integrate/_ode.py:869: UserWarning: vode: Excess work done on this call. (Perhaps wrong MF.)
-  &#39;Unexpected istate=%s&#39; % istate))
-</pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[165]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[&lt;matplotlib.lines.Line2D at 0x117ed0240&gt;,
- &lt;matplotlib.lines.Line2D at 0x117ed04e0&gt;,
- &lt;matplotlib.lines.Line2D at 0x117ed06d8&gt;]</pre>
-</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="2.4.4.6-Step-6.--Adjust-and-Repeat-as-Needed">2.4.4.6 Step 6.  Adjust and Repeat as Needed<a class="anchor-link" href="#2.4.4.6-Step-6.--Adjust-and-Repeat-as-Needed">&#182;</a></h3><p>Rarely does a simulation provide you with the information you seek on the first try.  You will almost certainly need to revise parameter values, choose different time grids, and add visualization features to obtain the most informative results.</p>
 
 </div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYgAAAD8CAYAAABthzNFAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
-AAALEgAACxIB0t1+/AAAEE5JREFUeJzt3WuMXHd9xvHvg10XkgKBZoFgW7VbmdBtJSBMUxdKb0HI
-Dgj3IqpEpSnJC8u0CSSCIgMSou0brr1EihK5kJYAwlyaSm6VNqEX6BsSPA4hYJzAYgK2MWFp1VA1
-EsbNry/mRGzW/3jH65mdWeX7kUaec/7/c/aZ2fU+c+bMzKaqkCRpsSdNOoAkaTpZEJKkJgtCktRk
-QUiSmiwISVKTBSFJarIgJElNFoQkqcmCkCQ1rZ10gJbzzz+/Nm3aNOkYkrRqHDhw4HtVNTPKfU5l
-QWzatIl+vz/pGJK0aiT55qj36VNMkqQmC0KS1GRBSJKaLAhJUpMFIUlqsiAkSU0WhCSpyYKQJDVZ
-EJKkJgtCktRkQUiSmiwISVKTBSFJarIgJElNFoQkqcmCkCQ1WRCSpCYLQpLUZEFIkposCElS01AF
-kWRbkvuTzCXZ3Rh/fpLPJflBkjefybaSpOm0ZEEkWQPcAGwHZoHLk8wumvZfwBuA9y1jW0nSFBrm
-COJiYK6qDlfVCWAvsGPhhKr6blXtB354pttKkqbTMAWxHjiyYPlot24YQ2+bZGeSfpL+/Pz8kLuX
-JI3L1Jykrqo9VdWrqt7MzMyk40jSE94wBXEM2LhgeUO3bhhns60kaYKGKYj9wJYkm5OsAy4D9g25
-/7PZVpI0QWuXmlBVJ5NcDdwOrAFurqqDSXZ14zcleQ7QB54GPJLkWmC2qr7f2nZcN0aSNDqpqkln
-OEWv16t+vz/pGJK0aiQ5UFW9Ue5zak5SS5KmiwUhSWqyICRJTRaEJKnJgpAkNVkQkqQmC0KS1GRB
-SJKaLAhJUpMFIUlqsiAkSU0WhCSpyYKQJDVZEJKkJgtCktRkQUiSmiwISVKTBSFJarIgJElNFoQk
-qcmCkCQ1WRCSpCYLQpLUZEFIkposCElSkwUhSWqyICRJTRaEJKlpqIJIsi3J/UnmkuxujCfJ9d34
-vUkuWjB2XZKDSb6c5GNJnjzKGyBJGo8lCyLJGuAGYDswC1yeZHbRtO3Alu6yE7ix23Y98AagV1U/
-D6wBLhtZeknS2AxzBHExMFdVh6vqBLAX2LFozg7glhq4EzgvyQXd2FrgKUnWAucA3x5RdknSGA1T
-EOuBIwuWj3brlpxTVceA9wHfAo4DD1XVHcuPK0laKWM9SZ3kGQyOLjYDzwXOTfLax5m7M0k/SX9+
-fn6csSRJQximII4BGxcsb+jWDTPn5cA3qmq+qn4I3Aq8pPVFqmpPVfWqqjczMzNsfknSmAxTEPuB
-LUk2J1nH4CTzvkVz9gFXdK9m2srgqaTjDJ5a2prknCQBLgEOjTC/JGlM1i41oapOJrkauJ3Bq5Bu
-rqqDSXZ14zcBtwGXAnPAw8CV3dhdST4F3A2cBL4A7BnHDZEkjVaqatIZTtHr9arf7086hiStGkkO
-VFVvlPv0ndSSpCYLQpLUZEFIkposCElSkwUhSWqyICRJTRaEJKnJgpAkNVkQkqQmC0KS1GRBSJKa
-LAhJUpMFIUlqsiAkSU0WhCSpyYKQJDVZEJKkJgtCktRkQUiSmiwISVKTBSFJarIgJElNFoQkqcmC
-kCQ1WRCSpCYLQpLUZEFIkposCElSkwUhSWoaqiCSbEtyf5K5JLsb40lyfTd+b5KLFoydl+RTSe5L
-cijJL43yBkiSxmPJgkiyBrgB2A7MApcnmV00bTuwpbvsBG5cMPZXwD9X1fOBFwCHRpBbkjRmwxxB
-XAzMVdXhqjoB7AV2LJqzA7ilBu4EzktyQZKnA78CfBCgqk5U1X+PML8kaUyGKYj1wJEFy0e7dcPM
-2QzMA3+T5AtJPpDk3NYXSbIzST9Jf35+fugbIEkaj3GfpF4LXATcWFUvAv4XOOUcBkBV7amqXlX1
-ZmZmxhxLkrSUYQriGLBxwfKGbt0wc44CR6vqrm79pxgUhiRpyg1TEPuBLUk2J1kHXAbsWzRnH3BF
-92qmrcBDVXW8qr4DHElyYTfvEuArowovSRqftUtNqKqTSa4GbgfWADdX1cEku7rxm4DbgEuBOeBh
-4MoFu7gG+GhXLocXjUmSplSqatIZTtHr9arf7086hiStGkkOVFVvlPv0ndSSpCYLQpLUZEFIkpos
-CElSkwUhSWqyICRJTRaEJKnJgpAkNVkQkqQmC0KS1GRBSJKaLAhJUpMFIUlqsiAkSU0WhCSpyYKQ
-JDVZEJKkJgtCktRkQUiSmiwISVKTBSFJarIgJElNFoQkqcmCkCQ1WRCSpCYLQpLUZEFIkposCElS
-01AFkWRbkvuTzCXZ3RhPkuu78XuTXLRofE2SLyT5x1EFlySN15IFkWQNcAOwHZgFLk8yu2jadmBL
-d9kJ3Lho/I3AobNOK0laMcMcQVwMzFXV4ao6AewFdiyaswO4pQbuBM5LcgFAkg3AK4EPjDC3JGnM
-himI9cCRBctHu3XDzvlL4C3AI8vMKEmagLGepE7yKuC7VXVgiLk7k/ST9Ofn58cZS5I0hGEK4hiw
-ccHyhm7dMHNeCrw6yQMMnpr6jSQfaX2RqtpTVb2q6s3MzAwZX5I0LsMUxH5gS5LNSdYBlwH7Fs3Z
-B1zRvZppK/BQVR2vqrdW1Yaq2tRt929V9dpR3gBJ0nisXWpCVZ1McjVwO7AGuLmqDibZ1Y3fBNwG
-XArMAQ8DV44vsiRpJaSqJp3hFL1er/r9/qRjSNKqkeRAVfVGuU/fSS1JarIgJElNFoQkqcmCkCQ1
-WRCSpCYLQpLUZEFIkposCElSkwUhSWqyICRJTRaEJKnJgpAkNVkQkqQmC0KS1GRBSJKaLAhJUpMF
-IUlqsiAkSU0WhCSpyYKQJDVZEJKkJgtCktRkQUiSmiwISVKTBSFJarIgJElNFoQkqcmCkCQ1WRCS
-pKahCiLJtiT3J5lLsrsxniTXd+P3JrmoW78xyb8n+UqSg0neOOobIEkajyULIska4AZgOzALXJ5k
-dtG07cCW7rITuLFbfxJ4U1XNAluBP2psK0maQsMcQVwMzFXV4ao6AewFdiyaswO4pQbuBM5LckFV
-Ha+quwGq6n+AQ8D6EeaXJI3JMAWxHjiyYPkop/6SX3JOkk3Ai4C7zjSkJGnlrchJ6iQ/AfwdcG1V
-ff9x5uxM0k/Sn5+fX4lYkqTTGKYgjgEbFyxv6NYNNSfJjzEoh49W1a2P90Wqak9V9aqqNzMzM0x2
-SdIYDVMQ+4EtSTYnWQdcBuxbNGcfcEX3aqatwENVdTxJgA8Ch6rqz0eaXJI0VmuXmlBVJ5NcDdwO
-rAFurqqDSXZ14zcBtwGXAnPAw8CV3eYvBX4f+FKSe7p1b6uq20Z7MyRJo5aqmnSGU/R6ver3+5OO
-IUmrRpIDVdUb5T59J7UkqcmCkCQ1WRCSpCYLQpLUZEFIkposCElSkwUhSWqyICRJTRaEJKnJgpAk
-NVkQkqQmC0KS1GRBSJKaLAhJUpMFIUlqsiAkSU0WhCSpyYKQJDVZEJKkJgtCktRkQUiSmiwISVKT
-BSFJarIgJElNFoQkqcmCkCQ1WRCSpCYLQpLUNFRBJNmW5P4kc0l2N8aT5Ppu/N4kFw27rSRpOi1Z
-EEnWADcA24FZ4PIks4umbQe2dJedwI1nsK0kaQoNcwRxMTBXVYer6gSwF9ixaM4O4JYauBM4L8kF
-Q24rSZpCwxTEeuDIguWj3bph5gyzrSRpCk3NSeokO5P0k/Tn5+cnHUeSnvCGKYhjwMYFyxu6dcPM
-GWZbAKpqT1X1qqo3MzMzRCxJ0jgNUxD7gS1JNidZB1wG7Fs0Zx9wRfdqpq3AQ1V1fMhtJUlTaO1S
-E6rqZJKrgduBNcDNVXUwya5u/CbgNuBSYA54GLjydNuO5ZZIkkYqVTXpDKfo9XrV7/cnHUOSVo0k
-B6qqN9J9TmNBJJkHvjni3Z4PfG/E+xwVsy2P2ZbHbMs3zfkurKqnjnKHSz7FNAlVNfKz1En6o27X
-UTHb8phtecy2fNOcL8nIn3aZmpe5SpKmiwUhSWp6IhXEnkkHOA2zLY/ZlsdsyzfN+UaebSpPUkuS
-Ju+JdAQhSToDq7Iglvv3KZJcmOSeBZfvJ7l20bZvSlJJzp+WbEnemeTYgrFLpyVbN35NkvuSHEzy
-nmnJluTjC9Y/kOSeKcr2wiR3duv7SS5eTrYx5ntBks8l+VKSf0jytJXM1o1d1/1MfTnJx5I8uVv/
-zCSfTvK17t9nTFG213TrH0my7Fc7jSnbezP4f3pvkr9Pct6SQapqVV0YvCP768BPA+uALwKzi+Zc
-CvwTEGArcNfj7Oc7wE8tWLeRwbu+vwmcPy3ZgHcCb57G+w34deBfgB/vlp81LdkWjb0feMe0ZAPu
-ALYv2P4zU/Z93Q/8anf9KuDPVjIbg099/gbwlG75E8DruuvvAXZ313cD756ibD8LXAh8Buit9Pd0
-iWyvANZ21989zP22Go8gzubvUyx0CfD1qlr4hry/AN4CLPfEzDizna1xZXs98K6q+gFAVX13irIB
-g0dbwO8CH5uibAU8+qj86cC3l5FtnPmeB/xHd/3TwO9MINta4ClJ1gLn8KP7aAfwoe76h4DfnJZs
-VXWoqu5fRp6VyHZHVZ3s5tzJ4MNTT2s1FsTZ/H2KhS5jwS+MJDuAY1X1xWnL1rmmOzS8eZmH1OPK
-9jzgZUnuSvLZJL8wRdke9TLgwar62hRluxZ4b5IjwPuAty4j2zjzHeRHv5Rew2M/lXns2arqGIP7
-5VvAcQYfAHpHN+fZNfgwUBgc9Tx7irKNwkpku4rBEchprcaCOGsZfLLsq4FPdsvnAG8D3jHJXF2W
-x2Tr3MjgcPOFDL7p759AtMfLthZ4JoPD3D8GPtE9Yp+GbI+6nOUdPYzE42R7PXBdVW0ErgM+OIls
-8Lj5rgL+MMkB4KnAiRXO9AwGBbUZeC5wbpLXLp5Xg+dLVvSlmMNmm4RhsiV5O3AS+OhS+1uNBXE2
-f5/iUduBu6vqwW75ZxjcoV9M8kA3/+4kz5mCbFTVg1X1f1X1CPDXDA5Bz9RYsjF45HJrd6j7eeAR
-Bp9XMw3Z6A6zfxv4+BlmGne2PwBu7a5/kuV9T8eWr6ruq6pXVNWLGZTr11c428uBb1TVfFX9kMF9
-9ZJuzoOPPp3S/bucpzXHlW0UxpYtyeuAVwG/15Xr6S11kmLaLgwesR5m8Av90RM4P7dozit57Amc
-zy8a3wtceZqv8QDLO0k9lmzABQuuXwfsnaJsu4A/7a4/j8Fhb6YhW7d+G/DZaft5Aw4Bv9ZdvwQ4
-MGX5ntX9+yTgFuCqlcwG/CKDp7nO6cY+BFzTjb2Xx56kfs+0ZFuw7WdY/knqcd1v24CvADNDZ1nu
-f5xJXhicwf8qg0c1b+/W7QJ2ddcD3NCNf2nhNwo4F/hP4Omn2f8DLKMgxpUN+HA3914Gf3DpginK
-tg74CPBl4G7gN6YlWzf2t4/uY5p+3oBfBg4w+M9/F/DiKcv3xm6fXwXexRmW/oiy/QlwX/ez9WF+
-9Eq5nwT+Ffgag1fQPXOKsv0Wg6PqHwAPArdPUbY5Bg/g7ukuNy2Vw3dSS5KaVuM5CEnSCrAgJElN
-FoQkqcmCkCQ1WRCSpCYLQpLUZEFIkposCElS0/8DGwdOSsg0DYYAAAAASUVORK5CYII=
-"
->
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[107]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="n">tank1</span><span class="o">.</span><span class="n">IC</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">tank2</span><span class="o">.</span><span class="n">IC</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">tank3</span><span class="o">.</span><span class="n">IC</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">IC</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">deriv</span><span class="p">(</span><span class="n">IC</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span><span class="n">IC</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">sol</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[0, 0, 0]
-[1.5, 0.0, 0.0]
-</pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>/Users/jeff/anaconda/lib/python3.5/site-packages/scipy/integrate/odepack.py:218: ODEintWarning: Excess work done on this call (perhaps wrong Dfun type). Run with full_output = 1 to get quantitative information.
-  warnings.warn(warning_msg, ODEintWarning)
-</pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[107]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[&lt;matplotlib.lines.Line2D at 0x114d11d30&gt;,
- &lt;matplotlib.lines.Line2D at 0x114d11f60&gt;,
- &lt;matplotlib.lines.Line2D at 0x114d17198&gt;]</pre>
-</div>
-
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[53]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tank3</span><span class="o">.</span><span class="n">Qin</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[53]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>0.0</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 
@@ -14996,7 +14765,7 @@ SWqUASBJjTIAJKlRBoAkNcoAkKRGGQCS1Kj/B8lWZnV51Xg2AAAAAElFTkSuQmCC
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/02.06-Exothermic-CSTR.html">2.6 Exothermic Continuous Stirred Tank Reactor</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/02.10-Process-Variables.html">2.10 Process Variables</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/02.08-Model-Library.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/02.08-Model-Library.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html">2.1 One Compartment Pharmacokinetics</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/02.05-Blending-Tank-Simulation.html">2.5 Blending Tank Simulation</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/02.04-Gravity-Drained-Tank.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

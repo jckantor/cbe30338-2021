@@ -22,12 +22,12 @@ new materials, and make them accessible to students, teaching assistants, and ot
 
 ### [Chapter 2.0 Process Modeling](https://jckantor.github.io/cbe30338-2021/02.00-Process-Modeling.html)
 - [2.1 One Compartment Pharmacokinetics](https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html)
-- [2.2 Gravity Drained Tank](https://jckantor.github.io/cbe30338-2021/02.02-Gravity-Drained-Tank.html)
-- [2.3 Blending Tank Simulation](https://jckantor.github.io/cbe30338-2021/02.03-Blending-Tank-Simulation.html)
-- [2.3 Fed-Batch Bioreactor](https://jckantor.github.io/cbe30338-2021/02.03-Fed-Batch-Bioreactor.html)
-- [2.4 Continuous Product Blending](https://jckantor.github.io/cbe30338-2021/02.04-Continuous-Product-Blending.html)
-- [2.6 Exothermic Continuous Stirred Tank Reactor](https://jckantor.github.io/cbe30338-2021/02.06-Exothermic-CSTR.html)
-- [2.8 Model Library](https://jckantor.github.io/cbe30338-2021/02.08-Model-Library.html)
+- [2.4 Gravity Drained Tank](https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.html)
+- [2.5 Blending Tank Simulation](https://jckantor.github.io/cbe30338-2021/02.05-Blending-Tank-Simulation.html)
+- [2.6 Fed-Batch Bioreactor](https://jckantor.github.io/cbe30338-2021/02.06-Fed-Batch-Bioreactor.html)
+- [2.7 Continuous Product Blending](https://jckantor.github.io/cbe30338-2021/02.07-Continuous-Product-Blending.html)
+- [2.8 Exothermic Continuous Stirred Tank Reactor](https://jckantor.github.io/cbe30338-2021/02.08-Exothermic-CSTR.html)
+- [2.9 Model Library](https://jckantor.github.io/cbe30338-2021/02.09-Model-Library.html)
 - [2.10 Process Variables](https://jckantor.github.io/cbe30338-2021/02.10-Process-Variables.html)
 
 ### [Chapter 3.0 Linearization](https://jckantor.github.io/cbe30338-2021/03.00-Linearization.html)

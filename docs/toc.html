@@ -14384,13 +14384,19 @@ a.anchor-link {
 </ul>
 <h3 id="1.4-The-TCLab-Python-Package"><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html">1.4 The TCLab Python Package</a><a class="anchor-link" href="#1.4-The-TCLab-Python-Package">&#182;</a></h3><ul>
 <li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.1-Connecting-to-the-Temperature-Control-Laboratory">1.4.1 Connecting to the Temperature Control Laboratory</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.1.1-Installation">1.4.1.1 Installation</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.1.2-Importing">1.4.1.2 Importing</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.1.3-Using-TCLab-with-Python&#39;s-`with`-statement">1.4.1.3 Using TCLab with Python's <code>with</code> statement</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.1.1-Installing-the-tclab-library">1.4.1.1 Installing the tclab library</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.1.2-Creating-a-TCLab-instance">1.4.1.2 Creating a TCLab instance</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.1.3-Using-the-LED">1.4.1.3 Using the LED</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.1.4-Using-TCLab-and-Python&#39;s-`with`-statement">1.4.1.4 Using TCLab and Python's <code>with</code> statement</a></li>
 </ul>
 </li>
 <li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.2-Reading-Temperatures">1.4.2 Reading Temperatures</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.3-Setting-Heaters">1.4.3 Setting Heaters</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.3-Setting-Heater-Power">1.4.3 Setting Heater Power</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.3.1-Setting-maximum-power-with-`.P1`-and-`.P2`">1.4.3.1 Setting maximum power with <code>.P1</code> and <code>.P2</code></a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.3.2-Setting-heater-power-with-`.Q1(">1.4.3.2 Setting heater power with <code>.Q1()</code> and <code>.Q2()</code></a><code>-and-</code>.Q2()`)</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.3.3-Setting-heater-power-with-`.U1`-and-`.U2`">1.4.3.3 Setting heater power with <code>.U1</code> and <code>.U2</code></a></li>
+</ul>
+</li>
 <li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.4-Synchronizing-with-Real-Time-using-`clock`">1.4.4 Synchronizing with Real Time using <code>clock</code></a><ul>
 <li><a href="https://jckantor.github.io/cbe30338-2021/01.04-The-TCLab-Python-Package.html#1.4.4.1-Using-`clock`-with-TCLab">1.4.4.1 Using <code>clock</code> with TCLab</a></li>
 </ul>
@@ -14484,18 +14490,18 @@ a.anchor-link {
 </ul>
 </li>
 </ul>
-<h3 id="2.2-Properties-of-First-Order-Linear-Systems-with-a-Single-State-Variable"><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-First-Order-Linear-Systems.html">2.2 Properties of First Order Linear Systems with a Single State Variable</a><a class="anchor-link" href="#2.2-Properties-of-First-Order-Linear-Systems-with-a-Single-State-Variable">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-First-Order-Linear-Systems.html#2.2.1-First-order-linear-systems">2.2.1 First order linear systems</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-First-Order-Linear-Systems.html#2.2.2-Steady-State-Gain">2.2.2 Steady-State Gain</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-First-Order-Linear-Systems.html#2.2.3-Dynamic-Response">2.2.3 Dynamic Response</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-First-Order-Linear-Systems.html#2.2.3.1-Response-to-an-Initial-Condition">2.2.3.1 Response to an Initial Condition</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-First-Order-Linear-Systems.html#2.2.3.2-Time-constant">2.2.3.2 Time constant</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-First-Order-Linear-Systems.html#2.2.3.3-Half-life">2.2.3.3 Half-life</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-First-Order-Linear-Systems.html#2.2.3.4-Step-Inputs">2.2.3.4 Step Inputs</a></li>
+<h3 id="2.2-Properties-of-Scalar-First-Order-Linear-Systems"><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html">2.2 Properties of Scalar First Order Linear Systems</a><a class="anchor-link" href="#2.2-Properties-of-Scalar-First-Order-Linear-Systems">&#182;</a></h3><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html#2.2.1-First-order-linear-systems">2.2.1 First order linear systems</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html#2.2.2-Steady-State-Gain">2.2.2 Steady-State Gain</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html#2.2.3-Dynamic-Response">2.2.3 Dynamic Response</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html#2.2.3.1-Response-to-an-Initial-Condition">2.2.3.1 Response to an Initial Condition</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html#2.2.3.2-Time-constant">2.2.3.2 Time constant</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html#2.2.3.3-Half-life">2.2.3.3 Half-life</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html#2.2.3.4-Step-Inputs">2.2.3.4 Step Inputs</a></li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-First-Order-Linear-Systems.html#2.2.4-Response-to-a-step-input">2.2.4 Response to a step input</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-First-Order-Linear-Systems.html#2.2.5-Alternative-forms-for-scalar-first-order-linear-systems">2.2.5 Alternative forms for scalar first-order linear systems</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html#2.2.4-Response-to-a-step-input">2.2.4 Response to a step input</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html#2.2.5-Alternative-forms-for-scalar-first-order-linear-systems">2.2.5 Alternative forms for scalar first-order linear systems</a></li>
 </ul>
 <h3 id="2.4-Gravity-Drained-Tank"><a href="https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.html">2.4 Gravity Drained Tank</a><a class="anchor-link" href="#2.4-Gravity-Drained-Tank">&#182;</a></h3><ul>
 <li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.html#2.4.1-Summary">2.4.1 Summary</a></li>
@@ -14505,7 +14511,7 @@ a.anchor-link {
 <li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.html#2.4.4.1-Step-1.-Initialize-Jupyter-and-Python">2.4.4.1 Step 1. Initialize Jupyter and Python</a></li>
 <li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.html#2.4.4.2-Step-2.-Define-parameters">2.4.4.2 Step 2. Define parameters</a></li>
 <li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.html#2.4.4.3-Step-3.-Write-Functions-for-the-RHS-of-the-Differential-Equations">2.4.4.3 Step 3. Write Functions for the RHS of the Differential Equations</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.html#2.4.4.4-Step-4.-Choose-an-Initial-Condition,-a-Time-Grid,-and-Integrate-the-Differential-Equation">2.4.4.4 Step 4. Choose an Initial Condition, a Time Grid, and Integrate the Differential Equation</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.html#2.4.4.4-Step-4.-Specify-an-Initial-Condition,-a-Time-Grid,-and-Integrate-the-Differential-Equation">2.4.4.4 Step 4. Specify an Initial Condition, a Time Grid, and Integrate the Differential Equation</a></li>
 <li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.html#2.4.4.5-Step-5.-Visualize-and-Analyze-Results">2.4.4.5 Step 5. Visualize and Analyze Results</a></li>
 <li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.html#2.4.4.6-Step-6.-Adjust-and-Repeat-as-Needed">2.4.4.6 Step 6. Adjust and Repeat as Needed</a></li>
 </ul>

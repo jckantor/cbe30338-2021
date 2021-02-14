@@ -22,7 +22,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 
 ### [Chapter 2.0 Process Modeling](https://jckantor.github.io/cbe30338-2021/02.00-Process-Modeling.html)
 - [2.1 One Compartment Pharmacokinetics](https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html)
-- [2.2 Properties of First Order Linear Systems with a Single State Variable](https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-First-Order-Linear-Systems.html)
+- [2.2 Properties of Scalar First Order Linear Systems](https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html)
 - [2.4 Gravity Drained Tank](https://jckantor.github.io/cbe30338-2021/02.04-Gravity-Drained-Tank.html)
 - [2.5 Blending Tank Simulation](https://jckantor.github.io/cbe30338-2021/02.05-Blending-Tank-Simulation.html)
 - [2.6 Fed-Batch Bioreactor](https://jckantor.github.io/cbe30338-2021/02.06-Fed-Batch-Bioreactor.html)

@@ -15255,7 +15255,7 @@ $$\frac{dT_1}{dt} = -\frac{U_a}{C_p}T_1 + \frac{\alpha P_1}{C_p} u_1(t) + \frac{
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[332]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[354]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># parameter values and units</span>
@@ -15266,10 +15266,10 @@ $$\frac{dT_1}{dt} = -\frac{U_a}{C_p}T_1 + \frac{\alpha P_1}{C_p} u_1(t) + \frac{
 
 <span class="c1"># input function</span>
 <span class="k">def</span> <span class="nf">u1</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t_expt</span><span class="p">,</span> <span class="n">Q1_expt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t_expt</span><span class="p">,</span> <span class="n">expt</span><span class="p">[</span><span class="s2">&quot;Q1&quot;</span><span class="p">])</span>
 
 <span class="k">def</span> <span class="nf">u2</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t_expt</span><span class="p">,</span> <span class="n">Q2_expt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t_expt</span><span class="p">,</span> <span class="n">expt</span><span class="p">[</span><span class="s2">&quot;Q2&quot;</span><span class="p">])</span>
 </pre></div>
 
      </div>

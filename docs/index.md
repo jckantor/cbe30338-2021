@@ -24,7 +24,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [2.1 One Compartment Pharmacokinetics](https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html)
 - [2.2 Properties of Scalar First Order Linear Systems](https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html)
 - [2.3 First Order Model for a Single Heater](https://jckantor.github.io/cbe30338-2021/02.03-First-Order-Model-for-a-Single-Heater.html)
-- [2.4 Model Fitting](https://jckantor.github.io/cbe30338-2021/02.04-Model-Fitting.html)
+- [2.4 Model Identification for the Temperature Control Lab](https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html)
 - [2.5 Two State Model for a Single Heater](https://jckantor.github.io/cbe30338-2021/02.05-Two-State-Model-for-a-Single-Heater.html)
 - [2.6 Four State Model](https://jckantor.github.io/cbe30338-2021/02.06-Four-State-Model.html)
 - [2.7 Model Identification: Fitting models to data](https://jckantor.github.io/cbe30338-2021/02.07-TCLab-Lab-2-Fitting.html)

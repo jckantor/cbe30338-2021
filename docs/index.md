@@ -20,7 +20,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [1.4 The TCLab Python Package](https://jckantor.github.io/cbe30338-2021/01.04-TCLab-Python-Package.html)
 - [1.5 Assignment 1](https://jckantor.github.io/cbe30338-2021/01.05-Assignment-1.html)
 
-### [Chapter 2.0 Process Modeling](https://jckantor.github.io/cbe30338-2021/02.00-Process-Modeling.html)
+### [Chapter 2.0 Linear Process Models](https://jckantor.github.io/cbe30338-2021/02.00-Process-Modeling.html)
 - [2.1 One Compartment Pharmacokinetics](https://jckantor.github.io/cbe30338-2021/02.01-One-Compartment-Pharmacokinetics.html)
 - [2.2 Properties of Scalar First Order Linear Systems](https://jckantor.github.io/cbe30338-2021/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html)
 - [2.3 First Order Model for a Single Heater](https://jckantor.github.io/cbe30338-2021/02.03-First-Order-Model-for-a-Single-Heater.html)

@@ -14537,31 +14537,35 @@ a.anchor-link {
 </li>
 </ul>
 <h3 id="2.4-Model-Identification-for-the-Temperature-Control-Lab"><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html">2.4 Model Identification for the Temperature Control Lab</a><a class="anchor-link" href="#2.4-Model-Identification-for-the-Temperature-Control-Lab">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.1-Learning-Goals">2.4.1 Learning Goals</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.2-What-is-model-identification?">2.4.2 What is model identification?</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.3-Accessing-experimental-data">2.4.3 Accessing experimental data</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.3.1-Read-data-into-a-Pandas-DataFrame">2.4.3.1 Read data into a Pandas DataFrame</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.1-Accessing-experimental-data">2.4.1 Accessing experimental data</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.1.1-Read-data-into-a-Pandas-DataFrame">2.4.1.1 Read data into a Pandas DataFrame</a></li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.4-Comparing-experimental-data-to-model-predictions">2.4.4 Comparing experimental data to model predictions</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.5-Empirical-Modeling">2.4.5 Empirical Modeling</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.5.1-First-order-gain-and-time-constant">2.4.5.1 First order gain and time constant</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.5.2-First-order-with-time-delay">2.4.5.2 First order with time delay</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.2-Comparing-experimental-data-to-model-predictions">2.4.2 Comparing experimental data to model predictions</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.3-Empirical-Modeling">2.4.3 Empirical Modeling</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.3.1-First-order-gain-and-time-constant">2.4.3.1 First order gain and time constant</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.3.2-First-order-with-time-delay">2.4.3.2 First order with time delay</a></li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.6-Compute-first-order-model-predictions">2.4.6 Compute first-order model predictions</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.7-Find-the-best-fit">2.4.7 Find the best fit</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.8-Second-order-model">2.4.8 Second-order model</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.8.1-Dynamics-of-the-Heater/Sensor-System">2.4.8.1 Dynamics of the Heater/Sensor System</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.8.2-Best-fit">2.4.8.2 Best fit</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.4-First-order-Energy-balance-model">2.4.4 First order Energy balance model</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.5-Find-the-best-fit">2.4.5 Find the best fit</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.6-Second-order-model">2.4.6 Second-order model</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.6.1-Dynamics-of-the-Heater/Sensor-System">2.4.6.1 Dynamics of the Heater/Sensor System</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.6.2-Best-fit">2.4.6.2 Best fit</a></li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.9-Fourth-Order-Multi-Input-Multi-Output-Model">2.4.9 Fourth-Order Multi-Input Multi-Output Model</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.9.1-Model-derivation">2.4.9.1 Model derivation</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.9.2-Standard-form">2.4.9.2 Standard form</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.7-Fourth-Order-Multi-Input-Multi-Output-Model">2.4.7 Fourth-Order Multi-Input Multi-Output Model</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.7.1-Model-derivation">2.4.7.1 Model derivation</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.7.2-Standard-form">2.4.7.2 Standard form</a></li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.10-Linear-State-Space-models">2.4.10 Linear State Space models</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.8-Linear-State-Space-models">2.4.8 Linear State Space models</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.9-Lab-Assignment-2:-Identification-of-a-Multi-input,-Multi-output-Model-for-the-Temperature-Control-Laboratory">2.4.9 Lab Assignment 2: Identification of a Multi-input, Multi-output Model for the Temperature Control Laboratory</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.9.1-Exercise-1.">2.4.9.1 Exercise 1.</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.9.2-Exercise-2.">2.4.9.2 Exercise 2.</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html#2.4.9.3-Exercise-3.">2.4.9.3 Exercise 3.</a></li>
+</ul>
+</li>
 <li>Markdown Links<ul>
 <li><a href="https://pandas.pydata.org/">Pandas</a></li>
 <li><a href="https://docs.google.com/spreadsheets/d/1rV_oimh-GCYNP-xRP1HNrLvh7P4jZBSmwuqG3VPIaB0/edit?usp=sharing">data stored in a Google Sheet</a></li>

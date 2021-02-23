@@ -31,9 +31,9 @@ new materials, and make them accessible to students, teaching assistants, and ot
 
 ### [Chapter None](https://jckantor.github.io/cbe30338-2021/04.00-Process-Analytics.html)
 
-### [Chapter None](https://jckantor.github.io/cbe30338-2021/05.00-Optimization.html)
+### [Chapter 5.0 Optimization](https://jckantor.github.io/cbe30338-2021/05.00-Optimization.html)
 
-### [Chapter None](https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html)
+### [Chapter 6.0 Predictive Control](https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html)
 
-### [Chapter None](https://jckantor.github.io/cbe30338-2021/07.00-Projects.html)
+### [Chapter 7.0 Projects](https://jckantor.github.io/cbe30338-2021/07.00-Projects.html)
 

@@ -26,6 +26,14 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [2.4 Model Identification for the Temperature Control Lab](https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html)
 - [2.5 State-Space Models](https://jckantor.github.io/cbe30338-2021/02.05-State-Space-Models.html)
 
-### [Chapter 3.0 Linearization](https://jckantor.github.io/cbe30338-2021/03.00-Linearization.html)
-- [3.1 Hare and Lynx Population Dynamics](https://jckantor.github.io/cbe30338-2021/03.01-Hare-and-Lynx-Population-Dynamics.html)
+### [Chapter 3.0 Feedback Control](https://jckantor.github.io/cbe30338-2021/03.00-Feedback-Control.html)
+- [3.1 Case Study: Thermal Cycling for PCR](https://jckantor.github.io/cbe30338-2021/03.01-Case-Study-Thermal-Cycling-PCR.html)
+
+### [Chapter None](https://jckantor.github.io/cbe30338-2021/04.00-Process-Analytics.html)
+
+### [Chapter None](https://jckantor.github.io/cbe30338-2021/05.00-Optimization.html)
+
+### [Chapter None](https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html)
+
+### [Chapter None](https://jckantor.github.io/cbe30338-2021/07.00-Projects.html)
 

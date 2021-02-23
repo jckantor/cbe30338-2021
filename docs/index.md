@@ -26,6 +26,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [2.4 Model Identification for the Temperature Control Lab](https://jckantor.github.io/cbe30338-2021/02.04-Model-Identification.html)
 
 ### [Chapter 3.0 Feedback Control](https://jckantor.github.io/cbe30338-2021/03.00-Feedback-Control.html)
+- [3.1 Case Study: Thermal Cycling for PCR](https://jckantor.github.io/cbe30338-2021/03.01-Case-Study-Thermal-Cycling-PCR.html)
 
 ### [Chapter 4.0 Process Analytics](https://jckantor.github.io/cbe30338-2021/04.00-Process-Analytics.html)
 

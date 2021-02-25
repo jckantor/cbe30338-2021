@@ -27,6 +27,10 @@ new materials, and make them accessible to students, teaching assistants, and ot
 
 ### [Chapter 3.0 Feedback Control](https://jckantor.github.io/cbe30338-2021/03.00-Feedback-Control.html)
 - [3.1 Case Study: Thermal Cycling for PCR](https://jckantor.github.io/cbe30338-2021/03.01-Case-Study-Thermal-Cycling-PCR.html)
+- [3.2 Relay Control](https://jckantor.github.io/cbe30338-2021/03.02-Relay-Control.html)
+- [3.3 PID Control](https://jckantor.github.io/cbe30338-2021/03.03-PID_Control.html)
+- [3.4 Lab Assignment: PID Control](https://jckantor.github.io/cbe30338-2021/03.04-Lab-Assignment-PID-Control.html)
+- [3.5 Lab Assignment 4: PI Control](https://jckantor.github.io/cbe30338-2021/03.05-Lab-Assignment-PI-Control.html)
 
 ### [Chapter 4.0 Process Analytics](https://jckantor.github.io/cbe30338-2021/04.00-Process-Analytics.html)
 

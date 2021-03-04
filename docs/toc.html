@@ -14645,24 +14645,35 @@ a.anchor-link {
 <li><a href="https://jckantor.github.io/cbe30338-2021/03.04-Implementing-Controllers.html#3.4.5-Implementing-relay-control-as-a-Python-class">3.4.5 Implementing relay control as a Python class</a></li>
 </ul>
 <h3 id="3.5-Proportional-(P)-and-Proportional-Integral-(PI)-Control"><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html">3.5 Proportional (P) and Proportional-Integral (PI) Control</a><a class="anchor-link" href="#3.5-Proportional-(P)-and-Proportional-Integral-(PI)-Control">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.1-Learning-Goals">3.5.1 Learning Goals</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.1.1-Descripton">3.5.1.1 Descripton</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.1.2-Implementation">3.5.1.2 Implementation</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.1-Learning-Goals">3.5.1 Learning Goals</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.2-Proportional-Control">3.5.2 Proportional Control</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.2.1-Descripton">3.5.2.1 Descripton</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.2.2-Implementation">3.5.2.2 Implementation</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.2.3-Controller-Testing">3.5.2.3 Controller Testing</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.2.4-Empirical-Tuning-Rules">3.5.2.4 Empirical Tuning Rules</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.2.5-Steady-State-Offset">3.5.2.5 Steady-State Offset</a></li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.2-Proportional-Integral-(PI">3.5.2 Proportional-Integral (PI) Control</a>-Control)<ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.2.1-Position-form">3.5.2.1 Position form</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.2.2-Velocity-form">3.5.2.2 Velocity form</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.3-Proportional-Integral-(PI">3.5.3 Proportional-Integral (PI) Control</a>-Control)<ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.3.1-Position-form">3.5.3.1 Position form</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.3.2-Velocity-form">3.5.3.2 Velocity form</a></li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.3-Anti-Reset-Windup">3.5.3 Anti-Reset Windup</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.3.1-Integral-windup">3.5.3.1 Integral windup</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.4-Anti-Reset-Windup">3.5.4 Anti-Reset Windup</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.4.1-Integral-or-resent-windup">3.5.4.1 Integral or resent windup</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.4.2-Anti-reset-windup---Part-1">3.5.4.2 Anti-reset windup - Part 1</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.4.3-Anti-reset-Windup---Part-2">3.5.4.3 Anti-reset Windup - Part 2</a></li>
+</ul>
+</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html#3.5.5-Bumpless-Transfer">3.5.5 Bumpless Transfer</a></li>
+<li>Markdown Figures<ul>
+<li><a href="https://www.portescap.com/-/media/project/automation-specialty/portescap/portescap/products/workings-of-encoders/encoder_chart_720x450_1_0.jpg">https://www.portescap.com/-/media/project/automation-specialty/portescap/portescap/products/workings-of-encoders/encoder_chart_720x450_1_0.jpg</a></li>
 </ul>
 </li>
 </ul>
-<h3 id="3.6-Lab-Assignment-3:-Relay-and-PI-Control"><a href="https://jckantor.github.io/cbe30338-2021/03.06-Lab-Assignment-PID-Control.html">3.6 Lab Assignment 3: Relay and PI Control</a><a class="anchor-link" href="#3.6-Lab-Assignment-3:-Relay-and-PI-Control">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.06-Lab-Assignment-PID-Control.html#3.6.1-Exercise-1.-Relay-(or-On-Off">3.6.1 Exercise 1. Relay (or On-Off) control</a>-control)</li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/03.06-Lab-Assignment-PID-Control.html#3.6.2-Exercise-2.-Implementing-a-PI-Controller">3.6.2 Exercise 2. Implementing a PI Controller</a></li>
+<h3 id="3.6-Lab-Assignment-3:-Relay-and-PI-Control"><a href="https://jckantor.github.io/cbe30338-2021/03.06-Lab-Assignment-PI-Control.html">3.6 Lab Assignment 3: Relay and PI Control</a><a class="anchor-link" href="#3.6-Lab-Assignment-3:-Relay-and-PI-Control">&#182;</a></h3><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.06-Lab-Assignment-PI-Control.html#3.6.1-Exercise-1.-Relay-(or-On-Off">3.6.1 Exercise 1. Relay (or On-Off) control</a>-control)</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/03.06-Lab-Assignment-PI-Control.html#3.6.2-Exercise-2.-Implementing-a-PI-Controller">3.6.2 Exercise 2. Implementing a PI Controller</a></li>
 </ul>
 <h2 id="Chapter-4.0-Process-Analytics"><a href="https://jckantor.github.io/cbe30338-2021/04.00-Process-Analytics.html">Chapter 4.0 Process Analytics</a><a class="anchor-link" href="#Chapter-4.0-Process-Analytics">&#182;</a></h2><h2 id="Chapter-5.0-Optimization"><a href="https://jckantor.github.io/cbe30338-2021/05.00-Optimization.html">Chapter 5.0 Optimization</a><a class="anchor-link" href="#Chapter-5.0-Optimization">&#182;</a></h2><h2 id="Chapter-6.0-Predictive-Control"><a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">Chapter 6.0 Predictive Control</a><a class="anchor-link" href="#Chapter-6.0-Predictive-Control">&#182;</a></h2><h2 id="Chapter-7.0-Projects"><a href="https://jckantor.github.io/cbe30338-2021/07.00-Projects.html">Chapter 7.0 Projects</a><a class="anchor-link" href="#Chapter-7.0-Projects">&#182;</a></h2>
 </div>

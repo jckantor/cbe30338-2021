@@ -30,8 +30,9 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [3.2 Setpoints](https://jckantor.github.io/cbe30338-2021/03.02-Setpoints.html)
 - [3.3 Relay Control](https://jckantor.github.io/cbe30338-2021/03.03-Relay-Control.html)
 - [3.4 Implementing Controllers in Python](https://jckantor.github.io/cbe30338-2021/03.04-Implementing-Controllers.html)
-- [3.5 Proportional (P) and Proportional-Integral (PI) Control](https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html)
+- [3.5 Practical Proportional (P) and Proportional-Integral (PI) Control](https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control-Copy1.html)
 - [3.6 Lab Assignment 3: Relay and PI Control](https://jckantor.github.io/cbe30338-2021/03.06-Lab-Assignment-PI-Control.html)
+- [3.7 Proportional (P) and Proportional-Integral (PI) Control](https://jckantor.github.io/cbe30338-2021/03.07-Proportional-Integral-Control.html)
 
 ### [Chapter 4.0 Process Analytics](https://jckantor.github.io/cbe30338-2021/04.00-Process-Analytics.html)
 

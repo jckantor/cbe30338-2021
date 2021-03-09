@@ -35,6 +35,12 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [3.7 Proportional (P) and Proportional-Integral (PI) Control](https://jckantor.github.io/cbe30338-2021/03.07-Proportional-Integral-Control.html)
 
 ### [Chapter 4.0 Process Analytics](https://jckantor.github.io/cbe30338-2021/04.00-Process-Analytics.html)
+- [4.1 Process Historian](https://jckantor.github.io/cbe30338-2021/04.01-Process-Historians.html)
+- [4.2 State Estimation](https://jckantor.github.io/cbe30338-2021/04.02-State-Estimation.html)
+- [4.3 Lab Assignment: State Estimation](https://jckantor.github.io/cbe30338-2021/04.03-Lab-Assigment-State-Estimation.html)
+- [4.4 Anomaly Detection](https://jckantor.github.io/cbe30338-2021/04.04-Anomaly-Detection.html)
+- [4.5 Process Analytics](https://jckantor.github.io/cbe30338-2021/04.05-Machine-Learning.html)
+- [4.6 Anomaly Detection](https://jckantor.github.io/cbe30338-2021/04.06-Lab-Assignment-Anomaly-Detection.html)
 
 ### [Chapter 5.0 Optimization](https://jckantor.github.io/cbe30338-2021/05.00-Optimization.html)
 

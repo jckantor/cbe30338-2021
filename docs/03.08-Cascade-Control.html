@@ -14294,7 +14294,16 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="3.8.1-Learning-Goals">3.8.1 Learning Goals<a class="anchor-link" href="#3.8.1-Learning-Goals">&#182;</a></h2><p>Let's consider a simple level control system</p>
+<h2 id="3.8.1-Learning-Goals">3.8.1 Learning Goals<a class="anchor-link" href="#3.8.1-Learning-Goals">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="3.8.2-What-is-Cascade-Control?">3.8.2 What is Cascade Control?<a class="anchor-link" href="#3.8.2-What-is-Cascade-Control?">&#182;</a></h2><p>Cascade control is a means of coordinating individual controllers to incorporate additional sensors into the regulation of key control variables. To understand how this can work, consider a simple level control system</p>
 <p><img src="https://cdn.instrumentationtools.com/wp-content/uploads/2016/03/instrumentationtools.com_single-loop-control.png" alt=""></p>
 <p>What are some typical disturbances?</p>
 <ul>
@@ -14309,8 +14318,8 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <li>primary (aka outer) control loop for level</li>
 <li>secondary (aka inner) control loop for flow</li>
 </ul>
-<p>The job of the flow controller is to maintain a desired flowrate. If it does its job, then changes in flow due to downstream pressure, viscosity, or pump performance will be minimized <strong>before</strong> they substantially change in the tank level.</p>
-<p>The job of the level controller is to specify the desired flowrate.  It does this by specifying a setpoint for the inner loop.</p>
+<p>The job of the secondary flow controller is to maintain a desired flowrate. If it does its job then changes in flow due to downstream pressure, viscosity, or pump performance will be minimized <strong>before</strong> they substantially change in the tank level. The job of the primary level controller is to set the desired flowrate.  It does this by providing a setpoint for operation of the inner loop.</p>
+<p>This coordination of primary and secondary level controlers (or outer and inner controllers) uses multiple measurements (level and flow) to accomplish a single control objective (maintain constant level). The result is a faster response to disturbances and improved regulatory control.</p>
 
 </div>
 </div>
@@ -14320,7 +14329,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="3.8.2-Cascade-Control-for-the-Temperature-Control-Lab">3.8.2 Cascade Control for the Temperature Control Lab<a class="anchor-link" href="#3.8.2-Cascade-Control-for-the-Temperature-Control-Lab">&#182;</a></h2><p><img src="https://jckantor.github.io/cbe30338-2021/figures/cascade_control_1.png" alt=""></p>
+<h2 id="3.8.3-Cascade-Control-for-the-Temperature-Control-Lab">3.8.3 Cascade Control for the Temperature Control Lab<a class="anchor-link" href="#3.8.3-Cascade-Control-for-the-Temperature-Control-Lab">&#182;</a></h2><p><img src="https://jckantor.github.io/cbe30338-2021/figures/cascade_control_1.png" alt=""></p>
 
 </div>
 </div>
@@ -14709,7 +14718,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="3.8.3-PI-Control">3.8.3 PI Control<a class="anchor-link" href="#3.8.3-PI-Control">&#182;</a></h2><p>Proportional-Integral (PI) Control is velecity form</p>
+<h2 id="3.8.4-PI-Control">3.8.4 PI Control<a class="anchor-link" href="#3.8.4-PI-Control">&#182;</a></h2><p>Proportional-Integral (PI) Control is velecity form</p>
 \begin{align}
 MV_k &amp; = MV_{k-1} - K_P (e_{k} - e_{k-1}) - h K_I e_k
 \end{align}<p>where $MV_0= \bar{MV}$ is the initial value, and the error $e_k$ is the difference between the process variable and setpoint</p>
@@ -14831,7 +14840,7 @@ e_k &amp; = PV_k - SP_k \\
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="3.8.4-What-is-Integral-(aka-Reset)-Windup?">3.8.4 What is Integral (aka Reset) Windup?<a class="anchor-link" href="#3.8.4-What-is-Integral-(aka-Reset)-Windup?">&#182;</a></h2><p>In the next cell we're doing an experiment in which we increase the magnitude of the control gains to see if we an acheive even better control performance. Let's see how we do.</p>
+<h2 id="3.8.5-What-is-Integral-(aka-Reset)-Windup?">3.8.5 What is Integral (aka Reset) Windup?<a class="anchor-link" href="#3.8.5-What-is-Integral-(aka-Reset)-Windup?">&#182;</a></h2><p>In the next cell we're doing an experiment in which we increase the magnitude of the control gains to see if we an acheive even better control performance. Let's see how we do.</p>
 
 </div>
 </div>
@@ -14931,7 +14940,7 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="3.8.4.1-Anti-reset-windup---Version-1">3.8.4.1 Anti-reset windup - Version 1<a class="anchor-link" href="#3.8.4.1-Anti-reset-windup---Version-1">&#182;</a></h3><p>There several common strategies for avoiding integral (aka reset) windup. The first of these, which should be part of any practical implementation, is to limit computed values of manipulated variable to the range of allowable values. This will avoid $MV$ 'winding up' due to range limits.</p>
+<h3 id="3.8.5.1-Anti-reset-windup---Version-1">3.8.5.1 Anti-reset windup - Version 1<a class="anchor-link" href="#3.8.5.1-Anti-reset-windup---Version-1">&#182;</a></h3><p>There several common strategies for avoiding integral (aka reset) windup. The first of these, which should be part of any practical implementation, is to limit computed values of manipulated variable to the range of allowable values. This will avoid $MV$ 'winding up' due to range limits.</p>
 \begin{align}
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k} 
 \end{align}\begin{align}
@@ -15029,7 +15038,7 @@ MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="3.8.4.2-Anti-reset-Windup---Version-2">3.8.4.2 Anti-reset Windup - Version 2<a class="anchor-link" href="#3.8.4.2-Anti-reset-Windup---Version-2">&#182;</a></h3><p>A more subtle form of windup occurs when the manipulated variable is subject to external interventions. This can occur when a valve stem in a process application gets stuck, an operator or user intervenes and resets a mechanical actuator, or there is some sort of system failure.</p>
+<h3 id="3.8.5.2-Anti-reset-Windup---Version-2">3.8.5.2 Anti-reset Windup - Version 2<a class="anchor-link" href="#3.8.5.2-Anti-reset-Windup---Version-2">&#182;</a></h3><p>A more subtle form of windup occurs when the manipulated variable is subject to external interventions. This can occur when a valve stem in a process application gets stuck, an operator or user intervenes and resets a mechanical actuator, or there is some sort of system failure.</p>
 <p>For these reasons, practical control systems often include a field measurement of the manipulated variable that is fed back to the controller. The following image, for example, shows a pneumatically operated globe valve with a positioner, and with feedback of position to the central control system.</p>
 <p><p><a href="https://commons.wikimedia.org/wiki/File:Pl_control_valve.jpg#/media/File:Pl_control_valve.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Pl_control_valve.jpg" alt="Pl control valve.jpg" height="720" width="540"></a></p>
 <p><a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a></p>
@@ -15248,7 +15257,7 @@ TCLab Model disconnected successfully.
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="3.8.4.3-Anti-reset-Windup">3.8.4.3 Anti-reset Windup<a class="anchor-link" href="#3.8.4.3-Anti-reset-Windup">&#182;</a></h3>
+<h3 id="3.8.5.3-Anti-reset-Windup">3.8.5.3 Anti-reset Windup<a class="anchor-link" href="#3.8.5.3-Anti-reset-Windup">&#182;</a></h3>
 </div>
 </div>
 
@@ -15340,7 +15349,7 @@ TCLab Model disconnected successfully.
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="3.8.5-Manual-Operation">3.8.5 Manual Operation<a class="anchor-link" href="#3.8.5-Manual-Operation">&#182;</a></h2><p>Manual operation allows the user to specify the manipulated variable.  Set $SP = PV$.</p>
+<h2 id="3.8.6-Manual-Operation">3.8.6 Manual Operation<a class="anchor-link" href="#3.8.6-Manual-Operation">&#182;</a></h2><p>Manual operation allows the user to specify the manipulated variable.  Set $SP = PV$.</p>
 
 </div>
 </div>
@@ -15399,7 +15408,7 @@ TCLab Model disconnected successfully.
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="3.8.6-Bumpless-Transfer">3.8.6 Bumpless Transfer<a class="anchor-link" href="#3.8.6-Bumpless-Transfer">&#182;</a></h2><ul>
+<h2 id="3.8.7-Bumpless-Transfer">3.8.7 Bumpless Transfer<a class="anchor-link" href="#3.8.7-Bumpless-Transfer">&#182;</a></h2><ul>
 <li>Remove setpoint from proportional term</li>
 </ul>
 
@@ -15411,7 +15420,7 @@ TCLab Model disconnected successfully.
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="3.8.6.1-Bumpless-Transfer">3.8.6.1 Bumpless Transfer<a class="anchor-link" href="#3.8.6.1-Bumpless-Transfer">&#182;</a></h3>\begin{align}
+<h3 id="3.8.7.1-Bumpless-Transfer">3.8.7.1 Bumpless Transfer<a class="anchor-link" href="#3.8.7.1-Bumpless-Transfer">&#182;</a></h3>\begin{align}
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(PV_{k} - PV_{k-1}) - h K_i e_{k} 
 \end{align}\begin{align}
 MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)

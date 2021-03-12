@@ -33,7 +33,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [3.5 Practical Proportional (P) and Proportional-Integral (PI) Control](https://jckantor.github.io/cbe30338-2021/03.05-Proportional-Integral-Control.html)
 - [3.6 Lab Assignment 3: Relay and PI Control](https://jckantor.github.io/cbe30338-2021/03.06-Lab-Assignment-PI-Control.html)
 - [3.7 Integral Windup and Bumpless Transfer](https://jckantor.github.io/cbe30338-2021/03.07-Integral-Windup-and-Bumpless-Transfer.html)
-- [3.8 Cascade Control](https://jckantor.github.io/cbe30338-2021/03.08-Cascade-Control.html)
+- [3.8 Lab Assignment 4: Cascade Control](https://jckantor.github.io/cbe30338-2021/03.08-Lab-Assignment-Cascade-Control.html)
 
 ### [Chapter 4.0 Process Analytics](https://jckantor.github.io/cbe30338-2021/04.00-Process-Analytics.html)
 - [4.1 Process Historian](https://jckantor.github.io/cbe30338-2021/04.01-Process-Historians.html)

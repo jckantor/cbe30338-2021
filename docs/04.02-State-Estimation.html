@@ -14285,7 +14285,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="4.2-Open-and-Closed-Loop-State-Estimation">4.2 Open and Closed Loop State Estimation<a class="anchor-link" href="#4.2-Open-and-Closed-Loop-State-Estimation">&#182;</a></h1><p>This notebook outlines state estimation using the TCLab hardware.</p>
+<h1 id="4.2-State-Estimation">4.2 State Estimation<a class="anchor-link" href="#4.2-State-Estimation">&#182;</a></h1><p>This notebook outlines state estimation using the TCLab hardware.</p>
 
 </div>
 </div>
@@ -15388,10 +15388,16 @@ y - \hat{y} &amp; = C x - C\hat{x} \\
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="4.2.6-Lab-Assignment-5">4.2.6 Lab Assignment 5<a class="anchor-link" href="#4.2.6-Lab-Assignment-5">&#182;</a></h2><p>Step 1. Repeat Exercise 3 from Lab Assignment 2 ... this will give you parameters for a 4 state model of your device.</p>
-<p>Step 2. Rewrite the equations for the four state model in state space form.</p>
-<p>Step 3. Implement an observer that utilizing measurements T1 and T2, and inputs Q1 and Q2, to estimate the state.</p>
-<p>Step 4. Implement relay control for the heater temperatures T1H and T2H using constant setpoints of 45 and 40 degrees, respectively. Compare the performance with and without state estimation.</p>
+<h2 id="4.2.6-Lab-Assignment-5">4.2.6 Lab Assignment 5<a class="anchor-link" href="#4.2.6-Lab-Assignment-5">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="4.2.6.1-Step-1.-Estimate-model-parameters">4.2.6.1 Step 1. Estimate model parameters<a class="anchor-link" href="#4.2.6.1-Step-1.-Estimate-model-parameters">&#182;</a></h3><p>Repeat Exercise 3 from Lab Assignment 2 ... this will give you parameters for a 4 state model of your device.</p>
 
 </div>
 </div>
@@ -15401,28 +15407,29 @@ y - \hat{y} &amp; = C x - C\hat{x} \\
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><!--NAVIGATION-->
-&lt; <a href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/03.00-State-Estimation.ipynb">State Estimation</a> | <a href="toc.ipynb">Contents</a> | <a href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/04.00-Feedback-Control.ipynb">Feedback Control</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/03.01-Open-and-Closed-Loop-Estimation.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/03.01-Open-and-Closed-Loop-Estimation.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+<h3 id="4.2.6.2-Step-2.-Create-state-space-model">4.2.6.2 Step 2. Create state-space model<a class="anchor-link" href="#4.2.6.2-Step-2.-Create-state-space-model">&#182;</a></h3><p>Rewrite the equations for the four state model in state space form.</p>
 
 </div>
 </div>
 
 
 
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="4.2.6.3-Step-3.-Implement-a-state-estimator">4.2.6.3 Step 3. Implement a state estimator<a class="anchor-link" href="#4.2.6.3-Step-3.-Implement-a-state-estimator">&#182;</a></h3><p>Implement a state estimate utilizing measurements T1 and T2, and inputs Q1 and Q2, to estimate the state.</p>
 
-     </div>
-</div>
 </div>
 </div>
 
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="4.2.6.4-Step-4.-Implement-relay-control-for-the-heater-temperatures-T1H-and-T2H">4.2.6.4 Step 4. Implement relay control for the heater temperatures T1H and T2H<a class="anchor-link" href="#4.2.6.4-Step-4.-Implement-relay-control-for-the-heater-temperatures-T1H-and-T2H">&#182;</a></h3><p>using constant setpoints of 45 and 40 degrees, respectively. Compare the performance with and without state estimation.</p>
+
+</div>
 </div>
 
 

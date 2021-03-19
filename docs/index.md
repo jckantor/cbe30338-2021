@@ -37,7 +37,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 
 ### [Chapter 4.0 Process Analytics](https://jckantor.github.io/cbe30338-2021/04.00-Process-Analytics.html)
 - [4.1 Data/Process/Operational Historian](https://jckantor.github.io/cbe30338-2021/04.01-Process-Historians.html)
-- [4.2 Open and Closed Loop State Estimation](https://jckantor.github.io/cbe30338-2021/04.02-State-Estimation.html)
+- [4.2 State Estimation](https://jckantor.github.io/cbe30338-2021/04.02-State-Estimation.html)
 - [4.3 Lab Assignment: State Estimation](https://jckantor.github.io/cbe30338-2021/04.03-Lab-Assigment-State-Estimation.html)
 - [4.4 Anomaly Detection](https://jckantor.github.io/cbe30338-2021/04.04-Anomaly-Detection.html)
 - [4.5 Machine Learning](https://jckantor.github.io/cbe30338-2021/04.05-Machine-Learning.html)

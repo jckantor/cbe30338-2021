@@ -34,11 +34,12 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [3.6 Lab Assignment 3: Relay and PI Control](https://jckantor.github.io/cbe30338-2021/03.06-Lab-Assignment-PI-Control.html)
 - [3.7 Integral Windup and Bumpless Transfer](https://jckantor.github.io/cbe30338-2021/03.07-Integral-Windup-and-Bumpless-Transfer.html)
 - [3.8 Lab Assignment 4: Cascade Control](https://jckantor.github.io/cbe30338-2021/03.08-Lab-Assignment-Cascade-Control.html)
+- [3.9 Lab Assignment 4: Solution](https://jckantor.github.io/cbe30338-2021/03.09-Lab-Assignment-Solution.html)
 
 ### [Chapter 4.0 Process Analytics](https://jckantor.github.io/cbe30338-2021/04.00-Process-Analytics.html)
 - [4.1 Data/Process/Operational Historian](https://jckantor.github.io/cbe30338-2021/04.01-Process-Historians.html)
 - [4.2 State Estimation](https://jckantor.github.io/cbe30338-2021/04.02-State-Estimation.html)
-- [4.3 Lab Assignment: State Estimation](https://jckantor.github.io/cbe30338-2021/04.03-Lab-Assigment-State-Estimation.html)
+- [4.3 Lab Assignment 5: State Estimation](https://jckantor.github.io/cbe30338-2021/04.03-Lab-Assigment-State-Estimation.html)
 - [4.4 Anomaly Detection](https://jckantor.github.io/cbe30338-2021/04.04-Anomaly-Detection.html)
 - [4.5 Machine Learning](https://jckantor.github.io/cbe30338-2021/04.05-Machine-Learning.html)
 - [4.6 Lab Assignment: Anomaly Detection](https://jckantor.github.io/cbe30338-2021/04.06-Lab-Assignment-Anomaly-Detection.html)

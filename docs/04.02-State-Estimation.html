@@ -15485,6 +15485,17 @@ $$\hat{x}_{k} = \hat{x}_{k}^{pred} - L (C\hat{x}_{k}^{pred} - y_k)$$<p></p>
 
 
 
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Zounds!!  We now have an estimator that locks on to the measured value of the sensor temperature.</p>
+<p>Now, if we really trust our model, let's take it a step further and control the estimated heater temperature. The following cell replaaces the temperature measurement in the relay feedback using estimated heater temperature. Measurements are still be used, but for estimation raather than directly in the controller feedback.</p>
+
+</div>
+</div>
+
+
+
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -15627,17 +15638,6 @@ $$\hat{x}_{k} = \hat{x}_{k}^{pred} - L (C\hat{x}_{k}^{pred} - y_k)$$<p></p>
 
 </div>
 
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Zounds!!  We now have an estimator that locks on to the measured value of the sensor temperature.</p>
-<p>Now, if we really trust our model, let's take it a step further, and control the estimated heater temperature.</p>
-
-</div>
 </div>
 
 

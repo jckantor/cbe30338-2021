@@ -41,6 +41,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [4.2 State Estimation](https://jckantor.github.io/cbe30338-2021/04.02-State-Estimation.html)
 - [4.3 Lab Assignment 5: State Estimation](https://jckantor.github.io/cbe30338-2021/04.03-Lab-Assigment-State-Estimation.html)
 - [4.4 Anomaly Detection](https://jckantor.github.io/cbe30338-2021/04.04-Anomaly-Detection.html)
+- [4.4 Estimation and Anamoly Detection](https://jckantor.github.io/cbe30338-2021/04.04-State-Estimation-Copy1.html)
 - [4.5 Machine Learning](https://jckantor.github.io/cbe30338-2021/04.05-Machine-Learning.html)
 - [4.6 Lab Assignment: Anomaly Detection](https://jckantor.github.io/cbe30338-2021/04.06-Lab-Assignment-Anomaly-Detection.html)
 

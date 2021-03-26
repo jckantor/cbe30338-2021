@@ -15176,7 +15176,7 @@ $$\frac{\hat{x}_{k} - \hat{x}_{k-1}}{t_k - t_{k-1}} = \underbrace{A \hat{x}_{k-1
 $$\hat{x}_k^{pred} = \hat{x}_{k-1} + (t_k - t_{k-1}) ( A \hat{x}_{k-1} + B_u u_{k-1} + B_d \hat{d}_{k-1})$$<ul>
 <li><strong>Measurement Correction:</strong> Use measurement $y_k$ to update $\hat{x}_{k}^{pred} \rightarrow \hat{x}_{k}$ with the equation</li>
 </ul>
-$$\hat{x}_{k} = \hat{x}_{k}^{pred} - L (C\hat{x}_{k}^{pred} - y_k)$$<p></p>
+$$\hat{x}_{k} = \hat{x}_{k}^{pred} - (t_k - t_{k-1}) L (C\hat{x}_{k}^{pred} - y_k)$$<p></p>
 <p>While the notation may be a little daunting, the underlying concepts are quite straightforward. At each time step we have two calculations to perform. First, use all available information to predict the current state using the process model. Second, when a measurement becomes available, compare the measure to the model prediction and apply an appropriate correction to the state estimate.</p>
 <p>Let's see how this works in practice. The next cell introduces <code>tclab_observer</code>, Python generator that creates instances of observers using the two-state model.</p>
 

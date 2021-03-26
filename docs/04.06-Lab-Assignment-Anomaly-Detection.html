@@ -15081,6 +15081,15 @@ y &amp; = \begin{bmatrix}C &amp; 0 \end{bmatrix} \begin{bmatrix}x \\ d \end{bmat
 
 
 
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="4.6.2.1-Testing-Disturbance-Estimator">4.6.2.1 Testing Disturbance Estimator<a class="anchor-link" href="#4.6.2.1-Testing-Disturbance-Estimator">&#182;</a></h3>
+</div>
+</div>
+
+
+
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -15244,13 +15253,13 @@ y &amp; = \begin{bmatrix}C &amp; 0 \end{bmatrix} \begin{bmatrix}x \\ d \end{bmat
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="4.6.2.1-Exercise-2.">4.6.2.1 Exercise 2.<a class="anchor-link" href="#4.6.2.1-Exercise-2.">&#182;</a></h3><p>Implement a disturbance estimator for your copy of the Temperature Control Lab.</p>
+<h3 id="4.6.2.2-Exercise-2.">4.6.2.2 Exercise 2.<a class="anchor-link" href="#4.6.2.2-Exercise-2.">&#182;</a></h3><p>Implement a disturbance estimator for your copy of the Temperature Control Lab.</p>
 <ol>
 <li><p>Using the matrix parameters used for Exercise 1 of this assignment, compute and report numerical values for augmented matrices $A_{aug}$, $B_{aug}$, $C_{aug}$ described above.</p>
 </li>
-<li><p>Using the results of exercise 1, choose an initial value for $L_{aug}$. Place four of the eigenvalues to match the eigenvalues placed in exercise 1.  The fifth eigenvalue should have a negative value corresponding to a time constant chosen to between 20 and 100 seconds.</p>
+<li><p>Using the results of exercise 1, choose an initial value for $L_{aug}$. Place four of the eigenvalues to match the eigenvalues placed in exercise 1.  The fifth eigenvalue should have a negative value corresponding to a time constant chosen to between 20 and 100 seconds. Test your code as shown above.</p>
 </li>
-<li><p>Test your disturbance estimator on your copy of the Temperature Control Lab. Try to detect changes in the environment surrounding your device, such placing in cooler, warmer, or breezy place. A hair dryer would certainly do the job. Does your disturbance estimator detect the change?  If needed, choose a different time constant in part 2.</p>
+<li><p>Test your disturbance estimator on your copy of the Temperature Control Lab. You will need to adapt the testing code presented above for this purpose. Try to detect changes in the environment surrounding your device, such placing in cooler, warmer, or breezy place. A hair dryer would certainly do the job. Does your disturbance estimator detect the change?  If needed, choose a different time constant in part 2.</p>
 </li>
 </ol>
 

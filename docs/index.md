@@ -11,6 +11,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 ### [Data Index](https://jckantor.github.io/cbe30338-2021/data_index.html)
 ### [Figure Index](https://jckantor.github.io/cbe30338-2021/figure_index.html)
 ### [Python Module Index](https://jckantor.github.io/cbe30338-2021/python_index.html)
+### [Tag Index](https://jckantor.github.io/cbe30338-2021/tag_index.html)
 
 ### [Chapter 1.0 Introduction](https://jckantor.github.io/cbe30338-2021/01.00-Introduction.html)
 - [1.1 Schedule and Course Organization](https://jckantor.github.io/cbe30338-2021/01.01-Schedule.html)
@@ -42,10 +43,18 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [4.3 Lab Assignment 5: State Estimation](https://jckantor.github.io/cbe30338-2021/04.03-Lab-Assigment-State-Estimation.html)
 - [4.4 Anomaly Detection](https://jckantor.github.io/cbe30338-2021/04.04-Anomaly-Detection.html)
 - [4.4 Estimation and Anamoly Detection](https://jckantor.github.io/cbe30338-2021/04.04-State-Estimation-Copy1.html)
-- [4.5 Machine Learning](https://jckantor.github.io/cbe30338-2021/04.05-Machine-Learning.html)
 - [4.6 Lab Assignment 6: Anomaly Detection](https://jckantor.github.io/cbe30338-2021/04.06-Lab-Assignment-Anomaly-Detection.html)
+- [4.7 Observer Synthesis using Linear Matrix Inequalities](https://jckantor.github.io/cbe30338-2021/04.07-Observer-Synthesis-LMI.html)
 
 ### [Chapter 5.0 Optimization](https://jckantor.github.io/cbe30338-2021/05.00-Optimization.html)
+- [5.1 Linear Production Model](https://jckantor.github.io/cbe30338-2021/05.01-Linear-Production-Model.html)
+- [5.2 Linear Programming](https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.html)
+- [5.3 Linear Production Model in Pyomo](https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html)
+- [5.4 Linear Programming in Pyomo](https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming-in-Pyomo.html)
+- [5.6 Design of a Cold Weather Fuel](https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html)
+- [5.6 Linear Blending Problem](https://jckantor.github.io/cbe30338-2021/05.06-Linear-Blending-Problem.html)
+- [5.7 Gasoline Blending](https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html)
+- [5.99 Pyomo Examples](https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html)
 
 ### [Chapter 6.0 Predictive Control](https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html)
 

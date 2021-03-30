@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/04.04-State-Estimation-Copy1.html">4.4 Estimation and Anamoly Detection</a> | <a href="toc.html">Contents</a> | <a href="https://jckantor.github.io/cbe30338-2021/04.06-Lab-Assignment-Anomaly-Detection.html">4.6 Lab Assignment 6: Anomaly Detection</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/04.05-Machine-Learning.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/04.05-Machine-Learning.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.html">5.2 Linear Programming</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming-in-Pyomo.html">5.4 Linear Programming in Pyomo</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,8 +14285,472 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="4.5-Machine-Learning">4.5 Machine Learning<a class="anchor-link" href="#4.5-Machine-Learning">&#182;</a></h1>
+<h1 id="5.3-Linear-Production-Model-in-Pyomo">5.3 Linear Production Model in Pyomo<a class="anchor-link" href="#5.3-Linear-Production-Model-in-Pyomo">&#182;</a></h1><p><a href="http://www.pyomo.org/">Pyomo</a> is a state-of-the-art language for solving optimization problems embedded within Python. Using Pyomo, a user can describe optimization model by specifying decision <strong>variables</strong>, <strong>constraints</strong>, and an optimization <strong>objective</strong>. Pyomo includes a rich set of features to enable modeling of complex systems, specifying a solver, and displaying the solution.</p>
+
 </div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.3.1-Installation">5.3.1 Installation<a class="anchor-link" href="#5.3.1-Installation">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.3.1.1-Anaconda">5.3.1.1 Anaconda<a class="anchor-link" href="#5.3.1.1-Anaconda">&#182;</a></h3><p>These instructions assume you have previously installed a suitable Python development environment, in particular the <a href="https://www.anaconda.com/download">Anaconda package for Python 3.x</a>.</p>
+<p>The following commands will install Pyomo and extra files plus the glpk (MILP) and ipopt (nonlinear) solvers.  These commands should be executed one at a time from the terminal window on MacOS, or the Anaconda command prompt on Windows 10.</p>
+
+<pre><code>conda install -c conda-forge pyomo
+conda install -c conda-forge pyomo.extras
+conda install -c conda-forge glpk
+conda install -c conda-forge ipopt
+
+</code></pre>
+<p>Optionally, you may also wish to install the COIN-OR cbc solvers.</p>
+
+<pre><code>conda install -c conda-forge coincbc
+
+</code></pre>
+<p>This installation provides a capable open-source optimization suite with multiple solvers well suited a wide range of process applications. The solvers are</p>
+<ul>
+<li><a href="https://en.wikibooks.org/wiki/GLPK">glpk</a>. "GNU Linear Programming Kit" is a software package written in highly portable C for the solution of mixed integer linear programming and related problems.</li>
+<li><a href="https://en.wikipedia.org/wiki/IPOPT">ipopt</a>. "Interior Point Optimizer" for large scale nonlinear optimization of continuous systems. </li>
+<li><a href="https://projects.coin-or.org/Cbc">cbc</a>. "COIN-OR Branch and Cut" is a mixed integer linear programming solver written in C++. It generally solves the same problems as glpk, but can run multiple threads, and is often faster and more robust.</li>
+</ul>
+<p>This suite can be further augmented by installing additional solvers from open-source and commercial sources.</p>
+<p>NOTE: If command window procedure fails on your laptop, you might try running these commands in a Jupyter notebook. In that case, each command needs to be prefixed with the shell escape <code>!</code>, and followed by the <code>-y</code> option to handle the y/n 
+interaction. For example, the basic pyomo install command would read</p>
+
+<pre><code>!conda install -c conda-forge pyomo -y
+
+</code></pre>
+<p>To provide timely feedback, each install command should be executed in a separate cell.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.3.1.2-Google-Colab">5.3.1.2 Google Colab<a class="anchor-link" href="#5.3.1.2-Google-Colab">&#182;</a></h3>
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%capture</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">pyomo</span>
+<span class="err">!</span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="o">-</span><span class="n">qq</span> <span class="n">glpk</span><span class="o">-</span><span class="n">utils</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.3.2-Algebraic-Modeling-Languages">5.3.2 Algebraic Modeling Languages<a class="anchor-link" href="#5.3.2-Algebraic-Modeling-Languages">&#182;</a></h2><p>One of the difficult aspects of applying optimization methods to large scale applications is creating and maintaining the underlying model. An application may include tens, hundreds, even thousdands of variables and constraints, and may incorporate data extracted in real time from sensor networks and corporate data bases. The resulting models can be very complex, and essentially impossible to create and maintain without use of software tools.</p>
+<p>Algebraic Modeling Languages (AMLs) were developed to assist with the creation and maintainence of optimization models. <a href="https://en.wikipedia.org/wiki/General_Algebraic_Modeling_System">GAMS</a> (General Algebraic Modeling System, <a href="https://www.gams.com/">https://www.gams.com/</a>), first proposed in 1976, was among the first and still widely used. Other notable examples include <a href="https://en.wikipedia.org/wiki/AIMMS">AIMMS</a>, <a href="https://en.wikipedia.org/wiki/AMPL">AMPL</a>, and <a href="https://en.wikipedia.org/wiki/FICO_Xpress">FICO XPRESS</a>.</p>
+<p>In recent years, modeling for optimization has become more tightly integrated with scripting languages commonly used in science and engineering. Open-source examples include <a href="https://yalmip.github.io/">YALMIP</a> and <a href="http://web.cvxr.com/cvx/doc/">CVX</a> which are tightly integrated with Matlab, <a href="https://jump.readthedocs.io/en/latest/">JuMP</a> which works with Julia, and a variety of systems integrated with Python.</p>
+<p>Of the Python options, the open-source <a href="http://www.pyomo.org/">Pyomo</a> is perhaps the most ambitious and certainly the most aligned with the needs of process systems engineering.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.3.3-Key-Concepts-in-Pyomo">5.3.3 Key Concepts in Pyomo<a class="anchor-link" href="#5.3.3-Key-Concepts-in-Pyomo">&#182;</a></h2><p>A typical Pyomo application involves the creation of at least two Pyomo objects from the following classes:</p>
+<ul>
+<li><strong>ConcreteModel()</strong>  A python object representing the optimization problem to be solved.</li>
+<li><strong>SolverFactory()</strong> A python object representing the mathematical progamming software to be used for calculating a solution.</li>
+</ul>
+<p>There are a number of of open-source and commercial solvers that can be used with Pyomo. This simple structure allows one to test and find solvers suited to a particular application.</p>
+<p>A model, in turn, is composed of additional objects used to specify a problem. A minimal set of classes is needed to create useful models. These classes are:</p>
+<ul>
+<li><strong>Var()</strong> Objects representing variables determined in the course of solving a particular problem.</li>
+<li><strong>Objective()</strong> An object denoting the problem objective function that is to be either minimized or maximized.</li>
+<li><strong>Contraint()</strong> Objects representing problem constraints.</li>
+</ul>
+<p>The following cell presents a typical example.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.3.4-Example:-Linear-Production-Model-with-Constraints">5.3.4 Example: Linear Production Model with Constraints<a class="anchor-link" href="#5.3.4-Example:-Linear-Production-Model-with-Constraints">&#182;</a></h2><p>The mathematical formulation of a simple linear production model is given by</p>
+\begin{align}
+\max_{x,y \geq 0} &amp;\ 40\ x + 30\ y  &amp; \mbox{objective}\\
+\mbox{subject to:}\qquad \\
+x &amp; \leq 40  &amp; \mbox{demand constraint} \\
+x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \\
+2x + y &amp; \leq 100 &amp; \mbox{labor B constraint}
+\end{align}<p>where $x$ and $y$ are the rates of production (in units per week) for two products.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.3.4.1-Step-1.-Import-Pyomo.">5.3.4.1 Step 1. Import Pyomo.<a class="anchor-link" href="#5.3.4.1-Step-1.-Import-Pyomo.">&#182;</a></h3><p>The first step in any Pyomo project is to import relevant components of the Pyomo library. This can be done with the following python statement.</p>
+
+<pre><code>from pyomo.environ import *</code></pre>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.3.4.2-Step-2.-Create-the-model-object.">5.3.4.2 Step 2. Create the model object.<a class="anchor-link" href="#5.3.4.2-Step-2.-Create-the-model-object.">&#182;</a></h3><p>Pyomo provides two distinct methods to create models. Here we use <code>ConcreteModel()</code> to create a model instance which is appropriate when all of the data needed to complete the model is avaiable at the current time.</p>
+
+<pre><code>model = ConcreteModel()
+
+</code></pre>
+<p>The Python variable <code>model</code> stores the model instance. This could be any valid Python variable name.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.3.4.3-Step-3.-Add-the-Decision-Variables,-Objective,-and-Constraints-to-the-model-object.">5.3.4.3 Step 3. Add the Decision Variables, Objective, and Constraints to the model object.<a class="anchor-link" href="#5.3.4.3-Step-3.-Add-the-Decision-Variables,-Objective,-and-Constraints-to-the-model-object.">&#182;</a></h3><p>The first major component of a Pyomo model are decision variables which are added as fields to <code>model</code>. In the case we name the fields <code>model.x</code> and <code>model.y</code> corresponding to $x$ and $y$ in the process model. The Python class <code>Var()</code> is used to specify these as real numbers that must be greater than or equal to zero.</p>
+
+<pre><code>model.x = Var(domain=NonNegativeReals)
+model.y = Var(domain=NonNegativeReals)
+
+</code></pre>
+<p>As we will see in other examples, the <code>domain</code> can specify other types of decision variables including reals, integers, and booleans.</p>
+<p>The objective is specified as an algebraic expression involving the decision variables. Here we store the objective in <code>model.profit</code>, and use the optional keyword <code>sense</code> to specify a maximization problem.</p>
+
+<pre><code>model.profit = Objective(expr = 40*model.x + 30*model.y, sense=maximize)
+
+</code></pre>
+<p>Constraints are added as fields to the model, each constraint created using the <code>Constraint()</code> class. The constraints are specified using the <code>expr</code> keywork in the form of linear algebraic expressions of the decision variables.</p>
+
+<pre><code>model.demand = Constraint(expr = model.x &lt;= 40)
+model.laborA = Constraint(expr = model.x + model.y &lt;= 80)
+model.laborB = Constraint(expr = 2*model.x + model.y &lt;= 100)</code></pre>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.3.4.4-Step-4.--Create-a-solver-object-and-solve.">5.3.4.4 Step 4.  Create a solver object and solve.<a class="anchor-link" href="#5.3.4.4-Step-4.--Create-a-solver-object-and-solve.">&#182;</a></h3><p>The Pyomo libary includes a <code>SolverFactory()</code> class used to specify a solver. In this case, because the problem is a linear programming problem, we use the <code>glpk</code> solver.</p>
+
+<pre><code>results = SolverFactory('glpk').solve(model)
+results.write()
+if results.solver.status == 'ok':
+    model.pprint()
+
+</code></pre>
+<p>The <code>solve()</code> method attempts to solve the model using the specified solver, and returns <code>results</code> which can be inspected to see if, in fact, a solution was found. If a solution is found, then <code>model</code> will have a pretty-print method <code>pprint()</code> that creates a summary of the problem solution.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.3.4.5-Step-5.-Display-the-solution.">5.3.4.5 Step 5. Display the solution.<a class="anchor-link" href="#5.3.4.5-Step-5.-Display-the-solution.">&#182;</a></h3><p>Most applications will require access to specific components of the model. If a solution is found, the model will include methods with the same name as the fields created above, and which can be used to access solution values.</p>
+
+<pre><code>print('Profit = ', model.profit())
+
+print('\nDecision Variables')
+print('x = ', model.x())
+print('y = ', model.y())
+
+print('\nConstraints')
+print('Demand  = ', model.demand())
+print('Labor A = ', model.laborA())
+print('Labor B = ', model.laborB())</code></pre>
+
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># create a model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="c1"># declare decision variables</span>
+<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+<span class="c1"># declare objective</span>
+<span class="n">model</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">40</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
+
+<span class="c1"># declare constraints</span>
+<span class="n">model</span><span class="o">.</span><span class="n">demand</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborA</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborB</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># solve</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">status</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+
+<span class="c1"># display solution</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Profit = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Decision Variables&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Constraints&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Demand  = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">demand</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor A = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborA</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor B = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborB</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: 2600.0
+  Upper bound: 2600.0
+  Number of objectives: 1
+  Number of constraints: 4
+  Number of variables: 3
+  Number of nonzeros: 6
+  Sense: maximize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Termination condition: optimal
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: 0
+      Number of created subproblems: 0
+  Error rc: 0
+  Time: 0.01840686798095703
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+2 Var Declarations
+    x : Size=1, Index=None
+        Key  : Lower : Value : Upper : Fixed : Stale : Domain
+        None :     0 :  20.0 :  None : False : False : NonNegativeReals
+    y : Size=1, Index=None
+        Key  : Lower : Value : Upper : Fixed : Stale : Domain
+        None :     0 :  60.0 :  None : False : False : NonNegativeReals
+
+1 Objective Declarations
+    profit : Size=1, Index=None, Active=True
+        Key  : Active : Sense    : Expression
+        None :   True : maximize : 40*x + 30*y
+
+3 Constraint Declarations
+    demand : Size=1, Index=None, Active=True
+        Key  : Lower : Body : Upper : Active
+        None :  -Inf :    x :  40.0 :   True
+    laborA : Size=1, Index=None, Active=True
+        Key  : Lower : Body  : Upper : Active
+        None :  -Inf : x + y :  80.0 :   True
+    laborB : Size=1, Index=None, Active=True
+        Key  : Lower : Body    : Upper : Active
+        None :  -Inf : 2*x + y : 100.0 :   True
+
+6 Declarations: x y profit demand laborA laborB
+
+Profit =  2600.0
+
+Decision Variables
+x =  20.0
+y =  60.0
+
+Constraints
+Demand  =  20.0
+Labor A =  80.0
+Labor B =  100.0
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.3.5-Python-Lists,-Sets,-Dictionaries,-and-Iterators">5.3.5 Python Lists, Sets, Dictionaries, and Iterators<a class="anchor-link" href="#5.3.5-Python-Lists,-Sets,-Dictionaries,-and-Iterators">&#182;</a></h2><p>Pyomo is integrated with the Python language, and inherits significant functionality by leveraging the basic data structures of Python. To make the best use of Pyomo, it is important to understand the basics of Python lists, sets, and dictionaries.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.3.5.1-Data-in-Matrix/Vector-Format">5.3.5.1 Data in Matrix/Vector Format<a class="anchor-link" href="#5.3.5.1-Data-in-Matrix/Vector-Format">&#182;</a></h3><p>The example above used scalar modeling components, <code>model.x = Var()</code> and <code>model.y = Var()</code>, and each constraint was added as a separate line in the model.  This is fine for small problems with a just a few unknowns, but becomes impractical for larger problems.</p>
+<p>Here we repeat the example above, this time using <code>numpy</code> arrays to enter the data. An indexed variable <code>model.x</code> represents the unknowns, and the constraints are indexed as well. The indices are represented by the Python <code>range()</code> statement.</p>
+
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># enter data as numpy arrays</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span><span class="mi">30</span><span class="p">])</span>
+
+<span class="c1"># set of row indices</span>
+<span class="n">I</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+
+<span class="c1"># set of column indices</span>
+<span class="n">J</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+
+<span class="c1"># create a model instance</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="c1"># create x and y variables in the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+
+<span class="c1"># add model constraints</span>
+<span class="n">model</span><span class="o">.</span><span class="n">constraints</span> <span class="o">=</span> <span class="n">ConstraintList</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">I</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">constraints</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">J</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># add a model objective</span>
+<span class="n">model</span><span class="o">.</span><span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">J</span><span class="p">),</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
+
+<span class="c1"># create a solver</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
+
+<span class="c1"># solve</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># print solutions</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">J</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x[&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="s2">&quot;] =&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">constraints</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>x[ 0 ] = 20.0
+x[ 1 ] = 60.0
+constraints : Size=3
+    Key : Lower : Body  : Upper
+      1 :  None :  20.0 :  40.0
+      2 :  None :  80.0 :  80.0
+      3 :  None : 100.0 : 100.0
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 
@@ -14313,7 +14777,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/04.04-State-Estimation-Copy1.html">4.4 Estimation and Anamoly Detection</a> | <a href="toc.html">Contents</a> | <a href="https://jckantor.github.io/cbe30338-2021/04.06-Lab-Assignment-Anomaly-Detection.html">4.6 Lab Assignment 6: Anomaly Detection</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/04.05-Machine-Learning.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/04.05-Machine-Learning.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.html">5.2 Linear Programming</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming-in-Pyomo.html">5.4 Linear Programming in Pyomo</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

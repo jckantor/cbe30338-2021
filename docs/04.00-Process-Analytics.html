@@ -14291,6 +14291,132 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 
 
 
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="4.0.1-Learning-Goals">4.0.1 Learning Goals<a class="anchor-link" href="#4.0.1-Learning-Goals">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="4.0.1.1-Process-Historians">4.0.1.1 Process Historians<a class="anchor-link" href="#4.0.1.1-Process-Historians">&#182;</a></h3><p><strong>Process historians</strong> are widely used throughout the process industries. The core function is to record and provide access to <strong>time series data</strong> for <strong>process tags</strong>.</p>
+<p>The tclab library includes the basic functions of a process historian implemented using <code>SQLite</code>, a widely used database for web applications and internet connected devices.</p>
+<ul>
+<li>An instance of the tclab historian requires a list of <strong>data sources</strong>. There is no limit on the number of data sources.</li>
+<li>The default data sources record T1, T2, Q1, and Q2</li>
+<li>Each data source consists of <strong>(tag, function) pair</strong>, where the <strong>tag</strong> is a string that uniquely identifies a time series, and <strong>function</strong>, with no arguments, returns the current value of the tag.</li>
+<li>The tclab historian always records time with the tag "Time"</li>
+<li>Data from the historian can be stored in .csv files, converted to Pandas data frames, or accessed directly from the historian data log.</li>
+</ul>
+<p>What you should be able to do:</p>
+<ul>
+<li>Read a list of data sources, and describe what data is recorded.</li>
+<li>Add a tag and a function to a list of data sources.</li>
+<li>Save data from the historian to a .csv file, then load the saved data for analysis.</li>
+</ul>
+<hr>
+
+<p><strong>Study Question.</strong> The following list of data sources has been specified for the tclab historian. <code>lab.T1</code> and <code>lab.T1</code> are current values of temperatures T1 and T2.</p>
+
+<pre><code>`sources = [["T1", lambda: lab.T1], ["T_ave", lambda: (lab.T1 + lab.T1)/2], ["T2", lab.T2]]`
+
+</code></pre>
+<ul>
+<li>How many sources are specifiied?</li>
+<li>One of these specification will result in an error. Which one. What is wrong? How would you fix it?</li>
+<li>Explain what is being done with the second data source.</li>
+<li><code>lab.Q2</code> is a function defined so that executinig <code>lab.Q2()</code> returns a value. Specify a data source incorporating this function.</li>
+</ul>
+<p><strong>Study Question.</strong> Suppose you've written a novel control algorithm. The algorithm generates a floating point value that is denoted by the Python variable <code>y_est</code>. Given a list of data sources <code>sources</code>, add a source for this quantity with the tag "Y_EST".</p>
+<p><strong>Study Question.</strong> Suppose you have implemented a contrrol algorithm for a bioreactor application that utilizes a state space model. The state vector <code>x</code> has two elements representing temperature T and concentration C. Create a list of sources for the historian to record this data with tags "T" and "C".</p>
+<hr>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="4.0.1.2-State-Space-Models">4.0.1.2 State-Space Models<a class="anchor-link" href="#4.0.1.2-State-Space-Models">&#182;</a></h3><p>A linear state-space model is written in the form</p>
+\begin{align}
+\frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
+y &amp; = C x
+\end{align}<p>where $x$ is the <strong>state vector</strong> with $n$ elements, $u$ is a vector of manipulable inputs, $d$ is a vector of disturbance inputs, and $y$ is a vector of process measurements.</p>
+<ul>
+<li>A state-space system is stable if all eigenvalues have negative real parts. </li>
+<li>If any eigenvalue has a positive real part, then the system is unstable.</li>
+<li>Eigenvalues can be computed with <code>eigenvalues, _ = np.linalg.eig(A)</code></li>
+<li>The negative inverse of an eigenvalue corresponds to a system time constant.</li>
+</ul>
+<p>What you should be able to do:</p>
+<ul>
+<li>Convert systems of linear differential equations into state-space form, identifying all relevant vectors and matrices.</li>
+<li>For a given problem, determine if the vectors and matrices are of compatiable dimensions.</li>
+<li>Compute eigenvalues and determine stability.</li>
+<li>Simulate the response of a state-space model to inputs and disturbances.</li>
+</ul>
+<hr>
+
+<p><strong>Study Question.</strong> Suppose $x$ has five elements, $u$ has two elements, and $d$ has 1 element, and there is one process measurement. What are the dimensions of matrices $A$, $B_u$, $B_d$, and $C$?</p>
+<p><strong>Study Question.</strong> Someone has proposed a different model a temperature control device that includes heat transfer to the surround assembly. The model is written</p>
+\begin{align}
+C_{p,1}\frac{dT_1}{dt} &amp; = U_a(T_2 - T_1) + Q_1  \\
+C_{p,2}\frac{dT_2}{dt} &amp; = U_a(T_1 - T_2) + U_b(T_{amb} - T_2)
+\end{align}<p>where $Q_1$ is the manipulable input, $T_2$ is measured, and $T_{amb}$ is an unmeasured external disturbance.</p>
+<ul>
+<li>Rewrite this model in state space form. Identify the components of $x$, $u$, $d$, and $y$. Write out matrices $A$, $B_u$, $B_d$, and $C$ specifying all of the coefficients.</li>
+<li>What are the units of $Q_1$ in this model?</li>
+</ul>
+<hr>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="4.0.1.3-State-Estimation">4.0.1.3 State Estimation<a class="anchor-link" href="#4.0.1.3-State-Estimation">&#182;</a></h3><p>State estimation is a form of real-time process analytics employed in control systems. State estimation combines process models with real-time process measurements to provide estimates of process variables that may not be directly measureable.</p>
+<p>At each time step $t_k$ there are two calculations to perform:</p>
+<ul>
+<li><strong>Model Prediction:</strong> Use the model to update the state to the next time step, i.e., $\hat{x}_{k-1} \rightarrow \hat{x}_{k}^{pred}$ with the equation</li>
+</ul>
+\begin{align}
+\hat{x}_k^{pred} &amp; = \hat{x}_{k-1} + (t_k - t_{k-1}) ( A \hat{x}_{k-1} + B_u u_{k-1} + B_d \hat{d}_{k-1}) \\
+\hat{y}_k^{pred} &amp; = C \hat{x}_k^{pred}
+\end{align}<ul>
+<li><strong>Measurement Correction:</strong> Use measurement $y_k$ to update $\hat{x}_{k}^{pred} \rightarrow \hat{x}_{k}$ with the equation</li>
+</ul>
+$$\hat{x}_{k} = \hat{x}_{k}^{pred} - (t_k - t_{k-1})L (\hat{y}_{k}^{pred} - y_k)$$<p></p>
+<p>$L$ is a matrix of observer gains.</p>
+<p>The estimation error is given by $e = \hat{x} - {x}$ which satisfies the differential equations</p>
+\begin{align}
+\frac{de}{dt} &amp; = (A - LC) e + B_d (\hat{d}-d)
+\end{align}<p>where $d$ is the unmeasured disturbance, and $\hat{d}$ is an apriori estimate of $d$. If the estimate is accurate, then $d = \hat{d}$.</p>
+<hr>
+
+<p><strong>Study Question.</strong> For a system with 2 states and 1 measurement, what is the dimension of the matrix $L$?</p>
+<p><strong>Study Question.</strong> For the same system, what is the dimension of the product $LC$?</p>
+<p><strong>Study Question.</strong> Suppose you are given numerical values for $A$, $L$, and $C$, how could you determine if the observer will be stable?</p>
+<p><strong>Study Question.</strong> The following charts test the performance of two different observers for the same system consisting of a single heater/sensor assembly. T1 is the measured temperature, Ts is the estimated sensor temperature, Th is the estimated heater temperature.</p>
+<p><img src="./figures/state_estimation_1.png" alt=""></p>
+<p><img src="./figures/state_estimation_2.png" alt=""></p>
+<ul>
+<li>Which of these is showing the useful result? Be sure you can explain why one is acceptable and one is not.</li>
+<li>For the one that is not performing, what has gone wrong? How you propose to fix the problem?</li>
+<li>Data for A, L, and C are available. What calculation would you perform to verify your analysis?  What calculation would you perform to remedy the problem? Be sure you can write out the code (no more than five lines required) to do these calculations.</li>
+</ul>
+<hr>
+</div>
+</div>
+
+
+
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">

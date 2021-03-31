@@ -50,9 +50,8 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [5.1 Linear Production Model](https://jckantor.github.io/cbe30338-2021/05.01-Linear-Production-Model.html)
 - [5.2 Linear Programming](https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.html)
 - [5.3 Linear Production Model in Pyomo](https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html)
-- [5.4 Linear Programming in Pyomo](https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming-in-Pyomo.html)
+- [5.5 Linear Blending Problem](https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html)
 - [5.6 Design of a Cold Weather Fuel](https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html)
-- [5.6 Linear Blending Problem](https://jckantor.github.io/cbe30338-2021/05.06-Linear-Blending-Problem.html)
 - [5.7 Gasoline Blending](https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html)
 - [5.99 Pyomo Examples](https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html)
 

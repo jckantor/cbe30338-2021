@@ -45,6 +45,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [4.4 Estimation and Anamoly Detection](https://jckantor.github.io/cbe30338-2021/04.04-State-Estimation-Copy1.html)
 - [4.6 Lab Assignment 6: Anomaly Detection](https://jckantor.github.io/cbe30338-2021/04.06-Lab-Assignment-Anomaly-Detection.html)
 - [4.7 Observer Synthesis using Linear Matrix Inequalities](https://jckantor.github.io/cbe30338-2021/04.07-Observer-Synthesis-LMI.html)
+- [4.8 Application of Luenberger Observers to Environmental Modeling of Rivers](https://jckantor.github.io/cbe30338-2021/04.08-State-Estimation-Envrironmental-Application.html)
 
 ### [Chapter 5.0 Optimization](https://jckantor.github.io/cbe30338-2021/05.00-Optimization.html)
 - [5.1 Linear Production Model](https://jckantor.github.io/cbe30338-2021/05.01-Linear-Production-Model.html)

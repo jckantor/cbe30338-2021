@@ -14920,66 +14920,47 @@ a.anchor-link {
 </ul>
 </li>
 </ul>
-<h3 id="5.2-Linear-Programming"><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.html">5.2 Linear Programming</a><a class="anchor-link" href="#5.2-Linear-Programming">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.html#5.2.1-Matrix/Vector-format">5.2.1 Matrix/Vector format</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.html#5.2.2-Example-19.3:-Refinery-Blending-Problem">5.2.2 Example 19.3: Refinery Blending Problem</a></li>
-</ul>
-<h3 id="5.3-Linear-Production-Model-in-Pyomo"><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html">5.3 Linear Production Model in Pyomo</a><a class="anchor-link" href="#5.3-Linear-Production-Model-in-Pyomo">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.1-Installation">5.3.1 Installation</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.1.1-Anaconda">5.3.1.1 Anaconda</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.1.2-Google-Colab">5.3.1.2 Google Colab</a></li>
-</ul>
-</li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.2-Algebraic-Modeling-Languages">5.3.2 Algebraic Modeling Languages</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.3-Key-Concepts-in-Pyomo">5.3.3 Key Concepts in Pyomo</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.4-Example:-Linear-Production-Model-with-Constraints">5.3.4 Example: Linear Production Model with Constraints</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.4.1-Step-1.-Import-Pyomo.">5.3.4.1 Step 1. Import Pyomo.</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.4.2-Step-2.-Create-the-model-object.">5.3.4.2 Step 2. Create the model object.</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.4.3-Step-3.-Add-the-Decision-Variables,-Objective,-and-Constraints-to-the-model-object.">5.3.4.3 Step 3. Add the Decision Variables, Objective, and Constraints to the model object.</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.4.4-Step-4.-Create-a-solver-object-and-solve.">5.3.4.4 Step 4. Create a solver object and solve.</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.4.5-Step-5.-Display-the-solution.">5.3.4.5 Step 5. Display the solution.</a></li>
+<h3 id="5.2-Linear-Blending-Problem"><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html">5.2 Linear Blending Problem</a><a class="anchor-link" href="#5.2-Linear-Blending-Problem">&#182;</a></h3>
+<pre><code>- [5.2.1 Learning Goals](https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.1-Learning-Goals)
+</code></pre>
+<ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.1-Problem-Statement-(Jenchura,-2017">5.2.1 Problem Statement (Jenchura, 2017)</a>)</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.2-Solving-optimization-problems-with-CVXPY">5.2.2 Solving optimization problems with CVXPY</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.2.1-Step-1.-Coding-Problem-Data-as-a-Python-Dictionary">5.2.2.1 Step 1. Coding Problem Data as a Python Dictionary</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.2.2-Step-2.-Identifying-index-sets">5.2.2.2 Step 2. Identifying index sets</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.2.3-Step-3.-Create-decision-variables">5.2.2.3 Step 3. Create decision variables</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.2.4-Step-4.-Objective-Function">5.2.2.4 Step 4. Objective Function</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.2.5-Step-5.-Constraints">5.2.2.5 Step 5. Constraints</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.2.5.1-Volume-Constraint">5.2.2.5.1 Volume Constraint</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.2.5.2-Product-Composition-Constraint">5.2.2.5.2 Product Composition Constraint</a></li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.5-Python-Lists,-Sets,-Dictionaries,-and-Iterators">5.3.5 Python Lists, Sets, Dictionaries, and Iterators</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html#5.3.5.1-Data-in-Matrix/Vector-Format">5.3.5.1 Data in Matrix/Vector Format</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.2.6-Step-6.-Create-CVXPY-Problem-object">5.2.2.6 Step 6. Create CVXPY Problem object</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.2.7-Step-7.-Solve-problem-and-display-solution">5.2.2.7 Step 7. Solve problem and display solution</a></li>
 </ul>
 </li>
-<li>Markdown Links<ul>
-<li><a href="http://www.pyomo.org/">Pyomo</a></li>
-<li><a href="https://www.anaconda.com/download">Anaconda package for Python 3.x</a></li>
-<li><a href="https://en.wikibooks.org/wiki/GLPK">glpk</a></li>
-<li><a href="https://en.wikipedia.org/wiki/IPOPT">ipopt</a></li>
-<li><a href="https://projects.coin-or.org/Cbc">cbc</a></li>
-<li><a href="https://en.wikipedia.org/wiki/General_Algebraic_Modeling_System">GAMS</a></li>
-<li><a href="https://en.wikipedia.org/wiki/AIMMS">AIMMS</a></li>
-<li><a href="https://en.wikipedia.org/wiki/AMPL">AMPL</a></li>
-<li><a href="https://en.wikipedia.org/wiki/FICO_Xpress">FICO XPRESS</a></li>
-<li><a href="https://yalmip.github.io/">YALMIP</a></li>
-<li><a href="http://web.cvxr.com/cvx/doc/">CVX</a></li>
-<li><a href="https://jump.readthedocs.io/en/latest/">JuMP</a></li>
-<li><a href="http://www.pyomo.org/">Pyomo</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.3-Parametric-Studies">5.2.3 Parametric Studies</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html#5.2.3.1-Consolidating">5.2.3.1 Consolidating</a></li>
 </ul>
 </li>
 </ul>
-<h3 id="5.5-Linear-Blending-Problem"><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html">5.5 Linear Blending Problem</a><a class="anchor-link" href="#5.5-Linear-Blending-Problem">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.1-Problem-Statement-(Jenchura,-2017">5.5.1 Problem Statement (Jenchura, 2017)</a>)</li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.2-Solving-optimization-problems-with-CVXPY">5.5.2 Solving optimization problems with CVXPY</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.2.1-Step-1.-Coding-Problem-Data-as-a-Python-Dictionary">5.5.2.1 Step 1. Coding Problem Data as a Python Dictionary</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.2.2-Step-2.-Identifying-index-sets">5.5.2.2 Step 2. Identifying index sets</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.2.3-Step-3.-Create-decision-variables">5.5.2.3 Step 3. Create decision variables</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.2.4-Step-4.-Objective-Function">5.5.2.4 Step 4. Objective Function</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.2.5-Step-5.-Constraints">5.5.2.5 Step 5. Constraints</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.2.5.1-Volume-Constraint">5.5.2.5.1 Volume Constraint</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.2.5.2-Product-Composition-Constraint">5.5.2.5.2 Product Composition Constraint</a></li>
+<h3 id="5.3-Gasoline-Blending"><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html">5.3 Gasoline Blending</a><a class="anchor-link" href="#5.3-Gasoline-Blending">&#182;</a></h3><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html#5.3.1-Gasoline-Product-Specifications">5.3.1 Gasoline Product Specifications</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html#5.3.2-Stream-Specifications">5.3.2 Stream Specifications</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html#5.3.3-Blending-Model">5.3.3 Blending Model</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html#5.3.4-Display-Results">5.3.4 Display Results</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html#5.3.4.1-Results-for-each-Stream">5.3.4.1 Results for each Stream</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html#5.3.4.2-Results-for-each-Product">5.3.4.2 Results for each Product</a></li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.2.6-CVXPY-Version-1">5.5.2.6 CVXPY Version 1</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.2.7-CVXPY-Version-2:-Using-dictionaries">5.5.2.7 CVXPY Version 2: Using dictionaries</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html#5.5.2.7.1-Pyomo-Model">5.5.2.7.1 Pyomo Model</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html#5.3.5-Exercise-1.">5.3.5 Exercise 1.</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html#5.3.6-Exercise-2.">5.3.6 Exercise 2.</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html#5.3.7-Exercise-3.">5.3.7 Exercise 3.</a></li>
+<li>Tags: exercise</li>
 </ul>
-</li>
-</ul>
-</li>
+<h3 id="5.4-Linear-Programming"><a href="https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming.html">5.4 Linear Programming</a><a class="anchor-link" href="#5.4-Linear-Programming">&#182;</a></h3><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming.html#5.4.1-Matrix/Vector-format">5.4.1 Matrix/Vector format</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming.html#5.4.2-Example-19.3:-Refinery-Blending-Problem">5.4.2 Example 19.3: Refinery Blending Problem</a></li>
 </ul>
 <h3 id="5.6-Design-of-a-Cold-Weather-Fuel"><a href="https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html">5.6 Design of a Cold Weather Fuel</a><a class="anchor-link" href="#5.6-Design-of-a-Cold-Weather-Fuel">&#182;</a></h3><ul>
 <li><a href="https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html#5.6.1-Data">5.6.1 Data</a></li>
@@ -15000,27 +14981,70 @@ a.anchor-link {
 </ul>
 </li>
 </ul>
-<h3 id="5.7-Gasoline-Blending"><a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html">5.7 Gasoline Blending</a><a class="anchor-link" href="#5.7-Gasoline-Blending">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html#5.7.1-Gasoline-Product-Specifications">5.7.1 Gasoline Product Specifications</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html#5.7.2-Stream-Specifications">5.7.2 Stream Specifications</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html#5.7.3-Blending-Model">5.7.3 Blending Model</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html#5.7.4-Display-Results">5.7.4 Display Results</a><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html#5.7.4.1-Results-for-each-Stream">5.7.4.1 Results for each Stream</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html#5.7.4.2-Results-for-each-Product">5.7.4.2 Results for each Product</a></li>
+<h3 id="5.98-Linear-Production-Model-in-Pyomo"><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html">5.98 Linear Production Model in Pyomo</a><a class="anchor-link" href="#5.98-Linear-Production-Model-in-Pyomo">&#182;</a></h3><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.1-Installation">5.98.1 Installation</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.1.1-Anaconda">5.98.1.1 Anaconda</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.1.2-Google-Colab">5.98.1.2 Google Colab</a></li>
 </ul>
 </li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html#5.7.5-Exercise-1.">5.7.5 Exercise 1.</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html#5.7.6-Exercise-2.">5.7.6 Exercise 2.</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html#5.7.7-Exercise-3.">5.7.7 Exercise 3.</a></li>
-<li>Tags: exercise</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.2-Algebraic-Modeling-Languages">5.98.2 Algebraic Modeling Languages</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.3-Key-Concepts-in-Pyomo">5.98.3 Key Concepts in Pyomo</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.4-Example:-Linear-Production-Model-with-Constraints">5.98.4 Example: Linear Production Model with Constraints</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.4.1-Step-1.-Import-Pyomo.">5.98.4.1 Step 1. Import Pyomo.</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.4.2-Step-2.-Create-the-model-object.">5.98.4.2 Step 2. Create the model object.</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.4.3-Step-3.-Add-the-Decision-Variables,-Objective,-and-Constraints-to-the-model-object.">5.98.4.3 Step 3. Add the Decision Variables, Objective, and Constraints to the model object.</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.4.4-Step-4.-Create-a-solver-object-and-solve.">5.98.4.4 Step 4. Create a solver object and solve.</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.4.5-Step-5.-Display-the-solution.">5.98.4.5 Step 5. Display the solution.</a></li>
+</ul>
+</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.5-Python-Lists,-Sets,-Dictionaries,-and-Iterators">5.98.5 Python Lists, Sets, Dictionaries, and Iterators</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html#5.98.5.1-Data-in-Matrix/Vector-Format">5.98.5.1 Data in Matrix/Vector Format</a></li>
+</ul>
+</li>
+<li>Markdown Links<ul>
+<li><a href="http://www.pyomo.org/">Pyomo</a></li>
+<li><a href="https://www.anaconda.com/download">Anaconda package for Python 3.x</a></li>
+<li><a href="https://en.wikibooks.org/wiki/GLPK">glpk</a></li>
+<li><a href="https://en.wikipedia.org/wiki/IPOPT">ipopt</a></li>
+<li><a href="https://projects.coin-or.org/Cbc">cbc</a></li>
+<li><a href="https://en.wikipedia.org/wiki/General_Algebraic_Modeling_System">GAMS</a></li>
+<li><a href="https://en.wikipedia.org/wiki/AIMMS">AIMMS</a></li>
+<li><a href="https://en.wikipedia.org/wiki/AMPL">AMPL</a></li>
+<li><a href="https://en.wikipedia.org/wiki/FICO_Xpress">FICO XPRESS</a></li>
+<li><a href="https://yalmip.github.io/">YALMIP</a></li>
+<li><a href="http://web.cvxr.com/cvx/doc/">CVX</a></li>
+<li><a href="https://jump.readthedocs.io/en/latest/">JuMP</a></li>
+<li><a href="http://www.pyomo.org/">Pyomo</a></li>
+</ul>
+</li>
 </ul>
 <h3 id="5.99-Pyomo-Examples"><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html">5.99 Pyomo Examples</a><a class="anchor-link" href="#5.99-Pyomo-Examples">&#182;</a></h3><ul>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html#5.99.1-Example:-Nonlinear-Optimization-of-Series-Reaction-in-a-Continuous-Stirred-Tank-Reactor">5.99.1 Example: Nonlinear Optimization of Series Reaction in a Continuous Stirred Tank Reactor</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html#5.99.2-Example-19.3:-Linear-Programming-Refinery">5.99.2 Example 19.3: Linear Programming Refinery</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html#5.99.3-Example:-Making-Change">5.99.3 Example: Making Change</a></li>
-<li><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html#5.99.4-Example:-Linear-Production-Model-with-Constraints-with-Duals">5.99.4 Example: Linear Production Model with Constraints with Duals</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html#5.99.1-Pyomo-Model">5.99.1 Pyomo Model</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html#5.99.2-Example:-Nonlinear-Optimization-of-Series-Reaction-in-a-Continuous-Stirred-Tank-Reactor">5.99.2 Example: Nonlinear Optimization of Series Reaction in a Continuous Stirred Tank Reactor</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html#5.99.3-Example-19.3:-Linear-Programming-Refinery">5.99.3 Example 19.3: Linear Programming Refinery</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html#5.99.4-Example:-Making-Change">5.99.4 Example: Making Change</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html#5.99.5-Example:-Linear-Production-Model-with-Constraints-with-Duals">5.99.5 Example: Linear Production Model with Constraints with Duals</a></li>
 </ul>
-<h2 id="Chapter-6.0-Predictive-Control"><a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">Chapter 6.0 Predictive Control</a><a class="anchor-link" href="#Chapter-6.0-Predictive-Control">&#182;</a></h2><h2 id="Chapter-7.0-Projects"><a href="https://jckantor.github.io/cbe30338-2021/07.00-Projects.html">Chapter 7.0 Projects</a><a class="anchor-link" href="#Chapter-7.0-Projects">&#182;</a></h2>
+<h2 id="Chapter-6.0-Predictive-Control"><a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">Chapter 6.0 Predictive Control</a><a class="anchor-link" href="#Chapter-6.0-Predictive-Control">&#182;</a></h2><h2 id="Chapter-7.0-Projects"><a href="https://jckantor.github.io/cbe30338-2021/07.00-Projects.html">Chapter 7.0 Projects</a><a class="anchor-link" href="#Chapter-7.0-Projects">&#182;</a></h2><h3 id="A.24-Animation-in-Jupyter-Notebooks"><a href="https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html">A.24 Animation in Jupyter Notebooks</a><a class="anchor-link" href="#A.24-Animation-in-Jupyter-Notebooks">&#182;</a></h3><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html#A.24.1-Summary">A.24.1 Summary</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html#A.24.2-Prerequisites">A.24.2 Prerequisites</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html#A.24.3-Step-by-Step-Approach-to-Animation-with-Matplotlib">A.24.3 Step-by-Step Approach to Animation with Matplotlib</a><ul>
+<li><a href="https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html#A.24.3.1-Step-1.-Create-the-background-frame.">A.24.3.1 Step 1. Create the background frame.</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html#A.24.3.2-Step-2.-Define-a-function-to-draw-each-frame">A.24.3.2 Step 2. Define a function to draw each frame</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html#A.24.3.3-Step-3.-Create-the-Animation-Object">A.24.3.3 Step 3. Create the Animation Object</a></li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html#A.24.3.4-Step-4.-Render-the-Animation">A.24.3.4 Step 4. Render the Animation</a></li>
+</ul>
+</li>
+<li><a href="https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html#A.24.4-Example:-Phase-Plane-Animation-for-an-Exothermic-Stirred-Tank-Reactor">A.24.4 Example: Phase Plane Animation for an Exothermic Stirred-Tank Reactor</a></li>
+<li>Markdown Links<ul>
+<li><a href="https://github.com/jckantor/CBE30338">https://github.com/jckantor/CBE30338</a></li>
+<li><a href="https://jakevdp.github.io/blog/2013/02/16/animating-the-lorentz-system-in-3d/">Animating the Lorenz System in 3D</a></li>
+<li><a href="http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-notebooks/">Embedding Matplotlib Animations in Jupyter Notebooks</a></li>
+<li><a href="https://github.com/adaptlearning/adapt_authoring/wiki/Installing-FFmpeg">here</a></li>
+</ul>
+</li>
+</ul>
+
 </div>
 </div>
 </body>

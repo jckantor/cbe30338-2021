@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.html">5.2 Linear Programming</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html">5.5 Linear Blending Problem</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.01-Linear-Production-Model.html">5.1 Linear Production Model</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html">5.3 Gasoline Blending</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.02-Linear-Blending-Problem.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,7 +14285,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="5.3-Linear-Production-Model-in-Pyomo">5.3 Linear Production Model in Pyomo<a class="anchor-link" href="#5.3-Linear-Production-Model-in-Pyomo">&#182;</a></h1><p><a href="http://www.pyomo.org/">Pyomo</a> is a state-of-the-art language for solving optimization problems embedded within Python. Using Pyomo, a user can describe optimization model by specifying decision <strong>variables</strong>, <strong>constraints</strong>, and an optimization <strong>objective</strong>. Pyomo includes a rich set of features to enable modeling of complex systems, specifying a solver, and displaying the solution.</p>
+<h1 id="5.2-Linear-Blending-Problem">5.2 Linear Blending Problem<a class="anchor-link" href="#5.2-Linear-Blending-Problem">&#182;</a></h1><p>This notebook introduces simple material blending problems, and outlines a multi-step procedure for creating and solving models for these problems using CVXPY.</p>
 
 </div>
 </div>
@@ -14295,43 +14295,26 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.3.1-Installation">5.3.1 Installation<a class="anchor-link" href="#5.3.1-Installation">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.3.1.1-Anaconda">5.3.1.1 Anaconda<a class="anchor-link" href="#5.3.1.1-Anaconda">&#182;</a></h3><p>These instructions assume you have previously installed a suitable Python development environment, in particular the <a href="https://www.anaconda.com/download">Anaconda package for Python 3.x</a>.</p>
-<p>The following commands will install Pyomo and extra files plus the glpk (MILP) and ipopt (nonlinear) solvers.  These commands should be executed one at a time from the terminal window on MacOS, or the Anaconda command prompt on Windows 10.</p>
-
-<pre><code>conda install -c conda-forge pyomo
-conda install -c conda-forge pyomo.extras
-conda install -c conda-forge glpk
-conda install -c conda-forge ipopt
-
-</code></pre>
-<p>Optionally, you may also wish to install the COIN-OR cbc solvers.</p>
-
-<pre><code>conda install -c conda-forge coincbc
-
-</code></pre>
-<p>This installation provides a capable open-source optimization suite with multiple solvers well suited a wide range of process applications. The solvers are</p>
-<ul>
-<li><a href="https://en.wikibooks.org/wiki/GLPK">glpk</a>. "GNU Linear Programming Kit" is a software package written in highly portable C for the solution of mixed integer linear programming and related problems.</li>
-<li><a href="https://en.wikipedia.org/wiki/IPOPT">ipopt</a>. "Interior Point Optimizer" for large scale nonlinear optimization of continuous systems. </li>
-<li><a href="https://projects.coin-or.org/Cbc">cbc</a>. "COIN-OR Branch and Cut" is a mixed integer linear programming solver written in C++. It generally solves the same problems as glpk, but can run multiple threads, and is often faster and more robust.</li>
+<h3 id="5.2.1-Learning-Goals">5.2.1 Learning Goals<a class="anchor-link" href="#5.2.1-Learning-Goals">&#182;</a></h3><ul>
+<li>Linear Blending problems<ul>
+<li>Frequently encountered in material blending </li>
+<li>Models generally consist of linear mixing rules and mass/material balances</li>
+<li>Decision variables are indexed by a set of raw materials</li>
 </ul>
-<p>This suite can be further augmented by installing additional solvers from open-source and commercial sources.</p>
-<p>NOTE: If command window procedure fails on your laptop, you might try running these commands in a Jupyter notebook. In that case, each command needs to be prefixed with the shell escape <code>!</code>, and followed by the <code>-y</code> option to handle the y/n 
-interaction. For example, the basic pyomo install command would read</p>
-
-<pre><code>!conda install -c conda-forge pyomo -y
-
-</code></pre>
-<p>To provide timely feedback, each install command should be executed in a separate cell.</p>
+</li>
+</ul>
+<ul>
+<li>Modeling and solving linear blending problems in CVXPY<ul>
+<li>Step 1. Coding problem data. Nested dictionaries or Pandas dataframes.</li>
+<li>Step 2. Create index set. Use .keys() with nested dictionaries, or .index with Pandas dataframes.</li>
+<li>Step 3. Create a dictionary of decision variables. Add any pertinent qualifiers or constraints for individual variables such as lower and upper bounds, non-negativity, variable names.</li>
+<li>Step 4. Create an expression defining the problem objective.</li>
+<li>Step 5. Create a one or more lists of problem constraints.</li>
+<li>Step 6. Create the problem object from the objectives and constraints.</li>
+<li>Step 7. Solve and display the solution.</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
@@ -14341,7 +14324,18 @@ interaction. For example, the basic pyomo install command would read</p>
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.3.1.2-Google-Colab">5.3.1.2 Google Colab<a class="anchor-link" href="#5.3.1.2-Google-Colab">&#182;</a></h3>
+<h2 id="5.2.1-Problem-Statement-(Jenchura,-2017)">5.2.1 Problem Statement (Jenchura, 2017)<a class="anchor-link" href="#5.2.1-Problem-Statement-(Jenchura,-2017)">&#182;</a></h2><p>A brewery receives an order for 100 gallons of 4% ABV (alchohol by volume) beer. The brewery has on hand beer A that is 4.5% ABV that cost \$0.32 per gallon to make, and beer B that is 3.7% ABV and cost \\$0.25 per gallon. Water can also be used as a blending agent at a cost of \$0.05 per gallon. Find the minimum cost blend that meets the customer requirements.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.2.2-Solving-optimization-problems-with-CVXPY">5.2.2 Solving optimization problems with CVXPY<a class="anchor-link" href="#5.2.2-Solving-optimization-problems-with-CVXPY">&#182;</a></h2><p>The blending problem described above is relatively simple, it can be solved in CVXPY using no more than <code>cp.Variable()</code>, <code>cp.Minimize()</code>, and <code>cp.Problem()</code> as demonstrated below.</p>
+
 </div>
 </div>
 
@@ -14350,12 +14344,11 @@ interaction. For example, the basic pyomo install command would read</p>
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%capture</span>
-<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">pyomo</span>
-<span class="err">!</span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="o">-</span><span class="n">qq</span> <span class="n">glpk</span><span class="o">-</span><span class="n">utils</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
 </pre></div>
 
      </div>
@@ -14370,12 +14363,53 @@ interaction. For example, the basic pyomo install command would read</p>
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.3.2-Algebraic-Modeling-Languages">5.3.2 Algebraic Modeling Languages<a class="anchor-link" href="#5.3.2-Algebraic-Modeling-Languages">&#182;</a></h2><p>One of the difficult aspects of applying optimization methods to large scale applications is creating and maintaining the underlying model. An application may include tens, hundreds, even thousdands of variables and constraints, and may incorporate data extracted in real time from sensor networks and corporate data bases. The resulting models can be very complex, and essentially impossible to create and maintain without use of software tools.</p>
-<p>Algebraic Modeling Languages (AMLs) were developed to assist with the creation and maintainence of optimization models. <a href="https://en.wikipedia.org/wiki/General_Algebraic_Modeling_System">GAMS</a> (General Algebraic Modeling System, <a href="https://www.gams.com/">https://www.gams.com/</a>), first proposed in 1976, was among the first and still widely used. Other notable examples include <a href="https://en.wikipedia.org/wiki/AIMMS">AIMMS</a>, <a href="https://en.wikipedia.org/wiki/AMPL">AMPL</a>, and <a href="https://en.wikipedia.org/wiki/FICO_Xpress">FICO XPRESS</a>.</p>
-<p>In recent years, modeling for optimization has become more tightly integrated with scripting languages commonly used in science and engineering. Open-source examples include <a href="https://yalmip.github.io/">YALMIP</a> and <a href="http://web.cvxr.com/cvx/doc/">CVX</a> which are tightly integrated with Matlab, <a href="https://jump.readthedocs.io/en/latest/">JuMP</a> which works with Julia, and a variety of systems integrated with Python.</p>
-<p>Of the Python options, the open-source <a href="http://www.pyomo.org/">Pyomo</a> is perhaps the most ambitious and certainly the most aligned with the needs of process systems engineering.</p>
+<h3 id="5.2.2.1-Step-1.-Coding-Problem-Data-as-a-Python-Dictionary">5.2.2.1 Step 1. Coding Problem Data as a Python Dictionary<a class="anchor-link" href="#5.2.2.1-Step-1.-Coding-Problem-Data-as-a-Python-Dictionary">&#182;</a></h3><p>The first step is to represent the problem data in a generic manner that could be extended to include additional blending components.  Here we use a dictionary of raw materials, each key denoting a unique blending agent. For each key there is a second level dictionary containing attributes of the blending component. This nested "dictionary of dictionaries" organization is a useful of organizing tabular data for optimization problems.</p>
 
 </div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.045</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.32</span><span class="p">},</span>
+    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.037</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">},</span>
+    <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.000</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>{&#39;A&#39;: {&#39;abv&#39;: 0.045, &#39;cost&#39;: 0.32}, &#39;B&#39;: {&#39;abv&#39;: 0.037, &#39;cost&#39;: 0.25}, &#39;C&#39;: {&#39;abv&#39;: 0.03, &#39;cost&#39;: 0.09}, &#39;W&#39;: {&#39;abv&#39;: 0.0, &#39;cost&#39;: 0.05}}
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 
@@ -14383,21 +14417,49 @@ interaction. For example, the basic pyomo install command would read</p>
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.3.3-Key-Concepts-in-Pyomo">5.3.3 Key Concepts in Pyomo<a class="anchor-link" href="#5.3.3-Key-Concepts-in-Pyomo">&#182;</a></h2><p>A typical Pyomo application involves the creation of at least two Pyomo objects from the following classes:</p>
-<ul>
-<li><strong>ConcreteModel()</strong>  A python object representing the optimization problem to be solved.</li>
-<li><strong>SolverFactory()</strong> A python object representing the mathematical progamming software to be used for calculating a solution.</li>
-</ul>
-<p>There are a number of of open-source and commercial solvers that can be used with Pyomo. This simple structure allows one to test and find solvers suited to a particular application.</p>
-<p>A model, in turn, is composed of additional objects used to specify a problem. A minimal set of classes is needed to create useful models. These classes are:</p>
-<ul>
-<li><strong>Var()</strong> Objects representing variables determined in the course of solving a particular problem.</li>
-<li><strong>Objective()</strong> An object denoting the problem objective function that is to be either minimized or maximized.</li>
-<li><strong>Contraint()</strong> Objects representing problem constraints.</li>
-</ul>
-<p>The following cell presents a typical example.</p>
+<h3 id="5.2.2.2-Step-2.-Identifying-index-sets">5.2.2.2 Step 2. Identifying index sets<a class="anchor-link" href="#5.2.2.2-Step-2.-Identifying-index-sets">&#182;</a></h3><p>The objectives and constraints encountered in optimization problems often include sums over a set of objects. In the case, we will need to create sums over the set of raw materials in the blending problem.</p>
 
 </div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">components</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">components</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>{&#39;C&#39;, &#39;A&#39;, &#39;W&#39;, &#39;B&#39;}
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 
@@ -14405,106 +14467,59 @@ interaction. For example, the basic pyomo install command would read</p>
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.3.4-Example:-Linear-Production-Model-with-Constraints">5.3.4 Example: Linear Production Model with Constraints<a class="anchor-link" href="#5.3.4-Example:-Linear-Production-Model-with-Constraints">&#182;</a></h2><p>The mathematical formulation of a simple linear production model is given by</p>
+<h3 id="5.2.2.3-Step-3.-Create-decision-variables">5.2.2.3 Step 3. Create decision variables<a class="anchor-link" href="#5.2.2.3-Step-3.-Create-decision-variables">&#182;</a></h3>
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>{&#39;C&#39;: Variable((), nonneg=True), &#39;A&#39;: Variable((), nonneg=True), &#39;W&#39;: Variable((), nonneg=True), &#39;B&#39;: Variable((), nonneg=True)}
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.2.2.4-Step-4.-Objective-Function">5.2.2.4 Step 4. Objective Function<a class="anchor-link" href="#5.2.2.4-Step-4.-Objective-Function">&#182;</a></h3><p>If we let subscript $c$ denote a blending component from the set of blending components $C$, and denote the volume of $c$ used in the blend as $x_c$, the cost of the blend is</p>
 \begin{align}
-\max_{x,y \geq 0} &amp;\ 40\ x + 30\ y  &amp; \mbox{objective}\\
-\mbox{subject to:}\qquad \\
-x &amp; \leq 40  &amp; \mbox{demand constraint} \\
-x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \\
-2x + y &amp; \leq 100 &amp; \mbox{labor B constraint}
-\end{align}<p>where $x$ and $y$ are the rates of production (in units per week) for two products.</p>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.3.4.1-Step-1.-Import-Pyomo.">5.3.4.1 Step 1. Import Pyomo.<a class="anchor-link" href="#5.3.4.1-Step-1.-Import-Pyomo.">&#182;</a></h3><p>The first step in any Pyomo project is to import relevant components of the Pyomo library. This can be done with the following python statement.</p>
-
-<pre><code>from pyomo.environ import *</code></pre>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.3.4.2-Step-2.-Create-the-model-object.">5.3.4.2 Step 2. Create the model object.<a class="anchor-link" href="#5.3.4.2-Step-2.-Create-the-model-object.">&#182;</a></h3><p>Pyomo provides two distinct methods to create models. Here we use <code>ConcreteModel()</code> to create a model instance which is appropriate when all of the data needed to complete the model is avaiable at the current time.</p>
-
-<pre><code>model = ConcreteModel()
-
-</code></pre>
-<p>The Python variable <code>model</code> stores the model instance. This could be any valid Python variable name.</p>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.3.4.3-Step-3.-Add-the-Decision-Variables,-Objective,-and-Constraints-to-the-model-object.">5.3.4.3 Step 3. Add the Decision Variables, Objective, and Constraints to the model object.<a class="anchor-link" href="#5.3.4.3-Step-3.-Add-the-Decision-Variables,-Objective,-and-Constraints-to-the-model-object.">&#182;</a></h3><p>The first major component of a Pyomo model are decision variables which are added as fields to <code>model</code>. In the case we name the fields <code>model.x</code> and <code>model.y</code> corresponding to $x$ and $y$ in the process model. The Python class <code>Var()</code> is used to specify these as real numbers that must be greater than or equal to zero.</p>
-
-<pre><code>model.x = Var(domain=NonNegativeReals)
-model.y = Var(domain=NonNegativeReals)
-
-</code></pre>
-<p>As we will see in other examples, the <code>domain</code> can specify other types of decision variables including reals, integers, and booleans.</p>
-<p>The objective is specified as an algebraic expression involving the decision variables. Here we store the objective in <code>model.profit</code>, and use the optional keyword <code>sense</code> to specify a maximization problem.</p>
-
-<pre><code>model.profit = Objective(expr = 40*model.x + 30*model.y, sense=maximize)
-
-</code></pre>
-<p>Constraints are added as fields to the model, each constraint created using the <code>Constraint()</code> class. The constraints are specified using the <code>expr</code> keywork in the form of linear algebraic expressions of the decision variables.</p>
-
-<pre><code>model.demand = Constraint(expr = model.x &lt;= 40)
-model.laborA = Constraint(expr = model.x + model.y &lt;= 80)
-model.laborB = Constraint(expr = 2*model.x + model.y &lt;= 100)</code></pre>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.3.4.4-Step-4.--Create-a-solver-object-and-solve.">5.3.4.4 Step 4.  Create a solver object and solve.<a class="anchor-link" href="#5.3.4.4-Step-4.--Create-a-solver-object-and-solve.">&#182;</a></h3><p>The Pyomo libary includes a <code>SolverFactory()</code> class used to specify a solver. In this case, because the problem is a linear programming problem, we use the <code>glpk</code> solver.</p>
-
-<pre><code>results = SolverFactory('glpk').solve(model)
-results.write()
-if results.solver.status == 'ok':
-    model.pprint()
-
-</code></pre>
-<p>The <code>solve()</code> method attempts to solve the model using the specified solver, and returns <code>results</code> which can be inspected to see if, in fact, a solution was found. If a solution is found, then <code>model</code> will have a pretty-print method <code>pprint()</code> that creates a summary of the problem solution.</p>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.3.4.5-Step-5.-Display-the-solution.">5.3.4.5 Step 5. Display the solution.<a class="anchor-link" href="#5.3.4.5-Step-5.-Display-the-solution.">&#182;</a></h3><p>Most applications will require access to specific components of the model. If a solution is found, the model will include methods with the same name as the fields created above, and which can be used to access solution values.</p>
-
-<pre><code>print('Profit = ', model.profit())
-
-print('\nDecision Variables')
-print('x = ', model.x())
-print('y = ', model.y())
-
-print('\nConstraints')
-print('Demand  = ', model.demand())
-print('Labor A = ', model.laborA())
-print('Labor B = ', model.laborB())</code></pre>
+\mbox{cost} &amp; = \sum_{c\in C} x_c P_c
+\end{align}<p>where $P_c$ is the price per unit volume of $c$. Using the Python data dictionary defined above, the price $P_c$ is given by <code>data[c]['cost']</code>.</p>
 
 </div>
 </div>
@@ -14514,43 +14529,12 @@ print('Labor B = ', model.laborB())</code></pre>
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># create a model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
-
-<span class="c1"># declare decision variables</span>
-<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-
-<span class="c1"># declare objective</span>
-<span class="n">model</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">40</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
-
-<span class="c1"># declare constraints</span>
-<span class="n">model</span><span class="o">.</span><span class="n">demand</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">laborA</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">80</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">laborB</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
-
-<span class="c1"># solve</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">status</span><span class="p">:</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
-
-<span class="c1"># display solution</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Profit = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Decision Variables&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Constraints&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Demand  = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">demand</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor A = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborA</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor B = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborB</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">total_cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">])</span>
+<span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">total_cost</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">objective</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14570,75 +14554,7 @@ print('Labor B = ', model.laborB())</code></pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre># ==========================================================
-# = Solver Results                                         =
-# ==========================================================
-# ----------------------------------------------------------
-#   Problem Information
-# ----------------------------------------------------------
-Problem: 
-- Name: unknown
-  Lower bound: 2600.0
-  Upper bound: 2600.0
-  Number of objectives: 1
-  Number of constraints: 4
-  Number of variables: 3
-  Number of nonzeros: 6
-  Sense: maximize
-# ----------------------------------------------------------
-#   Solver Information
-# ----------------------------------------------------------
-Solver: 
-- Status: ok
-  Termination condition: optimal
-  Statistics: 
-    Branch and bound: 
-      Number of bounded subproblems: 0
-      Number of created subproblems: 0
-  Error rc: 0
-  Time: 0.01840686798095703
-# ----------------------------------------------------------
-#   Solution Information
-# ----------------------------------------------------------
-Solution: 
-- number of solutions: 0
-  number of solutions displayed: 0
-2 Var Declarations
-    x : Size=1, Index=None
-        Key  : Lower : Value : Upper : Fixed : Stale : Domain
-        None :     0 :  20.0 :  None : False : False : NonNegativeReals
-    y : Size=1, Index=None
-        Key  : Lower : Value : Upper : Fixed : Stale : Domain
-        None :     0 :  60.0 :  None : False : False : NonNegativeReals
-
-1 Objective Declarations
-    profit : Size=1, Index=None, Active=True
-        Key  : Active : Sense    : Expression
-        None :   True : maximize : 40*x + 30*y
-
-3 Constraint Declarations
-    demand : Size=1, Index=None, Active=True
-        Key  : Lower : Body : Upper : Active
-        None :  -Inf :    x :  40.0 :   True
-    laborA : Size=1, Index=None, Active=True
-        Key  : Lower : Body  : Upper : Active
-        None :  -Inf : x + y :  80.0 :   True
-    laborB : Size=1, Index=None, Active=True
-        Key  : Lower : Body    : Upper : Active
-        None :  -Inf : 2*x + y : 100.0 :   True
-
-6 Declarations: x y profit demand laborA laborB
-
-Profit =  2600.0
-
-Decision Variables
-x =  20.0
-y =  60.0
-
-Constraints
-Demand  =  20.0
-Labor A =  80.0
-Labor B =  100.0
+<pre>minimize var8441 @ 0.09 + var8442 @ 0.32 + var8443 @ 0.05 + var8444 @ 0.25
 </pre>
 </div>
 </div>
@@ -14654,103 +14570,8 @@ Labor B =  100.0
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.3.5-Python-Lists,-Sets,-Dictionaries,-and-Iterators">5.3.5 Python Lists, Sets, Dictionaries, and Iterators<a class="anchor-link" href="#5.3.5-Python-Lists,-Sets,-Dictionaries,-and-Iterators">&#182;</a></h2><p>Pyomo is integrated with the Python language, and inherits significant functionality by leveraging the basic data structures of Python. To make the best use of Pyomo, it is important to understand the basics of Python lists, sets, and dictionaries.</p>
-
+<h3 id="5.2.2.5-Step-5.-Constraints">5.2.2.5 Step 5. Constraints<a class="anchor-link" href="#5.2.2.5-Step-5.-Constraints">&#182;</a></h3>
 </div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.3.5.1-Data-in-Matrix/Vector-Format">5.3.5.1 Data in Matrix/Vector Format<a class="anchor-link" href="#5.3.5.1-Data-in-Matrix/Vector-Format">&#182;</a></h3><p>The example above used scalar modeling components, <code>model.x = Var()</code> and <code>model.y = Var()</code>, and each constraint was added as a separate line in the model.  This is fine for small problems with a just a few unknowns, but becomes impractical for larger problems.</p>
-<p>Here we repeat the example above, this time using <code>numpy</code> arrays to enter the data. An indexed variable <code>model.x</code> represents the unknowns, and the constraints are indexed as well. The indices are represented by the Python <code>range()</code> statement.</p>
-
-</div>
-</div>
-
-
-
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># enter data as numpy arrays</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span><span class="mi">30</span><span class="p">])</span>
-
-<span class="c1"># set of row indices</span>
-<span class="n">I</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
-
-<span class="c1"># set of column indices</span>
-<span class="n">J</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
-
-<span class="c1"># create a model instance</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
-
-<span class="c1"># create x and y variables in the model</span>
-<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
-
-<span class="c1"># add model constraints</span>
-<span class="n">model</span><span class="o">.</span><span class="n">constraints</span> <span class="o">=</span> <span class="n">ConstraintList</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">I</span><span class="p">:</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">constraints</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">J</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-
-<span class="c1"># add a model objective</span>
-<span class="n">model</span><span class="o">.</span><span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">J</span><span class="p">),</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
-
-<span class="c1"># create a solver</span>
-<span class="n">solver</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
-
-<span class="c1"># solve</span>
-<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-
-<span class="c1"># print solutions</span>
-<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">J</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x[&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="s2">&quot;] =&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">constraints</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>x[ 0 ] = 20.0
-x[ 1 ] = 60.0
-constraints : Size=3
-    Key : Lower : Body  : Upper
-      1 :  None :  20.0 :  40.0
-      2 :  None :  80.0 :  80.0
-      3 :  None : 100.0 : 100.0
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 
@@ -14758,10 +14579,12 @@ constraints : Size=3
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">abv</span> <span class="o">=</span> <span class="mf">0.040</span>
+<span class="n">constraints</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 
      </div>
@@ -14769,6 +14592,432 @@ constraints : Size=3
 </div>
 </div>
 
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="5.2.2.5.1-Volume-Constraint">5.2.2.5.1 Volume Constraint<a class="anchor-link" href="#5.2.2.5.1-Volume-Constraint">&#182;</a></h4><p>The customer requirement is produce a total volume $V$. Assuming ideal solutions, the constraint is given by</p>
+\begin{align}
+V &amp;  = \sum_{c\in C} x_c
+\end{align}<p>where $x_c$ denotes the volume of component $c$ used in the blend.</p>
+
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">constraints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="5.2.2.5.2-Product-Composition-Constraint">5.2.2.5.2 Product Composition Constraint<a class="anchor-link" href="#5.2.2.5.2-Product-Composition-Constraint">&#182;</a></h4><p>The product composition is specified as 4% alchohol by volume. Denoting this as $\bar{A}$, the constraint may be written as</p>
+\begin{align}
+\bar{A} &amp; = \frac{\sum_{c\in C}x_c A_c}{\sum_{c\in C} x_c}
+\end{align}<p>where $A_c$ is the alcohol by volume for component $c$. As written, this is a nonlinear constraint. Multiplying both sides of the equation by the denominator yields a linear constraint</p>
+\begin{align}
+\bar{A}\sum_{c\in C} x_c &amp; = \sum_{c\in C}x_c A_c
+\end{align}<p>A final form for this constraint can be given in either of two versions. In the first version we subtract the left-hand side from the right to give</p>
+\begin{align}
+0 &amp; = \sum_{c\in C}x_c \left(A_c - \bar{A}\right) &amp; \mbox{ Version 1 of the linear blending constraint}
+\end{align}<p>Alternatively, the summation on the left-hand side corresponds to total volume. Since that is known as part of the problem specification, the blending constraint could also be written as</p>
+\begin{align}
+\bar{A}V &amp; = \sum_{c\in C}x_c A_c  &amp; \mbox{ Version 2 of the linear blending constraint}
+\end{align}<p>Which should you use? Either will generally work well. The advantage of version 1 is that it is fully specified by a product requirement $\bar{A}$, which is sometimes helpful in writing elegant Python code.</p>
+
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">constraints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;abv&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">abv</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.2.2.6-Step-6.-Create-CVXPY-Problem-object">5.2.2.6 Step 6. Create CVXPY Problem object<a class="anchor-link" href="#5.2.2.6-Step-6.-Create-CVXPY-Problem-object">&#182;</a></h3>
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.2.2.7-Step-7.-Solve-problem-and-display-solution">5.2.2.7 Step 7. Solve problem and display solution<a class="anchor-link" href="#5.2.2.7-Step-7.-Solve-problem-and-display-solution">&#182;</a></h3>
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimum cost to produce </span><span class="si">{</span><span class="n">V</span><span class="si">}</span><span class="s2"> gallons at ABV=</span><span class="si">{</span><span class="n">abv</span><span class="si">}</span><span class="s2"> = $</span><span class="si">{</span><span class="n">total_cost</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">components</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2"> gallons&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Minimum cost to produce 100 gallons at ABV=0.04 = $24.33
+A: 66.67 gallons
+B:  0.00 gallons
+C: 33.33 gallons
+W:  0.00 gallons
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.2.3-Parametric-Studies">5.2.3 Parametric Studies<a class="anchor-link" href="#5.2.3-Parametric-Studies">&#182;</a></h2><p>An important use of optimization models is to investigate how operations depend on critical parameters. For example, for this blending problem we may be interested in questions like:</p>
+<ul>
+<li>How does the operating cost change with product alcohol content?</li>
+<li>What is the cost of producing one more gallon of product?</li>
+<li>What if the supply of a raw material is constrained?</li>
+<li>What if we produce two products rather than one?</li>
+<li>How much would be pay for raw materials with different specifications</li>
+</ul>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.2.3.1-Consolidating">5.2.3.1 Consolidating<a class="anchor-link" href="#5.2.3.1-Consolidating">&#182;</a></h3><p>To enable parametric studies, our first step is to consolidate all of the prior development into a single cell, and to consolidate the</p>
+
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[63]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">brew_blend</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">abv</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    
+    <span class="c1"># create set of components</span>
+    <span class="n">components</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    
+    <span class="c1"># create variables</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">}</span>
+    
+    <span class="c1"># create objective function</span>
+    <span class="n">total_cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">)</span>
+    
+    <span class="c1"># create list of constraints</span>
+    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">volume</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">),</span>
+        <span class="mi">0</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;abv&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">abv</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">)</span>
+    <span class="p">]</span>
+    
+    <span class="c1"># create and solve problem</span>
+    <span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">total_cost</span><span class="p">),</span> <span class="n">constraints</span><span class="p">)</span>
+    <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+    
+    <span class="c1"># return results</span>
+    <span class="n">min_cost</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">optimal_blend</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">min_cost</span><span class="p">,</span> <span class="n">optimal_blend</span>
+
+<span class="c1"># problem data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.045</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.32</span><span class="p">},</span>
+    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.037</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">},</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.030</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.09</span><span class="p">},</span>
+    <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.000</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1"># product requirement</span>
+<span class="n">volume</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">abv</span> <span class="o">=</span> <span class="mf">0.04</span>
+
+<span class="c1"># optimal solution</span>
+<span class="n">min_cost</span><span class="p">,</span> <span class="n">optimal_blend</span> <span class="o">=</span> <span class="n">brew_blend</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">abv</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># display solutoin</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimum cost to produce </span><span class="si">{</span><span class="n">volume</span><span class="si">}</span><span class="s2"> gallons at ABV=</span><span class="si">{</span><span class="n">abv</span><span class="si">}</span><span class="s2"> = $</span><span class="si">{</span><span class="n">min_cost</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">optimal_blend</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">optimal_blend</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">optimal_blend</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">optimal_blend</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">optimal_blend</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">df</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Minimum cost to produce 100 gallons at ABV=0.04 = $24.33
+A: 66.67
+B:  0.00
+C: 33.33
+W:  0.00
+{&#39;C&#39;: 33.333333327922226, &#39;A&#39;: 66.6666666671207, &#39;W&#39;: 1.1218738137027075e-09, &#39;B&#39;: 3.835217640330187e-09}
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[63]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>A</th>
+      <th>W</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C</th>
+      <td>33.333333</td>
+      <td>66.666667</td>
+      <td>1.121874e-09</td>
+      <td>3.835218e-09</td>
+    </tr>
+    <tr>
+      <th>A</th>
+      <td>33.333333</td>
+      <td>66.666667</td>
+      <td>1.121874e-09</td>
+      <td>3.835218e-09</td>
+    </tr>
+    <tr>
+      <th>W</th>
+      <td>33.333333</td>
+      <td>66.666667</td>
+      <td>1.121874e-09</td>
+      <td>3.835218e-09</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>33.333333</td>
+      <td>66.666667</td>
+      <td>1.121874e-09</td>
+      <td>3.835218e-09</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.045</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.32</span><span class="p">},</span>
+    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.037</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">},</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.030</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.09</span><span class="p">},</span>
+    <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.000</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1"># gather results for a range of abv values</span>
+<span class="n">abv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">brew_blend</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">abv</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">abv</span><span class="p">,</span> <span class="p">[</span><span class="n">cost</span> <span class="k">for</span> <span class="n">cost</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">results</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">abv</span><span class="p">,</span> <span class="p">[</span><span class="n">values</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">cost</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">results</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Blended ABV&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;gallons&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAAEGCAYAAACKB4k+AAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjMuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8vihELAAAACXBIWXMAAAsTAAALEwEAmpwYAABHcklEQVR4nO3dd3gUVffA8e9N742EJNSAgPQa6byEIiCK2EApISCIgoAUC/izoq/ia0MsKKIQQgdFEVFQIDZEmjQJCgJSQ3pIr/f3R5aYQICQZGvO53nyJDuzO3P2Jpkze+/MPUprjRBCCAFgZ+4AhBBCWA5JCkIIIYpJUhBCCFFMkoIQQohikhSEEEIUczB3AJXh7++vQ0JCKvz6jIwM3N3dqy4gKyZtUZq0R2nSHqVZe3vs2bMnQWsdUNY6q04KISEh7N69u8Kvj46OJiwsrOoCsmLSFqVJe5Qm7VGatbeHUuqfq62T7iMhhBDFJCkIIYSVySsoJCe/wCjblqQghBBW5HxqFg8s2MHLG2KMsn1JCkIIYSWi/4xj4Ds/ceT8RW5p4GeUfVj1QLMQQlQH+QWFzP3+KO9HH+PmQE/eH9GemwI8jLIvSQpCCGHB4i5mM2Xl7+w4nsT9oXV54c4WuDrZG21/Jk8KSikX4EfA2bD/tVrr55VSfsAqIAQ4CQzVWiebOj4hhLAU2/9OYMqKfaTn5PHGkDbc16GO0fdpjjGFHKC31roN0BYYoJTqDMwEtmitGwNbDI+FEKLaKSzUvLvlKCMX/oa3qwNfPtrdJAkBzPBJQRcVcEg3PHQ0fGlgMBBmWB4JRANPmTg8IYQwq8T0HKat3s+Pf8UzuG0tXrm7Fe7OpjtUK3MU2VFK2QN7gEbA+1rrp5RSKVprnxLPSdZa+5bx2vHAeIDAwMAOK1eurHAc6enpeHgYZ7DG2khblCbtUZq0R2nGao+jyQV8sC+HtDzNyGZO9KzjgFKqyvfTq1evPVrr0LLWmWWgWWtdALRVSvkA65RSLW/gtQuABQChoaG6MreaW/ut6lVJ2qI0aY/SpD1Kq+r20Frz8U/HeW3Xn9TxdSVqeHta1vausu3fCLNefaS1TlFKRQMDgAtKqWCt9XmlVDAQZ87YhBDCFFIyc3l8zX6+j4njtpZBvHZfa7xcHM0Wj8kHmpVSAYZPCCilXIG+wBFgPRBheFoE8KWpYxNCCFPafzqF2+f9zA9/xfPCoOZ8MKK9WRMCmOeTQjAQaRhXsANWa603KKV+BVYrpcYCp4AhZohNCCGMTmtN5PaT/HdjDDU9XVjzSFfa1vUxd1iAea4+OgC0K2N5ItDH1PEIIYQpXczOY+ZnB9h4MJa+zWryxpA2+Lg5mTusYnJHsxBCmMgf51J5dNleTidn8fTApjzUo6FRri6qDEkKQghhZFprVuw8zQtf/YGfmxOrxncmNMQ4E9pVliQFIYQwooycfP5v3UG+2HeOHo39mXt/W2p4OJs7rKuSpCCEEEby14U0Jizdw4mEDGbc2oRHezXCzs6yuosuJ0lBCCGMYO2eMzzzxUE8nB1ZOrYTXRv5mzukcpGkIIQQVSgrt4Dn1x9i9e4zdG7ox7xh7ajp6WLusMpNkoIQQlSRv+PTeXTZXv68kMbk3o2Y2rcJ9hbeXXQ5SQpCCFEF1u8/x6zPDuDsaM/iMR3p2STA3CFViCQFIYSohOy8Al7++jBLd5witL4v7w5vR7C3q7nDqjBJCkIIUUGnEjOZuHwPh85eZPx/GvJE/5txtDdH7bKqI0lBCCEq4NtDsTyxdj8K+HhUKLc2DzR3SFVCkoIQQtyA3PxCVsTksOmfPbSp4817w9tT18/N3GFVGUkKQghRTmdTspi0fC+/n8pndNcQZg1sirODvbnDqlKSFIQQohy2HYlj2up95BdoJrZ15sk7W5g7JKOw7hERIYQwsvyCQl779ghjFu8i2NuVryZ3p2OQ7Z5P2+47E0KISrpwMZvJy39n58kkhnWsx/ODmuPiaM8/5g7MiCQpCCFEGX46Gs/UlfvIzC3g7fvbcHe7OuYOySQkKQghRAkFhZp3thzl3a1HaRTgwcrx7Wkc6GnusExGkoIQQhjEp+UwddXv/HIskXva1+blu1ri5lS9DpPV690KIcRV7DieyOQVv3MxK4//3duaIaF1LK5UpilIUhBCVGuFhZr5P/zNm5v/pH4Nd5Y82JFmwV7mDstsJCkIIaqt5Ixcpq3eR/Sf8dzROphX72mFp4ujucMyK0kKQohqac8/yUxevpeE9FxeGtyCkZ3rV8vuostJUhBCVCtaaz75+QRzvjlCsI8Ln03oSqs63uYOy2KYPCkopeoCS4AgoBBYoLV+RynlB6wCQoCTwFCtdbKp4xNC2K7UrDweX7Of7w5foF/zQF4f0gZv1+rdXXQ5c0xzkQ/M0Fo3AzoDjyqlmgMzgS1a68bAFsNjIYSoEgfPpHLHuz+x7Ugcz9zejI/CO0hCKIPJPylorc8D5w0/pymlYoDawGAgzPC0SCAaeMrU8QkhbIvWmqU7/uGlDTH4ezix+pEutK/na+6wLJbSWptv50qFAD8CLYFTWmufEuuStdZX/OaUUuOB8QCBgYEdVq5cWeH9p6en4+HhUeHX2xJpi9KkPUqz1vbIytcsOpTDztgCWgfYM76VMx5OlR9Mttb2uKRXr157tNahZa0z20CzUsoD+AyYqrW+WN5Rf631AmABQGhoqA4LC6twDNHR0VTm9bZE2qI0aY/SrLE9Ys5f5NFle/knqZCnBjTl4f80xM6uaq4ussb2KC+zJAWllCNFCWGZ1vpzw+ILSqlgrfV5pVQwEGeO2IQQ1k1rzZrdZ3j2y0N4uzqyfFwnOjWsYe6wrIY5rj5SwCdAjNb6rRKr1gMRwBzD9y9NHZsQwrpl5ubz7Bd/8NneM3Rv5M/b97clwNPZ3GFZFXN8UugGhAMHlVL7DMuepigZrFZKjQVOAUPMEJsQwkodi0tj4rK9HI1LZ2rfxkzu3Rj7Kuouqk4qlRSUUjWBDK11hlLKFZgOeALvGK4yuoLW+mfgar+pPpWJRwhRPX3x+1meXncQV0d7oh7sRPfG/uYOyWpV9j6FlcClzroXgUZAMrC8ktsVQojrys4rYNbnB5m6ah8ta3uz8bEekhAqqcKfFJRSEcBNQJhhnOB+4H9AOlBfKTUK2Ke1PlAlkQohRAknEzKYuGwvh89fZGLYTUy/tQkO9lJ2vrIq030UDWQBMYA3cAH4iqKuoUmG9amVC08IIa709YHzPPXZARzsFZ+ODqV300Bzh2QzKpwUtNb/KKXeATYAjsAorfUppVQ9IEFrfaqqghRCCICc/AJe3XiExdtP0q6eD+8Nb09tH1dzh2VTKjXQrLWer5SKAgq11pmGxYnAsEpHJoQQJZxOymTS8r3sP5PKuO4NeHJAU5wcpLuoqlX6klStdfpljzMqu00hhCjpu8MXmLF6Hxr4cGQHBrQMMndINkvqKQghLFZeQSGvb/qTBT8ep2VtLz4Y3oF6NdzMHZZNk6QghLBI51OzmLT8d/b8k8zIzvV45vbmuDjamzssmydJQQhhcaL/jGPaqn3k5hcyb1g77mxTy9whVRuSFIQQFiO/oJC53x/lvW3HaBrkyfsj2nNTgPVOUW2NJCkIISxC3MVspqz8nR3Hk7g/tC4v3NkCVyfpLjI1SQpCCLPb/ncCU1bsIyMnnzeHtOHeDnXMHVK1JUlBCGE2hYWa97YdY+73f9EwwIPlD3WiSaCnucOq1iQpCCHMIjE9h6mr9vHT0QTualuL/97dCndnOSSZm/wGhBAmt+tkEpOX/05SZi6v3tOKB26pS3lL8grjkqQghDCZwkLNxz8d53+b/qSuryvrJnalRS1vc4clSpCkIIQwiZTMXB5fs5/vY+IY2CqIOfe2xsvF0dxhictIUhBCGN2+0yk8umwvcWnZvDCoORFdQ6S7yEJJUhBCGI3WmsXbT/LKxhhqerqw5pGutK3rY+6wxDVIUhBCGMXF7DyeWnuAbw7F0rdZTd4Y0gYfNydzhyWuQ5KCEKLKHTqbyqPL93ImOYunBzbloR4NpbvISkhSEEJUGa01y347xewNh/Fzc2LV+M6EhviZOyxxAyQpCCGqREZOPk+vO8iX+87xnyYBvD20DTU8nM0dlrhBkhSEEJV2JPYiE5ft5WRCBjNubcKjvRphZyfdRdZIkoIQolLW7D7Ns18ewsPZkaXjOtH1Jn9zhyQqwSxJQSn1KXAHEKe1bmlY5gesAkKAk8BQrXWyOeITQlxfVm4Bz315iDV7ztC5oR/zhrWjpqeLucMSlWRnpv0uBgZctmwmsEVr3RjYYngshLBAf8enc9f7v7B27xmm9G7EsnGdJSHYCLN8UtBa/6iUCrls8WAgzPBzJBANPGW6qIQQ15OTX8Ca3Wd4dWMMzo72LB7TkZ5NAswdlqhCSmttnh0XJYUNJbqPUrTWPiXWJ2utfct43XhgPEBgYGCHlStXVjiG9PR0PDyk1B9IW1xO2qO0pNR0dic7882JPJJzNDf72vFwG2f8XMzV2WBe1v730atXrz1a69Cy1lndQLPWegGwACA0NFSHhYVVeFvR0dFU5vW2RNqiNGmPImnZeSz59R8+3PMnabm5dGzgx6RejejR2L9a34xmy38flpQULiilgrXW55VSwUCcuQMSojrJKygkNSuPi1l5pGblse1IHIu2nyQtO59W/vY8e29HOjaQG9FsnSUlhfVABDDH8P1L84YjhPXJzisoPqhfzC76npqVR2pmHqlZ+f8+Nqy/WOJxZm7BFdsb0CKIR3s1IvHY75IQqglzXZK6gqJBZX+l1BngeYqSwWql1FjgFDDEHLEJYU5aa7LyCv49cF92IC95Jl/W8pz8wmtu393JHm9XR7xcHfF2daSen1upx5e+vFwdaOjvQYi/OwDRx0zx7oUlMNfVR8OusqqPSQMRwgi01qTn5Jd5IC/zIJ/973MuZuWTW3DtA7uni0OpA3ijAI+in90crzjAe5V4rperI4721XNgWJSfJXUfCWExCrU2dLlc++vyLpiLWXlczM6noPDqV/XZKa44eNfycTUcxEufsV9+9u7p4oi9TB8hjEiSgrBZ+ZcGTrPL7oK5WjdMalYe6dn56E2br7ptBztV6gzc182JkBrupQ7gJdeXPLh7ODtU6yt3hGWTpCAsWk5+wRX96Jd3wVx+cL/0OKOMgdOSnB3sSh20A71caBLoiberI8kXztK6WePS3TBu/x7YXR3t5cAubJIkBWFUWmuy8wqv3v1y+ffs0uuz867dv+5mGDi9dHCv4+uGd62SZ+alD+aXumi8XB1xcbS/6najo+MJ696gqptDCIsnSUFcl9aajNyCEpc2lt2ffuUBP5+LWXnXHzh1dijVxdLQ36NU90tZXTAycCqEcUhSqCYKCzVphr71y8/GU7PyOPRXLt8lHyyzS+Z6A6dKccUAaS1v19JXwVx+kDc839PFAQc5sAthMSQpWJH8gsLiA/vVumLKOuCnZuaRlpPPtaa5slfgfSH237NyNyfq1XAv6n65/AzdpcSZu5sjHk4OUlBFCBshScHEcvMLS3W/lDorL+MSyIvZ+cXr03Pyr7ltJ8PA6aWvAA/nf69hNxzsy+qG8XZ1ZOf2n+jVq5eJWkEIYakkKdygSwOnl08hUNYZ+pVXxeSTlXftK2JcHe1LHaxr+7jSPNir7O6XywZQrzVwej1yJY0QAqppUrg0cJqYVUjM+Ys3cP16Phez88i9zlQClwZOvQxXvzTwdy99QL/8e4n+eCcH6V8XQphPtUwKe08lc+/8X4se/PDTFesvDZyWPDsP8na5sj+9jC8ZOBVCWLNqmRTq+bkz67amxJ46Tse2La84e/d0loFTIUT1VC2TQoCnMw/3vIno6NOEtQo2dzhCCGExpJ9DCCFEMUkKQgghiil9rTuaLJxSKh74pxKb8AcSqigcaydtUZq0R2nSHqVZe3vU11oHlLXCqpNCZSmldmutQ80dhyWQtihN2qM0aY/SbLk9pPtICCFEMUkKQgghilX3pLDA3AFYEGmL0qQ9SpP2KM1m26NajykIIYQorbp/UhBCCFGCJAUhhBDFJCkIIYQoJklBCCFEMUkKQgghiklSEEIIUUySghBCiGKSFIQQQhSTpCCEEKKYJAUhhBDFJCkIIYQoJklBCCFEMUkKQgghiklSEEIIUczB3AFUhr+/vw4JCanw6zMyMnB3d6+6gKyYtEVp0h6lSXuUZu3tsWfPnoSr1Wg2WlJQSn0K3AHEaa1bGpb5AauAEOAkMFRrnWxYNwsYCxQAU7TWm663j5CQEHbv3l3hGKOjowkLC6vw622JtEVp0h6lSXuUZu3toZT652rrjNl9tBgYcNmymcAWrXVjYIvhMUqp5sADQAvDaz5QStkbMTYhhBBlMFpS0Fr/CCRdtngwEGn4ORK4q8TylVrrHK31CeAY0NFosRUWkrrha8jLM9YuhBDCKpl6TCFQa30eQGt9XilV07C8NrCjxPPOGJZdQSk1HhgPEBgYSHR09A0H4RQTg+8786jh4cGubzeR1fM/FHp53fB2bEl6enqF2tJWVff20Fqj0dipovPG6t4elzNnexRqzbKYXGp72NG7nmOVb99SBppVGcvKLB6ttV6AoWh2aGiorki/nu7Zk8x27Tj65lt4fP01nps34zVoEH4REbjc3OSGt2cLrL2PtKpV1/bIzMvky7+/ZFnMMuIy4+hTrw8DGwzE9ahrtWyPqzHX30dWbgFTVv7OllMXeKTnTYSFNa3yfZg6KVxQSgUbPiUEA3GG5WeAuiWeVwc4Z6wglFK4d+5MyqMT6VK/PslRUaSs+4LUzz/HrUtnaowejXuPHig7uWJXVA+xGbEsP7KctX+tJS03jdb+rWlfsz1bTm1hw/ENeNh5sGPHDm5veDttAtqgVFnnccKYkjJyGRu5i32nU3hhUHNGd2tglP2YOimsByKAOYbvX5ZYvlwp9RZQC2gM7DRFQM4NGhD03HMETJlC8uo1JC9bxumHH8GpQQP8IkbhPXgwdq6upghFCJM7GH+QqMNRbP5nMxpNn3p9GNV8FG1rtgXgmc7P8MvZX1j822LWHVvHyj9XUtujNiObjWREsxGSHEzkVGImEYt2ci4li/kj2jOgZbDR9mXMS1JXAGGAv1LqDPA8RclgtVJqLHAKGAKgtf5DKbUaOAzkA49qrQuMFVtZ7H188B//EDXGjObit5tIiowk9oUXiX97Lj7334/viOE4BgaaMiQhjCK/MJ+tp7YSdTiKffH78HD0YESzEQxvNpzaHqWH8pzsnehVrxfquOKWbrew9dRW1h1bx2u7XuNYyjGe6fwMDnaW0gttm/afTmFs5C7yCzXLxnUiNMTPqPsz2m9Taz3sKqv6XOX5/wX+a6x4yks5OuI96A687ridrL17SVocSeLChSR++ilet92GX0QEri1bmDtMIW5Yem46nx/9nOVHlnM2/Sy1PWrz5C1Pcneju/Fw8rju690d3Rl00yDuaHgH7+97n48OfERcZhxv9HwDN0c3E7yD6mfrkQs8uux3ang4EflgR24KuP7vqbIkxV+FUgq3Dh1w69CB3NOnSV66lJS1n3Hxq69wDe2AX0QEnr17o+zldgph2c6knWFZzDLWHVtHRl4G7Wu254nQJwirG4a93Y3//SqlmNRuEoHugby842XGbBrD+33ex9/V3wjRV18rdp7i/9YdpEUtbz4ZHUpNTxeT7FeSQjk41a1L4KxZ+E+aRMraz0iOiuLs5Ck41q2LX/hIvO+5F3sP673lXdgerTW/x/1O1OEotp7eih129Avpx6jmo2jhXzWfdIc0GUJN15o88eMTjNw4kg/7fkiId0iVbLs601rz9nd/MW/rMXo2CeCDEe1xdzbdoVour7kB9p6e1Bgzmps2b6L23Lk4+Ptz4ZVXORYWxoU5r5F75qy5QxTVXF5hHl8f/5phXw8j4tsIdsbuZEyLMXx777e89p/XqiwhXNKzbk8+7f8pWflZhH8Tzr64fVW6/eomr6CQx9ccYN7WY9wfWpeFEaEmTQggnxQqRDk44DWgP14D+pN14ABJiyNJiooiackSPG+9Fb/REbi1a2fuMEU1kpqTypq/1rDiyAriMuMI8QrhmU7PMOimQUbv72/p35Klty1lwpYJjNs8jtd6vEaf+mUOHYprSM/JZ8LSPfx0NIGpfRvzWJ/GZrm6S5JCJbm2bk3tt96k5vnHSV62jORVq0nbtAmXNq2pERGBZ79+KAdpZmEcJ1NPsjRmKev/Xk9WfhadgjvxfJfn6V67e/HdyKZQ16suUbdFMWnrJKZFT2NWp1kMa3q1a03E5eIuZjN60S7+vJDG/+5tzdBb6l7/RUYiR6sq4hgcTM3HH8d/wgRS1n1BUtQSzk6fgUNwMH4jR+AzZAj21XwqDVE1tNbsjN1J1OEofjjzA452jgxsMJDw5uHc7Hez2eLydfFlYb+FPPXjU7zy2yuczzjP1PZTTZqcrNGxuDQiPt1FcmYun0SEEnZzzeu/yIgkKVQxO3d3/EaOwHf4MNKjo0laHEnc628Q//4H+Nx9N36jwnGqX9/cYQorlFuQy8YTG1l6eCl/Jv+Jn4sfj7R5hPtvvt9irvxxdXDl7bC3eXXnqyw6tIjYjFhe7vYyTvZO5g7NIu08kcS4yF04OdizanwXWtXxNndIkhSMRdnZ4dm7N569e5MdE0PS4kiSV68meflyPHr3xi9iFG633CJ3hIrrSspOYvWfq1n15yoSshJo5NOIF7u+yO0Nb8fZ3tnc4V3B3s6e/+v0fwS7BzN371wSshKY22suXk7ySbmkrw+cZ9qqfdTxdSXywY7U9bOMez1sLink5eVx5swZsrOzr/tcb29vYmJiTBAVMDoCHT6SwowMkjMySU5LQ/30E3bu7rj5+FCnXj0cHat+xkNhvY4lH2NpzFI2HN9ATkEO3Wp347/N/0uX4C4WfzKhlGJsq7EEugfy7C/PEvFNBPP7zifIPcjcoVmEhT8d578bY2hfz5eFo0LxdbecT1I2lxTOnDmDp6cnISEh1/3HSUtLw9PT00SR/UsXFlKQkkJ+YiKF2dmkpKVz/JdfuKlNGxx8fU0ej7AcWmt+OfcLUYej2H5uO872zgy6aRDhzcJp6NPQ3OHdsDsa3kGAawBTt01lxNcj+KDvB2Yd9zC3wkLNy1/H8OkvJxjQIoi5D7TFxdGyboC1uaSQnZ1droRgTsrODgc/P+x9fSlMT8cvIYGE+DiOhfXCe/Bg/CJG4XzTTeYOU5hQdn42G45vYOnhpfyd+jcBrgFMbjeZIU2G4Oti3ScKnYI7EXlbJBO+n0DEtxHM7TWXzsGdzR2WyWXnFTB99T42HoxldNcQnr2jOfZ2lnecsrmkAFh0QihJKYW9pyf2np44pKXhfecgUr/4gpTVq3Hv0QO/iAjcu3W1mvcjblx8Zjwr/1zJ6j9Xk5KTQjO/ZrzS/RUGhAzA0d52uhOb+DZh2cBlTPh+AhO+n8DsrrMZdNMgc4dlMimZuTy0ZDe7TibzzO3NGNu9gcX+X9tkUrBGytGR4JdeImDaNJJXriR5+QpOjxuHc+NG+I4ahfedd2LnbHmDiqJijiQdIepwFBtPbKSgsICwumGENw8nNDDUYg8WlRXkHkTkbZFM2zaNp39+mguZFxjbcqzNvt9LziRnMnrRLk4lZvLusHYMalPL3CFdk1xAbCTr1q1DKcWRI0du6HUOfn4ETJxIo61bCH71VbB3IPbZ5zjWqzfx894lPyHBSBELYyvUhWw7tY0HNz3IkK+G8N0/3zGkyRA23L2Beb3ncUuQ7V+N5uXkxfy+8xnYYCDv7H2Hl3e8TH5hvrnDMppDZ1O5+4PtxF3MZsnYjhafEEA+KRjNihUr6N69OytXruSFF1644dfbOTnhc/ddeN81mMzfdpK0eDEJH3xA4scf43XHHfiNjsDl5uo7YGdNMvMy+eLYFyyLWcaptFMEuQcxvcN07ml8D97O5r8u3dSc7J14tcerBLkH8emhT4nLjON/Pf+Hq4NtFbP68a94Jizdg7erI8smdKVJoOkvaqkIm04KL371B4fPXbzq+oKCAuxvcOrr5rW8eH7QtScVS09P55dffmHbtm3ceeedFUoKlxSVDu2Ee+dO5Jw48W/p0HXrcOvcGb+IUXj07CmlQy1QbEYsy2OWs/bovyUuJ7ebTJ/6fXC0s53xgoqwU3ZM6zCNIPcgXv3tVcZtGse7fd7Fz8W4BWRMZc3u08z6/CCNAz1ZPOYWAr1MM+11VbDppGAuX3zxBQMGDKBJkyb4+fmxd+9e2rdvX+ntliodumYNyUuXcWbCRJxCQv4tHepmGTfAVGeXl7jsW68v4c3Di0tcin8NazqMmm41eerHpwjfGM78vvOp51XP3GFVmNaad7ce463v/qJ7I3/mj2yPp4t1nQDYdFK43hm9se5TWLFiBVOnTgXggQceYMWKFVWSFC6x9/HB/6GHqDF6NBc3bS4qHfribOLmvoPv0KH4jhwhpUNN7GolLkc0G0EtD8vvRzanPvX6sLDfQiZvnUz4N+G81/s9WgW0MndYNyy/oJBnvzzEip2nuad9bebc0xonB+v7BG/TScEcEhMT2bp1K4cOHUIpRUFBAUop/ve//1X5IKJydMT7jtvxun0gWb//XlQ69JNPSFy0CK8BA4pKh7ZqWaX7FKWl5aYVlbiMWc65jHPU8ajDzI4zuavRXbg7SuGl8mpbsy1Rt0XxyPeP8OCmB3m95+uE1Q0zd1jllpGTz6Tle9n2ZzyTejViRr8mVnvRgCSFKrZ27VpGjRrFRx99VLysZ8+e/Pzzz/To0cMo+1RK4da+PW7t25N75gzJUUtJWbuWixs24NqhA36jpXRoVTuddprlMctLlbh8suOThNWpWIlLASHeISwduJRJWybx2LbH+L9O/8fQm4eaO6zrik/LYWzkLg6dTeW/d7dkRCfrnvBSkkIVW7FiBTNnziy17N5772X58uVGSwolOdWpQ+CsmfhPnkTK2rUkRy2V0qFVpKwSl/0b9Ce8eTgtalRtRbPqyt/Vn0/7f8rjPzzOSzteIjYjlsntJlvsWffx+HQiFu0kIS2XBeGh9G1u/d22khSqWHR09BXLpkyZYvI47D08qDF6NH4jR5K2ZStJkZFceOVV4ue9i8999+EXPhLH2rVNHpc1yivMY/PJzUQdjuKPxD/wdvbmwZYP8sDNDxDobv0HAUvj5ujGvN7zeHnHy3x88GMuZF7ghS4vWNwd3nv+SWZc5C7slGLF+M60retj7pCqhCQFG6ccHPDq3w+v/v2uLB3ar1/RFN5SOrRMqTmprP1rLcuPLC8ucfls52cZdNMgm7um3tI42DnwfJfnCXYP5r197xGXGcfbYW/j4eRh7tAA2HMhnwXf7yDY24XFYzoS4m87n74lKVQjV5QOXb2GtG+/xaVNa5xDQ9HduqFk+m5Opp5kdeJqnlz7pFlLXFZ3SikebvMwQe5BvLD9BSK+LZp+u6abeSuTLfn1JO/9nkObuj58EhFKDQ/bmn6mXElBKeUOZGmtC5VSTYCmwDda6zyjRieMolTp0C++IHlJFD6ffMqxjd/gN2J4UelQ7+p1p+3lJS4dcOCORncwstnIaj3VsyUY3GgwAa4BTIuexoiNI5jfZz6NfBuZPI7CQs1rm47w0Q/HaVfTnuUPdcbVyfYuKijvac+PgItSqjawBRgDLDZWUMI07Nzd8RsxgobfbCR54gSc6tUj7o03OdqrN7GzXyL35Elzh2h0uQW5fHHsC4Z8NYRxm8dxMOEgE9pM4MU6L/JSt5ckIViIrrW7snjAYvIL8xn17Sh2xe4y6f5z8guYtnofH/1wnJGd6zGprbNNJgQof1JQWutM4B7gXa313UBz44UlTEnZ2ZHbujX1IxfTYN3nePXrR/KaNfx920BOT3yUjN92orU2d5hVKik7ifn759NvbT+e/eVZCnQBL3Z9kc33bWZi24l42UvpSEvTrEYzlg1cRoBrAA9/9zDfnvjWJPtNzcpj9Ke7+HLfOZ7ofzMvDW5pkXUQqkp5xxSUUqoLMAIYe4OvFVbEpVkzas15lYDp00hesYKUFSs5tXUrzs2aFU2lMXAgyslySgfeqEslLr/6+ytyC3PpXrs74c3DraLEpYBaHrVYctsSpmydwhM/PsGFzAuMaj7KaL+7cylZjFm0i+MJ6bx9fxvublfHKPuxJOU9sD8GzALWaa3/UEo1BLYZLyzrZm9vT6tWrdBaY29vz3vvvUfXrl3NHdYNcaxZk5qPPYb/ww+Tun49SUuWcH7mLOLefBO/4cPxeeABqykdenmJSxd7FwY3GszIZiOtssRldeft7M2CfguY9dMs3tj9BuczzvNE6BNVftPgkdiLjP50Fxk5+Swe05FujfyrdPuWqlxJQWv9I0XjCpceHwdMf/G9lXB1dWXfvn0AbNq0iVmzZvHDDz+YN6gKsnNxwXfoUHyGDCHj519Iiowk/p15JHz4kcWXDs3Oz+ar41+x9PBSjqceJ8A1gCntpjCkyRB8XHzMHZ6oBGd7Z97o+QZv7H6DqMNRxGXG8Ur3V3BxqJrZSLcfS+DhqD24Ozuw+pEuNAuuPt2J5b36qAnwOBBS8jVa697GCauKfDMTYg9edbVrQT7Y32AvWFAruG1OuZ9+8eJFfK3kjPpalFJ49OiOR4/u5Bw9StKSJRZbOjQ+M54VR1aw5q81Nl3isrqzU3Y8ecuTBLkF8cbuN0jISmBer3mVTvhf7jvL42v208DfncVjOlLLp3rdk1LeI+Ia4ENgIVBgvHBsQ1ZWFm3btiU7O5vz58+zdetWc4dUpZwbN7526dBBg7BzMf388dWxxKWAUS1GEegeyNM/PU34N0XTb9fxvPG+f601H/5wnNe+PULnhn58FB6Kt2v1O4kob1LI11rPN2okxnCdM/osI02dXbL76Ndff2XUqFHFs6bakkulQ2uMG8fFrzcWTeH97HPEv/U2vsMewHfYMBwCAowaQ6Eu5IfTPxAVE8Wu2F24OrgytMlQRjQbYdXz8osb0z+kP/6u/kzZOoWRG0fyft/3b2g+qoJCzQvr/yBqxz8MalOLN4a0xtnBNi85vZ7yXpL6lVJqolIqWCnld+nLqJHZiC5dupCQkEB8fLy5QzGaS6VDG6z7nHqLF+Pati0J8z/kWO8+nJs5i+wbrFNdHpl5mSyPWc6gdYOYsm0KZ9LOMKPDDL4f8j2zOs2ShFANdQjsQNRtUTjbOzPm2zH8dOancr0uK7eAR5buIWrHPzzcsyHv3N+22iYEKP8nhQjD9ydKLNOAXLpxHUeOHKGgoIAaNWqYOxSjK1k6NPfkSZKWRJGybh2pX3yBW6dO+EVE4BFWudKhV5S4DGjN5PaT6VuvLw52cpV0ddfQpyFLBy5l4paJTN46mee6PMc9je+56vOTMnIZG7mLfadTePHOFkR0DTFdsBaqvFcfNTB2ILbk0pgCFPVTRkZG3nAtaGvnFBJC0HPPEjBl8r+lQycWlQ71HRWOz1133VDp0APxB4g6HMV3/3wHQN/6RSUu2wS0MdZbEFYqwC2AxQMWMz16Os9vf57YjFgmtJlwRfftP4kZjF60i3MpWcwf0YEBLYPMFLFlKe/VR47ABOA/hkXRwEcVnftIKXUSSKNo0Dpfax1q6I5aRdEVTieBoVrr5Ips39wKCmQs/pKySodemP0S8e/Mw3foEHxHjMAxqOx/xvzCfLac2kLU4Sj2x+/Hw9GDkc1GMrzZcClxKa7J3dGd9/q8x4vbX2T+/vnEZsTybJdncbQrGjjefzqFBxfvolBrlj/UmQ71rf8KwapS3s/b8wFH4APD43DDsnGV2HcvrXVCicczgS1a6zlKqZmGx09VYvvCgpRdOvRTEhctvqJ0qJS4FFXB0c6Rl7q9RJB7EB8d+Ii4rDje6vkWO/5O49Flv+Pv6UTkmI40DLCM6bgtRXmTwi1a65Kf07cqpfZXcSyDgTDDz5EUfRqRpGBjriwdGkXK2s+4uGEDdm1b8luPAD7w2k1GYZaUuBSVppRiUrtJBLkH8fKOlxn82XCOH3qA5oF1+HT0LQR42ta011VBlWeiM6XUXmCI1vpvw+OGwFqtdfsK7VSpE0AyRYPVH2mtFyilUrTWPiWek6y1vuIznVJqPDAeIDAwsMPKlStLrff29qZRo/JNq1tQUGAxff3Hjh0jNTXVbPtPT0/Hw8P0Z0xaa06mHuZi9Dra/nqWmqmQ4uvMxbDuuPzndrSreW4cMld7WCprbw+tNR//vZ8D9ktw1B5MC55IPdeKjyFYe3v06tVrj9Y6tKx15U0KfYBFwHFAAfWBMVrrCs1/pJSqpbU+p5SqCXwHTAbWlycplBQaGqp3795dallMTAzNmjUrVxxpRrpPoSJuJG5jiI6OJiwszGT7K6vE5ZBG93LPudoUrPySrL17sfPwwOfee/END8epjmlLh5q6PSydNbdHbn4hMz8/wOd7zzKgfR4x+m0KdAHv9n6XdjUrVnXQmtsDQCl11aRQ3quPtiilGgM3U5QUjmitcyoakNb6nOF7nFJqHdARuKCUCtZan1dKBQNxFd2+sFypOams+WsNK46suHqJyzuHknXwYFHp0GXLSIqKwvPWW4vGHdq1tbmbAIXxpGXnMXHZXn46msD0W5swuXcjzqR3YML3E3ho80PM6TGHvvX7mjtMi3LNpKCUutoFvjcppdBaf36jOzRUcbPTWqcZfu4HzAbWU3Q/xBzD9y9vdNvCcp1IPcGymGWs/3s9WflZdA7ufM0Sl66tWlH7zTeo+USJ0qGbNuHSujV+EaPw6tdPSoeKa7pwMZvRi3bx14U0/ndfa4aG1gWgrmddom6LYtLWSUyPns5THZ9iRLMRZo7Wclzvk8Kga6zTwA0nBSAQWGc423MAlmutv1VK7QJWK6XGAqeAIRXYtsWIjY1l6tSp7Nq1C2dnZ0JCQpg7dy5NmjQxd2gmo7Xmt9jfiDocxY9nfsTRzpE7Gt7ByOYjaeJbvnZwDAqi5owZ/5YOjVzCuRmPExcUhN/IEdWydKi4vr8upDFm0S5SMnP5dPQt9GxSeroVXxdfFvZbyMwfZzJn5xxiM2KZ1mGa1ODmOklBaz2mqndomHb7ijuOtNaJQJ+q3p85aK25++67iYiI4NJA+L59+7hw4UK1SAq5BblsPLGRqMNR/JX8F34ufkxoM4GhNw/F37Vic9LbubnhN3w4vg88QPoPP5AUuYS4N94k/oP5+Nx1F36jwnEKCanaNyKs0o7jiYxfshsnB3tWPdyFlrXLPmlwdXDlrbC3mLNzDov/WMyFjAu83P1lnOytt4hUVbhe99H0a63XWr9VteFUrdd2vsaRpKvPu1ORq4+a+jXlqY7XvlJ227ZtODo68sgjjxQvu3SHsy1Lyk5i1Z+rWHVkFYnZiTTyacTsrrMZ2HAgzvZVc+mfsrPDs1cvPHv1IvvIEZIWR5KyZg3JK1bg0asXfhERuHW8RcYdqqkNB84xfdV+6vi5EjmmI3X9rn3XvL2dPU93eppgj2De3vM28VnxvNP7Hbycqk/9hMtdr/vIMi7NsTKHDh2iQ4cO5g7DZC4vcdmjdg/Cm4fTObizUQ/OLk2bUmvOq9ScMZ3kFStItrHSoaL8tNZ88vMJXv46htD6viyMCMXHrXy/e6UUD7Z8kEC3QJ755Rkivonggz4fEOwRbOSoLdP1uo9eNFUgxnC9M3pLuiTV2hTqQraf235licvmI2nobdp5Eh0CAgiYMoUa48eT+tVXJEVGWm3pUHHjCgo1L399mEW/nOS2lkG8fX9bXBxv/P6j2xveToBrAI9te4yRG0fyQd8PuNnvZiNEbNnKO/eRCzAWaAEUV0/RWj9opLisWosWLVi7dq25wzAKSy5xaefigu+QIfjcdx8Zv2wvXTr0zjuLSoeW88ZGYR2y8wqYtmof3xyKZUy3EJ69vTl2dhX/dNoxuCORt0Uy4fsJRHwbwdxec+kc3LkKI7Z85R1qjwKCgP7AD0Adiia0E2Xo3bs3OTk5fPzxx8XLdu3aZbV1mqGoxOW8vfO4de2tzP51Ns72zrzS/RU23buJh1o/ZPaEUJJSCo/u3aj38QIabvgK7zvvJHX9eo7fMYhT4x4i/aefKc9Nm8KypWTmEv7Jb3xzKJZnbm/G84NaVCohXNLEtwnLBi4j2D2YCd9N4Ku/v6qCaK1Heec+aqS1HqKUGqy1jlRKLQc2GTMwa6aUYt26dUydOpU5c+bg4uJSfEmqtYlJjCHqcBTfnPyGgsICetXtRXjzcDoEdrCKwVznRo0Ifmk2AdOnkbJqFUnLlnH6oYdwanQTfqNG4X3nnWYpHSoq53RSJhGLdnImKYt3h7VjUJuqnTU3yD2IJbctYeq2qTz989NcyLzA2JZjreJvvrLKmxQuTZGdopRqCcRSNMW1uIpatWqxevVqc4dRIQWFBfxw5geiDkex+8Lu4hKXI5uNpK5XXXOHVyEOvr74P/IIfg8+yMWNG0mKXELsc88T//ZcfB64H7/hw41eOlRUjUNnUxmzeBc5eQVEje1Ip4bGKWDl6eTJh30/5Nntz/LO3nc4n36eWZ1m2Xwxp/K+uwVKKV/gGYruPPYAnjVaVMIsMvMyWXdsHctilnE67TTB7sHM6DCDe5rcYzOX6Nk5OeFz1114Dx5M5s5dJC1eTOKHH5G08BO8br8dv9ERuDRtau4wxVX88Fc8E5fuwcfNieXjOtE40LgXijjaO/JK91cIcgvik0OfEJcZx2v/ec2o+zS38iYFb+DSjWzvG77nK6Xaaq33VXlUwqTOp5/ni+QveHrN06TlFZW4nNJ+ik2XuFRK4d6pI+6dOpJz4gTJUUtLlQ516tAe/Z//VKp0qKhaq3efZtbnB2kS6MniMbcQ6GWabj87ZcfUDlMJdg/mlZ2vMG7zOIa5DDPJvs2hvP/xHYBQ4NKIy+3ALuARpdQarfX/jBGcMK6SJS4LdSG31r+V8ObhtK3Z1tyhmZRzgwZFpUMfm0LKmjUkLV2G72+/cXzjNxUqHSqqltaaeVuO8fb3f9GjsT8fjGiPp4vp5726v+n9BLgF8NSPT/GWeos2F9tQz6ueyeMwtvKeBtUA2mutZ2itZ1CUIAIoKs852kixCSPIL8xn08lNjNw4khEbR/DL2V8Ibx7OC7Vf4M2wN6tdQijJ3tubGuPG0ei7zaSMfRA7Ly8uzH6Jo716E/fmm+TFxpo7xGonv6CQWZ8f5O3v/+Ke9rX5JOIWsySES3rX683C/gvJLsxm5MaRHIg/YLZYjKW8SaEekFvicR5QX2udBVR4Cm1hOmm5aUT+Ecntn9/O4z88TmJWIjM7zuS7Id8xI3QGfg5+5g7RYihHR3JuuYWQVSupv3w57p07k/jJpxzreytnZzxO1sGD5g6xWsjIyeehJbtZues0k3o14s0hbXByMH93XpuANkwLmoaHkwdjN41l26kKlZWxWOXtPloO7FBKXZrOehCwwjD19WGjRCaqxOm00yyPWc7nRz8nMz+TDoEdpMRlORWVDm2HW/t2htKhS0lZu5aLX3+Na/v2+EVE4Nm3D8pCqvfZkvi0HB5cvIs/zqXyyt2tGN7JsrppajrWLJp+e8skpkZP5f86/R9Dbx5q7rCqRHmL7LyklNoIdKeoyM4jWutLJc9kIvLLTJs2jfr16zN16lQA+vfvT926dVm4cCEAM2bMoHbt2kyffs35BitMa83euL1EHY5i66mt2Ct7BjQYQHjzcJrXaG6Ufdo6pzp1CJw1E//Jk0j97DOSopZy9rHHcKxdG9/wkfjcdx/2Vlye0ZIcj08nYtFOEtJy+XhUKH2aBZo7pDLVcK3BJ/0/4ckfn+SlHS9xPuM8U9pNsfp7Gcp9aYnWeg+wx4ix2IyuXbuyZs0apk6dSmFhIQkJCVy8eLF4/fbt241yI1teQR6b/tlE1OEoDicextvZm3GtxvFA0weo6VazyvdXHdl7eOAXEYHvyJGkbdlSNIX3nNdIePc9fO67zyylQ23Jnn+SGBe5GzulWDm+M23q+pg7pGtyc3Rjbq+5/Pe3/7Lw4EJiM2KZ3XU2jvbWWwDKNq83NIh95RVyYq4+dXZ+QQFJN/jR37lZU4Kefvqaz+nWrRvTpk0D4I8//qBly5acP3+e5ORk3NzciImJoV27itWGLUtxicuYFcRlxdHAu8GVJS5FlVL29nj164dXv35kHTxEUmSJ0qF9++I3OgLXdu2s/qzRlL49FMtjK38n2NuFyAc7Ur+Gu7lDKhcHOwee6/wcwe7BvPv7u8RnxfN22Nt4OlnnZJs2nRTMpVatWjg4OHDq1Cm2b99Oly5dOHv2LL/++ive3t60bt0apyqY0vlE6gmWHl7K+r/Xk12QTZfgLrzQ9QW61e4mFaRMyLVVS2q/8To1H5/xb+nQzZtxadUKv4gIvPpL6dDrWfLrSZ5f/wdt6/qwcFQoNTyqpv6GqSilGN96PIFugbyw/QVGfzuaD/p8QKC7ZXZ9XYtNJ4XrndEbc+rsbt26sX37drZv38706dM5e/Ys27dvx9vbm65du1Z4u1prdpzfQdThKH46+1OFSlwK4yizdOjjjxP3RhC+I4bjO3SolA69TGGh5rVNR/joh+Pc2jyQeQ+0w9XJegfuBzcaTIBbANOjpzNi4wjm951PY9/G5g7rhsjppJF07dqV7du3c/DgQVq2bEnnzp359ddf2b59O926dbvh7eUU5LDu6Dru/epexn83nj8S/2BCmwlsvm8zs7vNloRgQS6VDm34zUbqzP8Ap5AQ4t98i6NhvYid/RK5J0+aO0SLkJNfwNRV+/joh+OEd67PhyM7WHVCuKRrra4sHrCYQl1IxDcR7IrdZe6QbogkBSPp1q0bGzZswM/PD3t7e/z8/EhJSeHXX3+lS5cu5d5OYlYi8/fNp9/afjy3/Tm01szuOpvN921mYtuJFa55LIzvUunQ+osX0eCLdXgNGEDKmjX8fdtATk+YSMaO36rtFN6pWXlEfLqT9fvPMfO2pswe3AL7Kpj22lI09WvK0oFLCXAL4OHvHmbj8Y3mDqncbLr7yJxatWpFQkICw4cPL7UsPT0df//rH8iPJh9lacxSNvy9waQlLoVxuDRtSq1XX6Hm9Gkkr1hJ8ooVnNq2rah06KhReN0+ELtqUjr0XEoWoxft5ERCBu880JbBbW3zaq1aHrVYctsSpmydwlM/PUVcZhwRLSIs/v9XkoKR2Nvbl7oMFWDx4sXXfE2hLuSXs78QdTiKX8//iou9C3c1uosRzUeYvMSlMI6i0qGTqTH+oX9Lh86aRdxbb+I7bBi+DzyAg5/t3l0ec/4ioxftJDOngMgxHenayLY/6Xo7e7Og3wKe/ulp3tzzJuczzvPkLU9a9I2jkhQsQKEuJCMvg7u+vIsTqSeo6VqTx9o/xn2N77Ooimai6pRVOjRh3rskfrQA7zsH4TdqFM6NrWuA8np+OZbAw1F78HB2YM2ELjQNso3p2K/H2d6Z13u+TtDuIJYcXsKFzAvM6TEHFwfLLO4kScGM8grySMpOIjknmdScVFwdXHm1x6v0r9/fqm9+EeV3qXSoR/du5Bw7RlLkElLXrydlzVrcu3fHLyIC9+7dLL7L4XrW/X6GJ9Yc4KYADxY/eAvB3tXr/hk7ZccTtzxBkHsQr+96nYc2P8S7vd+1yJM+mxxotvTBu6z8LM6kneFoylESshJwtXelhmsNVt6+kjsa3iEJoZq6VDq0UfQ2Ah6bQvafRzj90EMcHzSI5NWrKczONneIN0xrzfvbjjFt1X5uCfFj9SNdql1CKCm8eTiv93ydw4mHCf8mnDNpZ8wd0hVsLim4uLiQmJhocYlBa83FnIucSD3B8ZTjpOWm4eviSyOfRrjnuePt7m31Z4Oiajj4+uI/YQKNtmwheM6rKEcnYp97nmO9ehM/bx758fHmDrFc8gsKeeaLQ7y+6U8Gt63F4gdvwdtVTnj6h/RnQb8FJGUnMWLjCP5I+MPcIZVic91HderU4cyZM8SX4x8nOzsbFyMXbS/UhWTlZ5GRl0F+YT72dva4O7rj5uBGikohhRRcXFyoU6eOUeMQ1ueK0qGRkSTM/5DEjxdafOnQrNwCJq/Yy/cxcTzS8yae7H8zdjZ0yWlldQjsQNRtUUz4fgJjNo3hzZ5v0qNOD3OHBdhgUnB0dKRBgwblem50dHSVzkFU0vn08yw/spzP/vqsuMTlqOaj6Fmvp82WuBTGUbJ0aO7JkyRdVjrULyICj7CeFlM6NDE9h7GRu9l/JoXZg1swqkuIuUOySA19GrJ04FIe3fIok7dO5rkuz3FP43vMHZbtJQVz2x+/n6jDUXz/z/cA9K3fl/Dm4bQJaGPmyIQtcAoJIejZZwiYMpmUtWtJWrqMMxMn4lS/flHp0LvvNmvp0H8SM4j4dCfnU7P5cGQH+rcIMlss1iDALYBFAxYxI3oGz29/ntiMWCa0mWDWrmRJClUgvzCfLae2EHU4iv3x+/F09CS8eTjDmw4n2CPY3OEJG2Tv7U2NsWPxGzWKtO++I3FxJBdeepn4d+bhO3QIviNG4Bhs2r+9fadTGLt4F4Vas/yhznSo72vS/Vsrd0d33u3zLrN/nc38/fM5n3Ge57o8h6OdecZfJClUQlpuGp8f/ZxlMcs4n3Geup51mdlxJnc3uhs3Ryn0LoxPOTriNXAgnrfdRtbv+0iKjCTx00UkLlqMV//+RVN4t25t9Di+P3yBSSv2EuDpTOSYjjQMkIJDN8LRzpHZXWcT7B7M/P3zic+K562eb5nlOCJJoQJOXzzNsiPLWHd0HZn5mYQGhjKz40x61ulp0XcqCttVunToWZKXLiVlzRoubtyIa7t2+I0ebbTSoct++4dnvzhEy9refBJxCwGe1jXttaVQSjGx7USC3IOY/evsoum3+35g8vnNJCmUk9aaPRf2EHU4im2nt0mJS2GxnOrUJnDmU/hPetSopUO11ryx+U/e3/Y3vZvW5L3h7XBzkkNKZd3T+B4CXAOY8cMMRm4cyQd9PzDpNDeWcbmCBcsryOOrv7/i/g33M2bTGPbE7WFcq3Fsum8Tr/Z4VRKCsFiXSofetOlbas97B4egIOLmvMaxnmFceHUOuWfOVnjbufmFzFizn/e3/c2wjnVZEN5BEkIV6lGnB4v6LyIrP4vwjeHsvbDXZPuW3+JVpGSnsOavNaw8slJKXAqrVtWlQ9Oy85iwdC8/H0tgxq1NmNS7kdx4aQQt/FuwdOBSJn4/kYc2P8Sc/8zh1vq3Gn2/khQuIyUuhS0rXTp0OcmrV5e7dGh+QSGf7z3L3O//Ii4th9fva82Q0LomfgfVS13PukTdFsXkrZOZET2Dpzo+xYhmI4y6T4tLCkqpAcA7gD2wUGs9x9j7vLzEpZOdE3fcdAcjm420ulJ6QpRHUenQ6fhPeITUL78k6RqlQ7XW7I7N56W5P/J3fAZt6vowb1g7QkNsd4pvS+Lj4sPH/T5m5k8zmbNzDufTzzM9dLrRTlItKikopeyB94FbgTPALqXUeq31YWPsL0/nse7oOqJiojiafBQ/Fz8mtp3I0CZDqeFawxi7FMKi2Lm54TtsGD7330/6jz+SFBlJ/JtvkfDBfLz63cq5gHosj3diS64nAXWD+Si8A/2aB0p3kYm5OLjwZs83+d+u/xF5OJLYzFj+2/2/ONtX/ZVeypImjlNKdQFe0Fr3NzyeBaC1frWs54eGhurdu3ff8H6OJsSybP1Yvuc0qfaaBvn23JPjRq9cZ5yonn/sWVlZuLrKWMkl1bk9ChLzyDmQQe4/2ZD97/HB3s0O5wBnXAKccPC0p5r+qwCQlZWNq6t56iHsIodolUXNQF+mP/dzhbahlNqjtQ4ta51FfVIAagOnSzw+A3Qq+QSl1HhgPEBgYCDR0dE3vJNfE0/ymf0pWmXYc2uqI02z7FAUcp6sikduC7IyzR2BZamu7aGANk7Yt3XCT2vcMgrJT8inIKWQvKRcMvdlQb65gzS/NMzz91EfiAAybs6t0PHveiwtKZR17lHqo4zWegGwAIo+KYSFhd3wTroXFHJvSi+O7T1O9x7dKxKnzfn5p5+lLUqQ9gA3R3sc7Iv6raOjo7n0v6YLCijMrKYJ0+Dnn3+me3fz/n0oBwfsjPBp1tKSwhmg5OUMdYBzVb0TB3s7mtSozznHE3i5yPzuAG6OStqiBGmPq1P29th7epo7DLPSrq422waWdo3lLqCxUqqBUsoJeABYb+aYhBCi2rCoTwpa63yl1CRgE0WXpH6qtbasskRCCGHDLOrqoxullIoH/qnEJvyBhCoKx9pJW5Qm7VGatEdp1t4e9bXWAWWtsOqkUFlKqd1XuyyrupG2KE3aozRpj9JsuT0sbUxBCCGEGUlSEEIIUay6J4UF5g7AgkhblCbtUZq0R2k22x7VekxBCCFEadX9k4IQQogSJCkIIYQoZpNJQSk1QCn1p1LqmFJqZhnrlVJqnmH9AaVU+/K+1hpVsj0+VUrFKaUOmTZq46loeyil6iqltimlYpRSfyilHjN99FWrEm3hopTaqZTab2iLF00ffdWrzP+KYb29Uup3pdQG00VdxbTWNvVF0Z3QfwMNASdgP9D8sucMBL6haAK+zsBv5X2ttX1Vpj0M6/4DtAcOmfu9mLs9gGCgveFnT+Ava/77qGRbKMDD8LMj8BvQ2dzvyVztUWL9dGA5sMHc76eiX7b4SaEjcExrfVxrnQusBAZf9pzBwBJdZAfgo5QKLudrrU1l2gOt9Y9AkkkjNq4Kt4fW+rzWei+A1joNiKFoundrVZm20FrrdMNzHA1f1n7VSqX+V5RSdYDbgYWmDLqq2WJSKKsmw+X/uFd7Tnlea20q0x62qEraQykVArSj6AzZWlWqLQxdJfuAOOA7rbU1twVU/m9jLvAkUGik+EzCFpPCdWsyXOM55XmttalMe9iiSreHUsoD+AyYqrW+WIWxmVql2kJrXaC1bkvRFPcdlVItqzY8k6tweyil7gDitNZ7qj4s07LFpFCemgxXe45J6jmYWGXawxZVqj2UUo4UJYRlWuvPjRinKVTJ34bWOgWIBgZUeYSmVZn26AbcqZQ6SVG3U2+l1FLjhWpE5h7UqOoviqYDPw404N/BohaXPed2Sg8W7Szva63tqzLtUWJ9CLYz0FyZvw8FLAHmmvt9WEBbBAA+hp9dgZ+AO8z9nszVHpc9JwwrHmi2qHoKVUFfpSaDUuoRw/oPgY0UXUVwDMgExlzrtWZ4G1WmMu0BoJRaQdEfub9S6gzwvNb6E9O+i6pTyfboBoQDBw196QBPa603mvAtVJlKtkUwEKmUsqeox2G11tp6L8Ok8v8rtkKmuRBCCFHMFscUhBBCVJAkBSGEEMUkKQghhCgmSUEIIUQxSQpCCCGKSVIQNkspVaCU2meYyXOvUqqrYXlIVc36qpQKu9EZMZVS0UqpMou+K6UClFJ5SqmHL1t+Uil10PB+DiqlBiul3JVSiUop78ue+4VSauiNvxshJCkI25altW6rtW4DzAJeNXdA5TAE2AEMK2NdL100rcR9wDytdQawGbjr0hMMCaI7YNX3DAjzkaQgqgsvIPnyhYZJ3V5XSu0yzI//sGF5mOGMfq1S6ohSaplSShnWDTAs+xm4p8S23A31J3YZ5tQfbFjuqpRaadj+KoruAL6aYcAMoI5S6mqTEpZ8LyuAB0qsuxv4VmudWZ5GEeJyNndHsxAluBruPHah6A7c3mU8ZyyQqrW+RSnlDPyilNpsWNcOaEHR3Da/AN2UUruBjw3bOgasKrGt/wO2aq0fVEr5ADuVUt8DDwOZWuvWSqnWwN6yglVK1QWCtNY7lVKrgfuBt0o8ZZshMTUELnUPfQssVErV0FonUpQg3i1n+whxBfmkIGzZpe6jphRN1rbk0tl+Cf2AUYbk8RtQA2hsWLdTa31Ga10I7KNoDqimwAmt9VFdNB3A0su2NdOwrWiKklE9igoVLQXQWh8ADlwl3geA1YafV3JlF1IvrXVLoBXwnlLKQxfN+78euE8p5Q+0pahLSYgKkU8KolrQWv9qOGgGXLZKAZO11ptKLVQqDMgpsaiAf/9frjY3jALu1Vr/edm2rvWakoYBgUqpEYbHtZRSjbXWRy97L38rpS4AzYGdFHUhPWPY/5da67xy7EuIMsknBVEtKKWaUjTJWeJlqzYBEwxTYqOUaqKUcr/Gpo4ADZRSNxkelzyb3wRMLjH20M6w/EdghGFZS6B1GfHdDLhrrWtrrUO01iEUDYw/UMZza1I0k+c/hkXbKPp08yhFCUKICpNPCsKWXRpTgKKz6AitdcFlPUgLKeoW2ms4mMdT4mqey2mts5VS44GvlVIJwM/ApeIyL1FUfeuAYVsngTuA+cAipdQBirqhdpax6WHAusuWfUZRN9JLhsfblFIFFJW+nKm1vmCIqVAp9RlFVy79eLXYhSgPmSVVCCFEMek+EkIIUUySghBCiGKSFIQQQhSTpCCEEKKYJAUhhBDFJCkIIYQoJklBCCFEsf8HuXFGKaRqvEsAAAAASUVORK5CYII=
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<hr>
+
+<p><strong>Study Question:</strong></p>
+
+</div>
 </div>
 
 
@@ -14777,7 +15026,7 @@ constraints : Size=3
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.html">5.2 Linear Programming</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html">5.5 Linear Blending Problem</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.01-Linear-Production-Model.html">5.1 Linear Production Model</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html">5.3 Gasoline Blending</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.02-Linear-Blending-Problem.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

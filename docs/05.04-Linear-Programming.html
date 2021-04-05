@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.01-Linear-Production-Model.html">5.1 Linear Production Model</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html">5.3 Linear Production Model in Pyomo</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.02-Linear-Programming.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html">5.3 Gasoline Blending</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html">5.6 Design of a Cold Weather Fuel</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.04-Linear-Programming.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,7 +14285,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="5.2-Linear-Programming">5.2 Linear Programming<a class="anchor-link" href="#5.2-Linear-Programming">&#182;</a></h1><p>Linear programming is the minimization (or maximization) of a linear objective subject to linear constraints. There are several widely adopted schemes for representing linear programming problems. Here we adopt a scheme corresponding where the linear objective is written in terms of decision variables $x_1, x_2, \ldots, x_N$ as</p>
+<h1 id="5.4-Linear-Programming">5.4 Linear Programming<a class="anchor-link" href="#5.4-Linear-Programming">&#182;</a></h1><p>Linear programming is the minimization (or maximization) of a linear objective subject to linear constraints. There are several widely adopted schemes for representing linear programming problems. Here we adopt a scheme corresponding where the linear objective is written in terms of decision variables $x_1, x_2, \ldots, x_N$ as</p>
 \begin{align}
 \min_{x_1, x_1, \ldots, x_N} c_1x_1 + c_2x_2 + \cdots + c_Nx_N
 \end{align}<p>subject to</p>
@@ -14302,7 +14302,7 @@ x_i  \geq 0 &amp; \qquad i=1,\ldots,N\quad\mbox{lower bounds on decision variabl
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.2.1-Matrix/Vector-format">5.2.1 Matrix/Vector format<a class="anchor-link" href="#5.2.1-Matrix/Vector-format">&#182;</a></h2><p>The notation can be simplified by adopting a matrix/vector formulation where</p>
+<h2 id="5.4.1-Matrix/Vector-format">5.4.1 Matrix/Vector format<a class="anchor-link" href="#5.4.1-Matrix/Vector-format">&#182;</a></h2><p>The notation can be simplified by adopting a matrix/vector formulation where</p>
 \begin{align}
 \min_{x\geq 0} c^T x
 \end{align}<p>subject to</p>
@@ -14319,7 +14319,7 @@ A_{eq} x = b_{eq}
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.2.2-Example-19.3:-Refinery-Blending-Problem">5.2.2 Example 19.3: Refinery Blending Problem<a class="anchor-link" href="#5.2.2-Example-19.3:-Refinery-Blending-Problem">&#182;</a></h2><p>The decision variables are</p>
+<h2 id="5.4.2-Example-19.3:-Refinery-Blending-Problem">5.4.2 Example 19.3: Refinery Blending Problem<a class="anchor-link" href="#5.4.2-Example-19.3:-Refinery-Blending-Problem">&#182;</a></h2><p>The decision variables are</p>
 <table>
 <thead><tr>
 <th>Variable</th>
@@ -14549,7 +14549,7 @@ x[ 6] =  2001.0 bbl/day
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.01-Linear-Production-Model.html">5.1 Linear Production Model</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html">5.3 Linear Production Model in Pyomo</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.02-Linear-Programming.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html">5.3 Gasoline Blending</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html">5.6 Design of a Cold Weather Fuel</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.04-Linear-Programming.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

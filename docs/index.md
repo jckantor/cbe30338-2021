@@ -49,14 +49,15 @@ new materials, and make them accessible to students, teaching assistants, and ot
 
 ### [Chapter 5.0 Optimization](https://jckantor.github.io/cbe30338-2021/05.00-Optimization.html)
 - [5.1 Linear Production Model](https://jckantor.github.io/cbe30338-2021/05.01-Linear-Production-Model.html)
-- [5.2 Linear Programming](https://jckantor.github.io/cbe30338-2021/05.02-Linear-Programming.html)
-- [5.3 Linear Production Model in Pyomo](https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html)
-- [5.5 Linear Blending Problem](https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.html)
+- [5.2 Linear Blending Problem](https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html)
+- [5.3 Gasoline Blending](https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html)
+- [5.4 Linear Programming](https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming.html)
 - [5.6 Design of a Cold Weather Fuel](https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html)
-- [5.7 Gasoline Blending](https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html)
+- [5.98 Linear Production Model in Pyomo](https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html)
 - [5.99 Pyomo Examples](https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html)
 
 ### [Chapter 6.0 Predictive Control](https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html)
 
 ### [Chapter 7.0 Projects](https://jckantor.github.io/cbe30338-2021/07.00-Projects.html)
+- [A.24 Animation in Jupyter Notebooks](https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html)
 

@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html">5.7 Gasoline Blending</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">6.0 Predictive Control</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.99-Pyomo-Examples.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html">5.98 Linear Production Model in Pyomo</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">6.0 Predictive Control</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.99-Pyomo-Examples.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14294,7 +14294,144 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.99.1-Example:-Nonlinear-Optimization--of-Series-Reaction-in-a-Continuous-Stirred-Tank-Reactor">5.99.1 Example: Nonlinear Optimization  of Series Reaction in a Continuous Stirred Tank Reactor<a class="anchor-link" href="#5.99.1-Example:-Nonlinear-Optimization--of-Series-Reaction-in-a-Continuous-Stirred-Tank-Reactor">&#182;</a></h2>
+<h2 id="5.99.1-Pyomo-Model">5.99.1 Pyomo Model<a class="anchor-link" href="#5.99.1-Pyomo-Model">&#182;</a></h2><p>A Pyomo implementation of this blending model is shown in the next cell. The model is contained within a Python function so that it can be more easily reused for additional calculations, or eventually for use by the process operator.</p>
+<p>Note that the pyomo library has been imported with the prefix <code>pyomo</code>. This is good programming practive to avoid namespace collisions with problem data.</p>
+
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[222]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyomo</span>
+
+<span class="n">vol</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">abv</span> <span class="o">=</span> <span class="mf">0.040</span>
+
+<span class="k">def</span> <span class="nf">brew_blend</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">abv</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    
+    <span class="n">C</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    
+    <span class="n">model</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">pyomo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">cost</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">C</span><span class="p">))</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">vol</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">vol</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">C</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">abv</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;abv&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">abv</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">C</span><span class="p">))</span>
+
+    <span class="n">solver</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
+    <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Optimal Blend&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">](),</span> <span class="s1">&#39;gallons&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Volume = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">vol</span><span class="p">(),</span> <span class="s1">&#39;gallons&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cost = $&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">cost</span><span class="p">())</span>
+    
+<span class="n">brew_blend</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">abv</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>WARNING: Could not locate the &#39;glpsol&#39; executable, which is required for
+    solver &#39;glpk&#39;
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ApplicationError</span>                          Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-222-f1ef07ecaf09&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     27</span>     print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;Cost = $&#39;</span><span class="ansi-blue-fg">,</span> model<span class="ansi-blue-fg">.</span>cost<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     28</span> 
+<span class="ansi-green-fg">---&gt; 29</span><span class="ansi-red-fg"> </span>brew_blend<span class="ansi-blue-fg">(</span>vol<span class="ansi-blue-fg">,</span> abv<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-222-f1ef07ecaf09&gt;</span> in <span class="ansi-cyan-fg">brew_blend</span><span class="ansi-blue-fg">(vol, abv, data)</span>
+<span class="ansi-green-intense-fg ansi-bold">     18</span> 
+<span class="ansi-green-intense-fg ansi-bold">     19</span>     solver <span class="ansi-blue-fg">=</span> pyomo<span class="ansi-blue-fg">.</span>SolverFactory<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;glpk&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 20</span><span class="ansi-red-fg">     </span>solver<span class="ansi-blue-fg">.</span>solve<span class="ansi-blue-fg">(</span>model<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     21</span> 
+<span class="ansi-green-intense-fg ansi-bold">     22</span>     print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;Optimal Blend&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/opt/anaconda3/lib/python3.8/site-packages/pyomo/opt/base/solvers.py</span> in <span class="ansi-cyan-fg">solve</span><span class="ansi-blue-fg">(self, *args, **kwds)</span>
+<span class="ansi-green-intense-fg ansi-bold">    516</span>         <span class="ansi-blue-fg">&#34;&#34;&#34; Solve the problem &#34;&#34;&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    517</span> 
+<span class="ansi-green-fg">--&gt; 518</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>available<span class="ansi-blue-fg">(</span>exception_flag<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    519</span>         <span class="ansi-red-fg">#</span>
+<span class="ansi-green-intense-fg ansi-bold">    520</span>         <span class="ansi-red-fg"># If the inputs are models, then validate that they have been</span>
+
+<span class="ansi-green-fg">~/opt/anaconda3/lib/python3.8/site-packages/pyomo/opt/solver/shellcmd.py</span> in <span class="ansi-cyan-fg">available</span><span class="ansi-blue-fg">(self, exception_flag)</span>
+<span class="ansi-green-intense-fg ansi-bold">    116</span>             <span class="ansi-green-fg">if</span> exception_flag<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    117</span>                 msg <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#34;No executable found for solver &#39;%s&#39;&#34;</span>
+<span class="ansi-green-fg">--&gt; 118</span><span class="ansi-red-fg">                 </span><span class="ansi-green-fg">raise</span> ApplicationError<span class="ansi-blue-fg">(</span>msg <span class="ansi-blue-fg">%</span> self<span class="ansi-blue-fg">.</span>name<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    119</span>             <span class="ansi-green-fg">return</span> <span class="ansi-green-fg">False</span>
+<span class="ansi-green-intense-fg ansi-bold">    120</span>         <span class="ansi-green-fg">return</span> <span class="ansi-green-fg">True</span>
+
+<span class="ansi-red-fg">ApplicationError</span>: No executable found for solver &#39;glpk&#39;</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.99.2-Example:-Nonlinear-Optimization--of-Series-Reaction-in-a-Continuous-Stirred-Tank-Reactor">5.99.2 Example: Nonlinear Optimization  of Series Reaction in a Continuous Stirred Tank Reactor<a class="anchor-link" href="#5.99.2-Example:-Nonlinear-Optimization--of-Series-Reaction-in-a-Continuous-Stirred-Tank-Reactor">&#182;</a></h2>
 </div>
 </div>
 
@@ -14384,7 +14521,7 @@ Productivity =  8.541019662483748 moles per minute.
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.99.2-Example-19.3:-Linear-Programming-Refinery">5.99.2 Example 19.3: Linear Programming Refinery<a class="anchor-link" href="#5.99.2-Example-19.3:-Linear-Programming-Refinery">&#182;</a></h2>
+<h2 id="5.99.3-Example-19.3:-Linear-Programming-Refinery">5.99.3 Example 19.3: Linear Programming Refinery<a class="anchor-link" href="#5.99.3-Example-19.3:-Linear-Programming-Refinery">&#182;</a></h2>
 </div>
 </div>
 
@@ -14951,7 +15088,7 @@ http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#ix-indexer-
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.99.3-Example:-Making-Change">5.99.3 Example: Making Change<a class="anchor-link" href="#5.99.3-Example:-Making-Change">&#182;</a></h2><p>One of the important modeling features of Pyomo is the ability to index variables and constraints. The</p>
+<h2 id="5.99.4-Example:-Making-Change">5.99.4 Example: Making Change<a class="anchor-link" href="#5.99.4-Example:-Making-Change">&#182;</a></h2><p>One of the important modeling features of Pyomo is the ability to index variables and constraints. The</p>
 
 </div>
 </div>
@@ -15020,7 +15157,7 @@ http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#ix-indexer-
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.99.4-Example:-Linear-Production-Model-with-Constraints-with-Duals">5.99.4 Example: Linear Production Model with Constraints with Duals<a class="anchor-link" href="#5.99.4-Example:-Linear-Production-Model-with-Constraints-with-Duals">&#182;</a></h2>
+<h2 id="5.99.5-Example:-Linear-Production-Model-with-Constraints-with-Duals">5.99.5 Example: Linear Production Model with Constraints with Duals<a class="anchor-link" href="#5.99.5-Example:-Linear-Production-Model-with-Constraints-with-Duals">&#182;</a></h2>
 </div>
 </div>
 
@@ -15184,7 +15321,7 @@ laborB     100.00    -inf    0.00   10.00
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.07-Gasoline-Blending.html">5.7 Gasoline Blending</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">6.0 Predictive Control</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.99-Pyomo-Examples.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.98-Linear-Production-Model-in-Pyomo.html">5.98 Linear Production Model in Pyomo</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">6.0 Predictive Control</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.99-Pyomo-Examples.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

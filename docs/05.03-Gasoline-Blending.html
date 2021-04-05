@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html">5.3 Linear Production Model in Pyomo</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html">5.6 Design of a Cold Weather Fuel</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.05-Linear-Blending-Problem.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html">5.2 Linear Blending Problem</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming.html">5.4 Linear Programming</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Gasoline-Blending.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,54 +14285,21 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="5.5-Linear-Blending-Problem">5.5 Linear Blending Problem<a class="anchor-link" href="#5.5-Linear-Blending-Problem">&#182;</a></h1>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.5.1-Problem-Statement-(Jenchura,-2017)">5.5.1 Problem Statement (Jenchura, 2017)<a class="anchor-link" href="#5.5.1-Problem-Statement-(Jenchura,-2017)">&#182;</a></h2><p>A brewery receives an order for 100 gallons of 4% ABV (alchohol by volume) beer. The brewery has on hand beer A that is 4.5% ABV that cost \$0.32 per gallon to make, and beer B that is 3.7% ABV and cost \\$0.25 per gallon. Water can also be used as a blending agent at a cost of \$0.05 per gallon. Find the minimum cost blend that meets the customer requirements.</p>
+<h1 id="5.3-Gasoline-Blending">5.3 Gasoline Blending<a class="anchor-link" href="#5.3-Gasoline-Blending">&#182;</a></h1><p>The task is to determine the most profitable blend of gasoline products from given set of refinery streams.</p>
 
 </div>
 </div>
 
 
 
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.5.2-Solving-optimization-problems-with-CVXPY">5.5.2 Solving optimization problems with CVXPY<a class="anchor-link" href="#5.5.2-Solving-optimization-problems-with-CVXPY">&#182;</a></h2><p>The blending problem described above is relatively simple, it can be solved in CVXPY using no more than <code>cp.Variable()</code>, <code>cp.Minimize()</code>, and <code>cp.Problem()</code> as demonstrated below.</p>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.5.2.1-Step-1.-Coding-Problem-Data-as-a-Python-Dictionary">5.5.2.1 Step 1. Coding Problem Data as a Python Dictionary<a class="anchor-link" href="#5.5.2.1-Step-1.-Coding-Problem-Data-as-a-Python-Dictionary">&#182;</a></h3><p>The first step is to represent the problem data in a generic manner that could be extended to include additional blending components.  Here we use a dictionary of raw materials, each key denoting a unique blending agent. For each key there is a second level dictionary containing attributes of the blending component. This nested "dictionary of dictionaries" organization is a useful of organizing tabular data for optimization problems.</p>
-
-</div>
-</div>
-
-
-
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[99]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[93]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.045</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.32</span><span class="p">},</span>
-    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.037</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">},</span>
-    <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.000</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
-<span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyomo</span>
 </pre></div>
 
      </div>
@@ -14340,27 +14307,6 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#39;A&#39;: {&#39;abv&#39;: 0.045, &#39;cost&#39;: 0.32}, &#39;B&#39;: {&#39;abv&#39;: 0.037, &#39;cost&#39;: 0.25}, &#39;W&#39;: {&#39;abv&#39;: 0.0, &#39;cost&#39;: 0.05}}
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 
@@ -14368,282 +14314,11 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.5.2.2-Step-2.-Identifying-index-sets">5.5.2.2 Step 2. Identifying index sets<a class="anchor-link" href="#5.5.2.2-Step-2.-Identifying-index-sets">&#182;</a></h3><p>The objectives and constraints encountered in optimization problems often include sums over a set of objects. In the case, we will need to create sums over the set of raw materials in the blending problem.</p>
-
-</div>
-</div>
-
-
-
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[100]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">components</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">components</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#39;B&#39;, &#39;W&#39;, &#39;A&#39;}
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.5.2.3-Step-3.-Create-decision-variables">5.5.2.3 Step 3. Create decision variables<a class="anchor-link" href="#5.5.2.3-Step-3.-Create-decision-variables">&#182;</a></h3>
-</div>
-</div>
-
-
-
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[101]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#39;B&#39;: Variable(()), &#39;W&#39;: Variable(()), &#39;A&#39;: Variable(())}
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.5.2.4-Step-4.-Objective-Function">5.5.2.4 Step 4. Objective Function<a class="anchor-link" href="#5.5.2.4-Step-4.-Objective-Function">&#182;</a></h3><p>If we let subscript $c$ denote a blending component from the set of blending components $C$, and denote the volume of $c$ used in the blend as $x_c$, the cost of the blend is</p>
-\begin{align}
-\mbox{cost} &amp; = \sum_{c\in C} x_c P_c
-\end{align}<p>where $P_c$ is the price per unit volume of $c$. Using the Python data dictionary defined above, the price $P_c$ is given by <code>data[c]['cost']</code>.</p>
-
-</div>
-</div>
-
-
-
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[102]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">total_cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">])</span>
-<span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">total_cost</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">objective</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>minimize var2566 @ 0.25 + var2567 @ 0.05 + var2568 @ 0.32
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.5.2.5-Step-5.-Constraints">5.5.2.5 Step 5. Constraints<a class="anchor-link" href="#5.5.2.5-Step-5.-Constraints">&#182;</a></h3>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="5.5.2.5.1-Volume-Constraint">5.5.2.5.1 Volume Constraint<a class="anchor-link" href="#5.5.2.5.1-Volume-Constraint">&#182;</a></h4><p>The customer requirement is produce a total volume $V$. Assuming ideal solutions, the constraint is given by</p>
-\begin{align}
-V &amp;  = \sum_{c\in C} x_c
-\end{align}<p>where $x_c$ denotes the volume of component $c$ used in the blend.</p>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="5.5.2.5.2-Product-Composition-Constraint">5.5.2.5.2 Product Composition Constraint<a class="anchor-link" href="#5.5.2.5.2-Product-Composition-Constraint">&#182;</a></h4><p>The product composition is specified as 4% alchohol by volume. Denoting this as $\bar{A}$, the constraint may be written as</p>
-\begin{align}
-\bar{A} &amp; = \frac{\sum_{c\in C}x_c A_c}{\sum_{c\in C} x_c}
-\end{align}<p>where $A_c$ is the alcohol by volume for component $c$. As written, this is a nonlinear constraint. Multiplying both sides of the equation by the denominator yields a linear constraint</p>
-\begin{align}
-\bar{A}\sum_{c\in C} x_c &amp; = \sum_{c\in C}x_c A_c
-\end{align}<p>A final form for this constraint can be given in either of two versions. In the first version we subtract the left-hand side from the right to give</p>
-\begin{align}
-0 &amp; = \sum_{c\in C}x_c \left(A_c - \bar{A}\right) &amp; \mbox{ Version 1 of the linear blending constraint}
-\end{align}<p>Alternatively, the summation on the left-hand side corresponds to total volume. Since that is known as part of the problem specification, the blending constraint could also be written as</p>
-\begin{align}
-\bar{A}V &amp; = \sum_{c\in C}x_c A_c  &amp; \mbox{ Version 2 of the linear blending constraint}
-\end{align}<p>Which should you use? Either will generally work well. The advantage of version 1 is that it is fully specified by a product requirement $\bar{A}$, which is sometimes helpful in writing elegant Python code.</p>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.5.2.6-CVXPY-Version-1">5.5.2.6 CVXPY Version 1<a class="anchor-link" href="#5.5.2.6-CVXPY-Version-1">&#182;</a></h3><p>For this first version, we will write a CVXPY model that uses a minimal of Python or CVXPY coding features.</p>
-
-</div>
-</div>
-
-
-
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[67]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
-
-<span class="n">vol</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">abv</span> <span class="o">=</span> <span class="mf">0.04</span>
-
-<span class="n">A</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">B</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">W</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">A</span> <span class="o">+</span> <span class="n">B</span> <span class="o">+</span> <span class="n">W</span> <span class="o">==</span> <span class="n">vol</span><span class="p">,</span>
-    <span class="n">A</span><span class="o">*</span><span class="p">(</span><span class="n">blending_data</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">][</span><span class="s2">&quot;abv&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">abv</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span><span class="o">*</span><span class="p">(</span><span class="n">blending_data</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">][</span><span class="s2">&quot;abv&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">abv</span><span class="p">)</span> <span class="o">+</span> <span class="n">W</span><span class="o">*</span><span class="p">(</span><span class="n">blending_data</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">][</span><span class="s2">&quot;abv&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
-<span class="p">]</span>
-
-<span class="n">cost</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">blending_data</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">][</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">B</span><span class="o">*</span><span class="n">blending_data</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">][</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">W</span><span class="o">*</span><span class="n">blending_data</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">][</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span>
-
-<span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">cost</span><span class="p">),</span> <span class="n">constraints</span><span class="p">)</span>
-<span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cost to produce </span><span class="si">{</span><span class="n">vol</span><span class="si">}</span><span class="s2"> gallons at abv </span><span class="si">{</span><span class="n">abv</span><span class="si">}</span><span class="s2">: $</span><span class="si">{</span><span class="n">cost</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A = </span><span class="si">{</span><span class="n">A</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2"> gallons&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;B = </span><span class="si">{</span><span class="n">B</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2"> gallons&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;W = </span><span class="si">{</span><span class="n">W</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2"> gallons&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>cost to produce 100 gallons at abv 0.04: $32.00
-A = 24.49 gallons
-B = 40.82 gallons
-W = 34.69 gallons
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.5.2.7-CVXPY-Version-2:-Using-dictionaries">5.5.2.7 CVXPY Version 2: Using dictionaries<a class="anchor-link" href="#5.5.2.7-CVXPY-Version-2:-Using-dictionaries">&#182;</a></h3><p>Version 1 of our model solves the problem at hand but would require rewriting should any aspect of the problem statement be changed. Consider, for example, what modifications would be needed if</p>
+<h2 id="5.3.1-Gasoline-Product-Specifications">5.3.1 Gasoline Product Specifications<a class="anchor-link" href="#5.3.1-Gasoline-Product-Specifications">&#182;</a></h2><p>The gasoline products include regular and premium gasoline. In addition to the current price, the specifications include</p>
 <ul>
-<li>One or more additional blendinig stocks become available. Perhaps many more.</li>
-<li>We wish to specify additional properties of the blended product.</li>
+<li><strong>octane</strong> the minimum road octane number.  Road octane is the computed as the average of the Research Octane Number (RON) and Motor Octane Number (MON).</li>
+<li><strong>Reid Vapor Pressure</strong> Upper and lower limits are specified for the Reid vapor pressure. The Reid vapor pressure is the absolute pressure exerted by the liquid at 100°F.</li>
+<li><strong>benzene</strong> the maximum volume percentage of benzene allowed in the final product. Benzene helps to increase octane rating, but is also a treacherous environmental contaminant.</li>
 </ul>
 
 </div>
@@ -14654,88 +14329,15 @@ W = 34.69 gallons
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[149]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">products</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Regular&#39;</span>        <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;octane&#39;</span><span class="p">:</span> <span class="mi">87</span><span class="p">,</span> <span class="s1">&#39;RVPmin&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;RVPmax&#39;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">},</span>
+    <span class="s1">&#39;Premium&#39;</span>        <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">2.85</span><span class="p">,</span> <span class="s1">&#39;octane&#39;</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span> <span class="s1">&#39;RVPmin&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;RVPmax&#39;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">},</span>
+<span class="p">}</span>
 
-<span class="n">vol</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">abv</span> <span class="o">=</span> <span class="mf">0.04</span>
-
-<span class="n">components</span> <span class="o">=</span> <span class="n">blending_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">:</span>
-    <span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">x</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[68]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>{&#39;A&#39;: Variable((), nonneg=True),
- &#39;B&#39;: Variable((), nonneg=True),
- &#39;W&#39;: Variable((), nonneg=True)}</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
-
-<span class="k">def</span> <span class="nf">optimal_blend</span><span class="p">(</span><span class="n">product_volume</span><span class="p">,</span> <span class="n">product_abv</span><span class="p">,</span> <span class="n">component_blending_data</span><span class="p">):</span>
-    
-    <span class="n">components</span> <span class="o">=</span> <span class="n">component_blending_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-    
-    <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">}</span>
-    
-    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">)</span> <span class="o">==</span> <span class="n">product_volume</span><span class="p">,</span>
-        <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">component_blending_data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;abv&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">product_abv</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
-    <span class="p">]</span>
-    
-    <span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">component_blending_data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">))</span>
-    
-    <span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span>
-    <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">problem</span>
-    
-<span class="n">soln</span> <span class="o">=</span> <span class="n">optimal_blend</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="n">component_blending_data</span><span class="p">)</span>
-
-
-<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">soln</span><span class="o">.</span><span class="n">variables</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">products</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14755,9 +14357,9 @@ W = 34.69 gallons
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>A 37.500001136050194
-B 62.49999861831747
-W 2.4563236418836055e-07
+<pre>         RVPmax  RVPmin  benzene  octane  price
+Premium    15.0     0.0      1.1    91.0   2.85
+Regular    15.0     0.0      1.1    87.0   2.75
 </pre>
 </div>
 </div>
@@ -14773,8 +14375,17 @@ W 2.4563236418836055e-07
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="5.5.2.7.1-Pyomo-Model">5.5.2.7.1 Pyomo Model<a class="anchor-link" href="#5.5.2.7.1-Pyomo-Model">&#182;</a></h4><p>A Pyomo implementation of this blending model is shown in the next cell. The model is contained within a Python function so that it can be more easily reused for additional calculations, or eventually for use by the process operator.</p>
-<p>Note that the pyomo library has been imported with the prefix <code>pyomo</code>. This is good programming practive to avoid namespace collisions with problem data.</p>
+<h2 id="5.3.2-Stream-Specifications">5.3.2 Stream Specifications<a class="anchor-link" href="#5.3.2-Stream-Specifications">&#182;</a></h2><p>A typical refinery produces many intermediate streams that can be incorporated in a blended gasoline product. Here we provide data on seven streams that include:</p>
+<ul>
+<li><strong>Butane</strong> n-butane is a C4 product stream produced from the light components of the crude being processed by the refinery. Butane is a highly volatile of gasoline.</li>
+<li><strong>LSR</strong> Light straight run naptha is a 90°F to 190°F cut from the crude distillation column primarily consisting of straight chain C5-C6 hydrocarbons.</li>
+<li><strong>Isomerate</strong> is the result of isomerizing LSR to produce branched molecules that results in higher octane number.</li>
+<li><strong>Reformate</strong> is result of catalytic reforming heavy straight run napthenes to produce a high octane blending component, as well by-product hydrogen used elsewhere in the refinery for hydro-treating.</li>
+<li><strong>Reformate LB</strong> is a is a low benzene variant of reformate.</li>
+<li><strong>FCC Naphta</strong> is the product of a fluidized catalytic cracking unit designed to produce gasoline blending components from long chain hydrocarbons present in the crude oil being processed by the refinery.</li>
+<li><strong>Alkylate</strong> The alkylation unit reacts iso-butane with low-molecular weight alkenes to produce a high octane blending component for gasoline.</li>
+</ul>
+<p>The stream specifications include research octane and motor octane numbers for each blending component, the Reid vapor pressure, the benzene content, cost, and availability (in gallons per day). The road octane number is computed as the average of the RON and MON.</p>
 
 </div>
 </div>
@@ -14784,38 +14395,25 @@ W 2.4563236418836055e-07
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[150]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyomo</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">streams</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Butane&#39;</span>       <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">93.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">92.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">54.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">30000</span><span class="p">},</span>
+    <span class="s1">&#39;LSR&#39;</span>          <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">78.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">76.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">11.2</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.73</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.05</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">35000</span><span class="p">},</span>
+    <span class="s1">&#39;Isomerate&#39;</span>    <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">83.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">81.1</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">13.5</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.20</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s1">&#39;Reformate&#39;</span>    <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span><span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">88.2</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">3.2</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.85</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.80</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">60000</span><span class="p">},</span>
+    <span class="s1">&#39;Reformate LB&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">93.7</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">84.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">2.8</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.12</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s1">&#39;FCC Naphtha&#39;</span>  <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">92.1</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">77.1</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">1.4</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.06</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.60</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">70000</span><span class="p">},</span>
+    <span class="s1">&#39;Alkylate&#39;</span>     <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">97.3</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">95.9</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">4.6</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">40000</span><span class="p">},</span>
+<span class="p">}</span>
 
-<span class="n">vol</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">abv</span> <span class="o">=</span> <span class="mf">0.040</span>
-
-<span class="k">def</span> <span class="nf">beer_blend</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">abv</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="c1"># calculate road octane as (R+M)/2</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">streams</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RON&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;MON&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
     
-    <span class="n">C</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-    
-    <span class="n">model</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
-    
-    <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">pyomo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    
-    <span class="n">model</span><span class="o">.</span><span class="n">cost</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">C</span><span class="p">))</span>
-    
-    <span class="n">model</span><span class="o">.</span><span class="n">vol</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">vol</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">C</span><span class="p">))</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">abv</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;abv&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">abv</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">C</span><span class="p">))</span>
-
-    <span class="n">solver</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
-    <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Optimal Blend&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">](),</span> <span class="s1">&#39;gallons&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Volume = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">vol</span><span class="p">(),</span> <span class="s1">&#39;gallons&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cost = $&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">cost</span><span class="p">())</span>
-    
-<span class="n">beer_blend</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">abv</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="c1"># display feed information</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">streams</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14835,13 +14433,755 @@ W 2.4563236418836055e-07
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Optimal Blend
-   A : 37.5 gallons
-   B : 62.5 gallons
-   W : 0.0 gallons
+<pre>               MON    RON   RVP    avail  benzene  cost  octane
+Alkylate      95.9   97.3   4.6  40000.0     0.00  2.75   96.60
+Butane        92.0   93.0  54.0  30000.0     0.00  0.85   92.50
+FCC Naphtha   77.1   92.1   1.4  70000.0     1.06  2.60   84.60
+Isomerate     81.1   83.0  13.5      0.0     0.00  2.20   82.05
+LSR           76.0   78.0  11.2  35000.0     0.73  2.05   77.00
+Reformate     88.2  100.0   3.2  60000.0     1.85  2.80   94.10
+Reformate LB  84.0   93.7   2.8      0.0     0.12  2.75   88.85
+</pre>
+</div>
+</div>
 
-Volume =  100.0 gallons
-Cost = $ 27.625
+</div>
+
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.3.3-Blending-Model">5.3.3 Blending Model<a class="anchor-link" href="#5.3.3-Blending-Model">&#182;</a></h2><p>This simplified blending model assumes the product attributes can be computed as linear volume weighted averages of the component properties. Let the decision variable $x_{s,p} \geq 0$ be the volume, in gallons, of blending component $s \in S$ used in the final product $p \in P$.</p>
+<p>The objective is maximize profit, which is the difference between product revenue and stream costs.</p>
+\begin{align}
+\mbox{profit} &amp; = \max_{x_{s,p}}\left( \sum_{p\in P} \mbox{Price}_p \sum_{s\in S} x_{s,p}
+- \sum_{s\in S} \mbox{Cost}_s \sum_{p\in P} x_{s,p}\right)
+\end{align}<p>or
+\begin{align}
+\mbox{profit} &amp; = \max_{x_{s,p}} \sum_{p\in P}  \sum_{s\in S} x_{s,p}\mbox{Price}_p - \max_{x_{s,p}} \sum_{p\in P}  \sum_{s\in S} x_{s,p}\mbox{Cost}_s
+\end{align}</p>
+<p>The blending constraint for octane can be written as</p>
+\begin{align}
+\frac{\sum_{s \in S} x_{s,p} \mbox{Octane}_s}{\sum_{s \in S} x_{s,p}} &amp; \geq \mbox{Octane}_p &amp; \forall p \in P
+\end{align}<p>where $\mbox{Octane}_s$ refers to the octane rating of stream $s$, whereas $\mbox{Octane}_p$ refers to the octane rating of product $p$. Multiplying through by the denominator, and consolidating terms gives</p>
+\begin{align}
+\sum_{s \in S} x_{s,p}\left(\mbox{Octane}_s - \mbox{Octane}_p\right) &amp; \geq  0 &amp; \forall p \in P
+\end{align}<p>The same assumptions and development apply to the benzene constraint</p>
+\begin{align}
+\sum_{s \in S} x_{s,p}\left(\mbox{Benzene}_s - \mbox{Benzene}_p\right) &amp; \leq  0 &amp; \forall p \in P
+\end{align}<p>Reid vapor pressure, however, follows a somewhat different mixing rule.  For the Reid vapor pressure we have</p>
+\begin{align}
+\sum_{s \in S} x_{s,p}\left(\mbox{RVP}_s^{1.25} - \mbox{RVP}_{min,p}^{1.25}\right) &amp; \geq  0 &amp; \forall p \in P \\
+\sum_{s \in S} x_{s,p}\left(\mbox{RVP}_s^{1.25} - \mbox{RVP}_{max,p}^{1.25}\right) &amp; \leq  0 &amp; \forall p \in P
+\end{align}<p>This model is implemented in the following cell.</p>
+
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[162]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyomo</span>
+
+<span class="c1"># create model</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="c1"># create decision variables</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">streams</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">products</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">P</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">pyomo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+    
+<span class="c1"># objective</span>
+<span class="n">revenue</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">revenue</span> <span class="o">-</span> <span class="n">cost</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">pyomo</span><span class="o">.</span><span class="n">maximize</span><span class="p">)</span>
+
+<span class="c1"># constraints</span>
+<span class="n">m</span><span class="o">.</span><span class="n">cons</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">ConstraintList</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;avail&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">-</span>    <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">])</span>       <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="o">-</span> <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;RVPmin&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="o">-</span> <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;RVPmax&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="o">-</span>   <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">])</span>      <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># solve</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="c1"># display results</span>
+<span class="n">vol</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Volume =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;gallons.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Profit =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;dollars.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profit =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">()</span><span class="o">/</span><span class="n">vol</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;cents per gallon.&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Total Volume = 217971.0 gallons.
+Total Profit = 60022.2 dollars.
+Profit = 27.5 cents per gallon.
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.3.4-Display-Results">5.3.4 Display Results<a class="anchor-link" href="#5.3.4-Display-Results">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.3.4.1-Results-for-each-Stream">5.3.4.1 Results for each Stream<a class="anchor-link" href="#5.3.4.1-Results-for-each-Stream">&#182;</a></h3>
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[152]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stream_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+        <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">](),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;Available&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;avail&#39;</span><span class="p">]</span>
+    
+<span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Unused (Slack)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Available&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream_results</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>              Regular  Premium    Total  Available  Unused (Slack)
+Butane        17924.9  12075.1  30000.0    30000.0             0.0
+LSR           35000.0      0.0  35000.0    35000.0             0.0
+Isomerate         0.0      0.0      0.0        0.0             0.0
+Reformate     43599.3  16400.7  60000.0    60000.0             0.0
+Reformate LB      0.0      0.0      0.0        0.0             0.0
+FCC Naphtha   24225.8  45774.2  70000.0    70000.0             0.0
+Alkylate          0.0  40000.0  40000.0    40000.0             0.0
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.3.4.2-Results-for-each-Product">5.3.4.2 Results for each Product<a class="anchor-link" href="#5.3.4.2-Results-for-each-Product">&#182;</a></h3>
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[153]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">product_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">])</span><span class="o">**</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">product_results</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>           Volume  octane   RVP  benzene
+Regular  120750.0    87.0  15.0      1.1
+Premium  114250.0    91.0  10.6      0.7
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    <div style="background-color:white; border:thin solid grey; margin-left:95px; margin-right:6px">
+    
+        &nbsp; <a href="https://jckantor.github.io/cbe30338-2021/tag_index.html#exercise">exercise</a>
+    
+    </div>
+    
+        
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_exercise" data-mime-type="text/markdown">
+<h2 id="5.3.5-Exercise-1.">5.3.5 Exercise 1.<a class="anchor-link" href="#5.3.5-Exercise-1.">&#182;</a></h2><p>The marketing team says there is an opportunity to create a mid-grade gasoline product with a road octane number of 89 that would sell for $2.82/gallon, and with all other specifications the same. Could an additional profit be created?</p>
+<p>Create a new cell (or cells) below to compute a solution to this exercise.</p>
+
+</div>
+</div>
+    
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[181]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">products</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Regular&#39;</span>        <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;octane&#39;</span><span class="p">:</span> <span class="mi">87</span><span class="p">,</span> <span class="s1">&#39;RVPmin&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;RVPmax&#39;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">},</span>
+    <span class="s1">&#39;Midgrade&#39;</span>       <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">2.82</span><span class="p">,</span> <span class="s1">&#39;octane&#39;</span><span class="p">:</span> <span class="mi">89</span><span class="p">,</span> <span class="s1">&#39;RVPmin&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;RVPmax&#39;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">},</span>
+    <span class="s1">&#39;Premium&#39;</span>        <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">2.85</span><span class="p">,</span> <span class="s1">&#39;octane&#39;</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span> <span class="s1">&#39;RVPmin&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;RVPmax&#39;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">products</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">streams</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Butane&#39;</span>       <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">93.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">92.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">54.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">30000</span><span class="p">},</span>
+    <span class="s1">&#39;LSR&#39;</span>          <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">78.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">76.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">11.2</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.73</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.05</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">35000</span><span class="p">},</span>
+    <span class="s1">&#39;Isomerate&#39;</span>    <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">83.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">81.1</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">13.5</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.20</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s1">&#39;Reformate&#39;</span>    <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span><span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">88.2</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">3.2</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.85</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.80</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">60000</span><span class="p">},</span>
+    <span class="s1">&#39;Reformate LB&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">93.7</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">84.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">2.8</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.12</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s1">&#39;FCC Naphtha&#39;</span>  <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">92.1</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">77.1</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">1.4</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.06</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.60</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">70000</span><span class="p">},</span>
+    <span class="s1">&#39;Alkylate&#39;</span>     <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">97.3</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">95.9</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">4.6</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">40000</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1"># calculate road octane as (R+M)/2</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">streams</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RON&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;MON&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+    
+<span class="c1"># display feed information</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">streams</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># create model</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="c1"># create decision variables</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">streams</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">products</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">P</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">pyomo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+    
+<span class="c1"># objective</span>
+<span class="n">revenue</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">revenue</span> <span class="o">-</span> <span class="n">cost</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">pyomo</span><span class="o">.</span><span class="n">maximize</span><span class="p">)</span>
+
+<span class="c1"># constraints</span>
+<span class="n">m</span><span class="o">.</span><span class="n">cons</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">ConstraintList</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;avail&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">-</span>    <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">])</span>       <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="o">-</span> <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;RVPmin&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="o">-</span> <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;RVPmax&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="o">-</span>   <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">])</span>      <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># solve</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profit = $&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">(),</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">stream_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+        <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">](),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;Available&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;avail&#39;</span><span class="p">]</span>
+    
+<span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Unused (Slack)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Available&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream_results</span><span class="p">)</span>
+
+<span class="n">product_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">])</span><span class="o">**</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">product_results</span><span class="p">)</span>
+
+<span class="n">vol</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Profit =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;dollars.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Volume =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;gallons.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profit =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">()</span><span class="o">/</span><span class="n">vol</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;cents per gallon.&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>          RVPmax  RVPmin  benzene  octane  price
+Midgrade    15.0     0.0      1.1    89.0   2.82
+Premium     15.0     0.0      1.1    91.0   2.85
+Regular     15.0     0.0      1.1    87.0   2.75
+               MON    RON   RVP    avail  benzene  cost  octane
+Alkylate      95.9   97.3   4.6  40000.0     0.00  2.75   96.60
+Butane        92.0   93.0  54.0  30000.0     0.00  0.85   92.50
+FCC Naphtha   77.1   92.1   1.4  70000.0     1.06  2.60   84.60
+Isomerate     81.1   83.0  13.5      0.0     0.00  2.20   82.05
+LSR           76.0   78.0  11.2  35000.0     0.73  2.05   77.00
+Reformate     88.2  100.0   3.2  60000.0     1.85  2.80   94.10
+Reformate LB  84.0   93.7   2.8      0.0     0.12  2.75   88.85
+Profit = $ 104995.0
+              Regular  Midgrade  Premium    Total  Available  Unused (Slack)
+Butane            0.0   30000.0      0.0  30000.0    30000.0             0.0
+LSR            2833.3   32166.7      0.0  35000.0    35000.0             0.0
+Isomerate         0.0       0.0      0.0      0.0        0.0             0.0
+Reformate      2746.9   57253.1      0.0  60000.0    60000.0             0.0
+Reformate LB      0.0       0.0      0.0      0.0        0.0             0.0
+FCC Naphtha       0.0   70000.0      0.0  70000.0    70000.0             0.0
+Alkylate        919.8   39080.2      0.0  40000.0    40000.0             0.0
+            Volume  octane   RVP  benzene
+Regular     6500.0    87.0   7.2      1.1
+Midgrade  228500.0    89.0  13.0      0.9
+Premium        0.0     NaN   NaN      NaN
+Total Profit = 104995.0 dollars.
+Total Volume = 235000.0 gallons.
+Profit = 44.7 cents per gallon.
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>/Users/jeff/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:68: RuntimeWarning: invalid value encountered in double_scalars
+/Users/jeff/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:70: RuntimeWarning: invalid value encountered in double_scalars
+/Users/jeff/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:72: RuntimeWarning: invalid value encountered in double_scalars
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    <div style="background-color:white; border:thin solid grey; margin-left:95px; margin-right:6px">
+    
+        &nbsp; <a href="https://jckantor.github.io/cbe30338-2021/tag_index.html#exercise">exercise</a>
+    
+    </div>
+    
+        
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_exercise" data-mime-type="text/markdown">
+<h2 id="5.3.6-Exercise-2.">5.3.6 Exercise 2.<a class="anchor-link" href="#5.3.6-Exercise-2.">&#182;</a></h2><p>New environmental regulations have reduced the allowable benzene levels from 1.1 vol% to 0.62 vol%, and the maximum Reid vapor pressure from 15.0 to 9.0.</p>
+<p>Compared to the base case (i.e., without the midgrade product), how does this change profitability?</p>
+
+</div>
+</div>
+    
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[180]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">products</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Regular&#39;</span>        <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;octane&#39;</span><span class="p">:</span> <span class="mi">87</span><span class="p">,</span> <span class="s1">&#39;RVPmin&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;RVPmax&#39;</span><span class="p">:</span> <span class="mf">9.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.62</span><span class="p">},</span>
+    <span class="s1">&#39;Premium&#39;</span>        <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">2.85</span><span class="p">,</span> <span class="s1">&#39;octane&#39;</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span> <span class="s1">&#39;RVPmin&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;RVPmax&#39;</span><span class="p">:</span> <span class="mf">9.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.62</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">products</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">streams</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Butane&#39;</span>       <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">93.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">92.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">54.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">30000</span><span class="p">},</span>
+    <span class="s1">&#39;LSR&#39;</span>          <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">78.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">76.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">11.2</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.73</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.05</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">35000</span><span class="p">},</span>
+    <span class="s1">&#39;Isomerate&#39;</span>    <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">83.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">81.1</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">13.5</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.20</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s1">&#39;Reformate&#39;</span>    <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span><span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">88.2</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">3.2</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.85</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.80</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">60000</span><span class="p">},</span>
+    <span class="s1">&#39;Reformate LB&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">93.7</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">84.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">2.8</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.12</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s1">&#39;FCC Naphtha&#39;</span>  <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">92.1</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">77.1</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">1.4</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.06</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.60</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">70000</span><span class="p">},</span>
+    <span class="s1">&#39;Alkylate&#39;</span>     <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">97.3</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">95.9</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">4.6</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">40000</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1"># calculate road octane as (R+M)/2</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">streams</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RON&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;MON&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+    
+<span class="c1"># display feed information</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">streams</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># create model</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="c1"># create decision variables</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">streams</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">products</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">P</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">pyomo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+    
+<span class="c1"># objective</span>
+<span class="n">revenue</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">revenue</span> <span class="o">-</span> <span class="n">cost</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">pyomo</span><span class="o">.</span><span class="n">maximize</span><span class="p">)</span>
+
+<span class="c1"># constraints</span>
+<span class="n">m</span><span class="o">.</span><span class="n">cons</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">ConstraintList</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;avail&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">-</span>    <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">])</span>       <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="o">-</span> <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;RVPmin&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="o">-</span> <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;RVPmax&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="o">-</span>   <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">])</span>      <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># solve</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profit = $&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">(),</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">stream_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+        <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">](),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;Available&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;avail&#39;</span><span class="p">]</span>
+    
+<span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Unused (Slack)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Available&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream_results</span><span class="p">)</span>
+
+<span class="n">product_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">])</span><span class="o">**</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">product_results</span><span class="p">)</span>
+
+<span class="n">vol</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Profit =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;dollars.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Volume =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;gallons.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profit =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">()</span><span class="o">/</span><span class="n">vol</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;cents per gallon.&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>         RVPmax  RVPmin  benzene  octane  price
+Premium     9.0     0.0     0.62    91.0   2.85
+Regular     9.0     0.0     0.62    87.0   2.75
+               MON    RON   RVP    avail  benzene  cost  octane
+Alkylate      95.9   97.3   4.6  40000.0     0.00  2.75   96.60
+Butane        92.0   93.0  54.0  30000.0     0.00  0.85   92.50
+FCC Naphtha   77.1   92.1   1.4  70000.0     1.06  2.60   84.60
+Isomerate     81.1   83.0  13.5      0.0     0.00  2.20   82.05
+LSR           76.0   78.0  11.2  35000.0     0.73  2.05   77.00
+Reformate     88.2  100.0   3.2  60000.0     1.85  2.80   94.10
+Reformate LB  84.0   93.7   2.8      0.0     0.12  2.75   88.85
+Profit = $ 44493.62
+              Regular  Premium    Total  Available  Unused (Slack)
+Butane         8187.5      0.0   8187.5    30000.0         21812.5
+LSR           28305.3      0.0  28305.3    35000.0          6694.7
+Isomerate         0.0      0.0      0.0        0.0             0.0
+Reformate         0.0      0.0      0.0    60000.0         60000.0
+Reformate LB      0.0      0.0      0.0        0.0             0.0
+FCC Naphtha   60824.3      0.0  60824.3    70000.0          9175.7
+Alkylate      40000.0      0.0  40000.0    40000.0             0.0
+           Volume  octane  RVP  benzene
+Regular  137317.1    87.0  9.0      0.6
+Premium       0.0     NaN  NaN      NaN
+Total Profit = 44493.6 dollars.
+Total Volume = 137317.1 gallons.
+Profit = 32.4 cents per gallon.
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>/Users/jeff/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:67: RuntimeWarning: invalid value encountered in double_scalars
+/Users/jeff/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:69: RuntimeWarning: invalid value encountered in double_scalars
+/Users/jeff/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:71: RuntimeWarning: invalid value encountered in double_scalars
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    <div style="background-color:white; border:thin solid grey; margin-left:95px; margin-right:6px">
+    
+        &nbsp; <a href="https://jckantor.github.io/cbe30338-2021/tag_index.html#exercise">exercise</a>
+    
+    </div>
+    
+        
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_exercise" data-mime-type="text/markdown">
+<h2 id="5.3.7-Exercise-3.">5.3.7 Exercise 3.<a class="anchor-link" href="#5.3.7-Exercise-3.">&#182;</a></h2><p>Given the new product specifications in Exercise 2, let's consider using different refinery streams. In place of Reformate, the refinery could produce Reformate LB. (That is, one or the other of the two streams could be 60000 gallons per day, but not both).  Same for LSR and Reformate.  How should the refinery be operated to maximize profitability?</p>
+
+</div>
+</div>
+    
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[184]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">products</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Regular&#39;</span>        <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;octane&#39;</span><span class="p">:</span> <span class="mi">87</span><span class="p">,</span> <span class="s1">&#39;RVPmin&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;RVPmax&#39;</span><span class="p">:</span> <span class="mf">9.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.62</span><span class="p">},</span>
+    <span class="s1">&#39;Premium&#39;</span>        <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">2.85</span><span class="p">,</span> <span class="s1">&#39;octane&#39;</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span> <span class="s1">&#39;RVPmin&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;RVPmax&#39;</span><span class="p">:</span> <span class="mf">9.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.62</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">products</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">streams</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Butane&#39;</span>       <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">93.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">92.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">54.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">30000</span><span class="p">},</span>
+    <span class="s1">&#39;LSR&#39;</span>          <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">78.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">76.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">11.2</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.73</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.05</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">35000</span><span class="p">},</span>
+    <span class="s1">&#39;Isomerate&#39;</span>    <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">83.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">81.1</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">13.5</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.20</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s1">&#39;Reformate&#39;</span>    <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span><span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">88.2</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">3.2</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.85</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.80</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s1">&#39;Reformate LB&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">93.7</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">84.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">2.8</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.12</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">60000</span><span class="p">},</span>
+    <span class="s1">&#39;FCC Naphtha&#39;</span>  <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">92.1</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">77.1</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">1.4</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.06</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.60</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">70000</span><span class="p">},</span>
+    <span class="s1">&#39;Alkylate&#39;</span>     <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">97.3</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">95.9</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">4.6</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">40000</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1"># calculate road octane as (R+M)/2</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">streams</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RON&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;MON&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+    
+<span class="c1"># display feed information</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">streams</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># create model</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="c1"># create decision variables</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">streams</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">products</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">P</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">pyomo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+    
+<span class="c1"># objective</span>
+<span class="n">revenue</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">revenue</span> <span class="o">-</span> <span class="n">cost</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">pyomo</span><span class="o">.</span><span class="n">maximize</span><span class="p">)</span>
+
+<span class="c1"># constraints</span>
+<span class="n">m</span><span class="o">.</span><span class="n">cons</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">ConstraintList</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;avail&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">-</span>    <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">])</span>       <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="o">-</span> <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;RVPmin&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="o">-</span> <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;RVPmax&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">cons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">feeds</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="o">-</span>   <span class="n">products</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">])</span>      <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+    
+<span class="c1"># solve</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profit = $&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">(),</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">stream_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+        <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">](),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">stream_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;Available&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;avail&#39;</span><span class="p">]</span>
+    
+<span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Unused (Slack)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Available&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">stream_results</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream_results</span><span class="p">)</span>
+
+<span class="n">product_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">])</span><span class="o">**</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span><span class="o">*</span><span class="n">streams</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
+                                            <span class="o">/</span><span class="n">product_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;Volume&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">product_results</span><span class="p">)</span>
+
+<span class="n">vol</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Profit =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;dollars.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Volume =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;gallons.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profit =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">()</span><span class="o">/</span><span class="n">vol</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;cents per gallon.&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>         RVPmax  RVPmin  benzene  octane  price
+Premium     9.0     0.0     0.62    91.0   2.85
+Regular     9.0     0.0     0.62    87.0   2.75
+               MON    RON   RVP    avail  benzene  cost  octane
+Alkylate      95.9   97.3   4.6  40000.0     0.00  2.75   96.60
+Butane        92.0   93.0  54.0  30000.0     0.00  0.85   92.50
+FCC Naphtha   77.1   92.1   1.4  70000.0     1.06  2.60   84.60
+Isomerate     81.1   83.0  13.5      0.0     0.00  2.20   82.05
+LSR           76.0   78.0  11.2  35000.0     0.73  2.05   77.00
+Reformate     88.2  100.0   3.2      0.0     1.85  2.80   94.10
+Reformate LB  84.0   93.7   2.8  60000.0     0.12  2.75   88.85
+Profit = $ 63791.16
+              Regular  Premium    Total  Available  Unused (Slack)
+Butane        13290.3   1122.5  14412.8    30000.0         15587.2
+LSR           35000.0      0.0  35000.0    35000.0             0.0
+Isomerate         0.0      0.0      0.0        0.0             0.0
+Reformate         0.0      0.0      0.0        0.0             0.0
+Reformate LB  60000.0      0.0  60000.0    60000.0             0.0
+FCC Naphtha   63818.6   6181.4  70000.0    70000.0             0.0
+Alkylate      33236.2   6763.8  40000.0    40000.0             0.0
+           Volume  octane  RVP  benzene
+Regular  205345.2    87.0  9.0      0.5
+Premium   14067.7    91.0  9.0      0.5
+Total Profit = 63791.2 dollars.
+Total Volume = 219412.8 gallons.
+Profit = 29.1 cents per gallon.
 </pre>
 </div>
 </div>
@@ -14876,7 +15216,7 @@ Cost = $ 27.625
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.03-Linear-Production-Model-in-Pyomo.html">5.3 Linear Production Model in Pyomo</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html">5.6 Design of a Cold Weather Fuel</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.05-Linear-Blending-Problem.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.05-Linear-Blending-Problem.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html">5.2 Linear Blending Problem</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming.html">5.4 Linear Programming</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Gasoline-Blending.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

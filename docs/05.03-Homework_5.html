@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html">5.3 Gasoline Blending</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html">5.6 Design of a Cold Weather Fuel</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.04-Linear-Programming.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html">5.2 Linear Blending Problems</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.04-Gasoline-Blending.html">5.4 Gasoline Blending</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Homework_5.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Homework_5.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,150 +14285,133 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="5.4-Linear-Programming">5.4 Linear Programming<a class="anchor-link" href="#5.4-Linear-Programming">&#182;</a></h1><p>Linear programming is the minimization (or maximization) of a linear objective subject to linear constraints. There are several widely adopted schemes for representing linear programming problems. Here we adopt a scheme corresponding where the linear objective is written in terms of decision variables $x_1, x_2, \ldots, x_N$ as</p>
-\begin{align}
-\min_{x_1, x_1, \ldots, x_N} c_1x_1 + c_2x_2 + \cdots + c_Nx_N
-\end{align}<p>subject to</p>
-\begin{align}
-x_i  \geq 0 &amp; \qquad i=1,\ldots,N\quad\mbox{lower bounds on decision variables}\\
-\sum_{j=1}^N a^{ub}_{ij}x_j \leq b^{ub}_i &amp; \qquad i=1,\ldots,M_{ub}\quad\mbox{upper bound constraints} \\
-\sum_{j=1}^N a^{eq}_{ij}x_j = b^{eq}_i &amp; \qquad i=1,\ldots,M_{eq}\quad\mbox{equality constraints}\\
-\end{align}
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.4.1-Matrix/Vector-format">5.4.1 Matrix/Vector format<a class="anchor-link" href="#5.4.1-Matrix/Vector-format">&#182;</a></h2><p>The notation can be simplified by adopting a matrix/vector formulation where</p>
-\begin{align}
-\min_{x\geq 0} c^T x
-\end{align}<p>subject to</p>
-\begin{align}
-A_{ub} x \leq b_{ub} \\
-A_{eq} x = b_{eq}
-\end{align}<p>where $c$, $A_{ub}, b_{ub}$, and $A_{eq}, b_{eq}$, are vectors and matrices of coefficients constructed from the linear expressions given above.</p>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.4.2-Example-19.3:-Refinery-Blending-Problem">5.4.2 Example 19.3: Refinery Blending Problem<a class="anchor-link" href="#5.4.2-Example-19.3:-Refinery-Blending-Problem">&#182;</a></h2><p>The decision variables are</p>
+<h2 id="5.3.1-Homework-Assignment-4">5.3.1 Homework Assignment 4<a class="anchor-link" href="#5.3.1-Homework-Assignment-4">&#182;</a></h2><p>Homework assigment 4 is intended to develop your skills in creating linear programming models. The lecture notes (notebook 5.2) will provide with a starting point for the following exercises. The problem data has been changed to provide a more meaningful example for sensitivity analysis.</p>
+<p>You have been placed in charge of a metals reuse operation. A collection of raw materials are available with key parameters given in the following table.</p>
 <table>
 <thead><tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Units</th>
+<th style="text-align:center">material</th>
+<th style="text-align:center">% carbon (C)</th>
+<th style="text-align:center">% copper (Cu)</th>
+<th style="text-align:center">% manganese (Mn)</th>
+<th style="text-align:center">amount (kg)</th>
+<th style="text-align:center">cost (\$/kg)</th>
+<th style="text-align:left">type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>$x_1$</td>
-<td>crude #1</td>
-<td>bbl/day</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">2.5</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">1.3</td>
+<td style="text-align:center">4000</td>
+<td style="text-align:center">1.20</td>
+<td style="text-align:left">iron alloy</td>
 </tr>
 <tr>
-<td>$x_2$</td>
-<td>crude #2</td>
-<td>bbl/day</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">3.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.8</td>
+<td style="text-align:center">3000</td>
+<td style="text-align:center">1.50</td>
+<td style="text-align:left">iron alloy</td>
 </tr>
 <tr>
-<td>$x_3$</td>
-<td>gasoline</td>
-<td>bbl/day</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.3</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">6000</td>
+<td style="text-align:center">0.90</td>
+<td style="text-align:left">iron alloy</td>
 </tr>
 <tr>
-<td>$x_4$</td>
-<td>kerosine</td>
-<td>bbl/day</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">90.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">5000</td>
+<td style="text-align:center">1.30</td>
+<td style="text-align:left">copper alloy</td>
 </tr>
 <tr>
-<td>$x_5$</td>
-<td>fuel oil</td>
-<td>bbl/day</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">96.0</td>
+<td style="text-align:center">4.0</td>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">1.45</td>
+<td style="text-align:left">copper alloy</td>
 </tr>
 <tr>
-<td>$x_6$</td>
-<td>residual</td>
-<td>bbl/day</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.4</td>
+<td style="text-align:center">1.2</td>
+<td style="text-align:center">3000</td>
+<td style="text-align:center">1.20</td>
+<td style="text-align:left">aluminum alloy</td>
+</tr>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.6</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">2500</td>
+<td style="text-align:center">1.00</td>
+<td style="text-align:left">aluminum alloy</td>
 </tr>
 </tbody>
 </table>
-<p>The overall objective is to maximize profit</p>
-\begin{align}
-\mbox{profit} &amp; = \mbox{income} - \mbox{raw_material_cost} - \mbox{processing_cost}
-\end{align}<p>where the financial components are given by</p>
-\begin{align}
-\mbox{income} &amp; = 72x_3 + 48x_4 + 42x_5 + 20x_6 \\
-\mbox{raw_material_cost} &amp; = 48x_1 + 30x_2 \\
-\mbox{processing_cost} &amp; = 1 x_1 + 2x_2
-\end{align}<p>Combining these terms, the objective is to maximize</p>
-\begin{align}
-f &amp; = c^T x = - 49 x_1 - 32 x_2 + 72 x_3 + 48x_4 + 42x_5 + 20x_6 
-\end{align}<p>The material balance equations are</p>
-\begin{align}
-\mbox{gasoline: } x_3 &amp; = 0.80 x_1 + 0.44 x_2 \\
-\mbox{kerosine: } x_4 &amp; = 0.05 x_1 + 0.10 x_2 \\
-\mbox{fuel oil: } x_5 &amp; = 0.10 x_1 + 0.36 x_2 \\
-\mbox{residual: } x_6 &amp; = 0.05 x_1 + 0.10 x_2
-\end{align}<p>Production limits</p>
-\begin{align}
-\mbox{gasoline: } x_3 &amp; \leq 24,000 \\
-\mbox{kerosine: } x_4 &amp; \leq 2,000 \\
-\mbox{fuel oil: } x_5 &amp; \leq 6,000
-\end{align}\begin{align}
-\underbrace{\left[\begin{array}{cccccc}
-0.80 &amp; 0.44 &amp; -1 &amp; 0 &amp; 0 &amp; 0 \\
-0.05 &amp; 0.10 &amp; 0 &amp; -1 &amp; 0 &amp; 0 \\
-0.10 &amp; 0.36 &amp; 0 &amp; 0 &amp; -1 &amp; 0 \\
-0.05 &amp; 0.10 &amp; 0 &amp; 0 &amp; 0 &amp; -1
-\end{array}\right]}_{A_{eq}}
-\left[\begin{array}{c}
-x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \\ x_6 
-\end{array}\right]
-&amp; = 
-\underbrace{\left[\begin{array}{c}
-0 \\ 0 \\ 0 \\ 0
-\end{array}\right]}_{b_{eq}}
-\end{align}
+<p>A customer has requested 5000 kg of mix satisfying these  specifications:</p>
+<table>
+<thead><tr>
+<th style="text-align:center">Component</th>
+<th style="text-align:center">min %</th>
+<th style="text-align:center">max %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">2.0</td>
+<td style="text-align:center">3.0</td>
+</tr>
+<tr>
+<td style="text-align:center">Cu</td>
+<td style="text-align:center">0.4</td>
+<td style="text-align:center">0.6</td>
+</tr>
+<tr>
+<td style="text-align:center">Mn</td>
+<td style="text-align:center">1.2</td>
+<td style="text-align:center">1.65</td>
+</tr>
+</tbody>
+</table>
+<p>For convenience, the raw material data has been organized as a nested dictionaries.</p>
+
 </div>
 </div>
 
 
 
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">linprog</span>
-
-<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">49</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="o">-</span><span class="mi">72</span><span class="p">,</span> <span class="o">-</span><span class="mi">48</span><span class="p">,</span> <span class="o">-</span><span class="mi">42</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">]</span>
-
-<span class="n">A_ub</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
-
-<span class="n">b_ub</span> <span class="o">=</span> <span class="p">[</span><span class="mi">24000</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">6000</span><span class="p">]</span>
-
-<span class="n">A_eq</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.80</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
-        <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
-        <span class="p">[</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.36</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
-        <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-
-<span class="n">b_eq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">linprog</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A_ub</span><span class="p">,</span> <span class="n">b_ub</span><span class="p">,</span> <span class="n">A_eq</span><span class="p">,</span> <span class="n">b_eq</span><span class="p">)</span>
-<span class="n">results</span>
-<span class="n">p0</span> <span class="o">=</span> <span class="mf">573517.24</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;additional profit&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">fun</span> <span class="o">-</span> <span class="n">p0</span><span class="p">)</span>
+<div class=" highlight hl-python"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.20</span><span class="p">},</span>
+    <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.50</span><span class="p">},</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">6000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">0.90</span><span class="p">},</span>
+    <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">90.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.30</span><span class="p">},</span>
+    <span class="s2">&quot;E&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">96.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.45</span><span class="p">},</span>
+    <span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.20</span><span class="p">},</span>
+    <span class="s2">&quot;G&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">2500</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.00</span><span class="p">},</span>
+<span class="p">}</span>
 </pre></div>
 
      </div>
@@ -14436,41 +14419,63 @@ x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \\ x_6
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
+</div>
 
 
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>additional profit 175.035862069
-</pre>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.3.2-Exercise-1.-Getting-Started">5.3.2 Exercise 1. Getting Started<a class="anchor-link" href="#5.3.2-Exercise-1.-Getting-Started">&#182;</a></h2>
 </div>
 </div>
 
-</div>
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Considering just the constraint on carbon content, adapt the <code>brew_blend</code> function from notebook 5.2 to find a minimum cost blend raw materials that yield 5000 kg of product with a carbon content between 2.0 and 3.0%. For this first exercise you can ignore the bounds on the available amount of each raw material.</p>
+<ul>
+<li>change the name of the function to <code>metal_blend</code>.</li>
+<li><code>metal_blend</code> should accept arguments including<ul>
+<li><code>data</code>, </li>
+<li>the required mass of final product, and</li>
+<li>the acceptable range of carbon content specified as a pair of numbers of  <code>[lower_bound, upper_bound]</code>.</li>
+</ul>
+</li>
+<li><code>metal_blend</code> should return the minimum cost, and the amounts of each raw material to include in the blend.</li>
+</ul>
+<p>Demonstrate use of <code>metal_blend</code> to compute the required blend. From the results of the calculation to report</p>
+<ul>
+<li>the cost of the blend</li>
+<li>the total mass of the blend</li>
+<li>the mass of each raw material used in the blend</li>
+<li>the composition of the blend with regard to the species carbon, copper and managanese.</li>
+</ul>
+<p>You may find it convenient to write a function for this purpose that can be used in the following exercise.</p>
 
 </div>
-
 </div>
 
 
 
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="5.3.2.1-Solution">5.3.2.1 Solution<a class="anchor-link" href="#5.3.2.1-Solution">&#182;</a></h3>
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">x</span><span class="p">)):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x[</span><span class="si">{0:2d}</span><span class="s1">] = </span><span class="si">{1:7.1f}</span><span class="s1"> bbl/day&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
+<div class=" highlight hl-python"><pre><span></span>
 </pre></div>
 
      </div>
@@ -14478,31 +14483,75 @@ x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \\ x_6
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
+</div>
 
 
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.3.3-Exercise-2.-Incorporating-Constraints">5.3.3 Exercise 2. Incorporating Constraints<a class="anchor-link" href="#5.3.3-Exercise-2.-Incorporating-Constraints">&#182;</a></h2><p>We'll continue this problem by incorporating all of the constraints. The constraiints include:</p>
+<ul>
+<li>Lower and upper bounds on the copper and manganese composition</li>
+<li>Limits on the amount of available raw material</li>
+</ul>
+<p>The easiest way to proceed is to copy and paste <code>metal_blend</code> into a cell below, then add constraints one at a time until all have been incorporated.</p>
+<p>What is the minimum price you would need to charge in $/kg to produce 5,000 kg of requested product?</p>
 
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Optimization terminated successfully.
-x[ 1] = 26199.3 bbl/day
-x[ 2] =  6910.3 bbl/day
-x[ 3] = 24000.0 bbl/day
-x[ 4] =  2001.0 bbl/day
-x[ 5] =  5107.7 bbl/day
-x[ 6] =  2001.0 bbl/day
-</pre>
 </div>
 </div>
 
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.3.4-Exercise-3.-Sensitivity-Analysis">5.3.4 Exercise 3. Sensitivity Analysis<a class="anchor-link" href="#5.3.4-Exercise-3.-Sensitivity-Analysis">&#182;</a></h2><p>One of the important reasons to create optimization models is to understand the value of the raw materials that are available to you, and how to adjust operations to accomodate changing requirements. The is commonly referred to as <strong>sensitivity analysis</strong>.</p>
+<p>Using the functions you've created in above exercises, answer the following questions:</p>
+<ol>
+<li><p>The customer is very pleased with your initial pricing for 5,000 kg of the desired product, and now wishes to increase the order to 6,000 kg. Does your unit cost ($/kg) go up? If so, explain why your unit cost has gone up.</p>
+</li>
+<li><p>Is there an upper limit on how much product your can provide to this customer? (Use trial and error. To the nearest 100 kg, find the maximum amount of product you can ship to the customer.) What is the unit cost now?</p>
+</li>
+<li><p>After some negotiation, you and your customer settle on an order of 6,500 kg. Now you wish to negotiate with your suppliers for more raw material. How much money to you save for 1 additional kg of raw material "A"? Based on this, what price would you be willing to pay your supplier for additional "A"?</p>
+</li>
+</ol>
+
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
 </div>
@@ -14515,25 +14564,7 @@ x[ 6] =  2001.0 bbl/day
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-
-
-
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-python"><pre><span></span>
 </pre></div>
 
      </div>
@@ -14549,7 +14580,7 @@ x[ 6] =  2001.0 bbl/day
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.03-Gasoline-Blending.html">5.3 Gasoline Blending</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html">5.6 Design of a Cold Weather Fuel</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.04-Linear-Programming.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.04-Linear-Programming.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html">5.2 Linear Blending Problems</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.04-Gasoline-Blending.html">5.4 Gasoline Blending</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Homework_5.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Homework_5.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

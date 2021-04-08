@@ -50,7 +50,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 ### [Chapter 5.0 Optimization](https://jckantor.github.io/cbe30338-2021/05.00-Optimization.html)
 - [5.1 Linear Production Model](https://jckantor.github.io/cbe30338-2021/05.01-Linear-Production-Model.html)
 - [5.2 Linear Blending Problems](https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html)
-- [5.3 Homework Assignment 4](https://jckantor.github.io/cbe30338-2021/05.03-Homework_5.html)
+- [5.3 Homework Assignment 4](https://jckantor.github.io/cbe30338-2021/05.03-Homework_4.html)
 - [5.4 Gasoline Blending](https://jckantor.github.io/cbe30338-2021/05.04-Gasoline-Blending.html)
 - [5.5 Linear Programming](https://jckantor.github.io/cbe30338-2021/05.05-Linear-Programming.html)
 - [5.6 Design of a Cold Weather Fuel](https://jckantor.github.io/cbe30338-2021/05.06-Design-of-a-Cold-Weather-Fuel.html)
@@ -58,6 +58,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [5.99 Pyomo Examples](https://jckantor.github.io/cbe30338-2021/05.99-Pyomo-Examples.html)
 
 ### [Chapter 6.0 Predictive Control](https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html)
+- [6.1 Static Operability](https://jckantor.github.io/cbe30338-2021/06.01-Static-Operability.html)
 
 ### [Chapter 7.0 Projects](https://jckantor.github.io/cbe30338-2021/07.00-Projects.html)
 - [A.24 Animation in Jupyter Notebooks](https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html)

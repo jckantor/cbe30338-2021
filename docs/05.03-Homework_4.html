@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/01.00-Introduction.html">1.0 Introduction</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/01.02-What-is-Process-Control.html">1.2 What is Process Control?</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/01.01-Schedule.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/01.01-Schedule.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html">5.2 Linear Blending Problems</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.04-Gasoline-Blending.html">5.4 Gasoline Blending</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Homework_4.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Homework_4.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,139 +14285,175 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="1.1-Schedule-and-Course-Organization">1.1 Schedule and Course Organization<a class="anchor-link" href="#1.1-Schedule-and-Course-Organization">&#182;</a></h1>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="1.1.1-Getting-Started">1.1.1 Getting Started<a class="anchor-link" href="#1.1.1-Getting-Started">&#182;</a></h2><p><strong>CBE 30338/32338 Chemical Process Control</strong> will be conducted as a fully on-line course for the 2021 Spring semeter. For this to be effective, each student, instuctor, and teaching assistant will need access to the required technology and keep their systems and software in good working order for the duration of the semester.</p>
-<p><strong>Please let the instructors know immediately if you don't have access to a laptop, or you don't have adequate internet connectivity. The University has resources available to assist with these situations.</strong></p>
-<p>Please use the period before the start of the semester to prepare your systems and technology. Pay attention to the following the following details:</p>
-<ul>
-<li><p>We will be making extensive use of Zoom for office hours, on-classes, and laboratory sessions. Please verify that you can access Zoom by joining the test meeting <strong>with video</strong> at <a href="https://zoom.us/test">https://zoom.us/test</a>.</p>
-</li>
-<li><p>Please confirm that you have a working installation of the latest Anaconda distribution of Python. If in doubt, reinstall a fresh download available from <a href="https://www.anaconda.com/">Anaconda.com</a>.</p>
-</li>
-<li><p>A major component of the course is hands-on use of real hardware to implement working control systems. For this purpose wyou will need to purchase an individual copy of the <strong>Temperature Control Labortory</strong> available through <a href="https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY">Amazon</a>, the Notre Dame Bookstore, and <a href="https://apmonitor.com/pdc/index.php/Main/PurchaseLabKit">apmonitor.com</a>. Please allow time for ordering, shipping, and for you to install and test the device using your laptop.</p>
-</li>
-<li><p>The Temperature Control Lab requires a USB type A port. If your laptop is a newer model with only USB-C ports then you will need to purchase a USB-C to USB-A adaptor (<a href="https://www.amazon.com/Apple-USB-C-to-USB-Adapter/dp/B00VU2OID2/">such as this device for an Apple Mac</a>) or USB-C docking station (<a href="https://www.amazon.com/LENTION-Multi-Port-Compatible-2020-2016-Chromebook/dp/B07FNH5Y84/">such as this</a> from LENTION).</p>
-</li>
-</ul>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="1.1.2-Introduction-to-the-Course-and-Process-Control">1.1.2 Introduction to the Course and Process Control<a class="anchor-link" href="#1.1.2-Introduction-to-the-Course-and-Process-Control">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.2.1-Week-1">1.1.2.1 Week 1<a class="anchor-link" href="#1.1.2.1-Week-1">&#182;</a></h3><p>Class meetings begin on week 1. Each of the sessions scheduled below will be done as a Zoom meeting. To protect privacy, the specific Zoom meeting links are available through the course management system. Attendance will be monitored for each session with required attendance.</p>
+<h1 id="5.3-Homework-Assignment-4">5.3 Homework Assignment 4<a class="anchor-link" href="#5.3-Homework-Assignment-4">&#182;</a></h1><p>Homework assigment 4 is intended to develop your skills in creating linear programming models. The lecture notes (notebook 5.2) will provide with a starting point for the following exercises. The problem data has been changed to provide a more meaningful example for sensitivity analysis.</p>
+<p>You have been placed in charge of a metals reuse operation. A collection of raw materials are available with key parameters given in the following table.</p>
 <table>
 <thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
+<th style="text-align:center">material</th>
+<th style="text-align:center">% carbon (C)</th>
+<th style="text-align:center">% copper (Cu)</th>
+<th style="text-align:center">% manganese (Mn)</th>
+<th style="text-align:center">amount (kg)</th>
+<th style="text-align:center">cost (\$/kg)</th>
+<th style="text-align:left">type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">2/4(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Introductions <br> Course Resources <br> Syllabus  <br> Introduction to TCLab <br> What is Process Control?</td>
-<td style="text-align:left"><a href="https://docs.google.com/document/d/1nyId3IqaRej6zYwJ-HlFvR8lfqszkLH7OWzamw-vI-E/edit?usp=sharing">Syllabus</a> <br> <a href="https://fbswiki.org/wiki/index.php/Feedback_Systems:_An_Introduction_for_Scientists_and_Engineers">FBS 1.2-1.4</a> <br> <a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 1.1</a></td>
-<td style="text-align:center">&check;</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">2.5</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">1.3</td>
+<td style="text-align:center">4000</td>
+<td style="text-align:center">1.20</td>
+<td style="text-align:left">iron alloy</td>
 </tr>
 <tr>
-<td style="text-align:left">2/5(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"><strong>No meeting for week 1</strong></td>
-<td style="text-align:left"></td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">3.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.8</td>
+<td style="text-align:center">3000</td>
+<td style="text-align:center">1.50</td>
+<td style="text-align:left">iron alloy</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.3</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">6000</td>
+<td style="text-align:center">0.90</td>
+<td style="text-align:left">iron alloy</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">90.0</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">5000</td>
+<td style="text-align:center">1.30</td>
+<td style="text-align:left">copper alloy</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">96.0</td>
+<td style="text-align:center">4.0</td>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">1.45</td>
+<td style="text-align:left">copper alloy</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.4</td>
+<td style="text-align:center">1.2</td>
+<td style="text-align:center">3000</td>
+<td style="text-align:center">1.20</td>
+<td style="text-align:left">aluminum alloy</td>
+</tr>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">0.6</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">2500</td>
+<td style="text-align:center">1.00</td>
+<td style="text-align:left">aluminum alloy</td>
 </tr>
 </tbody>
 </table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="1.1.3-Modeling-and-Parameter-Estimation">1.1.3 Modeling and Parameter Estimation<a class="anchor-link" href="#1.1.3-Modeling-and-Parameter-Estimation">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.3.1-Week-2">1.1.3.1 Week 2<a class="anchor-link" href="#1.1.3.1-Week-2">&#182;</a></h3><table>
+<p>A customer has requested 5000 kg of mix satisfying these  specifications:</p>
+<table>
 <thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
+<th style="text-align:center">Component</th>
+<th style="text-align:center">min %</th>
+<th style="text-align:center">max %</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">2/8(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">2.0</td>
+<td style="text-align:center">3.0</td>
 </tr>
 <tr>
-<td style="text-align:left">2/9(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">System Modeling <br> Pharmacokinetics</td>
-<td style="text-align:left"><a href="https://fbswiki.org/wiki/index.php/System_Modeling">FBS 3.1, 3.2</a> <br> <a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 2.1</a></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">HW Assignment 1</td>
+<td style="text-align:center">Cu</td>
+<td style="text-align:center">0.4</td>
+<td style="text-align:center">0.6</td>
 </tr>
 <tr>
-<td style="text-align:left">2/11(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">First Order Systems <br> Degrees of Freedom</td>
-<td style="text-align:left"><a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 2.2</a></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/12(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left">TCLab Operation <br> First Order Model ID</td>
-<td style="text-align:left"><a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 1.3</a> <br> <a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 1.4</a></td>
-<td style="text-align:center">&check;</td>
+<td style="text-align:center">Mn</td>
+<td style="text-align:center">1.2</td>
+<td style="text-align:center">1.65</td>
 </tr>
 </tbody>
 </table>
+<p>For convenience, the raw material data has been organized as a nested dictionaries.</p>
+
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.20</span><span class="p">},</span>
+    <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.50</span><span class="p">},</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">6000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">0.90</span><span class="p">},</span>
+    <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">90.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.30</span><span class="p">},</span>
+    <span class="s2">&quot;E&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">96.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.45</span><span class="p">},</span>
+    <span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.20</span><span class="p">},</span>
+    <span class="s2">&quot;G&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">2500</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.00</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.3.1-Exercise-1.-Getting-Started">5.3.1 Exercise 1. Getting Started<a class="anchor-link" href="#5.3.1-Exercise-1.-Getting-Started">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Considering just the constraint on carbon content, adapt the <code>brew_blend</code> function from notebook 5.2 to find a minimum cost blend raw materials that yield 5000 kg of product with a carbon content between 2.0 and 3.0%. For this first exercise you can ignore the bounds on the available amount of each raw material.</p>
+<ul>
+<li>change the name of the function to <code>metal_blend</code>.</li>
+<li><code>metal_blend</code> should accept arguments including<ul>
+<li><code>data</code>, </li>
+<li>the required mass of final product, and</li>
+<li>the acceptable range of carbon content specified as a pair of numbers of  <code>[lower_bound, upper_bound]</code>.</li>
+</ul>
+</li>
+<li><code>metal_blend</code> should return the minimum cost, and the amounts of each raw material to include in the blend.</li>
+</ul>
+<p>Demonstrate use of <code>metal_blend</code> to compute the required blend. From the results of the calculation to report</p>
+<ul>
+<li>the cost of the blend</li>
+<li>the total mass of the blend</li>
+<li>the mass of each raw material used in the blend</li>
+<li>the composition of the blend with regard to the species carbon, copper and managanese.</li>
+</ul>
+<p>You may find it convenient to write a function for this purpose that can be used in the following exercise.</p>
 
 </div>
 </div>
@@ -14427,54 +14463,26 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.3.2-Week-3">1.1.3.2 Week 3<a class="anchor-link" href="#1.1.3.2-Week-3">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">2/15(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">2/16(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">First-Order Model TCLab</td>
-<td style="text-align:left"><a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 2.3</a></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">HW Assignment 2</td>
-</tr>
-<tr>
-<td style="text-align:left">2/18(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Identifying Linear Dynamics</td>
-<td style="text-align:left"><a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 2.4</a></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">2/19(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left">Dynamic Model Identification</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">Lab Assignment 1</td>
-</tr>
-</tbody>
-</table>
-
+<h3 id="5.3.1.1-Solution">5.3.1.1 Solution<a class="anchor-link" href="#5.3.1.1-Solution">&#182;</a></h3>
 </div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 
 
@@ -14482,64 +14490,33 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="1.1.4-Feedback-Control">1.1.4 Feedback Control<a class="anchor-link" href="#1.1.4-Feedback-Control">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.4.1-Week-4">1.1.4.1 Week 4<a class="anchor-link" href="#1.1.4.1-Week-4">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">2/22(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">2/23(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Case Study: PCR Thermal Cycling <br> Setpoints</td>
-<td style="text-align:left"><a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 3.1 &amp; 3.2</a></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">HW Assignment 3</td>
-</tr>
-<tr>
-<td style="text-align:left">2/25(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Relay, Proportional, and PI Control</td>
-<td style="text-align:left"><a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 3.3</a></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">Quiz 1: Modeling &amp; Identification</td>
-</tr>
-<tr>
-<td style="text-align:left">2/26(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left">Single Variable Relay Control <br> PI Control</td>
-<td style="text-align:left"><a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 3.6</a></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">Lab Assignment 2</td>
-</tr>
-</tbody>
-</table>
+<h2 id="5.3.2-Exercise-2.-Incorporating-Constraints">5.3.2 Exercise 2. Incorporating Constraints<a class="anchor-link" href="#5.3.2-Exercise-2.-Incorporating-Constraints">&#182;</a></h2><p>We'll continue this problem by incorporating all of the constraints. The constraiints include:</p>
+<ul>
+<li>Lower and upper bounds on the copper and manganese composition</li>
+<li>Limits on the amount of available raw material</li>
+</ul>
+<p>The easiest way to proceed is to copy and paste <code>metal_blend</code> into a cell below, then add constraints one at a time until all have been incorporated.</p>
+<p>What is the minimum price you would need to charge in $/kg to produce 5,000 kg of requested product?</p>
 
 </div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 
 
@@ -14547,649 +14524,36 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.4.2-Week-5">1.1.4.2 Week 5<a class="anchor-link" href="#1.1.4.2-Week-5">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/1(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/2(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><strong>University Mini-break</strong></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/4(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">PI Implementation &amp; Co-routines</td>
-<td style="text-align:left"><a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 3.4</a></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/5(F)</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"><strong>Junior Parents Weekend</strong></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center"></td>
-<td style="text-align:left">Lab Assignment 3</td>
-</tr>
-</tbody>
-</table>
+<h2 id="5.3.3-Exercise-3.-Sensitivity-Analysis">5.3.3 Exercise 3. Sensitivity Analysis<a class="anchor-link" href="#5.3.3-Exercise-3.-Sensitivity-Analysis">&#182;</a></h2><p>One of the important reasons to create optimization models is to understand the value of the raw materials that are available to you, and how to adjust operations to accomodate changing requirements. The is commonly referred to as <strong>sensitivity analysis</strong>.</p>
+<p>Using the functions you've created in above exercises, answer the following questions:</p>
+<ol>
+<li><p>The customer is very pleased with your initial pricing for 5,000 kg of the desired product, and now wishes to increase the order to 6,000 kg. Does your unit cost ($/kg) go up? If so, explain why your unit cost has gone up.</p>
+</li>
+<li><p>Is there an upper limit on how much product your can provide to this customer? (Use trial and error. To the nearest 100 kg, find the maximum amount of product you can ship to the customer.) What is the unit cost now?</p>
+</li>
+<li><p>After some negotiation, you and your customer settle on an order of 6,500 kg. Now you wish to negotiate with your suppliers for more raw material. How much money to you save for 1 additional kg of raw material "A"? Based on this, what price would you be willing to pay your supplier for additional "A"?</p>
+</li>
+</ol>
 
 </div>
 </div>
 
 
 
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.4.3-Week-6">1.1.4.3 Week 6<a class="anchor-link" href="#1.1.4.3-Week-6">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/8(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/9(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Practical PI Control</td>
-<td style="text-align:left"><a href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 3.5</a> <br> Astrom and Murray, Chapter 11</td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">No assignment (JPW)</td>
-</tr>
-<tr>
-<td style="text-align:left">3/11(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Advanced PI and PID Control</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/12(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left">Advanced PID Control</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
 
+     </div>
+</div>
 </div>
 </div>
 
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="1.1.5-Process-Analytics">1.1.5 Process Analytics<a class="anchor-link" href="#1.1.5-Process-Analytics">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.5.1-Week-7">1.1.5.1 Week 7<a class="anchor-link" href="#1.1.5.1-Week-7">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/15(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/16(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Guest: Katie Gates ND'10 <br> What is Process Analytics?</td>
-<td style="text-align:left">Data Historian <br> Anamoly Detection</td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/18(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">Quiz 2: Feedback Control</td>
-</tr>
-<tr>
-<td style="text-align:left">3/19(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left">Using the Data Historian</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">Lab Assignment 4</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.5.2-Week-8">1.1.5.2 Week 8<a class="anchor-link" href="#1.1.5.2-Week-8">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/22(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/23(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Anamoly Detection</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/25(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Machine Learning</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">3/26(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left">Machine Learning</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">Lab Assignment 5</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="1.1.6-Optimization">1.1.6 Optimization<a class="anchor-link" href="#1.1.6-Optimization">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.6.1-Week-9">1.1.6.1 Week 9<a class="anchor-link" href="#1.1.6.1-Week-9">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">3/29(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">3/30(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Introduction to Semester Project <br></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">4/1(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Linear Production Problem <br> CVXPY</td>
-<td style="text-align:left">Section 5.1</td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">Quiz 3: Process Analytics</td>
-</tr>
-<tr>
-<td style="text-align:left">4/2(F)</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"><strong>Good Friday</strong></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.6.2-Week-10">1.1.6.2 Week 10<a class="anchor-link" href="#1.1.6.2-Week-10">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/5(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">4/6(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Linear Blending</td>
-<td style="text-align:left">Section 5.2</td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">4/8(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left">Blending</td>
-<td style="text-align:left">Section 5.3</td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">Lab Assignment 6 </td>
-</tr>
-<tr>
-<td style="text-align:left">4/9(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left">Static Operability Analysis</td>
-<td style="text-align:left">Section 6.1</td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="1.1.7-Predictive-Control">1.1.7 Predictive Control<a class="anchor-link" href="#1.1.7-Predictive-Control">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.7.1-Week-11">1.1.7.1 Week 11<a class="anchor-link" href="#1.1.7.1-Week-11">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/12(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">4/13(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">HW Assignment 4 <br> Project Proposal</td>
-</tr>
-<tr>
-<td style="text-align:left">4/15(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/16(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left">State Estimation</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">Lab Assignment 7 </td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.7.2-Week-12">1.1.7.2 Week 12<a class="anchor-link" href="#1.1.7.2-Week-12">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/19(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">4/20(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">HW Assignment 5</td>
-</tr>
-<tr>
-<td style="text-align:left">4/22(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">Quiz 4: Optimization</td>
-</tr>
-<tr>
-<td style="text-align:left">4/23(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left">Model Predictive Control</td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="1.1.8-Final-Project">1.1.8 Final Project<a class="anchor-link" href="#1.1.8-Final-Project">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.8.1-Week-13">1.1.8.1 Week 13<a class="anchor-link" href="#1.1.8.1-Week-13">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4/26(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">--</td>
-<td style="text-align:left">---</td>
-<td style="text-align:left">Office hours by appointment</td>
-</tr>
-<tr>
-<td style="text-align:left">4/27(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">HW Assignment 6 <br> Project Progress Report</td>
-</tr>
-<tr>
-<td style="text-align:left">4/29(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">4/30(F)</td>
-<td style="text-align:left">11:40am-12:30pm <br> 1:00-1:50pm</td>
-<td style="text-align:left">Lab Session 1 <br> Lab Session 2</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.8.2-Week-14">1.1.8.2 Week 14<a class="anchor-link" href="#1.1.8.2-Week-14">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">5/3(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Drop-in office hours</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">--</td>
-<td style="text-align:left">---</td>
-<td style="text-align:left">Office hours by appointment</td>
-</tr>
-<tr>
-<td style="text-align:left">5/4(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-<td style="text-align:left">Quiz 5: Predictive Control</td>
-</tr>
-<tr>
-<td style="text-align:left">5/6(Th)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">5/7(F)</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">no lab - Final Project</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.8.3-Finals-Week">1.1.8.3 Finals Week<a class="anchor-link" href="#1.1.8.3-Finals-Week">&#182;</a></h3><table>
-<thead><tr>
-<th style="text-align:left">Date</th>
-<th style="text-align:left">Time (EDT)</th>
-<th style="text-align:left">Activity</th>
-<th style="text-align:left">Topic</th>
-<th style="text-align:left">Reading</th>
-<th style="text-align:center">Req'd?</th>
-<th style="text-align:left">Assignment Due</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">5/11(M)</td>
-<td style="text-align:left">1:30-3pm</td>
-<td style="text-align:left">Office hours</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">--</td>
-<td style="text-align:left">---</td>
-<td style="text-align:left">Office hours by appointment</td>
-</tr>
-<tr>
-<td style="text-align:left">5/11(T)</td>
-<td style="text-align:left">11:10am-12:25pm</td>
-<td style="text-align:left"><a href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-<tr>
-<td style="text-align:left">5/14(F)</td>
-<td style="text-align:left">10:30am - 12:30pm</td>
-<td style="text-align:left">Project Presentations</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:center">&check;</td>
-</tr>
-</tbody>
-</table>
-
-</div>
 </div>
 
 
@@ -15216,7 +14580,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/01.00-Introduction.html">1.0 Introduction</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/01.02-What-is-Process-Control.html">1.2 What is Process Control?</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/01.01-Schedule.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/01.01-Schedule.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html">5.2 Linear Blending Problems</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.04-Gasoline-Blending.html">5.4 Gasoline Blending</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Homework_4.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Homework_4.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

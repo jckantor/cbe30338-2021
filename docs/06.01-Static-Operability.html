@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html">5.2 Linear Blending Problems</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.04-Gasoline-Blending.html">5.4 Gasoline Blending</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Homework_5.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Homework_5.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">6.0 Predictive Control</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/07.00-Projects.html">7.0 Projects</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/06.01-Static-Operability.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/06.01-Static-Operability.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,113 +14285,138 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="5.3-Homework-Assignment-4">5.3 Homework Assignment 4<a class="anchor-link" href="#5.3-Homework-Assignment-4">&#182;</a></h1><p>Homework assigment 4 is intended to develop your skills in creating linear programming models. The lecture notes (notebook 5.2) will provide with a starting point for the following exercises. The problem data has been changed to provide a more meaningful example for sensitivity analysis.</p>
-<p>You have been placed in charge of a metals reuse operation. A collection of raw materials are available with key parameters given in the following table.</p>
-<table>
-<thead><tr>
-<th style="text-align:center">material</th>
-<th style="text-align:center">% carbon (C)</th>
-<th style="text-align:center">% copper (Cu)</th>
-<th style="text-align:center">% manganese (Mn)</th>
-<th style="text-align:center">amount (kg)</th>
-<th style="text-align:center">cost (\$/kg)</th>
-<th style="text-align:left">type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">A</td>
-<td style="text-align:center">2.5</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">1.3</td>
-<td style="text-align:center">4000</td>
-<td style="text-align:center">1.20</td>
-<td style="text-align:left">iron alloy</td>
-</tr>
-<tr>
-<td style="text-align:center">B</td>
-<td style="text-align:center">3.0</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">0.8</td>
-<td style="text-align:center">3000</td>
-<td style="text-align:center">1.50</td>
-<td style="text-align:left">iron alloy</td>
-</tr>
-<tr>
-<td style="text-align:center">C</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">0.3</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">6000</td>
-<td style="text-align:center">0.90</td>
-<td style="text-align:left">iron alloy</td>
-</tr>
-<tr>
-<td style="text-align:center">D</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">90.0</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">5000</td>
-<td style="text-align:center">1.30</td>
-<td style="text-align:left">copper alloy</td>
-</tr>
-<tr>
-<td style="text-align:center">E</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">96.0</td>
-<td style="text-align:center">4.0</td>
-<td style="text-align:center">2000</td>
-<td style="text-align:center">1.45</td>
-<td style="text-align:left">copper alloy</td>
-</tr>
-<tr>
-<td style="text-align:center">F</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">0.4</td>
-<td style="text-align:center">1.2</td>
-<td style="text-align:center">3000</td>
-<td style="text-align:center">1.20</td>
-<td style="text-align:left">aluminum alloy</td>
-</tr>
-<tr>
-<td style="text-align:center">G</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">0.6</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">2500</td>
-<td style="text-align:center">1.00</td>
-<td style="text-align:left">aluminum alloy</td>
-</tr>
-</tbody>
-</table>
-<p>A customer has requested 5000 kg of mix satisfying these  specifications:</p>
-<table>
-<thead><tr>
-<th style="text-align:center">Component</th>
-<th style="text-align:center">min %</th>
-<th style="text-align:center">max %</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">C</td>
-<td style="text-align:center">2.0</td>
-<td style="text-align:center">3.0</td>
-</tr>
-<tr>
-<td style="text-align:center">Cu</td>
-<td style="text-align:center">0.4</td>
-<td style="text-align:center">0.6</td>
-</tr>
-<tr>
-<td style="text-align:center">Mn</td>
-<td style="text-align:center">1.2</td>
-<td style="text-align:center">1.65</td>
-</tr>
-</tbody>
-</table>
-<p>For convenience, the raw material data has been organized as a nested dictionaries.</p>
+<h1 id="6.1-Static-Operability">6.1 Static Operability<a class="anchor-link" href="#6.1-Static-Operability">&#182;</a></h1><p><strong>Static operability</strong> refers to the ability to operate a system under steady-state conditions. We are primarily interested in determining values for the manipulable inputs that acheive a desired process target, subject to all relevant operating constraints.</p>
 
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="6.1.1-State-Space-Model">6.1.1 State Space Model<a class="anchor-link" href="#6.1.1-State-Space-Model">&#182;</a></h3>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The state-space model for the Temperature Control Laboratory is given by</p>
+\begin{align}
+\frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
+y &amp; = C x
+\end{align}<p>where the structure of the matrix parameters and vector variables is given by</p>
+\begin{align}
+\frac{d}{dt}\underbrace{\left[\begin{array}{c} T_{H,1} \\ T_{S,1} \\ T_{H,2} \\ T_{S,2} \end{array}\right]}_x
+&amp; = 
+\underbrace{\left[\begin{array}{cccc}
+-(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_b}{C^H_p} &amp; \frac{U_c}{C^H_p} &amp; 0 \\
+\frac{U_b}{C^S_p} &amp; -\frac{U_b}{C^S_p} &amp; 0 &amp; 0 \\
+\frac{U_c}{C^H_p} &amp; 0 &amp; -(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_b}{C^H_p} \\
+0 &amp; 0 &amp; \frac{U_b}{C^S_p} &amp; -\frac{U_b}{C^S_p}
+\end{array}\right]}_A
+\underbrace{\left[\begin{array}{c}T_{H,1} \\ T_{S,1} \\ T_{H,2} \\ T_{S,2}\end{array}\right]}_x
++
+\underbrace{\left[\begin{array}{cc}\frac{\alpha P_1}{C_p} &amp; 0 \\ 0 &amp; 0 \\ 0 &amp; \frac{\alpha P_2}{C_p} \\ 0 &amp; 0 \end{array}\right]}_{B_u}
+\underbrace{\left[\begin{array}{c}u_1 \\ u_2\end{array}\right]}_u
++
+\underbrace{\left[\begin{array}{c}\frac{U_a}{C^H_p} \\ 0 \\ \frac{U_a}{C^H_p} \\ 0 \end{array}\right]}_{B_d}
+\underbrace{\left[\begin{array}{c}T_{amb}\end{array}\right]}_{d}
+\end{align}\begin{align}
+\underbrace{\left[\begin{array}{c} T_1 \\ T_2 \end{array}\right]}_y
+&amp; = 
+\underbrace{\left[\begin{array}{cccc} 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right]}_C
+\underbrace{\left[\begin{array}{c}T_{H,1} \\ T_{S,1} \\ T_{H,2} \\ T_{S,2}\end{array}\right]}_x
+\end{align}
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="6.1.1-Steady-State-Operability">6.1.1 Steady State Operability<a class="anchor-link" href="#6.1.1-Steady-State-Operability">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="6.1.2-Steady-State-Model">6.1.2 Steady State Model<a class="anchor-link" href="#6.1.2-Steady-State-Model">&#182;</a></h2><p>At steady-state our becomes</p>
+\begin{align}
+0 &amp; = A \bar{x} + B_u\bar{u} + B_d\bar{d} \\
+\bar{y} &amp; = C \bar{x} \\
+\end{align}<p>where the overbar $\bar{u}$, $\bar{x}$, and $\bar{y}$ denote the steady-state value of $u$, $x$, and $y$, respectively. We assume $\bar{d}$ is known.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="6.1.2.1-Steady-State-input-constraints">6.1.2.1 Steady-State input constraints<a class="anchor-link" href="#6.1.2.1-Steady-State-input-constraints">&#182;</a></h3><p>The constraints on $\bar{u}$ are given by upper and lower bounds</p>
+\begin{align}
+0 &amp; \leq \bar{u}_1 \leq 100 \\
+0 &amp; \leq \bar{u}_2 \leq 100 
+\end{align}<p>when the values of $u_1$ and $u_2$ correspond to percentage of maximum power.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="6.1.2.2-Steady-State-output-constraints">6.1.2.2 Steady-State output constraints<a class="anchor-link" href="#6.1.2.2-Steady-State-output-constraints">&#182;</a></h3><p>We will assume there are upper limits for each of the temperature outputs</p>
+\begin{align}
+\bar{y}_1 &amp; \leq \bar{y}_1^{max} \\
+\bar{y}_2 &amp; \leq \bar{y}_2^{max}
+\end{align}<p>when the values of $u_1$ and $u_2$ correspond to percentage of maximum power.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="6.1.2.3-Steady-State-setpoint-targets-or-ranges">6.1.2.3 Steady-State setpoint targets or ranges<a class="anchor-link" href="#6.1.2.3-Steady-State-setpoint-targets-or-ranges">&#182;</a></h3><p>The purpose of control is to find inputs $\bar{u}_1$ and $\bar{u}_2$ that cause the outputs to take on desired values. Those values could be specified as specific setpoints $\bar{r}_1^{SP}$ and $\bar{r}_2^{SP}$ in the form</p>
+\begin{align}
+\bar{y}_1 &amp; = \bar{r}_1^{SP} \\
+\bar{y}_2 &amp; = \bar{r}_2^{SP}
+\end{align}<p>Alternatively, the desired operation could be specified by a range of values</p>
+\begin{align}
+\bar{r}_1^{min} &amp; \leq \bar{y}_1 \leq \bar{r}_1^{max} \\
+\bar{r}_2^{min} &amp; \leq \bar{y}_2 \leq \bar{r}_2^{max}
+\end{align}
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="6.1.3-CVXPY-Solution">6.1.3 CVXPY Solution<a class="anchor-link" href="#6.1.3-CVXPY-Solution">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="6.1.3.1-Imports">6.1.3.1 Imports<a class="anchor-link" href="#6.1.3.1-Imports">&#182;</a></h3>
 </div>
 </div>
 
@@ -14403,15 +14428,8 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.20</span><span class="p">},</span>
-    <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.50</span><span class="p">},</span>
-    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">6000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">0.90</span><span class="p">},</span>
-    <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">90.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.30</span><span class="p">},</span>
-    <span class="s2">&quot;E&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">96.0</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.45</span><span class="p">},</span>
-    <span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.20</span><span class="p">},</span>
-    <span class="s2">&quot;G&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;Cu&quot;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s2">&quot;Mn&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">2500</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">:</span> <span class="mf">1.00</span><span class="p">},</span>
-<span class="p">}</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
 </pre></div>
 
      </div>
@@ -14426,44 +14444,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.3.1-Exercise-1.-Getting-Started">5.3.1 Exercise 1. Getting Started<a class="anchor-link" href="#5.3.1-Exercise-1.-Getting-Started">&#182;</a></h2>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Considering just the constraint on carbon content, adapt the <code>brew_blend</code> function from notebook 5.2 to find a minimum cost blend raw materials that yield 5000 kg of product with a carbon content between 2.0 and 3.0%. For this first exercise you can ignore the bounds on the available amount of each raw material.</p>
-<ul>
-<li>change the name of the function to <code>metal_blend</code>.</li>
-<li><code>metal_blend</code> should accept arguments including<ul>
-<li><code>data</code>, </li>
-<li>the required mass of final product, and</li>
-<li>the acceptable range of carbon content specified as a pair of numbers of  <code>[lower_bound, upper_bound]</code>.</li>
-</ul>
-</li>
-<li><code>metal_blend</code> should return the minimum cost, and the amounts of each raw material to include in the blend.</li>
-</ul>
-<p>Demonstrate use of <code>metal_blend</code> to compute the required blend. From the results of the calculation to report</p>
-<ul>
-<li>the cost of the blend</li>
-<li>the total mass of the blend</li>
-<li>the mass of each raw material used in the blend</li>
-<li>the composition of the blend with regard to the species carbon, copper and managanese.</li>
-</ul>
-<p>You may find it convenient to write a function for this purpose that can be used in the following exercise.</p>
-
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="5.3.1.1-Solution">5.3.1.1 Solution<a class="anchor-link" href="#5.3.1.1-Solution">&#182;</a></h3>
+<h3 id="6.1.3.2-Model-Parameters">6.1.3.2 Model Parameters<a class="anchor-link" href="#6.1.3.2-Model-Parameters">&#182;</a></h3>
 </div>
 </div>
 
@@ -14472,10 +14453,36 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># parameter estimates.</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.00016</span>       <span class="c1"># watts / (units P * percent U1)</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>              <span class="c1"># P units</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="mi">100</span>              <span class="c1"># P units</span>
+<span class="n">CpH</span> <span class="o">=</span> <span class="mf">4.46</span>            <span class="c1"># heat capacity of the heater (J/deg C)</span>
+<span class="n">CpS</span> <span class="o">=</span> <span class="mf">0.819</span>           <span class="c1"># heat capacity of the sensor (J/deg C)</span>
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.050</span>            <span class="c1"># heat transfer coefficient from heater to environment</span>
+<span class="n">Ub</span> <span class="o">=</span> <span class="mf">0.021</span>            <span class="c1"># heat transfer coefficient from heater to sensor</span>
+<span class="n">Uc</span> <span class="o">=</span> <span class="mf">0.0335</span>           <span class="c1"># heat transfer coefficient between heaters</span>
+<span class="n">Tamb</span> <span class="o">=</span> <span class="mi">21</span>             <span class="c1"># ambient room temperature</span>
+
+<span class="c1"># state space model</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">Uc</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="n">Ub</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="n">Uc</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+              <span class="p">[</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">,</span> <span class="o">-</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span><span class="n">Uc</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">Uc</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="n">Ub</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">,</span> <span class="o">-</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">]])</span>
+
+<span class="n">Bu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">*</span><span class="n">P2</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">Bd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">Ua</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">Ua</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="c1"># initial values for states and inputs</span>
+<span class="n">u_initial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">d_initial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Tamb</span><span class="p">])</span>
+<span class="n">x_initial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Tamb</span><span class="p">,</span> <span class="n">Tamb</span><span class="p">,</span> <span class="n">Tamb</span><span class="p">,</span> <span class="n">Tamb</span><span class="p">])</span>
 </pre></div>
 
      </div>
@@ -14490,31 +14497,82 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.3.2-Exercise-2.-Incorporating-Constraints">5.3.2 Exercise 2. Incorporating Constraints<a class="anchor-link" href="#5.3.2-Exercise-2.-Incorporating-Constraints">&#182;</a></h2><p>We'll continue this problem by incorporating all of the constraints. The constraiints include:</p>
-<ul>
-<li>Lower and upper bounds on the copper and manganese composition</li>
-<li>Limits on the amount of available raw material</li>
-</ul>
-<p>The easiest way to proceed is to copy and paste <code>metal_blend</code> into a cell below, then add constraints one at a time until all have been incorporated.</p>
-<p>What is the minimum price you would need to charge in $/kg to produce 5,000 kg of requested product?</p>
+<h3 id="6.1.3.3-CVXPY-Model">6.1.3.3 CVXPY Model<a class="anchor-link" href="#6.1.3.3-CVXPY-Model">&#182;</a></h3><p>The following cell implements some, but not all, elements of the steady state analysis as a CVXPY optimization model.</p>
 
 </div>
 </div>
 
 
 
-    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># knowns</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">d_initial</span>            <span class="c1"># disturbance</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>   <span class="c1"># setpoints</span>
+
+<span class="c1"># unknowns to be computed</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># objective</span>
+<span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># model constraints</span>
+<span class="n">model_constraints</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">0</span> <span class="o">==</span> <span class="n">A</span><span class="nd">@x</span> <span class="o">+</span> <span class="n">Bu</span><span class="nd">@u</span> <span class="o">+</span> <span class="n">Bd</span><span class="nd">@d</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">==</span> <span class="n">C</span><span class="nd">@x</span><span class="p">]</span>
+
+<span class="c1"># input constraints</span>
+<span class="n">input_constraints</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">u</span><span class="p">,</span> <span class="n">u</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">]</span>
+
+<span class="c1"># output constraints</span>
+<span class="n">output_constraints</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># setpoints</span>
+<span class="n">setpoints</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># solve problem</span>
+<span class="n">constraints</span> <span class="o">=</span> <span class="n">model_constraints</span> <span class="o">+</span> <span class="n">input_constraints</span> <span class="o">+</span> <span class="n">output_constraints</span> <span class="o">+</span> <span class="n">setpoints</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="c1"># display solution</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y = </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>x = [49.99999592 49.9999971 ]
+x = [48.41880129 48.41880129 41.58119517 41.58119517]
+y = [48.41880129 41.58119517]
+</pre>
+</div>
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -14524,14 +14582,21 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.3.3-Exercise-3.-Sensitivity-Analysis">5.3.3 Exercise 3. Sensitivity Analysis<a class="anchor-link" href="#5.3.3-Exercise-3.-Sensitivity-Analysis">&#182;</a></h2><p>One of the important reasons to create optimization models is to understand the value of the raw materials that are available to you, and how to adjust operations to accomodate changing requirements. The is commonly referred to as <strong>sensitivity analysis</strong>.</p>
-<p>Using the functions you've created in above exercises, answer the following questions:</p>
-<ol>
-<li><p>The customer is very pleased with your initial pricing for 5,000 kg of the desired product, and now wishes to increase the order to 6,000 kg. Does your unit cost ($/kg) go up? If so, explain why your unit cost has gone up.</p>
+<h2 id="6.1.4-Lab-Assigment-7">6.1.4 Lab Assigment 7<a class="anchor-link" href="#6.1.4-Lab-Assigment-7">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="6.1.4.1-Exercise-1.">6.1.4.1 Exercise 1.<a class="anchor-link" href="#6.1.4.1-Exercise-1.">&#182;</a></h3><ol>
+<li><p>In the cells below, cut and paste the parameter values for matriix coefficients $A$, $B_d$, $B_u$ and $C$ to match those you previously identified for your copy of the Temperature Control Lab.</p>
 </li>
-<li><p>Is there an upper limit on how much product your can provide to this customer? (Use trial and error. To the nearest 100 kg, find the maximum amount of product you can ship to the customer.) What is the unit cost now?</p>
+<li><p>Using the CVXPY outline provided above, write a Python function named <code>feedforward</code> that accepts an estimate of $T_{amb}$, and setpoints for $T1$ and $T2$, and returns values for inputs $U1$ and $U2$. The function should constrain inputs U1 and U2 to values between 0 and 100%, constrain all temperatures to values no greater than 60 deg C. Use the the power settings required to set $T1 = 45$ and $T2 = 40$. Then create a simple event loop, and test these values on your hardware. How close was your result to the predicted value?</p>
 </li>
-<li><p>After some negotiation, you and your customer settle on an order of 6,500 kg. Now you wish to negotiate with your suppliers for more raw material. How much money to you save for 1 additional kg of raw material "A"? Based on this, what price would you be willing to pay your supplier for additional "A"?</p>
+<li><p>Write an optimization model to find the greatest temperature differential between $T1$ and $T2$ while limiting both to temperatures less than 60 deg C. Verify this prediction using your hardware.</p>
 </li>
 </ol>
 
@@ -14543,7 +14608,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span> 
@@ -14580,7 +14645,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/05.02-Linear-Blending-Problem.html">5.2 Linear Blending Problems</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/05.04-Gasoline-Blending.html">5.4 Gasoline Blending</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/05.03-Homework_5.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/05.03-Homework_5.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">6.0 Predictive Control</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/07.00-Projects.html">7.0 Projects</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/06.01-Static-Operability.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/06.01-Static-Operability.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

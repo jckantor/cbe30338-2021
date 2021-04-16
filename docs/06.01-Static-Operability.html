@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">6.0 Predictive Control</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/07.00-Projects.html">7.0 Projects</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/06.01-Static-Operability.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/06.01-Static-Operability.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">6.0 Predictive Control</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/06.02-Optimization-Control.html">6.2 Simulation and Optimal Control</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/06.01-Static-Operability.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/06.01-Static-Operability.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14425,7 +14425,7 @@ y &amp; = C x
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -14453,7 +14453,7 @@ y &amp; = C x
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># parameter estimates.</span>
@@ -14507,7 +14507,7 @@ y &amp; = C x
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># knowns</span>
@@ -14528,13 +14528,18 @@ y &amp; = C x
     <span class="n">y</span> <span class="o">==</span> <span class="n">C</span><span class="nd">@x</span><span class="p">]</span>
 
 <span class="c1"># input constraints</span>
-<span class="n">input_constraints</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">u</span><span class="p">,</span> <span class="n">u</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">]</span>
+
+<span class="n">input_constraints</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">u</span><span class="p">,</span> 
+    <span class="n">u</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">]</span>
 
 <span class="c1"># output constraints</span>
 <span class="n">output_constraints</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># setpoints</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
 <span class="n">setpoints</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># solve problem</span>
 <span class="n">constraints</span> <span class="o">=</span> <span class="n">model_constraints</span> <span class="o">+</span> <span class="n">input_constraints</span> <span class="o">+</span> <span class="n">output_constraints</span> <span class="o">+</span> <span class="n">setpoints</span>
@@ -14542,7 +14547,7 @@ y &amp; = C x
 <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 
 <span class="c1"># display solution</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;u = </span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y = </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -14564,9 +14569,9 @@ y &amp; = C x
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>x = [49.99999592 49.9999971 ]
-x = [48.41880129 48.41880129 41.58119517 41.58119517]
-y = [48.41880129 41.58119517]
+<pre>u = [1.00000000e+02 6.51901705e-08]
+x = [66.67521368 66.67521368 39.32478634 39.32478634]
+y = [66.67521368 39.32478634]
 </pre>
 </div>
 </div>
@@ -14645,7 +14650,7 @@ y = [48.41880129 41.58119517]
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">6.0 Predictive Control</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/07.00-Projects.html">7.0 Projects</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/06.01-Static-Operability.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/06.01-Static-Operability.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/06.00-Predictive-Control.html">6.0 Predictive Control</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/06.02-Optimization-Control.html">6.2 Simulation and Optimal Control</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/06.01-Static-Operability.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/06.01-Static-Operability.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

@@ -61,6 +61,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [6.1 Static Operability](https://jckantor.github.io/cbe30338-2021/06.01-Static-Operability.html)
 - [6.2 Simulation and Open-Loop Optimal Control](https://jckantor.github.io/cbe30338-2021/06.02-Simulation-and-Open-Loop-Optimal-Control.html)
 - [6.3  Predictive Control](https://jckantor.github.io/cbe30338-2021/06.03-Predictive-Control.html)
+- [6.4  Predictive Control](https://jckantor.github.io/cbe30338-2021/06.04-Predictive-Control-2.html)
 
 ### [Chapter 7.0 Projects](https://jckantor.github.io/cbe30338-2021/07.00-Projects.html)
 - [A.24 Animation in Jupyter Notebooks](https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html)

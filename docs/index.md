@@ -64,5 +64,6 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [6.4  Implementing Predictive Control](https://jckantor.github.io/cbe30338-2021/06.04-Implementing-Predictive-Control.html)
 
 ### [Chapter 7.0 Projects](https://jckantor.github.io/cbe30338-2021/07.00-Projects.html)
+- [7.1 Getting Started with Discrete Event Systems](https://jckantor.github.io/cbe30338-2021/07.01-Introduction-to-Simpy.html)
 - [A.24 Animation in Jupyter Notebooks](https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html)
 

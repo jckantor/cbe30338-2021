@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/07.00-Projects.html">7.0 Projects</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html">A.24 Animation in Jupyter Notebooks</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/07.01-Introduction-to-Simpy.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/07.01-Introduction-to-Simpy.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/07.00-Discrete-Event-Systems.html">None</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/07.02-Ready-to-Roomba.html">7.2 Ready to Roomba</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/07.01-Introduction-to-Simpy.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/07.01-Introduction-to-Simpy.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,16 +14285,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="7.1-Getting-Started-with-Discrete-Event-Systems">7.1 Getting Started with Discrete Event Systems<a class="anchor-link" href="#7.1-Getting-Started-with-Discrete-Event-Systems">&#182;</a></h1>
-</div>
-</div>
-
-
-
-    
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="7.1.1-Simpy">7.1.1 Simpy<a class="anchor-link" href="#7.1.1-Simpy">&#182;</a></h2><p><a href="https://simpy.readthedocs.io/en/latest/contents.html">Simpy</a> is a Python library for the simulation of systems that interact through discrete events. There are two essential to using Simpy:</p>
+<h1 id="7.1-Introduction-to-Simpy">7.1 Introduction to Simpy<a class="anchor-link" href="#7.1-Introduction-to-Simpy">&#182;</a></h1><p><a href="https://simpy.readthedocs.io/en/latest/contents.html">Simpy</a> is a Python library for the simulation of systems that interact through discrete events. There are two essential to using Simpy:</p>
 <ol>
 <li>The simulation environment that manages the simulation.</li>
 <li>Processes you create to model system behavior.</li>
@@ -14309,7 +14300,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="7.1.1.1-Creating-a-simulation-environment">7.1.1.1 Creating a simulation environment<a class="anchor-link" href="#7.1.1.1-Creating-a-simulation-environment">&#182;</a></h3><p>A simulation environment is created with <code>simpy.Environment()</code>. The resulting object provides a collection of methods for setting and controlling a simulation.</p>
+<h2 id="7.1.1-Creating-a-simulation-environment">7.1.1 Creating a simulation environment<a class="anchor-link" href="#7.1.1-Creating-a-simulation-environment">&#182;</a></h2><p>A simulation environment is created with <code>simpy.Environment()</code>. The resulting object provides a collection of methods for setting and controlling a simulation.</p>
 
 </div>
 </div>
@@ -14372,7 +14363,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="7.1.1.2-Creating-simulation-processes">7.1.1.2 Creating simulation processes<a class="anchor-link" href="#7.1.1.2-Creating-simulation-processes">&#182;</a></h3><p>System behavior is modeled as a system of Simpy processes. Processes are implemented with the Python <code>yield</code> statement, and attached to the simulation environment with <code>env.process()</code>.</p>
+<h2 id="7.1.2-Creating-simulation-processes">7.1.2 Creating simulation processes<a class="anchor-link" href="#7.1.2-Creating-simulation-processes">&#182;</a></h2><p>System behavior is modeled as a system of Simpy processes. Processes are implemented with the Python <code>yield</code> statement, and attached to the simulation environment with <code>env.process()</code>.</p>
 <p>A process communicates with the simulation environment through the <code>yield</code> statement. The yield statement sends an event back to the simulation environment. The the passage of time is modeled with <code>env.timeout(delay)</code> event.</p>
 
 </div>
@@ -14513,7 +14504,7 @@ time 3.0: Hello, World.
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="7.1.2-Events">7.1.2 Events<a class="anchor-link" href="#7.1.2-Events">&#182;</a></h2><p>Simpy includes many different event types that are managed by the simulation environment. The <code>env.timeout(delay)</code> demonstrated above is a mainstay in Simpy models. Many applications require nothing more.</p>
+<h2 id="7.1.3-Events">7.1.3 Events<a class="anchor-link" href="#7.1.3-Events">&#182;</a></h2><p>Simpy includes many different event types that are managed by the simulation environment. The <code>env.timeout(delay)</code> demonstrated above is a mainstay in Simpy models. Many applications require nothing more.</p>
 
 </div>
 </div>
@@ -14610,7 +14601,7 @@ time 3.0: Hello, World.
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="7.1.3-Ready-to-Roomba">7.1.3 Ready to Roomba<a class="anchor-link" href="#7.1.3-Ready-to-Roomba">&#182;</a></h2>
+<h2 id="7.1.4-Ready-to-Roomba">7.1.4 Ready to Roomba<a class="anchor-link" href="#7.1.4-Ready-to-Roomba">&#182;</a></h2>
 </div>
 </div>
 
@@ -14876,7 +14867,7 @@ time 3.0: Hello, World.
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="7.1.4-Chemotaxis">7.1.4 Chemotaxis<a class="anchor-link" href="#7.1.4-Chemotaxis">&#182;</a></h2>
+<h2 id="7.1.5-Chemotaxis">7.1.5 Chemotaxis<a class="anchor-link" href="#7.1.5-Chemotaxis">&#182;</a></h2>
 </div>
 </div>
 
@@ -15074,7 +15065,7 @@ time 3.0: Hello, World.
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/07.00-Projects.html">7.0 Projects</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/A.24-Animation-in-Jupyter-Notebooks.html">A.24 Animation in Jupyter Notebooks</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/07.01-Introduction-to-Simpy.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/07.01-Introduction-to-Simpy.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/07.00-Discrete-Event-Systems.html">None</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/07.02-Ready-to-Roomba.html">7.2 Ready to Roomba</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/07.01-Introduction-to-Simpy.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/07.01-Introduction-to-Simpy.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>

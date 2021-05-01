@@ -63,10 +63,10 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [6.3  Predictive Control](https://jckantor.github.io/cbe30338-2021/06.03-Predictive-Control.html)
 - [6.4  Implementing Predictive Control](https://jckantor.github.io/cbe30338-2021/06.04-Implementing-Predictive-Control.html)
 
-### [Chapter None](https://jckantor.github.io/cbe30338-2021/07.00-Discrete-Event-Systems.html)
+### [Chapter 7.0 Discrete Event Systems](https://jckantor.github.io/cbe30338-2021/07.00-Discrete-Event-Systems.html)
 - [7.1 Introduction to Simpy](https://jckantor.github.io/cbe30338-2021/07.01-Introduction-to-Simpy.html)
 - [7.2 Ready to Roomba](https://jckantor.github.io/cbe30338-2021/07.02-Ready-to-Roomba.html)
-- [7.3 Getting Started with Discrete Event Systems](https://jckantor.github.io/cbe30338-2021/07.03-Chemotaxis.html)
+- [7.3 Chemotaxis](https://jckantor.github.io/cbe30338-2021/07.03-Chemotaxis.html)
 
 ### [Chapter 8.0 Projects](https://jckantor.github.io/cbe30338-2021/08.00-Projects.html)
 

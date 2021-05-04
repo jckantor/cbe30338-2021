@@ -14315,7 +14315,7 @@ $$\tau = \begin{cases}
 \tau_0 &amp; \text{for} &amp; \nabla_{\|}C \leq 0 \\ 
 \tau_0\left(1 + \frac{\nabla_{\|}C}{\nabla C_0}\right) &amp; \text{for} &amp; 0 &lt; \nabla_{\|}C  \leq \nabla C_0 \\
 2\tau_0 &amp; \text{for} &amp; \nabla_{\|}C  &gt; \nabla C_0
-\end{cases}$$<p>where $\nabla C_0$ is the threshold gradient at which the maximum run time is reached, and $\nabla_{\|}C$ is a projection of the concentration gradient in the direction swimming. We will assume <em>E. coli</em> swim at an average speed of 25$\mu$/s, and $\tau_0$ is one second.</p>
+\end{cases}$$<p>where $\nabla C_0$ is the threshold gradient at which the maximum run time is reached, and $\nabla_{\|}C$ is a projection of the concentration gradient in the direction of swimming. We will assume <em>E. coli</em> swim at an average speed of 25$\mu$/s, and $\tau_0$ is one second.</p>
 
 </div>
 </div>
@@ -14334,23 +14334,24 @@ $$\tau = \begin{cases}
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">simpy</span>
 
+<span class="c1"># dimension in mm</span>
 <span class="n">x_max</span> <span class="o">=</span> <span class="mf">10.0</span>   
 <span class="n">y_max</span> <span class="o">=</span> <span class="mf">10.0</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">v</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">V</span> <span class="o">=</span> <span class="mf">0.025</span>
 
 <span class="c1"># dictionary to store tracks of each bacteria</span>
-<span class="n">track</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">tracks</span> <span class="o">=</span> <span class="p">{}</span>
 
 <span class="c1"># concentration gradient</span>
-<span class="k">def</span> <span class="nf">c</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">x</span>  <span class="o">+</span>  <span class="mf">0.10</span>
+<span class="k">def</span> <span class="nf">C</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">x</span>
 
 <span class="c1"># agent model</span>
-<span class="k">def</span> <span class="nf">agent</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">swimmer</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x_pos</span><span class="p">,</span> <span class="n">y_pos</span><span class="p">):</span>
     
     <span class="c1">#  store initial position of particle n</span>
-    <span class="n">track</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)}</span>
+    <span class="n">tracks</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">(</span><span class="n">x_pos</span><span class="p">,</span> <span class="n">y_pos</span><span class="p">)}</span>
     
     <span class="c1"># variable to track distance traveled</span>
     <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>

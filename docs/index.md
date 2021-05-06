@@ -66,8 +66,9 @@ new materials, and make them accessible to students, teaching assistants, and ot
 ### [Chapter 7.0 Discrete Event Systems](https://jckantor.github.io/cbe30338-2021/07.00-Discrete-Event-Systems.html)
 - [7.1 Introduction to Simpy](https://jckantor.github.io/cbe30338-2021/07.01-Introduction-to-Simpy.html)
 - [7.2 Agent Based Models](https://jckantor.github.io/cbe30338-2021/07.02-Agent-Based-Models.html)
-- [7.2 Ready to Roomba](https://jckantor.github.io/cbe30338-2021/07.02-Ready-to-Roomba.html)
 - [7.3 Chemotaxis](https://jckantor.github.io/cbe30338-2021/07.03-Chemotaxis.html)
+- [7.4 Batch Chemical Process](https://jckantor.github.io/cbe30338-2021/07.04-Project-Batch-Chemical-Process.html)
+- [7.5 Simulating Queuing Systems](https://jckantor.github.io/cbe30338-2021/07.05-Queuing-Systems-and-Poisson-Processes.html)
 
 ### [Chapter 8.0 Projects](https://jckantor.github.io/cbe30338-2021/08.00-Projects.html)
 

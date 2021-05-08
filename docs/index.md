@@ -62,6 +62,7 @@ new materials, and make them accessible to students, teaching assistants, and ot
 - [6.2 Simulation and Open-Loop Optimal Control](https://jckantor.github.io/cbe30338-2021/06.02-Simulation-and-Open-Loop-Optimal-Control.html)
 - [6.3  Predictive Control](https://jckantor.github.io/cbe30338-2021/06.03-Predictive-Control.html)
 - [6.4  Implementing Predictive Control](https://jckantor.github.io/cbe30338-2021/06.04-Implementing-Predictive-Control.html)
+- [6.5 Quiz Review for Chapters 5 and 6](https://jckantor.github.io/cbe30338-2021/06.05-Quiz-Review.html)
 
 ### [Chapter 7.0 Discrete Event Systems](https://jckantor.github.io/cbe30338-2021/07.00-Discrete-Event-Systems.html)
 - [7.1 Introduction to Simpy](https://jckantor.github.io/cbe30338-2021/07.01-Introduction-to-Simpy.html)

@@ -14275,7 +14275,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/06.05-Quiz-Review.html">6.5 Quiz Review for Chapters 5 and 6</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/07.01-Introduction-to-Simpy.html">7.1 Introduction to Simpy</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/07.00-Discrete-Event-Systems.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/07.00-Discrete-Event-Systems.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/06.04-Implementing-Predictive-Control.html">6.4  Implementing Predictive Control</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/07.00-Discrete-Event-Systems.html">7.0 Discrete Event Systems</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/06.05-Quiz-Review.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/06.05-Quiz-Review.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -14285,8 +14285,141 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="7.0-Discrete-Event-Systems">7.0 Discrete Event Systems<a class="anchor-link" href="#7.0-Discrete-Event-Systems">&#182;</a></h1>
+<h1 id="6.5-Quiz-Review-for-Chapters-5-and-6">6.5 Quiz Review for Chapters 5 and 6<a class="anchor-link" href="#6.5-Quiz-Review-for-Chapters-5-and-6">&#182;</a></h1>
 </div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="6.5.1-Material-covered">6.5.1 Material covered<a class="anchor-link" href="#6.5.1-Material-covered">&#182;</a></h2><ul>
+<li>Optimization: 5.1, 5.2, 5.3, 5.5, </li>
+<li>Predictive Control: 6.1, 6.2, 6.3, 6.4</li>
+</ul>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="6.5.2-Learning-Goals">6.5.2 Learning Goals<a class="anchor-link" href="#6.5.2-Learning-Goals">&#182;</a></h2><p>You should be able to:</p>
+<ol>
+<li><p>Describe elements of an optimization problem:</p>
+<ul>
+<li>Decision variables.<ul>
+<li>What are decision variables?</li>
+<li>Types of decision variables: Real, Nonnegative, boolean, integer.</li>
+<li>Typical onstraints on decision variables: Upper and lower bounds.</li>
+</ul>
+</li>
+<li>Constraints<ul>
+<li>Inequalities</li>
+<li>Equalitis</li>
+<li>Algebraic</li>
+<li>Differential equations</li>
+<li>Feasible regions</li>
+<li>Active vs inactive constraints</li>
+</ul>
+</li>
+<li>Objective function<ul>
+<li>Types: Minimize, maximize</li>
+<li>Objective functions are scalar functions of the decision variables</li>
+</ul>
+</li>
+<li>Types of optimization problems<ul>
+<li>Linear, Nonlinear</li>
+<li>Integer</li>
+</ul>
+</li>
+<li>Outcomes<ul>
+<li>Feasible vs infeasible</li>
+<li>Unbounded</li>
+<li>Optimal solution </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Formulating Optimization problems</p>
+<ul>
+<li>Blending problems<ul>
+<li>Decision variables represent how much of something will be used or created</li>
+<li>There is usually a collection of underlying materials or resourcds that will be combined.</li>
+<li>The objective function typically represents overall cost, profit, or property.</li>
+</ul>
+</li>
+<li>Procedure<ul>
+<li>Identify the index sets.</li>
+<li>Create decision variables, one for each member of the index set</li>
+<li>Establish upper and lower bounds, if they exist, for the decision variables</li>
+<li>Define objective function</li>
+<li>Define constraints</li>
+<li>Create problem and solve</li>
+<li>Display solution in ways that are meaningful to the application</li>
+</ul>
+</li>
+<li>Sensitivity Studies</li>
+</ul>
+</li>
+<li><p>Predictive Control</p>
+<ul>
+<li>Open-Loop optimization<ul>
+<li>Formulate and solve for the control trajectory</li>
+<li>The state-space model provide equality constraints</li>
+</ul>
+</li>
+<li>Closed-loop predictive control<ul>
+<li>Observer/Estimator required to provide current values of the state</li>
+<li>Solve an open-loop optimization to find control policy</li>
+<li>Apply new control policy</li>
+<li>Repeat the procedure when new measurement information is available</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="6.5.3-Exercises">6.5.3 Exercises<a class="anchor-link" href="#6.5.3-Exercises">&#182;</a></h2><ol>
+<li>Study questions from Notebook 5.2.3</li>
+<li>Review the sensitivity analysis for Homework 4</li>
+<li>Review the medical application in this notebook <a href="https://jckantor.github.io/CBE30338/07.01-Simulation-and-Optimal-Control-in-Pharmacokinetics.html">https://jckantor.github.io/CBE30338/07.01-Simulation-and-Optimal-Control-in-Pharmacokinetics.html</a>.  <ul>
+<li>Be sure you can recode the same problem in CVXPY.</li>
+<li>As stated, this is an open-loop opimization problem. Be sure you would know how to formulate the problem for predictive control. What would be the objective function? The constraints? The bounds on the decision variables? </li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 
 
@@ -14295,7 +14428,7 @@ content is available <a href="https://github.com/jckantor/cbe30338-2021.git">on 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/cbe30338-2021/06.05-Quiz-Review.html">6.5 Quiz Review for Chapters 5 and 6</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/07.01-Introduction-to-Simpy.html">7.1 Introduction to Simpy</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/07.00-Discrete-Event-Systems.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/07.00-Discrete-Event-Systems.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/cbe30338-2021/06.04-Implementing-Predictive-Control.html">6.4  Implementing Predictive Control</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/cbe30338-2021/07.00-Discrete-Event-Systems.html">7.0 Discrete Event Systems</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/06.05-Quiz-Review.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/06.05-Quiz-Review.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
